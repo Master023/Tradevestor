@@ -3,263 +3,467 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Login Premium — TradeVestor</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-name="description"
-content="Login member TradeVestor Premium."
->
+    <title>Login — TradeVestor</title>
 
-<link rel="icon" href="logo.jpg">
+    <meta
+        name="description"
+        content="Login ke akun TradeVestor untuk mengakses pembelajaran dan Premium."
+    >
 
-<link rel="stylesheet" href="css/style.css">
+    <meta
+        name="theme-color"
+        content="#050507"
+    >
+
+    <link
+        rel="icon"
+        href="logo.jpg"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
+
 
 <body>
 
 
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <header class="navbar">
 
-<div class="container nav-container">
+    <div class="container nav-container">
 
-<a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="brand"
+        >
 
-<img
-src="logo.jpg"
-alt="Logo TradeVestor"
->
+            <img
+                src="logo.jpg"
+                alt="Logo TradeVestor"
+            >
 
-<span>
-TRADE<b>VESTOR</b>
-</span>
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
 
-</a>
-
-
-<button
-class="menu-btn"
-id="menuBtn"
-aria-label="Buka menu"
->
-☰
-</button>
+        </a>
 
 
-<nav>
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
 
-<ul class="nav-links" id="navLinks">
 
-<li>
-<a href="index.html">
-Beranda
-</a>
-</li>
+        <nav>
 
-<li>
-<a href="candlestick.html">
-Candlestick
-</a>
-</li>
+            <ul
+                class="nav-links"
+                id="navLinks"
+            >
 
-<li>
-<a href="indikator.html">
-Indikator
-</a>
-</li>
+                <li>
+                    <a href="index.html">
+                        Beranda
+                    </a>
+                </li>
 
-<li>
-<a href="strategi.html">
-Strategi
-</a>
-</li>
+                <li>
+                    <a href="candlestick.html">
+                        Candlestick
+                    </a>
+                </li>
 
-<li>
-<a href="pembelajaran.html">
-Pembelajaran
-</a>
-</li>
+                <li>
+                    <a href="indikator.html">
+                        Indikator
+                    </a>
+                </li>
 
-<li>
-<a
-href="premium.html"
-class="active"
->
-Premium
-</a>
-</li>
+                <li>
+                    <a href="strategi.html">
+                        Strategi
+                    </a>
+                </li>
 
-<li>
-<a href="tentang.html">
-Tentang
-</a>
-</li>
+                <li>
+                    <a href="pembelajaran.html">
+                        Pembelajaran
+                    </a>
+                </li>
 
-</ul>
+                <li>
+                    <a href="premium.html">
+                        Premium
+                    </a>
+                </li>
 
-</nav>
+                <li>
+                    <a href="tentang.html">
+                        Tentang
+                    </a>
+                </li>
 
-</div>
+            </ul>
+
+        </nav>
+
+    </div>
 
 </header>
 
 
 
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
 <main>
 
-<section class="hero">
-
-<div
-class="container"
-style="max-width:600px;"
+<section
+    class="section"
+    style="padding-top:90px;padding-bottom:90px;"
 >
 
-<div
-class="card"
-style="
-padding:45px 30px;
-"
->
-
-<div style="text-align:center;">
-
-<span class="eyebrow">
-TRADEVESTOR PREMIUM
-</span>
-
-<h1>
-Login
-<span class="gradient">
-Member.
-</span>
-</h1>
-
-<p class="lead">
-
-Masuk untuk mengakses materi
-TradeVestor Premium.
-
-</p>
-
-</div>
+    <div
+        class="container"
+        style="
+            max-width:520px;
+            margin:0 auto;
+        "
+    >
 
 
-<form id="loginForm">
+        <!-- LOGIN CARD -->
+
+        <div
+            class="card"
+            style="
+                padding:40px 30px;
+            "
+        >
 
 
-<div style="margin-top:25px;">
+            <!-- HEADER -->
 
-<label for="email">
-Email
-</label>
+            <div
+                style="
+                    text-align:center;
+                    margin-bottom:32px;
+                "
+            >
 
-<input
-type="email"
-id="email"
-placeholder="email@gmail.com"
-required
-style="
-width:100%;
-padding:14px;
-margin-top:8px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.12);
-background:rgba(255,255,255,.04);
-color:white;
-"
->
-
-</div>
+                <span class="kicker">
+                    TRADEVESTOR ACCOUNT
+                </span>
 
 
+                <h1
+                    style="
+                        margin-top:12px;
+                    "
+                >
+                    Selamat Datang Kembali
+                </h1>
 
-<div style="margin-top:20px;">
 
-<label for="password">
-Password
-</label>
+                <p
+                    style="
+                        color:var(--muted);
+                        margin-top:12px;
+                    "
+                >
 
-<input
-type="password"
-id="password"
-placeholder="Masukkan password"
-required
-style="
-width:100%;
-padding:14px;
-margin-top:8px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.12);
-background:rgba(255,255,255,.04);
-color:white;
-"
->
+                    Login untuk melanjutkan
+                    pembelajaran dan mengakses
+                    fitur Premium.
 
-</div>
+                </p>
+
+            </div>
 
 
 
-<button
-type="submit"
-class="btn btn-primary"
-style="
-width:100%;
-justify-content:center;
-margin-top:25px;
-"
->
+            <!-- ERROR / SUCCESS MESSAGE -->
 
-Login →
-
-</button>
+            <div
+                id="loginMessage"
+                class="notice"
+                style="
+                    display:none;
+                    margin-bottom:20px;
+                "
+            ></div>
 
 
-<p
-id="loginMessage"
-style="
-text-align:center;
-margin-top:20px;
-"
-></p>
+
+            <!-- FORM -->
+
+            <form
+                id="loginForm"
+                autocomplete="on"
+            >
 
 
-</form>
+                <!-- EMAIL -->
+
+                <div
+                    style="
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <label
+                        for="email"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Email
+                    </label>
 
 
-<div
-style="
-margin-top:30px;
-padding-top:25px;
-border-top:1px solid rgba(255,255,255,.08);
-text-align:center;
-"
->
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="contoh@email.com"
+                        autocomplete="email"
+                        required
+                        style="
+                            width:100%;
+                            padding:14px 16px;
+                            border-radius:10px;
+                            border:1px solid rgba(255,255,255,.12);
+                            background:rgba(255,255,255,.04);
+                            color:inherit;
+                            outline:none;
+                            box-sizing:border-box;
+                        "
+                    >
 
-<p style="color:var(--muted);">
-
-Belum menjadi member Premium?
-
-</p>
-
-
-<a
-href="premium.html"
-class="btn btn-secondary"
->
-
-Daftar Premium Rp35.000 →
-
-</a>
-
-</div>
+                </div>
 
 
-</div>
 
-</div>
+                <!-- PASSWORD -->
+
+                <div
+                    style="
+                        margin-bottom:12px;
+                    "
+                >
+
+                    <label
+                        for="password"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Password
+                    </label>
+
+
+                    <div
+                        style="
+                            position:relative;
+                        "
+                    >
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Masukkan password"
+                            autocomplete="current-password"
+                            required
+                            minlength="8"
+                            style="
+                                width:100%;
+                                padding:14px 50px 14px 16px;
+                                border-radius:10px;
+                                border:1px solid rgba(255,255,255,.12);
+                                background:rgba(255,255,255,.04);
+                                color:inherit;
+                                outline:none;
+                                box-sizing:border-box;
+                            "
+                        >
+
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            aria-label="Tampilkan password"
+                            style="
+                                position:absolute;
+                                right:12px;
+                                top:50%;
+                                transform:translateY(-50%);
+                                background:none;
+                                border:none;
+                                color:inherit;
+                                cursor:pointer;
+                                font-size:18px;
+                            "
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FORGOT -->
+
+                <div
+                    style="
+                        text-align:right;
+                        margin-bottom:25px;
+                    "
+                >
+
+                    <a
+                        href="#"
+                        id="forgotPassword"
+                        style="
+                            font-size:.9rem;
+                        "
+                    >
+                        Lupa password?
+                    </a>
+
+                </div>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="loginButton"
+                    style="
+                        width:100%;
+                        justify-content:center;
+                        cursor:pointer;
+                        border:none;
+                    "
+                >
+
+                    Login
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- REGISTER -->
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:28px;
+                    padding-top:25px;
+                    border-top:1px solid rgba(255,255,255,.08);
+                "
+            >
+
+                <p
+                    style="
+                        color:var(--muted);
+                    "
+                >
+
+                    Belum punya akun?
+
+                    <a
+                        href="register.html"
+                    >
+                        Buat akun
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- PREMIUM INFO -->
+
+            <div
+                class="notice"
+                style="
+                    margin-top:25px;
+                "
+            >
+
+                <strong>
+                    🔐 Akun TradeVestor
+                </strong>
+
+                <br>
+
+                Satu akun dapat digunakan
+                untuk mengakses materi gratis
+                dan, setelah Premium aktif,
+                materi khusus member.
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- BACK -->
+
+        <div
+            style="
+                text-align:center;
+                margin-top:25px;
+            "
+        >
+
+            <a
+                href="index.html"
+                style="
+                    color:var(--muted);
+                "
+            >
+                ← Kembali ke Beranda
+            </a>
+
+        </div>
+
+
+    </div>
 
 </section>
 
@@ -267,83 +471,363 @@ Daftar Premium Rp35.000 →
 
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-<div class="container">
+    <div class="container">
 
-<div class="copyright">
+        <div class="footer">
 
-© 2026 TradeVestor.
-Educational content only —
-bukan ajakan membeli atau menjual aset.
 
-</div>
+            <div>
 
-</div>
+                <div class="brand">
+
+                    <img
+                        src="logo.jpg"
+                        alt="Logo TradeVestor"
+                    >
+
+                    <span>
+                        TRADE<b>VESTOR</b>
+                    </span>
+
+                </div>
+
+
+                <p
+                    style="
+                        margin-top:12px;
+                        max-width:420px;
+                    "
+                >
+
+                    TradeVestor membantu lu
+                    memahami trading secara
+                    bertahap melalui materi
+                    edukasi yang terstruktur.
+
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Belajar
+                </h4>
+
+
+                <a href="candlestick.html">
+                    Candlestick
+                </a>
+
+
+                <a href="indikator.html">
+                    Indikator
+                </a>
+
+
+                <a href="strategi.html">
+                    Strategi
+                </a>
+
+
+                <a href="pembelajaran.html">
+                    Pembelajaran
+                </a>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Akun
+                </h4>
+
+
+                <a href="login.html">
+                    Login
+                </a>
+
+
+                <a href="register.html">
+                    Daftar
+                </a>
+
+
+                <a href="premium.html">
+                    Premium
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="copyright">
+
+            © 2026 TradeVestor.
+            Educational content only —
+            bukan ajakan membeli atau menjual aset.
+
+        </div>
+
+
+    </div>
 
 </footer>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script src="js/script.js"></script>
 
 
 <script>
 
-document
-.getElementById("loginForm")
-.addEventListener("submit", function(event) {
+/* =====================================================
+   TOGGLE PASSWORD
+===================================================== */
 
-event.preventDefault();
-
-const email =
-document.getElementById("email").value;
+const togglePassword =
+    document.getElementById("togglePassword");
 
 const password =
-document.getElementById("password").value;
-
-const message =
-document.getElementById("loginMessage");
+    document.getElementById("password");
 
 
-/*
-=====================================================
-PROTOTYPE LOGIN
+if (togglePassword && password) {
 
-INI HANYA UNTUK TESTING.
+    togglePassword.addEventListener(
+        "click",
+        function () {
 
-JANGAN DIGUNAKAN SEBAGAI SISTEM
-KEAMANAN PRODUKSI.
-=====================================================
-*/
+            if (password.type === "password") {
 
+                password.type = "text";
 
-if (
-email === "member@test.com" &&
-password === "123456"
-) {
+                togglePassword.textContent = "🙈";
 
-localStorage.setItem(
-"tradevestorPremium",
-"active"
-);
+            } else {
 
-window.location.href =
-"premium-member.html";
+                password.type = "password";
+
+                togglePassword.textContent = "👁";
+
+            }
+
+        }
+    );
 
 }
 
-else {
 
-message.innerHTML =
-"Email atau password salah.";
 
-message.style.color =
-"#ff6b6b";
+/* =====================================================
+   LOGIN FORM
+===================================================== */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const passwordValue =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            if (!email || !passwordValue) {
+
+                showMessage(
+                    "Email dan password wajib diisi.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (passwordValue.length < 8) {
+
+                showMessage(
+                    "Password minimal 8 karakter.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * =================================================
+             * BACKEND AUTHENTICATION AKAN DIMASUKKAN DI SINI
+             * =================================================
+             *
+             * Contoh alur nanti:
+             *
+             * const response = await fetch("/api/login", {
+             *
+             *     method: "POST",
+             *
+             *     headers: {
+             *         "Content-Type": "application/json"
+             *     },
+             *
+             *     body: JSON.stringify({
+             *         email: email,
+             *         password: passwordValue
+             *     })
+             *
+             * });
+             *
+             *
+             * const data = await response.json();
+             *
+             *
+             * Jika login berhasil:
+             *
+             * window.location.href =
+             *     "premium-member.html";
+             *
+             *
+             * Jika akun belum Premium:
+             *
+             * window.location.href =
+             *     "premium.html";
+             *
+             */
+
+
+            loginButton.disabled = true;
+
+            loginButton.textContent =
+                "Memproses...";
+
+
+            /*
+             * UNTUK SEKARANG
+             *
+             * Kita belum mengirim password
+             * ke server karena backend belum dibuat.
+             */
+
+            setTimeout(function () {
+
+                loginButton.disabled = false;
+
+                loginButton.textContent =
+                    "Login";
+
+
+                showMessage(
+                    "Halaman login sudah siap. Sistem authentication akan kita hubungkan pada tahap berikutnya.",
+                    "success"
+                );
+
+            }, 700);
+
+        }
+    );
 
 }
 
-});
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(message, type) {
+
+    if (!loginMessage) return;
+
+
+    loginMessage.style.display = "block";
+
+    loginMessage.textContent = message;
+
+
+    if (type === "error") {
+
+        loginMessage.style.borderColor =
+            "rgba(255,80,80,.3)";
+
+    } else {
+
+        loginMessage.style.borderColor =
+            "rgba(80,255,160,.3)";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+const forgotPassword =
+    document.getElementById("forgotPassword");
+
+
+if (forgotPassword) {
+
+    forgotPassword.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+
+            showMessage(
+                "Fitur reset password akan kita aktifkan setelah sistem authentication terhubung.",
+                "success"
+            );
+
+        }
+    );
+
+}
 
 </script>
 
