@@ -1,49 +1,1946 @@
-<!doctype html>
-<html lang="id"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Strategi Trading — TradeVestor</title>
-<meta name="description" content="TradeVestor — belajar trading dari nol sampai lebih terstruktur. Candlestick, indikator, strategi, risk management, entry, SL, TP dan psikologi trading.">
-<meta name="theme-color" content="#050507">
-<link rel="icon" href="assets/logo.jpg">
-<link rel="stylesheet" href="css/style.css">
-</head><body>
-<header>
- <div class="container nav">
-  <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Logo TradeVestor"><span>TRADE<b>VESTOR</b></span></a>
-  <button class="menu" aria-label="Buka menu">☰</button>
-  <nav><ul class="navlinks"><li><a class="" href="index.html">Beranda</a></li><li><a class="" href="candlestick.html">Candlestick</a></li><li><a class="" href="indikator.html">Indikator</a></li><li><a class="active" href="strategi.html">Strategi</a></li><li><a class="" href="pembelajaran.html">Pembelajaran</a></li><li><a class="" href="premium.html">Premium</a></li><li><a class="" href="tentang.html">Tentang</a></li><li><a class="nav-cta" href="premium.html">Akses Premium</a></li></ul></nav>
- </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Strategi Trading dari Dasar — TradeVestor</title>
+
+    <meta name="description"
+        content="Pelajari cara menyusun strategi trading dari market structure, support resistance, candlestick, indikator, confirmation, entry, Stop Loss, Take Profit dan risk management.">
+
+    <link rel="icon" href="assets/logo.jpg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="assets/logo.jpg"
+                alt="Logo TradeVestor"
+            >
+
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
+
+
+        <nav>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">
+                        Beranda
+                    </a>
+                </li>
+
+                <li>
+                    <a href="candlestick.html">
+                        Candlestick
+                    </a>
+                </li>
+
+                <li>
+                    <a href="indikator.html">
+                        Indikator
+                    </a>
+                </li>
+
+                <li>
+                    <a href="strategi.html" class="active">
+                        Strategi
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pembelajaran.html">
+                        Pembelajaran
+                    </a>
+                </li>
+
+                <li>
+                    <a href="premium.html">
+                        Premium
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tentang.html">
+                        Tentang
+                    </a>
+                </li>
+
+                <li>
+                    <a href="premium.html" class="nav-cta">
+                        Akses Premium
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
 </header>
+
+
+<!-- ================= MAIN ================= -->
+
 <main>
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="index.html">Beranda</a> / Strategi</div><h1>Dari analisis menuju <span class="gradient">rencana entry.</span></h1><p class="lead">Strategi adalah aturan sebelum entry: konteks, trigger, invalidation, risiko, target dan kondisi batal.</p></div></section>
-<section class="section"><div class="container">
- <div class="section-head"><span class="kicker">Entry Framework</span><h2>Checklist sebelum menekan Buy/Sell.</h2></div>
- <div class="feature-list">
-  <div class="feature"><div class="num">01</div><div><h3>Tentukan konteks</h3><p>Trend, range, breakout atau retracement? Jangan memaksa setup ketika market tidak sesuai sistem.</p></div></div>
-  <div class="feature"><div class="num">02</div><div><h3>Tentukan area</h3><p>Tandai support/resistance, supply-demand, swing high/low atau area struktur yang relevan.</p></div></div>
-  <div class="feature"><div class="num">03</div><div><h3>Tunggu trigger</h3><p>Gunakan candle close, rejection, engulfing, breakout-retest atau aturan trigger yang sudah diuji.</p></div></div>
-  <div class="feature"><div class="num">04</div><div><h3>Tentukan invalidation</h3><p>SL ditempatkan berdasarkan titik yang membuat thesis trade lu salah, bukan sekadar angka random.</p></div></div>
-  <div class="feature"><div class="num">05</div><div><h3>Hitung position size</h3><p>Sesuaikan ukuran posisi dengan jarak SL dan risiko maksimum yang sudah ditetapkan.</p></div></div>
-  <div class="feature"><div class="num">06</div><div><h3>Tentukan TP</h3><p>Target bisa memakai struktur, liquidity, level penting atau risk-reward yang sesuai hasil backtest.</p></div></div>
- </div>
-</div></section>
-<section class="section" id="risk"><div class="container split">
- <div class="article"><span class="tag">SL</span><h3>Di mana Stop Loss?</h3><p>Secara konsep, SL berada di titik invalidation: level yang jika ditembus membuat alasan trade tidak lagi valid. Jangan menaruh SL terlalu dekat hanya supaya lot bisa besar.</p></div>
- <div class="article"><span class="tag">TP</span><h3>Di mana Take Profit?</h3><p>TP sebaiknya ditentukan sebelum entry berdasarkan struktur atau aturan sistem. Hindari mengubah target secara emosional setelah posisi terbuka.</p></div>
-</div></section>
-<section class="section"><div class="container">
- <div class="risk"><strong>Risk Warning:</strong> Tidak ada setup yang selalu benar. Hindari leverage berlebihan, gunakan ukuran posisi yang masuk akal, dan jangan mempertaruhkan uang yang tidak sanggup lu kehilangan.</div>
-</div></section>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div class="reveal">
+
+            <span class="eyebrow">
+
+                <span class="dot"></span>
+
+                TRADING STRATEGY • EXECUTION
+
+            </span>
+
+
+            <h1>
+
+                Jangan Asal
+                <span class="gradient">
+                    Entry.
+                </span>
+
+                Bangun Setup.
+
+            </h1>
+
+
+            <p class="lead">
+
+                Strategi trading bukan tentang menemukan
+                indikator ajaib.
+
+                Strategi adalah seperangkat aturan yang
+                menjelaskan kapan kita boleh entry,
+                kapan harus keluar, berapa risiko yang
+                boleh diambil dan kapan kita harus
+                memilih untuk tidak trading.
+
+            </p>
+
+
+            <div class="actions">
+
+                <a
+                    href="#framework"
+                    class="btn btn-primary"
+                >
+                    Mulai Bangun Setup ↓
+                </a>
+
+
+                <a
+                    href="#risk"
+                    class="btn btn-secondary"
+                >
+                    Pelajari Risk Management
+                </a>
+
+            </div>
+
+
+            <div class="notice">
+
+                <strong>
+                    Ingat:
+                </strong>
+
+                setup yang bagus tetap bisa mengalami
+                loss. Tujuan strategi bukan menghilangkan
+                kerugian, tetapi membuat keputusan
+                menjadi terukur dan konsisten.
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= VISUAL ================= -->
+
+        <div class="hero-visual reveal">
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <span>
+                            TRADEVESTOR
+                        </span>
+
+                        <strong>
+                            TRADING SETUP
+                        </strong>
+
+                    </div>
+
+                    <div class="chart-status">
+                        ENTRY • SL • TP
+                    </div>
+
+                </div>
+
+
+                <div class="chart-area">
+
+                    <div class="chart-grid"></div>
+
+
+                    <div class="level level-entry">
+                        <span>
+                            ENTRY
+                        </span>
+                    </div>
+
+                    <div class="level level-sl">
+                        <span>
+                            STOP LOSS
+                        </span>
+                    </div>
+
+                    <div class="level level-tp">
+                        <span>
+                            TAKE PROFIT
+                        </span>
+                    </div>
+
+
+                    <div class="candle candle-1">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-2">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle red candle-3">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-4">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-5">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle red candle-6">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-7">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-8">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <span>
+                        STRUCTURE
+                    </span>
+
+                    <span>
+                        CONFIRMATION
+                    </span>
+
+                    <span>
+                        RISK
+                    </span>
+
+                    <span>
+                        EXECUTION
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-analysis">
+
+                <small>
+                    SETUP CHECKLIST
+                </small>
+
+                <strong>
+                    Apakah semua aturan terpenuhi?
+                </strong>
+
+                <div class="check">
+                    ✓ Market Structure
+                </div>
+
+                <div class="check">
+                    ✓ Confirmation
+                </div>
+
+                <div class="check">
+                    ✓ Risk Management
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FRAMEWORK ================= -->
+
+<section
+    class="section"
+    id="framework"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                FRAMEWORK • 01
+            </span>
+
+            <h2>
+                Sebelum Entry, Jawab 7 Pertanyaan.
+            </h2>
+
+            <p>
+
+                Jangan mulai dari pertanyaan
+                "Buy atau Sell?"
+
+                Mulai dari memahami kondisi market.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-4">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Market sedang apa?
+                </h3>
+
+                <p>
+                    Trending, ranging atau
+                    sedang tidak jelas?
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Harga berada di mana?
+                </h3>
+
+                <p>
+                    Cari area support,
+                    resistance atau zona penting.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Apa konfirmasinya?
+                </h3>
+
+                <p>
+                    Gunakan price action,
+                    indikator atau volume.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Di mana invalidation?
+                </h3>
+
+                <p>
+                    Tentukan kondisi yang
+                    membuat analisis menjadi salah.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    05
+                </div>
+
+                <h3>
+                    Di mana Entry?
+                </h3>
+
+                <p>
+                    Tentukan berdasarkan
+                    aturan setup, bukan emosi.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    06
+                </div>
+
+                <h3>
+                    Di mana SL?
+                </h3>
+
+                <p>
+                    Letakkan berdasarkan
+                    invalidation dan struktur.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    07
+                </div>
+
+                <h3>
+                    Apakah Reward layak?
+                </h3>
+
+                <p>
+                    Bandingkan potensi profit
+                    dengan risiko.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    08
+                </div>
+
+                <h3>
+                    Berapa ukuran posisi?
+                </h3>
+
+                <p>
+                    Sesuaikan ukuran posisi
+                    dengan risiko yang ditentukan.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MARKET STRUCTURE ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 01 • MARKET STRUCTURE
+            </span>
+
+            <h2>
+                Baca Market Sebelum Membaca Indikator.
+            </h2>
+
+            <p>
+
+                Struktur market membantu memberikan
+                konteks mengenai bagaimana harga
+                bergerak.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    HH
+                </div>
+
+                <h3>
+                    Higher High
+                </h3>
+
+                <p>
+
+                    Puncak baru yang lebih tinggi
+                    dari puncak sebelumnya.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    HL
+                </div>
+
+                <h3>
+                    Higher Low
+                </h3>
+
+                <p>
+
+                    Lembah baru yang lebih tinggi
+                    dari lembah sebelumnya.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    LH / LL
+                </div>
+
+                <h3>
+                    Struktur Bearish
+                </h3>
+
+                <p>
+
+                    Lower High dan Lower Low
+                    dapat menunjukkan struktur
+                    bearish.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                PRINSIP
+            </span>
+
+            <h3>
+                Jangan memaksakan trend.
+            </h3>
+
+            <p>
+
+                Kalau struktur market tidak jelas,
+                tidak ada kewajiban untuk entry.
+
+                <strong>
+                    Tidak trading juga merupakan
+                    sebuah keputusan.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= AREA ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 02 • AREA
+            </span>
+
+            <h2>
+                Entry yang baik biasanya punya alasan
+                lokasi.
+            </h2>
+
+            <p>
+
+                Jangan hanya mencari candle yang
+                bentuknya menarik.
+
+                Cari tahu candle tersebut muncul
+                di mana.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    S
+                </div>
+
+                <h3>
+                    Support
+                </h3>
+
+                <p>
+                    Area yang secara historis
+                    mendapat respons beli.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    R
+                </div>
+
+                <h3>
+                    Resistance
+                </h3>
+
+                <p>
+                    Area yang dapat menjadi
+                    lokasi respons jual.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    Z
+                </div>
+
+                <h3>
+                    Zona
+                </h3>
+
+                <p>
+                    Area harga yang dianggap
+                    relevan berdasarkan analisis.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONFIRMATION ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 03 • CONFIRMATION
+            </span>
+
+            <h2>
+                Jangan entry hanya karena satu sinyal.
+            </h2>
+
+            <p>
+
+                Confirmation digunakan untuk
+                meningkatkan kualitas alasan
+                sebuah setup.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-4">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Candlestick
+                </h3>
+
+                <p>
+                    Rejection, engulfing atau
+                    pola price action lainnya.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Structure
+                </h3>
+
+                <p>
+                    Apakah setup sesuai
+                    dengan struktur market?
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Indicator
+                </h3>
+
+                <p>
+                    Gunakan indikator sebagai
+                    konfirmasi tambahan.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Volume
+                </h3>
+
+                <p>
+                    Bila tersedia, gunakan
+                    volume sebagai konteks tambahan.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notice">
+
+            <strong>
+                Confluence ≠ jaminan profit.
+            </strong>
+
+            Banyak alasan yang searah tetap
+            tidak membuat sebuah trade pasti
+            berhasil.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ENTRY ================= -->
+
+<section
+    class="section"
+    id="entry"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 04 • ENTRY
+            </span>
+
+            <h2>
+                Entry harus punya alasan.
+            </h2>
+
+            <p>
+
+                Jangan entry karena takut
+                ketinggalan harga.
+
+                Tentukan aturan entry sebelum
+                membuka posisi.
+
+            </p>
+
+        </div>
+
+
+        <div class="split">
+
+
+            <div class="article">
+
+                <span class="tag">
+                    MARKET ENTRY
+                </span>
+
+                <h3>
+                    Masuk ketika kondisi terpenuhi.
+                </h3>
+
+                <p>
+
+                    Market order dapat digunakan
+                    ketika trader ingin masuk pada
+                    harga pasar saat ini.
+
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span class="tag">
+                    LIMIT ENTRY
+                </span>
+
+                <h3>
+                    Menunggu harga datang ke area.
+                </h3>
+
+                <p>
+
+                    Limit order dapat digunakan
+                    ketika trader memiliki area
+                    harga tertentu yang ingin
+                    diuji.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                RULE
+            </span>
+
+            <h3>
+                Kalau syarat belum terpenuhi,
+                jangan entry.
+            </h3>
+
+            <p>
+
+                Salah satu kemampuan penting
+                trader bukan hanya mengetahui
+                kapan harus masuk.
+
+                Tetapi juga mengetahui
+                kapan harus menunggu.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STOP LOSS ================= -->
+
+<section
+    class="section"
+    id="risk"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 05 • STOP LOSS
+            </span>
+
+            <h2>
+                Stop Loss bukan musuh.
+            </h2>
+
+            <p>
+
+                Stop Loss adalah bagian dari
+                sistem pengendalian risiko.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Invalidation
+                </h3>
+
+                <p>
+
+                    Tentukan harga atau kondisi
+                    yang membuat alasan entry
+                    tidak lagi valid.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Struktur
+                </h3>
+
+                <p>
+
+                    Pertimbangkan swing high,
+                    swing low dan struktur market.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Volatilitas
+                </h3>
+
+                <p>
+
+                    ATR dapat menjadi salah satu
+                    referensi tambahan.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notice">
+
+            Jangan menentukan SL hanya berdasarkan:
+
+            <strong>
+                "Biar nggak terlalu jauh."
+            </strong>
+
+            Tentukan berdasarkan alasan
+            analisis dan risiko yang sanggup
+            diterima.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TAKE PROFIT ================= -->
+
+<section
+    class="section"
+    id="tp"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 06 • TAKE PROFIT
+            </span>
+
+            <h2>
+                TP juga harus punya alasan.
+            </h2>
+
+            <p>
+
+                Jangan menentukan Take Profit
+                secara acak hanya karena ingin
+                mendapatkan angka tertentu.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Resistance
+                </h3>
+
+                <p>
+
+                    Area resistance dapat menjadi
+                    salah satu referensi target.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Support
+                </h3>
+
+                <p>
+
+                    Untuk posisi short,
+                    support dapat menjadi
+                    referensi target.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Risk / Reward
+                </h3>
+
+                <p>
+
+                    Pastikan potensi reward
+                    sebanding dengan risiko.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RR ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 07 • RISK / REWARD
+            </span>
+
+            <h2>
+                Jangan cuma bertanya:
+                "Berapa profitnya?"
+            </h2>
+
+            <p>
+
+                Pertanyaan yang lebih penting:
+
+                <strong>
+                    "Berapa yang siap gue risikokan
+                    untuk peluang ini?"
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                CONTOH EDUKASI
+            </span>
+
+            <h3>
+                Risk 1 : Reward 2
+            </h3>
+
+            <p>
+
+                Misalnya sebuah setup memiliki
+                risiko Rp10.000.
+
+                Jika targetnya Rp20.000,
+                maka secara sederhana setup
+                tersebut memiliki rasio
+                risk/reward 1:2.
+
+                Ini bukan berarti trade tersebut
+                pasti profit.
+
+                Risk/reward hanya membantu kita
+                membandingkan risiko dengan
+                potensi hasil.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    1R
+                </div>
+
+                <h3>
+                    Risiko
+                </h3>
+
+                <p>
+                    Jumlah maksimum yang
+                    direncanakan untuk dirisikokan.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    2R
+                </div>
+
+                <h3>
+                    Target
+                </h3>
+
+                <p>
+                    Potensi hasil sebesar
+                    dua kali risiko.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    R:R
+                </div>
+
+                <h3>
+                    Perbandingan
+                </h3>
+
+                <p>
+                    Alat untuk mengevaluasi
+                    kelayakan setup.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= POSITION SIZING ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 08 • POSITION SIZING
+            </span>
+
+            <h2>
+                Jangan menentukan lot
+                berdasarkan perasaan.
+            </h2>
+
+            <p>
+
+                Ukuran posisi harus mengikuti
+                risiko yang sudah ditentukan.
+
+            </p>
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                KONSEP DASAR
+            </span>
+
+            <h3>
+                Risiko → SL → Position Size
+            </h3>
+
+            <p>
+
+                Secara konsep:
+
+                tentukan berapa besar uang yang
+                siap dirisikokan terlebih dahulu.
+
+                Setelah itu tentukan jarak
+                Stop Loss.
+
+                Dari kedua informasi tersebut,
+                ukuran posisi dapat dihitung.
+
+            </p>
+
+        </div>
+
+
+        <div class="notice">
+
+            <strong>
+                Jangan menggunakan leverage besar
+                hanya karena tersedia.
+            </strong>
+
+            Leverage dapat memperbesar eksposur
+            dan mempercepat kerugian jika posisi
+            tidak dikendalikan.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TRADING PLAN ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STEP 09 • TRADING PLAN
+            </span>
+
+            <h2>
+                Ubah strategi menjadi aturan tertulis.
+            </h2>
+
+            <p>
+
+                Kalau strategi hanya ada di kepala,
+                sangat mudah bagi emosi untuk
+                mengubah aturan ketika posisi
+                sedang berjalan.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-4">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Market
+                </h3>
+
+                <p>
+                    Instrumen dan timeframe.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Setup
+                </h3>
+
+                <p>
+                    Kondisi yang harus terpenuhi
+                    sebelum entry.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Risk
+                </h3>
+
+                <p>
+                    Batas risiko per posisi.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Exit
+                </h3>
+
+                <p>
+                    Aturan SL, TP dan
+                    kondisi keluar lainnya.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CHECKLIST ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                BEFORE ENTRY
+            </span>
+
+            <h2>
+                Checklist sebelum menekan Buy
+                atau Sell.
+            </h2>
+
+        </div>
+
+
+        <div class="article">
+
+            <div class="check">
+                ✓ Saya memahami kondisi market.
+            </div>
+
+            <div class="check">
+                ✓ Saya mengetahui area entry.
+            </div>
+
+            <div class="check">
+                ✓ Saya memiliki confirmation.
+            </div>
+
+            <div class="check">
+                ✓ Saya mengetahui invalidation.
+            </div>
+
+            <div class="check">
+                ✓ Stop Loss sudah ditentukan.
+            </div>
+
+            <div class="check">
+                ✓ Take Profit sudah ditentukan.
+            </div>
+
+            <div class="check">
+                ✓ Risk/Reward masuk akal.
+            </div>
+
+            <div class="check">
+                ✓ Position size sudah dihitung.
+            </div>
+
+            <div class="check">
+                ✓ Setup sesuai trading plan.
+            </div>
+
+            <div class="check">
+                ✓ Saya siap menerima kemungkinan loss.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= JURNAL ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                AFTER TRADE
+            </span>
+
+            <h2>
+                Trading belum selesai
+                setelah posisi ditutup.
+            </h2>
+
+            <p>
+
+                Trader yang ingin berkembang perlu
+                mengevaluasi proses, bukan hanya
+                melihat apakah trade terakhir
+                profit atau loss.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Screenshot
+                </h3>
+
+                <p>
+                    Simpan kondisi chart
+                    saat entry.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Alasan
+                </h3>
+
+                <p>
+                    Catat kenapa posisi
+                    diambil.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Evaluasi
+                </h3>
+
+                <p>
+                    Cari pola kesalahan
+                    yang berulang.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STRATEGY TYPES ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                STRATEGY TYPES
+            </span>
+
+            <h2>
+                Kenali gaya trading yang berbeda.
+            </h2>
+
+        </div>
+
+
+        <div class="grid-4">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Scalping
+                </h3>
+
+                <p>
+                    Posisi berlangsung relatif
+                    singkat dengan frekuensi
+                    transaksi lebih tinggi.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Day Trading
+                </h3>
+
+                <p>
+                    Posisi umumnya dibuka dan
+                    ditutup dalam hari yang sama.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Swing Trading
+                </h3>
+
+                <p>
+                    Mencari pergerakan harga
+                    yang dapat berlangsung
+                    beberapa hari atau lebih.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Position Trading
+                </h3>
+
+                <p>
+                    Mengambil perspektif
+                    jangka waktu yang lebih panjang.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PREMIUM ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="social-box">
+
+            <div>
+
+                <span class="kicker">
+                    TRADEVESTOR PREMIUM
+                </span>
+
+                <h2>
+                    Mau belajar framework
+                    yang lebih mendalam?
+                </h2>
+
+                <p>
+
+                    Materi premium akan membahas
+                    studi kasus, framework analisis,
+                    multi-timeframe, advanced entry,
+                    backtesting dan pengembangan
+                    trading system secara lebih mendalam.
+
+                </p>
+
+            </div>
+
+
+            <div class="actions">
+
+                <a
+                    href="premium.html"
+                    class="btn btn-primary"
+                >
+                    Lihat TradeVestor Premium →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
 </main>
+
+
 <footer>
- <div class="container">
-  <div class="footer">
-   <div><div class="brand"><img src="assets/logo.jpg" alt="Logo TradeVestor"><span>TRADE<b>VESTOR</b></span></div><p style="margin-top:12px;max-width:420px">Platform belajar trading dari nol sampai lebih terstruktur: price action, candlestick, indikator, strategi, risk management, entry, SL, TP, dan psikologi trading.</p></div>
-   <div><h4>Belajar</h4><a href="candlestick.html">Candlestick</a><a href="indikator.html">Indikator</a><a href="strategi.html">Strategi</a><a href="pembelajaran.html">Pembelajaran</a></div>
-   <div><h4>Hubungi</h4><a href="mailto:startingfromzero95@gmail.com">Email</a><a href="https://wa.me/6285872061255" target="_blank">WhatsApp</a><a href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ" target="_blank">TikTok @am_zid_23</a></div>
-  </div>
-  <div class="copyright">© 2026 TradeVestor. Educational content only — bukan ajakan membeli/menjual aset.</div>
- </div>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand"
+                >
+
+                    <img
+                        src="assets/logo.jpg"
+                        alt="Logo TradeVestor"
+                    >
+
+                    <span>
+                        TRADE<b>VESTOR</b>
+                    </span>
+
+                </a>
+
+
+                <p>
+
+                    Platform edukasi trading
+                    untuk membantu lu memahami
+                    market secara lebih terstruktur.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Belajar
+                </h4>
+
+                <a href="candlestick.html">
+                    Candlestick
+                </a>
+
+                <a href="indikator.html">
+                    Indikator
+                </a>
+
+                <a href="strategi.html">
+                    Strategi
+                </a>
+
+                <a href="pembelajaran.html">
+                    Pembelajaran
+                </a>
+
+                <a href="premium.html">
+                    Premium
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Hubungi
+                </h4>
+
+                <a href="mailto:startingfromzero95@gmail.com">
+                    Email
+                </a>
+
+                <a
+                    href="https://wa.me/6285872061255"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ"
+                    target="_blank"
+                >
+                    TikTok @am_zid_23
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 TradeVestor.
+            Educational content only —
+            bukan ajakan membeli atau menjual aset.
+
+        </div>
+
+    </div>
+
 </footer>
-<div class="toast"></div>
-<script src="js/script.js"></script></body></html>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
