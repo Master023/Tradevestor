@@ -1,37 +1,46 @@
-TRADEVESTOR WEBSITE
-====================
+TRADEVESTOR
+Trading Education Platform
 
-File utama:
-- index.html
+Website:
+https://tradevestor.startingfromzero95.workers.dev/
 
-Halaman:
-- candlestick.html
-- indikator.html
-- strategi.html
-- pembelajaran.html
-- premium.html
-- tentang.html
-- kontak.html
+Deskripsi:
+TradeVestor adalah platform edukasi trading...
 
-Cara menjalankan:
-1. Buka index.html di browser untuk preview sederhana.
-2. Untuk server lokal: python -m http.server 8080
-3. Buka http://localhost:8080
+STRUKTUR WEBSITE
 
-Data yang sudah dipasang:
-- Brand: TradeVestor
-- Email: startingfromzero95@gmail.com
-- WhatsApp: +62 858-7206-1255
-- TikTok: @am_zid_23
-- Logo: assets/logo.jpg
+index.html
+candlestick.html
+indikator.html
+strategi.html
+pembelajaran.html
+premium.html
+tentang.html
 
-Bagian yang masih perlu diisi/diganti:
-- Harga membership Premium/Advanced (saat ini "Custom")
-- Portfolio/studi kasus asli jika nanti ingin ditambahkan
-- Testimonial asli jika tersedia
-- Domain/hosting
-- Favicon versi SVG/PNG jika ingin kualitas lebih tajam
-- Payment gateway bila ingin langganan berbayar otomatis
+css/
+style.css
 
-Catatan:
-Website ini sengaja tidak mengklaim profit, win rate, atau hasil trading tertentu. Materi bersifat edukasi dan bukan nasihat keuangan.
+js/
+script.js
+
+assets/
+gambar dan media website
+
+KONTAK
+
+Email:
+startingfromzero95@gmail.com
+
+WhatsApp:
++6285872061255
+
+TikTok:
+@am_zid_23
+
+DISCLAIMER
+
+TradeVestor adalah platform edukasi.
+Materi tidak dimaksudkan sebagai ajakan
+membeli atau menjual aset tertentu.
+
+Trading memiliki risiko kehilangan modal.
