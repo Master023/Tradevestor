@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login Premium — TradeVestor</title>
+
+<meta
+name="description"
+content="Login member TradeVestor Premium."
+>
+
+<link rel="icon" href="logo.jpg">
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+<div class="container nav-container">
+
+<a href="index.html" class="brand">
+
+<img
+src="logo.jpg"
+alt="Logo TradeVestor"
+>
+
+<span>
+TRADE<b>VESTOR</b>
+</span>
+
+</a>
+
+
+<button
+class="menu-btn"
+id="menuBtn"
+aria-label="Buka menu"
+>
+☰
+</button>
+
+
+<nav>
+
+<ul class="nav-links" id="navLinks">
+
+<li>
+<a href="index.html">
+Beranda
+</a>
+</li>
+
+<li>
+<a href="candlestick.html">
+Candlestick
+</a>
+</li>
+
+<li>
+<a href="indikator.html">
+Indikator
+</a>
+</li>
+
+<li>
+<a href="strategi.html">
+Strategi
+</a>
+</li>
+
+<li>
+<a href="pembelajaran.html">
+Pembelajaran
+</a>
+</li>
+
+<li>
+<a
+href="premium.html"
+class="active"
+>
+Premium
+</a>
+</li>
+
+<li>
+<a href="tentang.html">
+Tentang
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+<section class="hero">
+
+<div
+class="container"
+style="max-width:600px;"
+>
+
+<div
+class="card"
+style="
+padding:45px 30px;
+"
+>
+
+<div style="text-align:center;">
+
+<span class="eyebrow">
+TRADEVESTOR PREMIUM
+</span>
+
+<h1>
+Login
+<span class="gradient">
+Member.
+</span>
+</h1>
+
+<p class="lead">
+
+Masuk untuk mengakses materi
+TradeVestor Premium.
+
+</p>
+
+</div>
+
+
+<form id="loginForm">
+
+
+<div style="margin-top:25px;">
+
+<label for="email">
+Email
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="email@gmail.com"
+required
+style="
+width:100%;
+padding:14px;
+margin-top:8px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.04);
+color:white;
+"
+>
+
+</div>
+
+
+
+<div style="margin-top:20px;">
+
+<label for="password">
+Password
+</label>
+
+<input
+type="password"
+id="password"
+placeholder="Masukkan password"
+required
+style="
+width:100%;
+padding:14px;
+margin-top:8px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(255,255,255,.04);
+color:white;
+"
+>
+
+</div>
+
+
+
+<button
+type="submit"
+class="btn btn-primary"
+style="
+width:100%;
+justify-content:center;
+margin-top:25px;
+"
+>
+
+Login →
+
+</button>
+
+
+<p
+id="loginMessage"
+style="
+text-align:center;
+margin-top:20px;
+"
+></p>
+
+
+</form>
+
+
+<div
+style="
+margin-top:30px;
+padding-top:25px;
+border-top:1px solid rgba(255,255,255,.08);
+text-align:center;
+"
+>
+
+<p style="color:var(--muted);">
+
+Belum menjadi member Premium?
+
+</p>
+
+
+<a
+href="premium.html"
+class="btn btn-secondary"
+>
+
+Daftar Premium Rp35.000 →
+
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+<div class="container">
+
+<div class="copyright">
+
+© 2026 TradeVestor.
+Educational content only —
+bukan ajakan membeli atau menjual aset.
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", function(event) {
+
+event.preventDefault();
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+const message =
+document.getElementById("loginMessage");
+
+
+/*
+=====================================================
+PROTOTYPE LOGIN
+
+INI HANYA UNTUK TESTING.
+
+JANGAN DIGUNAKAN SEBAGAI SISTEM
+KEAMANAN PRODUKSI.
+=====================================================
+*/
+
+
+if (
+email === "member@test.com" &&
+password === "123456"
+) {
+
+localStorage.setItem(
+"tradevestorPremium",
+"active"
+);
+
+window.location.href =
+"premium-member.html";
+
+}
+
+else {
+
+message.innerHTML =
+"Email atau password salah.";
+
+message.style.color =
+"#ff6b6b";
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
