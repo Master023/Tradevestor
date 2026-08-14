@@ -1,52 +1,1590 @@
-<!doctype html>
-<html lang="id"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Indikator Trading — TradeVestor</title>
-<meta name="description" content="TradeVestor — belajar trading dari nol sampai lebih terstruktur. Candlestick, indikator, strategi, risk management, entry, SL, TP dan psikologi trading.">
-<meta name="theme-color" content="#050507">
-<link rel="icon" href="assets/logo.jpg">
-<link rel="stylesheet" href="css/style.css">
-</head><body>
-<header>
- <div class="container nav">
-  <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="Logo TradeVestor"><span>TRADE<b>VESTOR</b></span></a>
-  <button class="menu" aria-label="Buka menu">☰</button>
-  <nav><ul class="navlinks"><li><a class="" href="index.html">Beranda</a></li><li><a class="" href="candlestick.html">Candlestick</a></li><li><a class="active" href="indikator.html">Indikator</a></li><li><a class="" href="strategi.html">Strategi</a></li><li><a class="" href="pembelajaran.html">Pembelajaran</a></li><li><a class="" href="premium.html">Premium</a></li><li><a class="" href="tentang.html">Tentang</a></li><li><a class="nav-cta" href="premium.html">Akses Premium</a></li></ul></nav>
- </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Belajar Indikator Trading — TradeVestor</title>
+
+    <meta name="description"
+        content="Pelajari indikator trading seperti EMA, RSI, MACD, Stochastic, Bollinger Bands, ATR dan Volume secara bertahap bersama TradeVestor.">
+
+    <link rel="icon" href="assets/logo.jpg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="assets/logo.jpg"
+                alt="Logo TradeVestor"
+            >
+
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
+
+
+        <nav>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">
+                        Beranda
+                    </a>
+                </li>
+
+                <li>
+                    <a href="candlestick.html">
+                        Candlestick
+                    </a>
+                </li>
+
+                <li>
+                    <a href="indikator.html" class="active">
+                        Indikator
+                    </a>
+                </li>
+
+                <li>
+                    <a href="strategi.html">
+                        Strategi
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pembelajaran.html">
+                        Pembelajaran
+                    </a>
+                </li>
+
+                <li>
+                    <a href="premium.html">
+                        Premium
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tentang.html">
+                        Tentang
+                    </a>
+                </li>
+
+                <li>
+                    <a href="premium.html" class="nav-cta">
+                        Akses Premium
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
 </header>
+
+
+<!-- ================= MAIN ================= -->
+
 <main>
-<section class="page-hero"><div class="container"><div class="breadcrumb"><a href="index.html">Beranda</a> / Indikator</div><h1>Indikator <span class="gradient">tanpa kebingungan.</span></h1><p class="lead">Indikator adalah alat bantu. Fokusnya bukan mencari indikator paling sakti, tetapi memahami fungsi, kondisi pasar dan keterbatasannya.</p></div></section>
-<section class="section"><div class="container">
- <div class="grid-3">
-  <div class="card"><div class="icon">EMA</div><h3>EMA</h3><p>Membantu membaca arah dan dinamika trend. Bisa dipakai sebagai konteks, bukan jaminan entry.</p></div>
-  <div class="card"><div class="icon">RSI</div><h3>RSI</h3><p>Mengukur momentum relatif dan membantu membaca kondisi ekstrem/divergence dalam konteks.</p></div>
-  <div class="card"><div class="icon">ST</div><h3>Stochastic</h3><p>Oscillator untuk membaca momentum dan kondisi relatif overbought/oversold.</p></div>
-  <div class="card"><div class="icon">MACD</div><h3>MACD</h3><p>Melihat hubungan momentum dan trend melalui garis MACD, signal dan histogram.</p></div>
-  <div class="card"><div class="icon">BB</div><h3>Bollinger Bands</h3><p>Membantu membaca volatilitas dan posisi harga terhadap band dinamis.</p></div>
-  <div class="card"><div class="icon">ATR</div><h3>ATR</h3><p>Mengukur volatilitas untuk membantu menentukan jarak SL dan menyesuaikan position sizing.</p></div>
- </div>
-</div></section>
-<section class="section"><div class="container">
- <div class="section-head"><span class="kicker">Confluence</span><h2>Contoh kombinasi yang lebih masuk akal.</h2><p>Gunakan sedikit alat yang fungsinya saling melengkapi.</p></div>
- <div class="table-wrap"><table class="table"><thead><tr><th>Komponen</th><th>Fungsi</th><th>Contoh pertanyaan</th></tr></thead><tbody>
- <tr><td>Market Structure</td><td>Konteks utama</td><td>Trend naik, turun atau range?</td></tr>
- <tr><td>Support/Resistance</td><td>Lokasi</td><td>Di area mana harga berpotensi bereaksi?</td></tr>
- <tr><td>EMA</td><td>Trend filter</td><td>Harga berada di sisi mana dari trend?</td></tr>
- <tr><td>RSI/Stochastic</td><td>Momentum</td><td>Ada momentum atau divergence yang relevan?</td></tr>
- <tr><td>Candlestick</td><td>Trigger</td><td>Ada rejection/engulfing/close yang sesuai sistem?</td></tr>
- </tbody></table></div>
- <div class="notice" style="margin-top:20px">Semakin banyak indikator bukan berarti semakin akurat. Terlalu banyak sinyal justru dapat membuat keputusan lambat dan bias.</div>
-</div></section>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div class="reveal">
+
+            <span class="eyebrow">
+
+                <span class="dot"></span>
+
+                TECHNICAL ANALYSIS • INDICATORS
+
+            </span>
+
+
+            <h1>
+
+                Jangan Penuhi Chart
+                dengan <span class="gradient">Indikator.</span>
+
+            </h1>
+
+
+            <p class="lead">
+
+                Indikator bukan mesin pencetak profit.
+
+                Indikator adalah alat bantu untuk
+                membaca kondisi market, mengukur
+                momentum, melihat volatilitas dan
+                membantu menyusun keputusan trading.
+
+            </p>
+
+
+            <div class="actions">
+
+                <a
+                    href="#dasar"
+                    class="btn btn-primary"
+                >
+                    Mulai Belajar ↓
+                </a>
+
+
+                <a
+                    href="strategi.html"
+                    class="btn btn-secondary"
+                >
+                    Lihat Strategi
+                </a>
+
+            </div>
+
+
+            <div class="notice">
+
+                <strong>
+                    Prinsip TradeVestor:
+                </strong>
+
+                semakin banyak indikator
+                tidak otomatis membuat analisis
+                semakin akurat.
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= VISUAL ================= -->
+
+        <div class="hero-visual reveal">
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <span>
+                            INDICATOR ANALYSIS
+                        </span>
+
+                        <strong>
+                            MARKET STRUCTURE
+                        </strong>
+
+                    </div>
+
+                    <div class="chart-status">
+                        EMA • RSI • MACD
+                    </div>
+
+                </div>
+
+
+                <div class="chart-area">
+
+                    <div class="chart-grid"></div>
+
+
+                    <div class="indicator-line line-one"></div>
+
+                    <div class="indicator-line line-two"></div>
+
+
+                    <div class="candle candle-1">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle red candle-2">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-3">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-4">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-5">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle red candle-6">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-7">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle candle-8">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+                    <div class="candle red candle-9">
+                        <span class="wick"></span>
+                        <span class="body"></span>
+                    </div>
+
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <span>
+                        EMA
+                    </span>
+
+                    <span>
+                        RSI
+                    </span>
+
+                    <span>
+                        MOMENTUM
+                    </span>
+
+                    <span>
+                        VOLATILITY
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-analysis">
+
+                <small>
+                    ANALYSIS
+                </small>
+
+                <strong>
+                    Gunakan indikator sebagai alat bantu.
+                </strong>
+
+                <div class="check">
+                    ✓ Trend
+                </div>
+
+                <div class="check">
+                    ✓ Momentum
+                </div>
+
+                <div class="check">
+                    ✓ Volatility
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DASAR ================= -->
+
+<section
+    class="section"
+    id="dasar"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                LEVEL 01 • BASIC
+            </span>
+
+            <h2>
+                Apa itu indikator trading?
+            </h2>
+
+            <p>
+
+                Indikator adalah perhitungan
+                matematis yang menggunakan data
+                harga, volume atau informasi market
+                lainnya untuk membantu trader
+                membaca kondisi tertentu.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Trend
+                </h3>
+
+                <p>
+
+                    Membantu mengidentifikasi arah
+                    pergerakan harga.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Momentum
+                </h3>
+
+                <p>
+
+                    Membantu melihat kekuatan
+                    pergerakan harga.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Volatilitas
+                </h3>
+
+                <p>
+
+                    Membantu memahami seberapa
+                    besar harga bergerak.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= EMA ================= -->
+
+<section
+    class="section"
+    id="ema"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 01 • EMA
+            </span>
+
+            <h2>
+                EMA — Membaca arah pergerakan.
+            </h2>
+
+            <p>
+
+                Exponential Moving Average memberikan
+                bobot lebih besar terhadap harga terbaru
+                sehingga sering digunakan untuk
+                membantu membaca trend.
+
+            </p>
+
+        </div>
+
+
+        <div class="split">
+
+
+            <div class="article">
+
+                <span class="tag">
+                    APA FUNGSINYA?
+                </span>
+
+                <h3>
+                    Melihat arah dan posisi harga.
+                </h3>
+
+                <p>
+
+                    Trader sering menggunakan EMA
+                    untuk melihat apakah harga sedang
+                    berada di atas atau di bawah
+                    rata-rata pergerakan tertentu.
+
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span class="tag">
+                    CONTOH
+                </span>
+
+                <h3>
+                    EMA 20 • EMA 50 • EMA 200
+                </h3>
+
+                <p>
+
+                    Periode yang berbeda memberikan
+                    perspektif berbeda.
+
+                    EMA dengan periode lebih pendek
+                    biasanya lebih responsif terhadap
+                    perubahan harga.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notice">
+
+            <strong>
+                Jangan gunakan EMA sendirian.
+            </strong>
+
+            Kombinasikan dengan struktur market,
+            area harga dan price action.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RSI ================= -->
+
+<section
+    class="section"
+    id="rsi"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 02 • RSI
+            </span>
+
+            <h2>
+                RSI — Membaca momentum.
+            </h2>
+
+            <p>
+
+                Relative Strength Index digunakan
+                untuk membantu mengukur momentum
+                harga dalam rentang tertentu.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Momentum Kuat
+                </h3>
+
+                <p>
+
+                    RSI dapat membantu melihat
+                    apakah momentum sedang kuat
+                    atau melemah.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Overbought
+                </h3>
+
+                <p>
+
+                    Kondisi RSI tinggi tidak otomatis
+                    berarti harga harus turun.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Oversold
+                </h3>
+
+                <p>
+
+                    Kondisi RSI rendah tidak otomatis
+                    berarti harga harus naik.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                PENTING
+            </span>
+
+            <h3>
+                Overbought bukan berarti langsung Sell.
+            </h3>
+
+            <p>
+
+                Dalam trend yang kuat, sebuah aset
+                dapat berada pada kondisi overbought
+                dalam waktu yang cukup lama.
+
+                Karena itu RSI harus dibaca berdasarkan
+                konteks market.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MACD ================= -->
+
+<section
+    class="section"
+    id="macd"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 03 • MACD
+            </span>
+
+            <h2>
+                MACD — Trend dan momentum.
+            </h2>
+
+            <p>
+
+                MACD dapat digunakan untuk melihat
+                hubungan antara moving average dan
+                perubahan momentum.
+
+            </p>
+
+        </div>
+
+
+        <div class="split">
+
+
+            <div class="article">
+
+                <span class="tag">
+                    KOMPONEN
+                </span>
+
+                <h3>
+                    MACD Line • Signal • Histogram
+                </h3>
+
+                <p>
+
+                    Ketiga komponen tersebut dapat
+                    digunakan untuk membantu melihat
+                    perubahan momentum dan hubungan
+                    antara moving average.
+
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span class="tag">
+                    CARA BERPIKIR
+                </span>
+
+                <h3>
+                    Cari perubahan momentum.
+                </h3>
+
+                <p>
+
+                    Jangan hanya menghafal
+                    persilangan garis.
+
+                    Perhatikan juga trend,
+                    area harga dan struktur market.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STOCHASTIC ================= -->
+
+<section
+    class="section"
+    id="stochastic"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 04 • STOCHASTIC
+            </span>
+
+            <h2>
+                Stochastic — Momentum relatif.
+            </h2>
+
+            <p>
+
+                Stochastic membandingkan posisi
+                penutupan harga terhadap rentang
+                harga dalam periode tertentu.
+
+            </p>
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                PELAJARI
+            </span>
+
+            <h3>
+                Jangan jadikan Stochastic sebagai
+                tombol Buy/Sell.
+            </h3>
+
+            <p>
+
+                Kondisi overbought dan oversold
+                perlu dibaca bersama trend dan
+                struktur market.
+
+                Dalam trend yang kuat, indikator
+                momentum dapat tetap berada di
+                area ekstrem.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOLLINGER ================= -->
+
+<section
+    class="section"
+    id="bollinger"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 05 • BOLLINGER BANDS
+            </span>
+
+            <h2>
+                Bollinger Bands — Melihat volatilitas.
+            </h2>
+
+            <p>
+
+                Bollinger Bands terdiri dari
+                middle band dan dua band yang
+                bergerak berdasarkan volatilitas.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Upper Band
+                </h3>
+
+                <p>
+                    Area band bagian atas.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Middle Band
+                </h3>
+
+                <p>
+                    Rata-rata yang menjadi
+                    garis tengah.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Lower Band
+                </h3>
+
+                <p>
+                    Area band bagian bawah.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notice">
+
+            Band yang melebar dapat menunjukkan
+            meningkatnya volatilitas, sedangkan
+            band yang menyempit menunjukkan
+            volatilitas yang relatif lebih rendah.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ATR ================= -->
+
+<section
+    class="section"
+    id="atr"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 06 • ATR
+            </span>
+
+            <h2>
+                ATR — Mengukur volatilitas.
+            </h2>
+
+            <p>
+
+                Average True Range membantu
+                memperkirakan seberapa besar
+                pergerakan harga dalam periode tertentu.
+
+            </p>
+
+        </div>
+
+
+        <div class="split">
+
+
+            <div class="article">
+
+                <span class="tag">
+                    USE CASE
+                </span>
+
+                <h3>
+                    Membantu menentukan jarak risiko.
+                </h3>
+
+                <p>
+
+                    ATR dapat digunakan sebagai
+                    salah satu referensi ketika
+                    menentukan jarak Stop Loss.
+
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span class="tag">
+                    INGAT
+                </span>
+
+                <h3>
+                    ATR bukan penentu SL otomatis.
+                </h3>
+
+                <p>
+
+                    Posisi Stop Loss tetap harus
+                    mempertimbangkan struktur market
+                    dan invalidation level.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= VOLUME ================= -->
+
+<section
+    class="section"
+    id="volume"
+>
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                INDICATOR 07 • VOLUME
+            </span>
+
+            <h2>
+                Volume — Seberapa aktif market?
+            </h2>
+
+            <p>
+
+                Volume dapat memberikan informasi
+                tambahan mengenai aktivitas transaksi.
+
+            </p>
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                PRICE + VOLUME
+            </span>
+
+            <h3>
+                Jangan melihat harga sendirian.
+            </h3>
+
+            <p>
+
+                Perubahan volume dapat memberikan
+                konteks tambahan ketika harga
+                mengalami breakout atau rejection.
+
+                Namun volume juga harus disesuaikan
+                dengan karakter market dan instrumen
+                yang sedang dianalisis.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= KESALAHAN ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                WARNING • BEGINNER MISTAKES
+            </span>
+
+            <h2>
+                Kesalahan yang sering dilakukan
+                pemula.
+            </h2>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Terlalu Banyak Indikator
+                </h3>
+
+                <p>
+
+                    Chart penuh garis bukan berarti
+                    analisis semakin bagus.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Mencari Sinyal Instan
+                </h3>
+
+                <p>
+
+                    Indikator bukan mesin yang
+                    memberikan kepastian arah harga.
+
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Mengabaikan Struktur
+                </h3>
+
+                <p>
+
+                    Jangan mengandalkan indikator
+                    sambil mengabaikan market structure.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONFLUENCE ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                LEVEL 08 • CONFLUENCE
+            </span>
+
+            <h2>
+                Bagaimana cara menggabungkan
+                indikator?
+            </h2>
+
+            <p>
+
+                Tujuannya bukan mendapatkan
+                sebanyak mungkin sinyal.
+
+                Tujuannya adalah membangun
+                alasan yang masuk akal sebelum
+                mengambil keputusan.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-4">
+
+
+            <div class="card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Struktur
+                </h3>
+
+                <p>
+                    Tentukan kondisi market.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Area
+                </h3>
+
+                <p>
+                    Tentukan support,
+                    resistance atau area penting.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Confirmation
+                </h3>
+
+                <p>
+                    Gunakan candle atau indikator
+                    sebagai konfirmasi tambahan.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h3>
+                    Risk
+                </h3>
+
+                <p>
+                    Tentukan SL, TP dan ukuran posisi.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONTOH FRAMEWORK ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                EXAMPLE • FRAMEWORK
+            </span>
+
+            <h2>
+                Contoh cara berpikir sebelum Entry.
+            </h2>
+
+        </div>
+
+
+        <div class="article">
+
+            <span class="tag">
+                BUKAN SINYAL
+            </span>
+
+            <h3>
+                Struktur → Area → Konfirmasi → Risiko
+            </h3>
+
+            <p>
+
+                Misalnya market menunjukkan
+                trend naik.
+
+                Harga kemudian kembali ke area
+                support yang sudah ditentukan.
+
+                Trader menunggu price action
+                atau konfirmasi tambahan.
+
+                Setelah setup memenuhi aturan
+                trading plan, barulah risiko
+                dihitung.
+
+                Entry bukan langkah pertama.
+
+                <strong>
+                    Analisis dan risk management
+                    datang sebelum entry.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= NEXT STEP ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-head">
+
+            <span class="kicker">
+                NEXT STEP
+            </span>
+
+            <h2>
+                Sekarang gabungkan semuanya.
+            </h2>
+
+            <p>
+
+                Indikator baru benar-benar berguna
+                ketika digunakan bersama price action,
+                struktur market dan risk management.
+
+            </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+            <a
+                href="candlestick.html"
+                class="card"
+            >
+
+                <div class="number">
+                    01
+                </div>
+
+                <h3>
+                    Candlestick
+                </h3>
+
+                <p>
+                    Pahami bahasa dasar harga.
+                </p>
+
+                <span>
+                    Kembali ke Candlestick →
+                </span>
+
+            </a>
+
+
+            <a
+                href="strategi.html"
+                class="card"
+            >
+
+                <div class="number">
+                    02
+                </div>
+
+                <h3>
+                    Strategi
+                </h3>
+
+                <p>
+                    Pelajari cara mengubah analisis
+                    menjadi trading setup.
+                </p>
+
+                <span>
+                    Pelajari Strategi →
+                </span>
+
+            </a>
+
+
+            <a
+                href="pembelajaran.html"
+                class="card"
+            >
+
+                <div class="number">
+                    03
+                </div>
+
+                <h3>
+                    Roadmap
+                </h3>
+
+                <p>
+                    Bangun fondasi trading
+                    dari awal.
+                </p>
+
+                <span>
+                    Lihat Roadmap →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CTA ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="social-box">
+
+            <div>
+
+                <span class="kicker">
+                    TRADEVESTOR EDUCATION
+                </span>
+
+                <h2>
+                    Indikator hanyalah alat.
+                    Trader tetap yang mengambil keputusan.
+                </h2>
+
+                <p>
+
+                    Pelajari bagaimana candlestick,
+                    indikator dan risk management
+                    digabungkan menjadi sebuah
+                    trading plan.
+
+                </p>
+
+            </div>
+
+
+            <div class="actions">
+
+                <a
+                    href="strategi.html"
+                    class="btn btn-primary"
+                >
+                    Pelajari Strategi →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 </main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
- <div class="container">
-  <div class="footer">
-   <div><div class="brand"><img src="assets/logo.jpg" alt="Logo TradeVestor"><span>TRADE<b>VESTOR</b></span></div><p style="margin-top:12px;max-width:420px">Platform belajar trading dari nol sampai lebih terstruktur: price action, candlestick, indikator, strategi, risk management, entry, SL, TP, dan psikologi trading.</p></div>
-   <div><h4>Belajar</h4><a href="candlestick.html">Candlestick</a><a href="indikator.html">Indikator</a><a href="strategi.html">Strategi</a><a href="pembelajaran.html">Pembelajaran</a></div>
-   <div><h4>Hubungi</h4><a href="mailto:startingfromzero95@gmail.com">Email</a><a href="https://wa.me/6285872061255" target="_blank">WhatsApp</a><a href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ" target="_blank">TikTok @am_zid_23</a></div>
-  </div>
-  <div class="copyright">© 2026 TradeVestor. Educational content only — bukan ajakan membeli/menjual aset.</div>
- </div>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand"
+                >
+
+                    <img
+                        src="assets/logo.jpg"
+                        alt="Logo TradeVestor"
+                    >
+
+                    <span>
+                        TRADE<b>VESTOR</b>
+                    </span>
+
+                </a>
+
+
+                <p>
+
+                    Platform edukasi trading
+                    untuk membantu lu memahami
+                    market secara lebih terstruktur.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Belajar
+                </h4>
+
+                <a href="candlestick.html">
+                    Candlestick
+                </a>
+
+                <a href="indikator.html">
+                    Indikator
+                </a>
+
+                <a href="strategi.html">
+                    Strategi
+                </a>
+
+                <a href="pembelajaran.html">
+                    Pembelajaran
+                </a>
+
+                <a href="premium.html">
+                    Premium
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Hubungi
+                </h4>
+
+                <a href="mailto:startingfromzero95@gmail.com">
+                    Email
+                </a>
+
+                <a
+                    href="https://wa.me/6285872061255"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ"
+                    target="_blank"
+                >
+                    TikTok @am_zid_23
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 TradeVestor.
+            Educational content only —
+            bukan ajakan membeli atau menjual aset.
+
+        </div>
+
+    </div>
+
 </footer>
-<div class="toast"></div>
-<script src="js/script.js"></script></body></html>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
