@@ -1,25 +1,33 @@
-/* =========================================================
+/* =====================================================
    TRADEVESTOR - MAIN JAVASCRIPT
-   ========================================================= */
+===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     console.log("TradeVestor JS aktif");
 
 
     /* =====================================================
-       MOBILE MENU
-       ===================================================== */
+       MOBILE NAVIGATION
+    ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-menu");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-    if (menuToggle && navMenu) {
+    if (menuBtn && navLinks) {
 
-        menuToggle.addEventListener("click", () => {
+        menuBtn.addEventListener("click", function () {
 
-            navMenu.classList.toggle("active");
-            menuToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+
+            menuBtn.classList.toggle("active");
+
+            const isOpen = navLinks.classList.contains("active");
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
 
         });
 
@@ -27,21 +35,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       TUTUP MENU SETELAH KLIK LINK
-       ===================================================== */
+       TUTUP MENU SETELAH LINK DIKLIK
+    ===================================================== */
 
-    if (navMenu) {
+    if (navLinks) {
 
-        const navLinks = navMenu.querySelectorAll("a");
+        const links = navLinks.querySelectorAll("a");
 
-        navLinks.forEach(link => {
+        links.forEach(function (link) {
 
-            link.addEventListener("click", () => {
+            link.addEventListener("click", function () {
 
-                navMenu.classList.remove("active");
+                navLinks.classList.remove("active");
 
-                if (menuToggle) {
-                    menuToggle.classList.remove("active");
+                if (menuBtn) {
+                    menuBtn.classList.remove("active");
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
                 }
 
             });
@@ -53,13 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        NAVBAR SCROLL EFFECT
-       ===================================================== */
+    ===================================================== */
 
     const navbar = document.querySelector(".navbar");
 
     if (navbar) {
 
-        const checkScroll = () => {
+        function checkNavbarScroll() {
 
             if (window.scrollY > 30) {
 
@@ -71,30 +84,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-        };
+        }
 
-        window.addEventListener("scroll", checkScroll);
+        window.addEventListener(
+            "scroll",
+            checkNavbarScroll
+        );
 
-        checkScroll();
+        checkNavbarScroll();
 
     }
 
 
     /* =====================================================
        SMOOTH SCROLL
-       ===================================================== */
+    ===================================================== */
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const anchorLinks =
+        document.querySelectorAll('a[href^="#"]');
 
-        link.addEventListener("click", event => {
+    anchorLinks.forEach(function (link) {
 
-            const targetId = link.getAttribute("href");
+        link.addEventListener("click", function (event) {
 
-            if (!targetId || targetId === "#") {
+            const targetId =
+                this.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
                 return;
             }
 
-            const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
             if (!target) {
                 return;
@@ -113,48 +137,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CURRENT YEAR
-       ===================================================== */
+       ANIMATION / REVEAL
+    ===================================================== */
 
-    document.querySelectorAll(".current-year").forEach(element => {
-
-        element.textContent = new Date().getFullYear();
-
-    });
-
-
-    /* =====================================================
-       SCROLL REVEAL
-       ===================================================== */
-
-    const revealElements = document.querySelectorAll(
-        ".reveal, .fade-in, .animate"
-    );
-
-    if ("IntersectionObserver" in window) {
-
-        const observer = new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("show");
-
-                        observer.unobserve(entry.target);
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.15
-            }
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .fade-in, .animate"
         );
 
-        revealElements.forEach(element => {
+    if (
+        revealElements.length > 0 &&
+        "IntersectionObserver" in window
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+        revealElements.forEach(function (element) {
 
             observer.observe(element);
 
@@ -162,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } else {
 
-        revealElements.forEach(element => {
+        revealElements.forEach(function (element) {
 
             element.classList.add("show");
 
@@ -172,66 +194,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PREMIUM BUTTON
-       ===================================================== */
+       CURRENT YEAR
+    ===================================================== */
 
-    document.querySelectorAll("[data-premium]").forEach(button => {
+    const yearElements =
+        document.querySelectorAll(".current-year");
 
-        button.addEventListener("click", () => {
+    yearElements.forEach(function (element) {
 
-            window.location.href = "premium.html";
-
-        });
+        element.textContent =
+            new Date().getFullYear();
 
     });
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU WHEN CLICK OUTSIDE
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (!menuBtn || !navLinks) {
+                return;
+            }
+
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedButton =
+                menuBtn.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedButton
+            ) {
+
+                navLinks.classList.remove("active");
+
+                menuBtn.classList.remove("active");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
 
 
     /* =====================================================
        BACK TO TOP
-       ===================================================== */
+    ===================================================== */
 
-    const backTop = document.querySelector(".back-to-top");
+    const backTop =
+        document.querySelector(".back-to-top");
 
     if (backTop) {
 
-        window.addEventListener("scroll", () => {
+        window.addEventListener(
+            "scroll",
+            function () {
 
-            if (window.scrollY > 500) {
+                if (window.scrollY > 500) {
 
-                backTop.classList.add("show");
+                    backTop.classList.add("show");
 
-            } else {
+                } else {
 
-                backTop.classList.remove("show");
+                    backTop.classList.remove("show");
+
+                }
 
             }
+        );
 
-        });
+        backTop.addEventListener(
+            "click",
+            function () {
 
-        backTop.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        });
+            }
+        );
 
     }
 
-
-    /* =====================================================
-       DISABLE EMPTY LINKS
-       ===================================================== */
-
-    document.querySelectorAll('a[href="#"]').forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            event.preventDefault();
-
-        });
-
-    });
 
 });
