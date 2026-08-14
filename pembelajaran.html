@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Roadmap Belajar Trading — TradeVestor</title>
 
-<meta name="description"
-content="Roadmap belajar trading dari nol bersama TradeVestor. Pelajari dasar uang, aset, market, candlestick, indikator, strategi, risk management, psikologi dan trading plan secara bertahap.">
+<meta
+name="description"
+content="Roadmap belajar trading TradeVestor dari financial foundation, investasi, trading, price action, technical analysis, strategi, psikologi hingga membangun trading system."
+>
 
 <link rel="icon" href="logo.jpg">
+
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
 
 <!-- =====================================================
-     NAVBAR
+NAVBAR
 ===================================================== -->
 
-<header>
+<header class="navbar">
 
-<div class="container nav">
+<div class="container nav-container">
 
-<a class="brand" href="index.html">
+<a href="index.html" class="brand">
 
 <img
 src="logo.jpg"
@@ -39,7 +45,8 @@ TRADE<b>VESTOR</b>
 
 
 <button
-class="menu"
+class="menu-btn"
+id="menuBtn"
 aria-label="Buka menu"
 >
 ☰
@@ -48,7 +55,7 @@ aria-label="Buka menu"
 
 <nav>
 
-<ul class="navlinks">
+<ul class="nav-links" id="navLinks">
 
 <li>
 <a href="index.html">
@@ -100,7 +107,7 @@ Tentang
 href="premium.html"
 class="nav-cta"
 >
-Akses Premium
+Premium →
 </a>
 </li>
 
@@ -115,51 +122,44 @@ Akses Premium
 
 
 <!-- =====================================================
-     HERO
+HERO
 ===================================================== -->
 
 <main>
 
 <section class="hero">
 
-<div class="container hero-grid">
-
+<div class="container">
 
 <div class="reveal">
 
 <span class="eyebrow">
-
-<span class="dot"></span>
-
-TRADING LEARNING ROADMAP
-
+TRADEVESTOR • LEARNING ROADMAP
 </span>
-
 
 <h1>
 
-Belajar Trading
-
+Jangan cuma belajar
 <span class="gradient">
-Jangan Setengah-Setengah.
+trading.
 </span>
+
+Bangun pemahaman.
 
 </h1>
 
 
 <p class="lead">
 
-Trading bukan cuma soal membaca candle
-atau mencari titik entry.
+Trading bukan dimulai dari mencari indikator
+terbaik atau menebak candle berikutnya.
 
-Kalau lu ingin benar-benar memahami
-market, lu perlu membangun fondasi
-dari bawah sampai ke atas.
+Trading dimulai dari memahami bagaimana uang,
+market, harga, risiko dan psikologi bekerja.
 
-TradeVestor membantu lu belajar
-secara bertahap — dari konsep paling
-dasar sampai mampu menyusun sistem
-trading sendiri.
+Di halaman ini lu akan menemukan roadmap
+belajar TradeVestor dari nol sampai mampu
+menyusun sistem trading sendiri.
 
 </p>
 
@@ -167,189 +167,22 @@ trading sendiri.
 <div class="actions">
 
 <a
-href="#roadmap"
 class="btn btn-primary"
+href="#roadmap"
 >
-Mulai Roadmap ↓
+Mulai Roadmap →
 </a>
 
-
 <a
-href="candlestick.html"
 class="btn btn-secondary"
+href="candlestick.html"
 >
 Mulai dari Candlestick
 </a>
 
 </div>
 
-
-<div class="notice">
-
-<strong>
-Jangan buru-buru trading dengan uang nyata.
-</strong>
-
-Bangun pemahaman terlebih dahulu,
-lalu latihan, evaluasi, dan kembangkan
-sistem secara bertahap.
-
 </div>
-
-</div>
-
-
-
-<!-- VISUAL ROADMAP -->
-
-<div class="hero-card reveal">
-
-<div class="chart-wrap">
-
-<div class="chart-grid"></div>
-
-
-<div class="chart-badge">
-TRADEVESTOR • ROADMAP
-</div>
-
-
-<div
-style="
-padding:35px 20px;
-position:relative;
-z-index:2;
-"
->
-
-
-<div class="mini">
-
-<strong>
-01
-</strong>
-
-<span>
-Fondasi
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-02
-</strong>
-
-<span>
-Market
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-03
-</strong>
-
-<span>
-Price Action
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-04
-</strong>
-
-<span>
-Analisis
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-05
-</strong>
-
-<span>
-Risk
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-06
-</strong>
-
-<span>
-Eksekusi
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="statbar">
-
-<div class="mini">
-
-<strong>
-12+
-</strong>
-
-<span>
-Tahapan Belajar
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-FREE
-</strong>
-
-<span>
-Materi Dasar
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-∞
-</strong>
-
-<span>
-Latihan & Evaluasi
-</span>
-
-</div>
-
-</div>
-
-</div>
-
 
 </div>
 
@@ -358,7 +191,119 @@ Latihan & Evaluasi
 
 
 <!-- =====================================================
-     ROADMAP
+INTRO
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-head">
+
+<span class="kicker">
+HOW TO LEARN
+</span>
+
+<h2>
+Jangan loncat level.
+</h2>
+
+<p>
+
+Kesalahan banyak pemula adalah langsung
+mencari strategi entry sebelum memahami
+fondasi market dan manajemen risiko.
+
+Gunakan roadmap ini secara berurutan.
+
+</p>
+
+</div>
+
+
+<div class="grid-4">
+
+<div class="card">
+
+<div class="icon">
+01
+</div>
+
+<h3>
+Pahami
+</h3>
+
+<p>
+Pelajari konsep sebelum mencoba
+menggunakannya di market.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+02
+</div>
+
+<h3>
+Amati
+</h3>
+
+<p>
+Lihat bagaimana konsep tersebut
+muncul pada chart sebenarnya.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+03
+</div>
+
+<h3>
+Latih
+</h3>
+
+<p>
+Gunakan chart historis untuk
+melatih kemampuan membaca market.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+04
+</div>
+
+<h3>
+Evaluasi
+</h3>
+
+<p>
+Catat kesalahan dan bangun
+proses trading yang lebih baik.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+ROADMAP
 ===================================================== -->
 
 <section
@@ -368,24 +313,20 @@ id="roadmap"
 
 <div class="container">
 
-
 <div class="section-head">
 
 <span class="kicker">
-ROADMAP • 01
+COMPLETE ROADMAP
 </span>
 
 <h2>
-Urutkan cara belajarnya.
+Roadmap Trading dari Nol.
 </h2>
 
 <p>
 
-Jangan lompat langsung ke strategi
-kalau fondasi belum kuat.
-
-Ikuti urutan ini supaya setiap materi
-saling terhubung.
+Ikuti tahapannya satu per satu.
+Jangan terburu-buru mengejar profit.
 
 </p>
 
@@ -393,302 +334,41 @@ saling terhubung.
 
 
 
-<div class="grid-4">
+<!-- LEVEL 01 -->
 
+<div class="article">
 
-<div class="card">
-
-<div class="icon">
-01
-</div>
-
-<h3>
-Mindset
-</h3>
-
-<p>
-
-Pahami apa sebenarnya yang lu cari
-dari trading dan bagaimana menghadapi
-ketidakpastian.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-02
-</div>
-
-<h3>
-Uang & Aset
-</h3>
-
-<p>
-
-Kenali uang, aset, nilai, risiko,
-inflasi dan bagaimana kekayaan
-dibangun.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-03
-</div>
-
-<h3>
-Market
-</h3>
-
-<p>
-
-Pelajari bagaimana pasar bekerja,
-siapa pelakunya dan bagaimana harga
-terbentuk.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-04
-</div>
-
-<h3>
-Trading
-</h3>
-
-<p>
-
-Kenali mekanisme order, leverage,
-fee, spread dan risiko transaksi.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-05
-</div>
-
-<h3>
-Candlestick
-</h3>
-
-<p>
-
-Pelajari Open, High, Low, Close,
-body, wick dan pola harga.
-
-</p>
-
-<a
-href="candlestick.html"
-class="text-link"
->
-Pelajari →
-</a>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-06
-</div>
-
-<h3>
-Market Structure
-</h3>
-
-<p>
-
-Kenali trend, swing high, swing low,
-HH, HL, LH dan LL.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-07
-</div>
-
-<h3>
-Indikator
-</h3>
-
-<p>
-
-Gunakan indikator sebagai alat bantu,
-bukan sebagai mesin prediksi.
-
-</p>
-
-<a
-href="indikator.html"
-class="text-link"
->
-Pelajari →
-</a>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-08
-</div>
-
-<h3>
-Strategi
-</h3>
-
-<p>
-
-Gabungkan konteks, area,
-confirmation, entry dan exit.
-
-</p>
-
-<a
-href="strategi.html"
-class="text-link"
->
-Pelajari →
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 1
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 01 • FONDASI
+<span class="tag">
+LEVEL 01 • FOUNDATION
 </span>
 
 <h2>
-Sebelum membaca chart,
-pahami dulu dunia yang sedang lu masuki.
+Financial Foundation
 </h2>
 
 <p>
 
-Banyak orang belajar trading langsung
-dari indikator.
-
-Padahal mereka belum memahami
-apa yang sebenarnya mereka perdagangkan.
+Sebelum memahami trading, lu perlu memahami
+sistem yang menjadi tempat uang dan aset
+bergerak.
 
 </p>
-
-</div>
-
-
-
-<div class="split">
-
-
-<div class="article">
-
-<span class="tag">
-01 • UANG
-</span>
-
-<h3>
-Apa sebenarnya fungsi uang?
-</h3>
-
-<p>
-
-Uang bukan sekadar angka di rekening.
-
-Uang digunakan sebagai alat pertukaran,
-satuan nilai dan penyimpan nilai.
-
-Memahami konsep ini membantu lu
-memahami kenapa inflasi, suku bunga,
-kebijakan moneter dan kondisi ekonomi
-dapat memengaruhi pasar.
-
-</p>
-
-</div>
-
-
-
-<div class="article">
-
-<span class="tag">
-02 • ASET
-</span>
-
-<h3>
-Apa itu aset?
-</h3>
-
-<p>
-
-Aset adalah sesuatu yang memiliki nilai
-ekonomi dan dapat memberikan manfaat
-atau potensi keuntungan di masa depan.
-
-Contohnya saham, obligasi,
-properti, komoditas dan aset digital.
-
-</p>
-
-</div>
-
-
-</div>
-
 
 
 <div class="grid-3">
+
+<div class="card">
+
+<h3>
+Apa Itu Uang?
+</h3>
+
+<p>
+Kenapa uang memiliki nilai dan bagaimana
+uang digunakan dalam sistem ekonomi.
+</p>
+
+</div>
 
 
 <div class="card">
@@ -698,1217 +378,488 @@ Inflasi
 </h3>
 
 <p>
-
-Kenapa daya beli uang bisa menurun
-seiring waktu?
-
+Kenapa harga barang naik dan kenapa daya
+beli uang bisa berkurang.
 </p>
 
 </div>
-
 
 
 <div class="card">
 
 <h3>
-Suku Bunga
+Aset & Liabilitas
 </h3>
 
 <p>
-
-Kenapa perubahan suku bunga
-dapat memengaruhi pasar?
-
+Memahami perbedaan sesuatu yang
+menghasilkan nilai dan sesuatu yang
+menguras sumber daya.
 </p>
 
 </div>
-
 
 
 <div class="card">
 
 <h3>
-Supply & Demand
+Compound Interest
 </h3>
 
 <p>
-
-Bagaimana keseimbangan permintaan
-dan penawaran memengaruhi harga?
-
+Bagaimana pertumbuhan nilai dapat
+berkembang melalui efek compounding.
 </p>
 
 </div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 2 MARKET
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 02 • MARKET
-</span>
-
-<h2>
-Harga tidak bergerak tanpa alasan.
-</h2>
-
-<p>
-
-Harga terbentuk dari interaksi
-antara pembeli dan penjual.
-
-Tugas trader adalah memahami
-konteks pergerakannya.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-4">
-
-
-<div class="card">
-
-<div class="number">
-01
-</div>
-
-<h3>
-Buyer
-</h3>
-
-<p>
-Pihak yang memberikan tekanan beli.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-02
-</div>
-
-<h3>
-Seller
-</h3>
-
-<p>
-Pihak yang memberikan tekanan jual.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-03
-</div>
-
-<h3>
-Liquidity
-</h3>
-
-<p>
-Kondisi yang memungkinkan transaksi
-terjadi dengan lebih mudah.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-04
-</div>
-
-<h3>
-Volatility
-</h3>
-
-<p>
-Seberapa besar dan cepat harga
-bergerak dalam suatu periode.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 3 PRICE ACTION
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 03 • PRICE ACTION
-</span>
-
-<h2>
-Mulai membaca bahasa harga.
-</h2>
-
-<p>
-
-Chart adalah representasi dari
-pergerakan harga.
-
-Candlestick membantu kita melihat
-apa yang terjadi dalam setiap periode.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-3">
-
-
-<div class="card">
-
-<div class="icon">
-◒
-</div>
-
-<h3>
-Candlestick
-</h3>
-
-<p>
-
-Open, High, Low, Close,
-body dan wick.
-
-</p>
-
-<a
-href="candlestick.html"
-class="text-link"
->
-Buka Materi →
-</a>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-↗
-</div>
-
-<h3>
-Market Structure
-</h3>
-
-<p>
-
-Trend, swing,
-HH, HL, LH dan LL.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-⌁
-</div>
-
-<h3>
-Support & Resistance
-</h3>
-
-<p>
-
-Mengenali area yang sering
-mendapat respons harga.
-
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 4 ANALYSIS
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 04 • ANALYSIS
-</span>
-
-<h2>
-Indikator bukan jalan pintas.
-</h2>
-
-<p>
-
-Indikator sebaiknya membantu
-membaca data yang sudah ada,
-bukan menggantikan proses berpikir.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-4">
 
 
 <div class="card">
 
 <h3>
-EMA
+Cash Flow
 </h3>
 
 <p>
-Membantu melihat arah dan
-struktur rata-rata harga.
+Memahami uang masuk, uang keluar,
+tabungan dan alokasi modal.
 </p>
 
 </div>
-
 
 
 <div class="card">
 
 <h3>
-RSI
+Risk & Return
 </h3>
 
 <p>
-Membantu membaca momentum
-dan kondisi tertentu.
+Semakin besar potensi return,
+semakin penting memahami risiko.
 </p>
 
 </div>
 
-
-
-<div class="card">
-
-<h3>
-MACD
-</h3>
-
-<p>
-Digunakan untuk menganalisis
-momentum dan perubahan trend.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-ATR
-</h3>
-
-<p>
-Membantu memahami
-volatilitas market.
-</p>
-
-</div>
-
-
-</div>
-
-
-
-<div class="actions">
-
-<a
-href="indikator.html"
-class="btn btn-secondary"
->
-Pelajari Semua Indikator →
-</a>
-
 </div>
 
 </div>
 
-</section>
 
 
-
-<!-- =====================================================
-     LEVEL 5 STRATEGY
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 05 • STRATEGY
-</span>
-
-<h2>
-Gabungkan semuanya menjadi sebuah setup.
-</h2>
-
-<p>
-
-Strategi adalah aturan.
-
-Bukan tebakan.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-3">
-
-
-<div class="card">
-
-<div class="number">
-01
-</div>
-
-<h3>
-Context
-</h3>
-
-<p>
-Apa kondisi market saat ini?
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-02
-</div>
-
-<h3>
-Area
-</h3>
-
-<p>
-Di mana lokasi yang menarik?
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-03
-</div>
-
-<h3>
-Confirmation
-</h3>
-
-<p>
-Apa bukti tambahan yang mendukung?
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-04
-</div>
-
-<h3>
-Entry
-</h3>
-
-<p>
-Kapan aturan entry terpenuhi?
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-05
-</div>
-
-<h3>
-Stop Loss
-</h3>
-
-<p>
-Kapan analisis dianggap salah?
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-06
-</div>
-
-<h3>
-Take Profit
-</h3>
-
-<p>
-Di mana target yang masuk akal?
-</p>
-
-</div>
-
-
-</div>
-
-
-
-<div class="actions">
-
-<a
-href="strategi.html"
-class="btn btn-primary"
->
-Masuk ke Materi Strategi →
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 6 RISK
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 06 • RISK MANAGEMENT
-</span>
-
-<h2>
-Trader yang bertahan bukan
-yang selalu benar.
-</h2>
-
-<p>
-
-Trader yang bertahan adalah trader
-yang mampu mengendalikan kerugian
-ketika ternyata salah.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-4">
-
-
-<div class="card">
-
-<div class="number">
-01
-</div>
-
-<h3>
-Risk Per Trade
-</h3>
-
-<p>
-
-Tentukan batas risiko sebelum
-membuka posisi.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-02
-</div>
-
-<h3>
-Stop Loss
-</h3>
-
-<p>
-
-Tentukan titik invalidation
-sebelum entry.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-03
-</div>
-
-<h3>
-Position Size
-</h3>
-
-<p>
-
-Ukuran posisi mengikuti
-risiko, bukan sebaliknya.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="number">
-04
-</div>
-
-<h3>
-Risk / Reward
-</h3>
-
-<p>
-
-Bandingkan potensi hasil
-dengan risiko.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-
-<div class="notice">
-
-<strong>
-Tujuan pertama trader bukan
-memaksimalkan profit.
-</strong>
-
-Tujuan pertama adalah bertahan
-cukup lama untuk belajar,
-berlatih dan berkembang.
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 7 PSYCHOLOGY
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 07 • PSYCHOLOGY
-</span>
-
-<h2>
-Musuh terbesar trader sering kali
-bukan market.
-</h2>
-
-<p>
-
-Market tidak peduli lu sedang
-takut, serakah atau ingin
-balik modal.
-
-Karena itu, psikologi adalah
-bagian dari sistem.
-
-</p>
-
-</div>
-
-
-
-<div class="grid-3">
-
-
-<div class="card">
-
-<h3>
-FOMO
-</h3>
-
-<p>
-
-Takut ketinggalan pergerakan
-harga lalu entry tanpa setup.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Revenge Trading
-</h3>
-
-<p>
-
-Mencoba membalas kerugian
-dengan transaksi emosional.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Overtrading
-</h3>
-
-<p>
-
-Terlalu banyak entry karena
-merasa harus selalu berada
-di market.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Greed
-</h3>
-
-<p>
-
-Mengambil risiko berlebihan
-karena mengejar profit.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Fear
-</h3>
-
-<p>
-
-Takut mengambil keputusan
-atau terlalu cepat keluar.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Discipline
-</h3>
-
-<p>
-
-Menjalankan sistem walaupun
-emosi sedang berubah.
-
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LEVEL 8 TRADING PLAN
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 08 • TRADING PLAN
-</span>
-
-<h2>
-Jadikan trading sebuah proses,
-bukan perjudian keputusan.
-</h2>
-
-</div>
-
-
+<!-- LEVEL 02 -->
 
 <div class="article">
 
 <span class="tag">
-TRADING PLAN
-</span>
-
-<h3>
-Apa yang harus ada di dalamnya?
-</h3>
-
-<p>
-
-<strong>Market:</strong>
-Instrumen apa yang boleh diperdagangkan?
-
-</p>
-
-<p>
-
-<strong>Timeframe:</strong>
-Timeframe apa yang digunakan?
-
-</p>
-
-<p>
-
-<strong>Setup:</strong>
-Kondisi apa yang harus muncul?
-
-</p>
-
-<p>
-
-<strong>Entry:</strong>
-Kapan posisi dibuka?
-
-</p>
-
-<p>
-
-<strong>Risk:</strong>
-Berapa risiko maksimum?
-
-</p>
-
-<p>
-
-<strong>Exit:</strong>
-Kapan posisi ditutup?
-
-</p>
-
-<p>
-
-<strong>Evaluation:</strong>
-Bagaimana hasil trade dievaluasi?
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PRACTICE
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-LEVEL 09 • PRACTICE
+LEVEL 02 • INVESTING
 </span>
 
 <h2>
-Jangan langsung mempertaruhkan uang.
-Latih kemampuan dulu.
+Kenali Dunia Investasi.
 </h2>
 
-</div>
-
-
-
-<div class="grid-4">
-
-
-<div class="card">
-
-<div class="number">
-01
-</div>
-
-<h3>
-Chart Replay
-</h3>
-
 <p>
 
-Latih membaca market
-berdasarkan data historis.
+Sebelum aktif melakukan trading,
+pahami terlebih dahulu berbagai jenis
+aset dan cara investor menilai aset.
 
 </p>
 
-</div>
 
-
-
-<div class="card">
-
-<div class="number">
-02
-</div>
-
-<h3>
-Backtesting
-</h3>
-
-<p>
-
-Uji aturan strategi pada
-data masa lalu.
-
-</p>
-
-</div>
-
-
+<div class="grid-3">
 
 <div class="card">
-
-<div class="number">
-03
+<h3>Saham</h3>
+<p>Memahami kepemilikan perusahaan dan pasar saham.</p>
 </div>
-
-<h3>
-Paper Trading
-</h3>
-
-<p>
-
-Latihan mengambil keputusan
-tanpa mempertaruhkan modal nyata.
-
-</p>
-
-</div>
-
-
 
 <div class="card">
-
-<div class="number">
-04
+<h3>Crypto</h3>
+<p>Mengenal aset digital, blockchain dan karakter market crypto.</p>
 </div>
 
-<h3>
-Jurnal
-</h3>
-
-<p>
-
-Catat hasil dan cari
-kesalahan yang berulang.
-
-</p>
-
+<div class="card">
+<h3>Obligasi</h3>
+<p>Memahami instrumen utang dan hubungan risiko dengan return.</p>
 </div>
 
+<div class="card">
+<h3>Market Cap</h3>
+<p>Memahami ukuran relatif sebuah aset atau perusahaan.</p>
+</div>
 
+<div class="card">
+<h3>AUM</h3>
+<p>Mengenal Assets Under Management dan perannya dalam industri investasi.</p>
+</div>
+
+<div class="card">
+<h3>Fundamental Analysis</h3>
+<p>Memahami bagaimana nilai sebuah aset dianalisis.</p>
 </div>
 
 </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FINAL ROADMAP
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-<span class="kicker">
-YOUR JOURNEY
-</span>
-
-<h2>
-Dari "nggak ngerti chart"
-menjadi punya sistem sendiri.
-</h2>
 
 </div>
 
 
+
+<!-- LEVEL 03 -->
 
 <div class="article">
 
-
-<div class="mini">
-
-<strong>
-01
-</strong>
-
-<span>
-Pahami uang & aset
+<span class="tag">
+LEVEL 03 • TRADING
 </span>
+
+<h2>
+Masuk ke Dunia Trading.
+</h2>
+
+<p>
+
+Sekarang mulai pahami bagaimana transaksi
+terjadi di market.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>Trading vs Investing</h3>
+<p>Pahami perbedaan tujuan, timeframe dan pendekatannya.</p>
+</div>
+
+<div class="card">
+<h3>Exchange</h3>
+<p>Kenali fungsi platform tempat transaksi dilakukan.</p>
+</div>
+
+<div class="card">
+<h3>Market Order</h3>
+<p>Memahami order yang dieksekusi pada harga pasar.</p>
+</div>
+
+<div class="card">
+<h3>Limit Order</h3>
+<p>Memahami order yang menunggu harga tertentu.</p>
+</div>
+
+<div class="card">
+<h3>Stop Order</h3>
+<p>Memahami bagaimana order dapat dipicu ketika harga mencapai level tertentu.</p>
+</div>
+
+<div class="card">
+<h3>Leverage & Margin</h3>
+<p>Pahami bagaimana leverage memperbesar exposure sekaligus risiko.</p>
+</div>
+
+</div>
 
 </div>
 
 
-<div class="mini">
 
-<strong>
-02
-</strong>
+<!-- LEVEL 04 -->
 
-<span>
-Pahami market
+<div class="article">
+
+<span class="tag">
+LEVEL 04 • PRICE ACTION
 </span>
+
+<h2>
+Belajar Membaca Harga.
+</h2>
+
+<p>
+
+Di tahap ini lu mulai belajar membaca
+pergerakan harga tanpa bergantung
+sepenuhnya pada indikator.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>Candlestick</h3>
+<p>Pelajari Open, High, Low, Close, body dan wick.</p>
+</div>
+
+<div class="card">
+<h3>Support & Resistance</h3>
+<p>Kenali area penting tempat harga sering bereaksi.</p>
+</div>
+
+<div class="card">
+<h3>Market Structure</h3>
+<p>Pahami Higher High, Higher Low, Lower High dan Lower Low.</p>
+</div>
+
+<div class="card">
+<h3>Trend</h3>
+<p>Bedakan kondisi bullish, bearish dan sideways.</p>
+</div>
+
+<div class="card">
+<h3>Breakout</h3>
+<p>Pahami ketika harga keluar dari sebuah struktur.</p>
+</div>
+
+<div class="card">
+<h3>Retest</h3>
+<p>Pelajari bagaimana harga kembali menguji area yang ditembus.</p>
+</div>
+
+</div>
 
 </div>
 
 
-<div class="mini">
 
-<strong>
-03
-</strong>
+<!-- LEVEL 05 -->
 
-<span>
-Pelajari candlestick
+<div class="article">
+
+<span class="tag">
+LEVEL 05 • TECHNICAL ANALYSIS
 </span>
+
+<h2>
+Gunakan Indikator dengan Konteks.
+</h2>
+
+<p>
+
+Indikator bukan mesin prediksi masa depan.
+
+Gunakan indikator sebagai alat bantu
+untuk membaca kondisi market dan
+mengonfirmasi analisis.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>EMA</h3>
+<p>Memahami trend dan dinamika harga berdasarkan moving average.</p>
+</div>
+
+<div class="card">
+<h3>RSI</h3>
+<p>Memahami momentum dan kondisi overbought atau oversold.</p>
+</div>
+
+<div class="card">
+<h3>MACD</h3>
+<p>Menganalisis momentum dan perubahan arah trend.</p>
+</div>
+
+<div class="card">
+<h3>Stochastic</h3>
+<p>Memahami momentum relatif terhadap range harga.</p>
+</div>
+
+<div class="card">
+<h3>Fibonacci</h3>
+<p>Menggunakan level Fibonacci untuk membantu memetakan area harga.</p>
+</div>
+
+<div class="card">
+<h3>Volume</h3>
+<p>Memahami aktivitas transaksi dan kekuatan pergerakan harga.</p>
+</div>
+
+</div>
 
 </div>
 
 
-<div class="mini">
 
-<strong>
-04
-</strong>
+<!-- LEVEL 06 -->
 
-<span>
-Pelajari structure
+<div class="article">
+
+<span class="tag">
+LEVEL 06 • STRATEGY
 </span>
+
+<h2>
+Dari Analisis Menjadi Setup.
+</h2>
+
+<p>
+
+Analisis tanpa rencana hanya akan membuat
+lu ragu ketika market bergerak.
+
+Di tahap ini kita mulai menyusun
+aturan trading.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>Trading Setup</h3>
+<p>Tentukan kondisi market yang ingin lu tradingkan.</p>
+</div>
+
+<div class="card">
+<h3>Entry</h3>
+<p>Tentukan kondisi yang harus terpenuhi sebelum masuk posisi.</p>
+</div>
+
+<div class="card">
+<h3>Confirmation</h3>
+<p>Gunakan konfirmasi untuk meningkatkan kualitas setup.</p>
+</div>
+
+<div class="card">
+<h3>Stop Loss</h3>
+<p>Tentukan titik invalidasi sebelum membuka posisi.</p>
+</div>
+
+<div class="card">
+<h3>Take Profit</h3>
+<p>Tentukan target berdasarkan struktur dan skenario market.</p>
+</div>
+
+<div class="card">
+<h3>Risk Reward</h3>
+<p>Bandingkan potensi keuntungan dengan risiko yang diambil.</p>
+</div>
+
+</div>
 
 </div>
 
 
-<div class="mini">
 
-<strong>
-05
-</strong>
+<!-- LEVEL 07 -->
 
-<span>
-Pelajari indikator
+<div class="article">
+
+<span class="tag">
+LEVEL 07 • PSYCHOLOGY
 </span>
+
+<h2>
+Musuh Terbesar Bukan Market.
+</h2>
+
+<p>
+
+Banyak trader mengetahui teori yang benar
+tetapi tetap kehilangan uang karena tidak
+mampu mengikuti sistemnya sendiri.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>FOMO</h3>
+<p>Takut tertinggal ketika harga bergerak tanpa kita.</p>
+</div>
+
+<div class="card">
+<h3>Fear</h3>
+<p>Rasa takut yang membuat trader keluar terlalu cepat.</p>
+</div>
+
+<div class="card">
+<h3>Greed</h3>
+<p>Keinginan mengejar profit lebih besar dari rencana.</p>
+</div>
+
+<div class="card">
+<h3>Revenge Trading</h3>
+<p>Mencoba membalas kerugian dengan keputusan impulsif.</p>
+</div>
+
+<div class="card">
+<h3>Overtrading</h3>
+<p>Membuka terlalu banyak posisi tanpa alasan yang jelas.</p>
+</div>
+
+<div class="card">
+<h3>Discipline</h3>
+<p>Kemampuan mengikuti aturan bahkan ketika emosi berubah.</p>
+</div>
+
+</div>
 
 </div>
 
 
-<div class="mini">
 
-<strong>
-06
-</strong>
+<!-- LEVEL 08 -->
 
-<span>
-Bangun strategi
+<div class="article">
+
+<span class="tag">
+LEVEL 08 • TRADING SYSTEM
 </span>
 
+<h2>
+Bangun Sistem Trading Lu Sendiri.
+</h2>
+
+<p>
+
+Tujuan akhir belajar trading bukan
+menghafal ratusan pola.
+
+Tujuannya adalah mampu membangun proses
+yang dapat diuji, dievaluasi dan diperbaiki.
+
+</p>
+
+
+<div class="grid-3">
+
+<div class="card">
+<h3>Trading Plan</h3>
+<p>Tulis aturan kapan boleh dan tidak boleh trading.</p>
 </div>
 
-
-<div class="mini">
-
-<strong>
-07
-</strong>
-
-<span>
-Kelola risiko
-</span>
-
+<div class="card">
+<h3>Backtesting</h3>
+<p>Uji strategi menggunakan data historis.</p>
 </div>
 
-
-<div class="mini">
-
-<strong>
-08
-</strong>
-
-<span>
-Latihan & backtest
-</span>
-
+<div class="card">
+<h3>Trading Journal</h3>
+<p>Catat alasan entry, hasil dan kesalahan setiap transaksi.</p>
 </div>
 
-
-<div class="mini">
-
-<strong>
-09
-</strong>
-
-<span>
-Buat trading plan
-</span>
-
+<div class="card">
+<h3>Performance</h3>
+<p>Evaluasi win rate, risk reward, drawdown dan expectancy.</p>
 </div>
 
-
-<div class="mini">
-
-<strong>
-10
-</strong>
-
-<span>
-Evaluasi & berkembang
-</span>
-
+<div class="card">
+<h3>Refinement</h3>
+<p>Perbaiki sistem berdasarkan data, bukan emosi.</p>
 </div>
 
+<div class="card">
+<h3>Consistency</h3>
+<p>Bangun proses yang bisa dijalankan berulang kali.</p>
+</div>
+
+</div>
 
 </div>
 
@@ -1919,69 +870,108 @@ Evaluasi & berkembang
 
 
 <!-- =====================================================
-     PREMIUM CTA
+CORE PRINCIPLE
 ===================================================== -->
 
 <section class="section">
 
 <div class="container">
 
-
-<div class="card"
-style="
-text-align:center;
-padding:55px 25px;
-">
-
+<div
+class="card"
+style="text-align:center;padding:55px 25px"
+>
 
 <span class="kicker">
-TRADEVESTOR PREMIUM
+TRADEVESTOR PRINCIPLE
 </span>
 
-
 <h2>
-Kalau fondasi sudah kuat,
-saatnya masuk lebih dalam.
+Trading bukan tentang selalu benar.
 </h2>
-
 
 <p
 style="
 color:var(--muted);
 max-width:700px;
-margin:0 auto;
+margin:15px auto 0;
 "
 >
 
-TradeVestor Premium akan menjadi
-ruang untuk materi yang lebih mendalam,
-studi kasus, framework analisis,
-advanced setup, backtesting,
-multi-timeframe analysis dan
-pengembangan trading system.
+Trader yang baik bukan trader yang
+selalu memenangkan setiap transaksi.
+
+Trader yang baik adalah trader yang
+mampu mengelola risiko ketika salah,
+menjalankan sistem ketika benar,
+dan terus belajar dari data.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+CTA
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div
+class="card"
+style="text-align:center;padding:55px 25px"
+>
+
+<span class="kicker">
+NEXT STEP
+</span>
+
+<h2>
+Sudah siap masuk ke chart?
+</h2>
+
+<p
+style="
+color:var(--muted);
+max-width:650px;
+margin:15px auto 0;
+"
+>
+
+Mulai dari candlestick, pahami struktur
+harga, lalu lanjutkan ke indikator dan
+strategi.
+
+Jangan buru-buru mencari profit.
+Bangun kemampuan terlebih dahulu.
 
 </p>
 
 
 <div
 class="actions"
-style="
-justify-content:center;
-"
+style="justify-content:center"
 >
 
 <a
-href="premium.html"
 class="btn btn-primary"
+href="candlestick.html"
 >
-Lihat Materi Premium →
+Mulai Candlestick →
 </a>
 
 <a
-href="candlestick.html"
 class="btn btn-secondary"
+href="strategi.html"
 >
-Mulai Materi Gratis
+Pelajari Strategi
 </a>
 
 </div>
@@ -1992,13 +982,12 @@ Mulai Materi Gratis
 
 </section>
 
-
 </main>
 
 
 
 <!-- =====================================================
-     FOOTER
+FOOTER
 ===================================================== -->
 
 <footer>
@@ -2027,16 +1016,13 @@ TRADE<b>VESTOR</b>
 <p
 style="
 margin-top:12px;
-max-width:420px;
+max-width:420px
 "
 >
 
 TradeVestor adalah platform edukasi
-untuk membantu lu memahami trading
-secara lebih terstruktur.
-
-Mulai dari fondasi sampai
-pengembangan trading system.
+yang membantu lu memahami trading
+secara bertahap dan terstruktur.
 
 </p>
 
@@ -2066,10 +1052,6 @@ Strategi
 Pembelajaran
 </a>
 
-<a href="premium.html">
-Premium
-</a>
-
 </div>
 
 
@@ -2077,25 +1059,19 @@ Premium
 <div>
 
 <h4>
-Hubungi
+Lainnya
 </h4>
 
-<a href="mailto:startingfromzero95@gmail.com">
-Email
+<a href="premium.html">
+Premium
 </a>
 
-<a
-href="https://wa.me/6285872061255"
-target="_blank"
->
-WhatsApp
+<a href="tentang.html">
+Tentang
 </a>
 
-<a
-href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ"
-target="_blank"
->
-TikTok @am_zid_23
+<a href="index.html">
+Beranda
 </a>
 
 </div>
@@ -2108,7 +1084,7 @@ TikTok @am_zid_23
 
 © 2026 TradeVestor.
 Educational content only —
-bukan ajakan membeli/menjual aset.
+bukan ajakan membeli atau menjual aset.
 
 </div>
 
@@ -2121,4 +1097,5 @@ bukan ajakan membeli/menjual aset.
 <script src="js/script.js"></script>
 
 </body>
+
 </html>
