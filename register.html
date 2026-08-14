@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Daftar Akun — TradeVestor</title>
+
+    <meta
+        name="description"
+        content="Buat akun TradeVestor untuk mulai belajar trading."
+    >
+
+    <meta
+        name="theme-color"
+        content="#050507"
+    >
+
+    <link rel="icon" href="logo.jpg">
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <img
+                src="logo.jpg"
+                alt="Logo TradeVestor"
+            >
+
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
+
+
+        <nav>
+
+            <ul
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <li>
+                    <a href="index.html">
+                        Beranda
+                    </a>
+                </li>
+
+                <li>
+                    <a href="candlestick.html">
+                        Candlestick
+                    </a>
+                </li>
+
+                <li>
+                    <a href="indikator.html">
+                        Indikator
+                    </a>
+                </li>
+
+                <li>
+                    <a href="strategi.html">
+                        Strategi
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pembelajaran.html">
+                        Pembelajaran
+                    </a>
+                </li>
+
+                <li>
+                    <a href="premium.html">
+                        Premium
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tentang.html">
+                        Tentang
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     REGISTER
+===================================================== -->
+
+<main>
+
+<section
+    class="section"
+    style="
+        padding-top:90px;
+        padding-bottom:90px;
+    "
+>
+
+    <div
+        class="container"
+        style="
+            max-width:520px;
+            margin:0 auto;
+        "
+    >
+
+
+        <div
+            class="card"
+            style="
+                padding:40px 30px;
+            "
+        >
+
+
+            <!-- HEADER -->
+
+            <div
+                style="
+                    text-align:center;
+                    margin-bottom:32px;
+                "
+            >
+
+                <span class="kicker">
+                    TRADEVESTOR ACCOUNT
+                </span>
+
+
+                <h1
+                    style="
+                        margin-top:12px;
+                    "
+                >
+                    Buat Akun
+                </h1>
+
+
+                <p
+                    style="
+                        color:var(--muted);
+                        margin-top:12px;
+                    "
+                >
+
+                    Buat akun TradeVestor
+                    untuk menyimpan akses
+                    pembelajaran lu.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="registerMessage"
+                class="notice"
+                style="
+                    display:none;
+                    margin-bottom:20px;
+                "
+            ></div>
+
+
+
+            <!-- FORM -->
+
+            <form
+                id="registerForm"
+                autocomplete="on"
+            >
+
+
+                <!-- NAMA -->
+
+                <div
+                    style="
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <label
+                        for="name"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Nama
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nama lu"
+                        autocomplete="name"
+                        required
+                        minlength="2"
+                        maxlength="80"
+                        style="
+                            width:100%;
+                            padding:14px 16px;
+                            border-radius:10px;
+                            border:1px solid rgba(255,255,255,.12);
+                            background:rgba(255,255,255,.04);
+                            color:inherit;
+                            outline:none;
+                            box-sizing:border-box;
+                        "
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div
+                    style="
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <label
+                        for="email"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Email
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="contoh@email.com"
+                        autocomplete="email"
+                        required
+                        style="
+                            width:100%;
+                            padding:14px 16px;
+                            border-radius:10px;
+                            border:1px solid rgba(255,255,255,.12);
+                            background:rgba(255,255,255,.04);
+                            color:inherit;
+                            outline:none;
+                            box-sizing:border-box;
+                        "
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div
+                    style="
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <label
+                        for="password"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Password
+                    </label>
+
+
+                    <div
+                        style="
+                            position:relative;
+                        "
+                    >
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Minimal 8 karakter"
+                            autocomplete="new-password"
+                            required
+                            minlength="8"
+                            style="
+                                width:100%;
+                                padding:14px 50px 14px 16px;
+                                border-radius:10px;
+                                border:1px solid rgba(255,255,255,.12);
+                                background:rgba(255,255,255,.04);
+                                color:inherit;
+                                outline:none;
+                                box-sizing:border-box;
+                            "
+                        >
+
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            aria-label="Tampilkan password"
+                            style="
+                                position:absolute;
+                                right:12px;
+                                top:50%;
+                                transform:translateY(-50%);
+                                background:none;
+                                border:none;
+                                color:inherit;
+                                cursor:pointer;
+                                font-size:18px;
+                            "
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div
+                    style="
+                        margin-bottom:25px;
+                    "
+                >
+
+                    <label
+                        for="confirmPassword"
+                        style="
+                            display:block;
+                            margin-bottom:8px;
+                            font-weight:600;
+                        "
+                    >
+                        Konfirmasi Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Masukkan password lagi"
+                        autocomplete="new-password"
+                        required
+                        minlength="8"
+                        style="
+                            width:100%;
+                            padding:14px 16px;
+                            border-radius:10px;
+                            border:1px solid rgba(255,255,255,.12);
+                            background:rgba(255,255,255,.04);
+                            color:inherit;
+                            outline:none;
+                            box-sizing:border-box;
+                        "
+                    >
+
+                </div>
+
+
+
+                <!-- TERMS -->
+
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        align-items:flex-start;
+                        margin-bottom:25px;
+                    "
+                >
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                        style="
+                            margin-top:5px;
+                        "
+                    >
+
+
+                    <label
+                        for="terms"
+                        style="
+                            color:var(--muted);
+                            font-size:.9rem;
+                            line-height:1.5;
+                        "
+                    >
+
+                        Saya memahami bahwa TradeVestor
+                        adalah platform edukasi dan materi
+                        yang diberikan bukan jaminan keuntungan
+                        dari aktivitas trading.
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    id="registerButton"
+                    class="btn btn-primary"
+                    style="
+                        width:100%;
+                        justify-content:center;
+                        cursor:pointer;
+                        border:none;
+                    "
+                >
+
+                    Buat Akun
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- LOGIN -->
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:28px;
+                    padding-top:25px;
+                    border-top:1px solid rgba(255,255,255,.08);
+                "
+            >
+
+                <p
+                    style="
+                        color:var(--muted);
+                    "
+                >
+
+                    Sudah punya akun?
+
+                    <a href="login.html">
+                        Login di sini
+                    </a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- PREMIUM INFO -->
+
+            <div
+                class="notice"
+                style="
+                    margin-top:25px;
+                "
+            >
+
+                <strong>
+                    🔐 Akun Gratis
+                </strong>
+
+                <br>
+
+                Setelah akun dibuat,
+                lu bisa menggunakan akun
+                yang sama untuk Premium
+                ketika membership sudah aktif.
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- BACK -->
+
+        <div
+            style="
+                text-align:center;
+                margin-top:25px;
+            "
+        >
+
+            <a
+                href="index.html"
+                style="
+                    color:var(--muted);
+                "
+            >
+                ← Kembali ke Beranda
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer">
+
+
+            <div>
+
+                <div class="brand">
+
+                    <img
+                        src="logo.jpg"
+                        alt="Logo TradeVestor"
+                    >
+
+                    <span>
+                        TRADE<b>VESTOR</b>
+                    </span>
+
+                </div>
+
+
+                <p
+                    style="
+                        margin-top:12px;
+                        max-width:420px;
+                    "
+                >
+
+                    TradeVestor membantu lu
+                    memahami trading secara
+                    bertahap melalui materi
+                    edukasi yang terstruktur.
+
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Belajar
+                </h4>
+
+
+                <a href="candlestick.html">
+                    Candlestick
+                </a>
+
+
+                <a href="indikator.html">
+                    Indikator
+                </a>
+
+
+                <a href="strategi.html">
+                    Strategi
+                </a>
+
+
+                <a href="pembelajaran.html">
+                    Pembelajaran
+                </a>
+
+            </div>
+
+
+
+            <div>
+
+                <h4>
+                    Akun
+                </h4>
+
+
+                <a href="login.html">
+                    Login
+                </a>
+
+
+                <a href="register.html">
+                    Daftar
+                </a>
+
+
+                <a href="premium.html">
+                    Premium
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="copyright">
+
+            © 2026 TradeVestor.
+            Educational content only —
+            bukan ajakan membeli atau menjual aset.
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+/* =====================================================
+   PASSWORD VISIBILITY
+===================================================== */
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+const password =
+    document.getElementById("password");
+
+const confirmPassword =
+    document.getElementById("confirmPassword");
+
+
+if (togglePassword) {
+
+    togglePassword.addEventListener(
+        "click",
+        function () {
+
+            const visible =
+                password.type === "text";
+
+
+            password.type =
+                visible
+                    ? "password"
+                    : "text";
+
+
+            confirmPassword.type =
+                visible
+                    ? "password"
+                    : "text";
+
+
+            togglePassword.textContent =
+                visible
+                    ? "👁"
+                    : "🙈";
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   REGISTER FORM
+===================================================== */
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const registerMessage =
+    document.getElementById("registerMessage");
+
+const registerButton =
+    document.getElementById("registerButton");
+
+
+if (registerForm) {
+
+    registerForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const passwordValue =
+                password.value;
+
+
+            const confirmValue =
+                confirmPassword.value;
+
+
+            /* =========================
+               VALIDASI NAMA
+            ========================= */
+
+            if (name.length < 2) {
+
+                showRegisterMessage(
+                    "Nama minimal 2 karakter.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* =========================
+               VALIDASI EMAIL
+            ========================= */
+
+            if (!email.includes("@")) {
+
+                showRegisterMessage(
+                    "Masukkan email yang valid.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* =========================
+               VALIDASI PASSWORD
+            ========================= */
+
+            if (passwordValue.length < 8) {
+
+                showRegisterMessage(
+                    "Password minimal 8 karakter.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* =========================
+               PASSWORD MATCH
+            ========================= */
+
+            if (passwordValue !== confirmValue) {
+
+                showRegisterMessage(
+                    "Konfirmasi password tidak sama.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /* =========================
+               BACKEND AKAN DIMASUKKAN
+               PADA TAHAP BERIKUTNYA
+            =========================
+            
+            Nantinya form ini akan mengirim:
+
+            {
+                name,
+                email,
+                password
+            }
+
+            ke:
+
+            /api/register
+
+            Password akan diproses
+            di server, bukan disimpan
+            secara langsung di browser.
+            */
+
+
+            registerButton.disabled = true;
+
+            registerButton.textContent =
+                "Membuat akun...";
+
+
+            setTimeout(function () {
+
+                registerButton.disabled = false;
+
+                registerButton.textContent =
+                    "Buat Akun";
+
+
+                showRegisterMessage(
+                    "Form pendaftaran sudah siap. Backend authentication akan kita hubungkan pada tahap berikutnya.",
+                    "success"
+                );
+
+
+            }, 700);
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showRegisterMessage(
+    message,
+    type
+) {
+
+    if (!registerMessage) return;
+
+
+    registerMessage.style.display =
+        "block";
+
+
+    registerMessage.textContent =
+        message;
+
+
+    if (type === "error") {
+
+        registerMessage.style.borderColor =
+            "rgba(255,80,80,.3)";
+
+    } else {
+
+        registerMessage.style.borderColor =
+            "rgba(80,255,160,.3)";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
