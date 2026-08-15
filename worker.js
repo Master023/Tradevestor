@@ -3,14 +3,7 @@ export default {
 
     const url = new URL(request.url);
 
-    /*
-     * =====================================================
-     * API TEST
-     * =====================================================
-     */
-
     if (url.pathname === "/api/test") {
-
       return new Response(
         JSON.stringify({
           success: true,
@@ -23,17 +16,8 @@ export default {
           }
         }
       );
-
     }
 
-
-    /*
-     * =====================================================
-     * STATIC WEBSITE
-     * =====================================================
-     */
-
     return env.ASSETS.fetch(request);
-
   }
 };
