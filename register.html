@@ -2,26 +2,186 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Daftar — TradeVestor</title>
+<title>Daftar — TradeVestor</title>
 
-    <link rel="icon" href="logo.jpg">
-    <link rel="stylesheet" href="css/style.css">
+<meta
+name="description"
+content="Buat akun TradeVestor dan mulai belajar trading."
+>
+
+<link rel="icon" href="logo.jpg">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 460px;
+}
+
+.register-logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.register-logo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.register-logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.register-card {
+    padding: 40px 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-header h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.register-header p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: inherit;
+    outline: none;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    border-color: #8b5cf6;
+}
+
+.password-info {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 7px;
+}
+
+.register-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.register-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.message {
+    display: none;
+    padding: 13px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.message.error {
+    display: block;
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #fca5a5;
+}
+
+.message.success {
+    display: block;
+    background: rgba(34,197,94,0.12);
+    border: 1px solid rgba(34,197,94,0.3);
+    color: #86efac;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--muted);
+}
+
+.register-footer a {
+    color: inherit;
+    font-weight: 600;
+}
+
+.back-home {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<header class="navbar">
+<main class="register-page">
 
-    <div class="container nav-container">
+<div class="register-container">
 
-        <a href="index.html" class="brand">
+    <!-- LOGO -->
+
+    <div class="register-logo">
+
+        <a href="index.html">
 
             <img
                 src="logo.jpg"
-                alt="Logo TradeVestor"
+                alt="TradeVestor"
             >
 
             <span>
@@ -32,193 +192,165 @@
 
     </div>
 
-</header>
+
+    <!-- CARD -->
+
+    <div class="register-card">
+
+        <div class="register-header">
+
+            <h1>
+                Buat Akun
+            </h1>
+
+            <p>
+                Bergabung dengan TradeVestor
+            </p>
+
+        </div>
 
 
-<main>
-
-<section class="section">
-
-    <div class="container">
+        <!-- MESSAGE -->
 
         <div
-            class="card"
-            style="
-                max-width:500px;
-                margin:60px auto;
-            "
-        >
+            id="message"
+            class="message"
+        ></div>
 
-            <div class="section-head">
 
-                <span class="kicker">
-                    TRADEVESTOR
-                </span>
+        <!-- FORM -->
 
-                <h1>
-                    Buat Akun
-                </h1>
+        <form id="registerForm">
 
-                <p>
-                    Bergabung dengan TradeVestor
-                </p>
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Nama
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Masukkan nama"
+                    autocomplete="name"
+                    required
+                >
 
             </div>
 
 
-            <form id="registerForm">
+            <!-- EMAIL -->
 
-                <div style="margin-bottom:18px">
+            <div class="form-group">
 
-                    <label for="name">
-                        Nama
-                    </label>
+                <label for="email">
+                    Email
+                </label>
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Nama lengkap"
-                        required
-                        style="
-                            width:100%;
-                            padding:14px;
-                            margin-top:8px;
-                        "
-                    >
-
-                </div>
-
-
-                <div style="margin-bottom:18px">
-
-                    <label for="email">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="nama@email.com"
-                        required
-                        style="
-                            width:100%;
-                            padding:14px;
-                            margin-top:8px;
-                        "
-                    >
-
-                </div>
-
-
-                <div style="margin-bottom:10px">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Minimal 8 karakter"
-                        minlength="8"
-                        required
-                        style="
-                            width:100%;
-                            padding:14px;
-                            margin-top:8px;
-                        "
-                    >
-
-                </div>
-
-
-                <p
-                    style="
-                        font-size:13px;
-                        color:var(--muted);
-                        margin-bottom:20px;
-                    "
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="nama@email.com"
+                    autocomplete="email"
+                    required
                 >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Minimal 8 karakter"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                >
+
+                <div class="password-info">
                     Password minimal 8 karakter.
-                </p>
+                </div>
+
+            </div>
 
 
-                <div
-                    id="registerMessage"
-                    style="
-                        display:none;
-                        margin-bottom:20px;
-                        padding:14px;
-                        border-radius:10px;
-                    "
-                ></div>
+            <!-- BUTTON -->
 
-
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="registerButton"
-                    style="
-                        width:100%;
-                    "
-                >
-                    Buat Akun
-                </button>
-
-            </form>
-
-
-            <p
-                style="
-                    text-align:center;
-                    margin-top:25px;
-                "
+            <button
+                type="submit"
+                id="registerButton"
+                class="btn btn-primary register-button"
             >
+                Buat Akun
+            </button>
 
-                Sudah punya akun?
-
-                <a href="login.html">
-                    Login di sini
-                </a>
-
-            </p>
+        </form>
 
 
-            <p
-                style="
-                    text-align:center;
-                    margin-top:15px;
-                "
-            >
+        <!-- LOGIN -->
 
-                <a href="index.html">
-                    ← Kembali ke Beranda
-                </a>
+        <div class="register-footer">
 
-            </p>
+            Sudah punya akun?
+
+            <a href="login.html">
+                Login di sini
+            </a>
 
         </div>
 
     </div>
 
-</section>
+
+    <a
+        href="index.html"
+        class="back-home"
+    >
+        ← Kembali ke Beranda
+    </a>
+
+</div>
 
 </main>
 
 
 <script>
 
-const form =
-    document.getElementById("registerForm");
+const API_URL =
+"https://tradevestor.startingfromzero95.workers.dev";
 
-const message =
-    document.getElementById("registerMessage");
+
+const form =
+document.getElementById("registerForm");
 
 const button =
-    document.getElementById("registerButton");
+document.getElementById("registerButton");
+
+const message =
+document.getElementById("message");
+
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+
+}
 
 
 form.addEventListener(
@@ -249,15 +381,25 @@ form.addEventListener(
                 .value;
 
 
+        if (!name || !email || !password) {
+
+            showMessage(
+                "Semua data wajib diisi.",
+                "error"
+            );
+
+            return;
+        }
+
+
         if (password.length < 8) {
 
             showMessage(
                 "Password minimal 8 karakter.",
-                false
+                "error"
             );
 
             return;
-
         }
 
 
@@ -267,11 +409,15 @@ form.addEventListener(
             "Membuat akun...";
 
 
+        message.className =
+            "message";
+
+
         try {
 
             const response =
                 await fetch(
-                    "/api/register",
+                    API_URL + "/api/register",
                     {
                         method: "POST",
 
@@ -293,23 +439,30 @@ form.addEventListener(
                 await response.json();
 
 
-            if (
-                !response.ok ||
-                !data.success
-            ) {
+            if (!response.ok || !data.success) {
 
-                throw new Error(
+                showMessage(
                     data.message ||
-                    "Registrasi gagal."
+                    "Gagal membuat akun.",
+                    "error"
                 );
 
+                button.disabled = false;
+
+                button.textContent =
+                    "Buat Akun";
+
+                return;
             }
 
 
             showMessage(
-                "Akun berhasil dibuat! Mengarahkan ke login...",
-                true
+                "Akun berhasil dibuat. Mengarahkan ke halaman login...",
+                "success"
             );
+
+
+            form.reset();
 
 
             setTimeout(
@@ -325,12 +478,15 @@ form.addEventListener(
 
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "REGISTER ERROR:",
+                error
+            );
+
 
             showMessage(
-                error.message ||
-                "Terjadi kesalahan pada server.",
-                false
+                "Tidak dapat terhubung ke server. Silakan coba lagi.",
+                "error"
             );
 
 
@@ -338,38 +494,10 @@ form.addEventListener(
 
             button.textContent =
                 "Buat Akun";
-
         }
 
     }
 );
-
-
-function showMessage(
-    text,
-    success
-) {
-
-    message.style.display =
-        "block";
-
-    message.textContent =
-        text;
-
-
-    if (success) {
-
-        message.style.border =
-            "1px solid #22c55e";
-
-    } else {
-
-        message.style.border =
-            "1px solid #ef4444";
-
-    }
-
-}
 
 </script>
 
