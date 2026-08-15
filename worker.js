@@ -1,5 +1,6 @@
 export default {
   async fetch(request, env) {
+
     const url = new URL(request.url);
 
     // ==============================
@@ -13,6 +14,7 @@ export default {
       });
     }
 
+
     // ==============================
     // TEST API
     // ==============================
@@ -21,11 +23,14 @@ export default {
       url.pathname === "/api/test" &&
       request.method === "GET"
     ) {
+
       return json({
         success: true,
         message: "API TradeVestor berhasil berjalan."
       });
+
     }
+
 
     // ==============================
     // TEST DATABASE
@@ -35,9 +40,13 @@ export default {
       url.pathname === "/api/test-db" &&
       request.method === "GET"
     ) {
+
       try {
+
         const result = await env.DB
-          .prepare("SELECT COUNT(*) AS total FROM users")
+          .prepare(
+            "SELECT COUNT(*) AS total FROM users"
+          )
           .first();
 
         return json({
@@ -47,13 +56,19 @@ export default {
         });
 
       } catch (error) {
+
+        console.error("TEST DB ERROR:", error);
+
         return json({
           success: false,
           database: "error",
           message: error.message
         }, 500);
+
       }
+
     }
+
 
     // ==============================
     // REGISTER
@@ -63,109 +78,143 @@ export default {
       url.pathname === "/api/register" &&
       request.method === "POST"
     ) {
+
       try {
+
         const body = await request.json();
 
-        const name = String(body.name || "").trim();
+        const name =
+          String(body.name || "").trim();
 
-        const email = String(body.email || "")
-          .trim()
-          .toLowerCase();
+        const email =
+          String(body.email || "")
+            .trim()
+            .toLowerCase();
 
-        const password = String(body.password || "");
+        const password =
+          String(body.password || "");
+
+
+        // VALIDASI
 
         if (!name || !email || !password) {
+
           return json({
             success: false,
             message:
               "Nama, email, dan password wajib diisi."
           }, 400);
+
         }
 
+
         if (password.length < 8) {
+
           return json({
             success: false,
             message:
               "Password minimal 8 karakter."
           }, 400);
+
         }
 
+
         if (!email.includes("@")) {
+
           return json({
             success: false,
             message:
               "Format email tidak valid."
           }, 400);
+
         }
 
-        const existingUser = await env.DB
-          .prepare(
-            `
-            SELECT id
-            FROM users
-            WHERE email = ?
-            LIMIT 1
-            `
-          )
-          .bind(email)
-          .first();
+
+        // CEK EMAIL
+
+        const existingUser =
+          await env.DB
+            .prepare(
+              `
+              SELECT id
+              FROM users
+              WHERE email = ?
+              LIMIT 1
+              `
+            )
+            .bind(email)
+            .first();
+
 
         if (existingUser) {
+
           return json({
             success: false,
             message:
               "Email sudah terdaftar."
           }, 409);
+
         }
+
+
+        // HASH PASSWORD
 
         const passwordHash =
           await hashPassword(password);
 
-        const result = await env.DB
-          .prepare(
-            `
-            INSERT INTO users
-            (
+
+        // INSERT USER
+
+        const result =
+          await env.DB
+            .prepare(
+              `
+              INSERT INTO users
+              (
+                name,
+                email,
+                password_hash,
+                plan,
+                premium_expires_at,
+                created_at,
+                updated_at
+              )
+              VALUES
+              (
+                ?,
+                ?,
+                ?,
+                'free',
+                NULL,
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP
+              )
+              `
+            )
+            .bind(
               name,
               email,
-              password_hash,
-              plan,
-              premium_expires_at,
-              created_at,
-              updated_at
+              passwordHash
             )
-            VALUES
-            (
-              ?,
-              ?,
-              ?,
-              'free',
-              NULL,
-              CURRENT_TIMESTAMP,
-              CURRENT_TIMESTAMP
-            )
-            `
-          )
-          .bind(
-            name,
-            email,
-            passwordHash
-          )
-          .run();
+            .run();
 
-        const id = result.meta.last_row_id;
+
+        const id =
+          result.meta.last_row_id;
+
 
         return json({
           success: true,
           message:
             "Akun berhasil dibuat.",
           user: {
-            id: id,
-            name: name,
-            email: email,
+            id,
+            name,
+            email,
             plan: "free"
           }
         });
+
 
       } catch (error) {
 
@@ -180,8 +229,11 @@ export default {
             "Terjadi kesalahan pada server.",
           error: error.message
         }, 500);
+
       }
+
     }
+
 
     // ==============================
     // LOGIN
@@ -191,116 +243,141 @@ export default {
       url.pathname === "/api/login" &&
       request.method === "POST"
     ) {
+
       try {
 
-        const body = await request.json();
+        const body =
+          await request.json();
 
-        const email = String(body.email || "")
-          .trim()
-          .toLowerCase();
+        const email =
+          String(body.email || "")
+            .trim()
+            .toLowerCase();
 
         const password =
           String(body.password || "");
 
+
         if (!email || !password) {
+
           return json({
             success: false,
             message:
               "Email dan password wajib diisi."
           }, 400);
+
         }
 
-        const user = await env.DB
-          .prepare(
-            `
-            SELECT
-              id,
-              name,
-              email,
-              password_hash,
-              plan,
-              premium_expires_at
-            FROM users
-            WHERE email = ?
-            LIMIT 1
-            `
-          )
-          .bind(email)
-          .first();
+
+        // CARI USER
+
+        const user =
+          await env.DB
+            .prepare(
+              `
+              SELECT
+                id,
+                name,
+                email,
+                password_hash,
+                plan,
+                premium_expires_at
+              FROM users
+              WHERE email = ?
+              LIMIT 1
+              `
+            )
+            .bind(email)
+            .first();
+
 
         if (!user) {
+
           return json({
             success: false,
             message:
               "Email atau password salah."
           }, 401);
+
         }
+
+
+        // CEK PASSWORD
 
         const passwordHash =
           await hashPassword(password);
 
+
         if (
           user.password_hash !== passwordHash
         ) {
+
           return json({
             success: false,
             message:
               "Email atau password salah."
           }, 401);
+
         }
+
 
         // ==============================
         // BUAT SESSION
         // ==============================
 
         const sessionToken =
-          crypto.randomUUID() +
-          "-" +
-          crypto.randomUUID();
+          generateToken();
+
 
         const tokenHash =
           await hashPassword(sessionToken);
 
+
+        // SESSION BERLAKU 7 HARI
+
         const expiresAt =
           new Date(
-            Date.now() + 7 * 24 * 60 * 60 * 1000
+            Date.now() +
+            7 * 24 * 60 * 60 * 1000
           ).toISOString();
+
+
+        // SIMPAN SESSION
 
         await env.DB
           .prepare(
             `
             INSERT INTO sessions
             (
-              user_id,
               token_hash,
+              user_id,
               expires_at
             )
-            VALUES (?, ?, ?)
+            VALUES
+            (?, ?, ?)
             `
           )
           .bind(
-            user.id,
             tokenHash,
+            user.id,
             expiresAt
           )
           .run();
 
-        // ==============================
-        // COOKIE SESSION
-        // ==============================
 
-        const headers = {
-          "Content-Type": "application/json",
-          ...corsHeaders(),
+        // COOKIE
 
-          "Set-Cookie":
-            `tv_session=${sessionToken}; ` +
-            `Path=/; ` +
-            `HttpOnly; ` +
-            `Secure; ` +
-            `SameSite=Lax; ` +
-            `Max-Age=604800`
-        };
+        const headers =
+          new Headers(
+            corsHeaders()
+          );
+
+
+        headers.set(
+          "Set-Cookie",
+          `tv_session=${sessionToken}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800`
+        );
+
 
         return new Response(
           JSON.stringify({
@@ -322,6 +399,7 @@ export default {
           }
         );
 
+
       } catch (error) {
 
         console.error(
@@ -335,70 +413,90 @@ export default {
             "Terjadi kesalahan pada server.",
           error: error.message
         }, 500);
+
       }
+
     }
 
+
     // ==============================
-    // CEK SESSION / USER
+    // GET CURRENT USER
+    // /api/me
     // ==============================
 
     if (
       url.pathname === "/api/me" &&
       request.method === "GET"
     ) {
+
       try {
 
-        const sessionToken =
-          getCookie(
-            request,
-            "tv_session"
+        const cookies =
+          parseCookies(
+            request.headers.get("Cookie")
           );
 
+
+        const sessionToken =
+          cookies.tv_session;
+
+
         if (!sessionToken) {
+
           return json({
             success: false,
-            authenticated: false,
             message:
               "Belum login."
           }, 401);
+
         }
 
-        const tokenHash =
-          await hashPassword(sessionToken);
 
-        const session = await env.DB
-          .prepare(
-            `
-            SELECT
-              sessions.id,
-              sessions.user_id,
-              sessions.expires_at,
-              users.name,
-              users.email,
-              users.plan,
-              users.premium_expires_at
-            FROM sessions
-            INNER JOIN users
-              ON users.id = sessions.user_id
-            WHERE sessions.token_hash = ?
-            LIMIT 1
-            `
-          )
-          .bind(tokenHash)
-          .first();
+        const tokenHash =
+          await hashPassword(
+            sessionToken
+          );
+
+
+        const session =
+          await env.DB
+            .prepare(
+              `
+              SELECT
+                sessions.id,
+                sessions.user_id,
+                sessions.expires_at,
+                users.name,
+                users.email,
+                users.plan,
+                users.premium_expires_at
+              FROM sessions
+              INNER JOIN users
+                ON users.id = sessions.user_id
+              WHERE sessions.token_hash = ?
+              LIMIT 1
+              `
+            )
+            .bind(tokenHash)
+            .first();
+
 
         if (!session) {
+
           return json({
             success: false,
-            authenticated: false,
             message:
               "Session tidak valid."
           }, 401);
+
         }
 
+
+        // CEK EXPIRED
+
         if (
-          new Date(session.expires_at) <=
-          new Date()
+          new Date(session.expires_at)
+          <= new Date()
         ) {
 
           await env.DB
@@ -411,17 +509,18 @@ export default {
             .bind(session.id)
             .run();
 
+
           return json({
             success: false,
-            authenticated: false,
             message:
-              "Session sudah kedaluwarsa."
+              "Session sudah berakhir."
           }, 401);
+
         }
+
 
         return json({
           success: true,
-          authenticated: true,
           user: {
             id: session.user_id,
             name: session.name,
@@ -432,6 +531,7 @@ export default {
           }
         });
 
+
       } catch (error) {
 
         console.error(
@@ -441,13 +541,15 @@ export default {
 
         return json({
           success: false,
-          authenticated: false,
           message:
             "Terjadi kesalahan pada server.",
           error: error.message
         }, 500);
+
       }
+
     }
+
 
     // ==============================
     // LOGOUT
@@ -457,13 +559,18 @@ export default {
       url.pathname === "/api/logout" &&
       request.method === "POST"
     ) {
+
       try {
 
-        const sessionToken =
-          getCookie(
-            request,
-            "tv_session"
+        const cookies =
+          parseCookies(
+            request.headers.get("Cookie")
           );
+
+
+        const sessionToken =
+          cookies.tv_session;
+
 
         if (sessionToken) {
 
@@ -471,6 +578,7 @@ export default {
             await hashPassword(
               sessionToken
             );
+
 
           await env.DB
             .prepare(
@@ -481,7 +589,21 @@ export default {
             )
             .bind(tokenHash)
             .run();
+
         }
+
+
+        const headers =
+          new Headers(
+            corsHeaders()
+          );
+
+
+        headers.set(
+          "Set-Cookie",
+          "tv_session=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0"
+        );
+
 
         return new Response(
           JSON.stringify({
@@ -491,32 +613,29 @@ export default {
           }),
           {
             status: 200,
-            headers: {
-              "Content-Type":
-                "application/json",
-              ...corsHeaders(),
-
-              "Set-Cookie":
-                "tv_session=; " +
-                "Path=/; " +
-                "HttpOnly; " +
-                "Secure; " +
-                "SameSite=Lax; " +
-                "Max-Age=0"
-            }
+            headers
           }
         );
 
+
       } catch (error) {
+
+        console.error(
+          "LOGOUT ERROR:",
+          error
+        );
 
         return json({
           success: false,
           message:
-            "Gagal logout.",
+            "Terjadi kesalahan pada server.",
           error: error.message
         }, 500);
+
       }
+
     }
+
 
     // ==============================
     // 404
@@ -528,28 +647,24 @@ export default {
         "Endpoint tidak ditemukan.",
       path: url.pathname
     }, 404);
+
   }
 };
 
 
 // ==========================================
-// HASH PASSWORD
+// GENERATE RANDOM TOKEN
 // ==========================================
 
-async function hashPassword(password) {
+function generateToken() {
 
-  const data =
-    new TextEncoder().encode(password);
+  const bytes =
+    new Uint8Array(32);
 
-  const hashBuffer =
-    await crypto.subtle.digest(
-      "SHA-256",
-      data
-    );
+  crypto.getRandomValues(bytes);
 
-  return Array.from(
-    new Uint8Array(hashBuffer)
-  )
+  return Array
+    .from(bytes)
     .map(
       byte =>
         byte
@@ -557,38 +672,80 @@ async function hashPassword(password) {
           .padStart(2, "0")
     )
     .join("");
+
 }
 
 
 // ==========================================
-// GET COOKIE
+// HASH
 // ==========================================
 
-function getCookie(request, name) {
+async function hashPassword(password) {
 
-  const cookieHeader =
-    request.headers.get("Cookie");
+  const data =
+    new TextEncoder()
+      .encode(password);
+
+
+  const hashBuffer =
+    await crypto.subtle.digest(
+      "SHA-256",
+      data
+    );
+
+
+  return Array
+    .from(
+      new Uint8Array(hashBuffer)
+    )
+    .map(
+      byte =>
+        byte
+          .toString(16)
+          .padStart(2, "0")
+    )
+    .join("");
+
+}
+
+
+// ==========================================
+// PARSE COOKIES
+// ==========================================
+
+function parseCookies(cookieHeader) {
+
+  const cookies = {};
 
   if (!cookieHeader) {
-    return null;
+    return cookies;
   }
 
-  const cookies =
-    cookieHeader.split(";");
 
-  for (const cookie of cookies) {
+  cookieHeader
+    .split(";")
+    .forEach(
+      cookie => {
 
-    const [key, ...value] =
-      cookie.trim().split("=");
+        const parts =
+          cookie.trim().split("=");
 
-    if (key === name) {
+        const key =
+          parts.shift();
 
-      return value.join("=");
+        const value =
+          parts.join("=");
 
-    }
-  }
+        if (key) {
+          cookies[key] = value;
+        }
 
-  return null;
+      }
+    );
+
+
+  return cookies;
+
 }
 
 
@@ -596,12 +753,15 @@ function getCookie(request, name) {
 // JSON RESPONSE
 // ==========================================
 
-function json(data, status = 200) {
+function json(
+  data,
+  status = 200
+) {
 
   return new Response(
     JSON.stringify(data),
     {
-      status: status,
+      status,
       headers: {
         "Content-Type":
           "application/json",
@@ -609,26 +769,30 @@ function json(data, status = 200) {
       }
     }
   );
+
 }
 
 
 // ==========================================
-// CORS HEADERS
+// CORS
 // ==========================================
 
 function corsHeaders() {
 
   return {
+
+    "Content-Type":
+      "application/json",
+
     "Access-Control-Allow-Origin":
-      "https://tradevestor.startingfromzero95.workers.dev",
+      "*",
 
     "Access-Control-Allow-Headers":
       "Content-Type",
 
     "Access-Control-Allow-Methods":
-      "GET, POST, OPTIONS",
+      "GET, POST, OPTIONS"
 
-    "Access-Control-Allow-Credentials":
-      "true"
   };
+
 }
