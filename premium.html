@@ -3,34 +3,690 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>TradeVestor Premium — Bangun Skill Trading</title>
+    <title>Premium Member — TradeVestor</title>
 
-<meta
-name="description"
-content="TradeVestor Premium — materi trading mendalam, framework analisis, studi kasus, risk management dan pengembangan trading system."
->
+    <meta
+        name="description"
+        content="Dashboard member Premium TradeVestor."
+    >
 
-<meta
-name="theme-color"
-content="#050507"
->
+    <meta
+        name="theme-color"
+        content="#050507"
+    >
 
-<link
-rel="icon"
-href="logo.jpg"
->
+    <link
+        rel="icon"
+        href="logo.jpg"
+    >
 
-<link
-rel="stylesheet"
-href="css/style.css"
->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           AUTH LOADING
+        ===================================================== */
+
+        #authLoading {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 30px;
+
+            text-align: center;
+
+        }
+
+        .loading-card {
+
+            width: 100%;
+
+            max-width: 420px;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.03);
+
+        }
+
+        .loading-spinner {
+
+            width: 42px;
+
+            height: 42px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            border: 3px solid rgba(255,255,255,.1);
+
+            border-top-color: #7657ff;
+
+            animation: spin .8s linear infinite;
+
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =====================================================
+           PREMIUM DASHBOARD
+        ===================================================== */
+
+        #premiumContent {
+
+            display: none;
+
+        }
+
+
+        .member-hero {
+
+            padding: 80px 0 45px;
+
+        }
+
+
+        .member-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.4fr .6fr;
+
+            gap: 25px;
+
+        }
+
+
+        .member-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 32px;
+
+            border-radius: 22px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.02)
+                );
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.25);
+
+        }
+
+
+        .member-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            right: -90px;
+
+            top: -100px;
+
+            border-radius: 50%;
+
+            background: rgba(120,80,255,.12);
+
+            filter: blur(30px);
+
+        }
+
+
+        .member-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 13px;
+
+            border-radius: 999px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.04);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .status-dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #54e38e;
+
+            box-shadow:
+                0 0 12px rgba(84,227,142,.7);
+
+        }
+
+
+        .member-title {
+
+            margin-top: 22px;
+
+            font-size: clamp(32px,5vw,55px);
+
+            line-height: 1.05;
+
+        }
+
+
+        .member-subtitle {
+
+            max-width: 650px;
+
+            margin-top: 18px;
+
+            color: var(--muted);
+
+            line-height: 1.8;
+
+        }
+
+
+        .member-stat-card {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .stat-label {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .stat-value {
+
+            margin-top: 8px;
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+        }
+
+
+        .progress-box {
+
+            margin-top: 25px;
+
+        }
+
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 10px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.08);
+
+        }
+
+
+        .progress-fill {
+
+            width: 11%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7657ff,
+                    #a98bff
+                );
+
+        }
+
+
+        .section-space {
+
+            padding: 55px 0;
+
+        }
+
+
+        .module-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .module-card {
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 330px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.025);
+
+            transition: .25s ease;
+
+        }
+
+
+        .module-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(255,255,255,.16);
+
+        }
+
+
+        .module-card.locked {
+
+            opacity: .65;
+
+        }
+
+
+        .module-number {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.06);
+
+            font-weight: 800;
+
+        }
+
+
+        .module-tag {
+
+            margin-top: 20px;
+
+            display: inline-flex;
+
+            width: fit-content;
+
+            padding: 6px 10px;
+
+            border-radius: 7px;
+
+            background: rgba(255,255,255,.05);
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+        }
+
+
+        .module-card h3 {
+
+            margin-top: 14px;
+
+            font-size: 21px;
+
+        }
+
+
+        .module-card p {
+
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+        }
+
+
+        .module-footer {
+
+            margin-top: auto;
+
+            padding-top: 20px;
+
+        }
+
+
+        .module-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+        }
+
+
+        .module-progress {
+
+            height: 6px;
+
+            width: 100%;
+
+            border-radius: 999px;
+
+            overflow: hidden;
+
+            background: rgba(255,255,255,.07);
+
+        }
+
+
+        .module-progress span {
+
+            display: block;
+
+            height: 100%;
+
+            width: 100%;
+
+            background: #7657ff;
+
+        }
+
+
+        .locked-progress span {
+
+            width: 0;
+
+        }
+
+
+        .module-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 12px 15px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: rgba(255,255,255,.04);
+
+            color: inherit;
+
+        }
+
+
+        .module-btn.primary {
+
+            background: #7657ff;
+
+            border-color: #7657ff;
+
+            color: white;
+
+        }
+
+
+        .module-btn.disabled {
+
+            opacity: .55;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .quick-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 16px;
+
+        }
+
+
+        .quick-card {
+
+            padding: 22px;
+
+            border-radius: 17px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.025);
+
+        }
+
+
+        .quick-card strong {
+
+            display: block;
+
+        }
+
+
+        .quick-card span {
+
+            display: block;
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .member-notice {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.025);
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+        }
+
+
+        .logout-btn {
+
+            border: 0;
+
+            cursor: pointer;
+
+            font: inherit;
+
+        }
+
+
+        @media(max-width:900px) {
+
+            .member-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .module-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+            .quick-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .member-hero {
+
+                padding: 55px 0 30px;
+
+            }
+
+            .member-card {
+
+                padding: 23px;
+
+            }
+
+            .module-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .quick-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .member-title {
+
+                font-size: 35px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -39,1753 +695,1045 @@ href="css/style.css"
 
 
 <!-- =====================================================
-     NAVBAR
+     LOADING
 ===================================================== -->
+
+<div id="authLoading">
+
+    <div class="loading-card">
+
+        <div class="loading-spinner"></div>
+
+        <h2>
+            Memeriksa akses...
+        </h2>
+
+        <p
+            style="
+            margin-top:10px;
+            color:var(--muted);
+            "
+        >
+            Tunggu sebentar.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PREMIUM CONTENT
+===================================================== -->
+
+<div id="premiumContent">
+
 
 <header>
 
-<div class="container nav">
+    <div class="container nav">
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+
+            <img
+                src="logo.jpg"
+                alt="TradeVestor"
+            >
+
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
+
+        </a>
 
 
-<a
-class="brand"
-href="index.html"
->
-
-<img
-src="logo.jpg"
-alt="Logo TradeVestor"
->
-
-<span>
-TRADE<b>VESTOR</b>
-</span>
-
-</a>
+        <button
+            class="menu"
+            id="menuBtn"
+            aria-label="Buka menu"
+        >
+            ☰
+        </button>
 
 
-<button
-class="menu"
-id="menuBtn"
-aria-label="Buka menu"
->
-☰
-</button>
+        <nav>
 
+            <ul
+                class="navlinks"
+                id="navLinks"
+            >
 
-<nav>
+                <li>
+                    <a href="index.html">
+                        Beranda
+                    </a>
+                </li>
 
-<ul class="navlinks">
+                <li>
+                    <a href="candlestick.html">
+                        Candlestick
+                    </a>
+                </li>
 
+                <li>
+                    <a href="indikator.html">
+                        Indikator
+                    </a>
+                </li>
 
-<li>
+                <li>
+                    <a href="strategi.html">
+                        Strategi
+                    </a>
+                </li>
 
-<a href="index.html">
-Beranda
-</a>
+                <li>
+                    <a href="pembelajaran.html">
+                        Pembelajaran
+                    </a>
+                </li>
 
-</li>
+                <li>
+                    <a
+                        href="premium-member.html"
+                        class="active"
+                    >
+                        Premium
+                    </a>
+                </li>
 
+                <li>
+                    <a href="tentang.html">
+                        Tentang
+                    </a>
+                </li>
 
-<li>
+                <li>
 
-<a href="candlestick.html">
-Candlestick
-</a>
+                    <button
+                        id="logoutButton"
+                        class="module-btn logout-btn"
+                    >
+                        Logout
+                    </button>
 
-</li>
+                </li>
 
+            </ul>
 
-<li>
+        </nav>
 
-<a href="indikator.html">
-Indikator
-</a>
-
-</li>
-
-
-<li>
-
-<a href="strategi.html">
-Strategi
-</a>
-
-</li>
-
-
-<li>
-
-<a href="pembelajaran.html">
-Pembelajaran
-</a>
-
-</li>
-
-
-<li>
-
-<a
-href="premium.html"
-class="active"
->
-Premium
-</a>
-
-</li>
-
-
-<li>
-
-<a href="tentang.html">
-Tentang
-</a>
-
-</li>
-
-
-<li>
-
-<a
-href="#akses-premium"
-class="nav-cta"
->
-Akses Premium
-</a>
-
-</li>
-
-
-</ul>
-
-</nav>
-
-</div>
+    </div>
 
 </header>
 
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
-
 
 
 <!-- =====================================================
      HERO
 ===================================================== -->
 
-<section class="hero">
+<section class="member-hero">
 
-<div class="container hero-grid">
+    <div class="container">
 
+        <div class="member-grid">
 
-<div class="reveal">
 
+            <div class="member-card">
 
-<span class="eyebrow">
+                <span class="member-badge">
 
-<span class="dot"></span>
+                    <span class="status-dot"></span>
 
-TRADEVESTOR PREMIUM
+                    PREMIUM MEMBER • AKTIF
 
-</span>
+                </span>
 
 
-<h1>
+                <h1 class="member-title">
 
-Jangan Cuma Tahu Trading.
+                    Selamat datang
+                    di
 
-<span class="gradient">
+                    <span class="gradient">
+                        TradeVestor Premium.
+                    </span>
 
-Belajar Memahaminya.
+                </h1>
 
-</span>
 
-</h1>
+                <p
+                    class="member-subtitle"
+                    id="welcomeText"
+                >
+                    Memuat data member...
+                </p>
 
 
-<p class="lead">
+                <div class="actions">
 
-Materi gratis TradeVestor membantu lu
-membangun fondasi.
+                    <a
+                        href="premium-market-structure.html"
+                        class="btn btn-primary"
+                    >
+                        Lanjut Belajar →
+                    </a>
 
-Premium dibuat untuk membawa
-pemahaman itu lebih jauh:
+                    <a
+                        href="#library"
+                        class="btn btn-secondary"
+                    >
+                        Lihat Library
+                    </a>
 
-mulai dari membaca struktur market,
-menyusun analisis, membangun trading
-framework, mengelola risiko sampai
-mengevaluasi keputusan trading.
+                </div>
 
-</p>
 
+                <div class="member-notice">
 
+                    <strong>
+                        💎 Membership Premium
+                    </strong>
 
-<div class="actions">
+                    <br>
 
+                    Akses Premium lu sedang aktif.
 
-<a
-class="btn btn-primary"
-href="#materi-premium"
->
+                    Gunakan materi untuk membangun
+                    cara berpikir dan sistem trading
+                    yang bisa diuji.
 
-Lihat Materi Premium ↓
+                </div>
 
-</a>
+            </div>
 
 
-<a
-class="btn btn-secondary"
-href="pembelajaran.html"
->
 
-Mulai dari Gratis
+            <div class="member-card member-stat-card">
 
-</a>
+                <div>
 
+                    <span class="stat-label">
+                        MEMBER
+                    </span>
 
-</div>
+                    <div
+                        class="stat-value"
+                        id="memberName"
+                    >
+                        —
+                    </div>
 
+                </div>
 
 
-<div
-class="notice"
-style="margin-top:22px"
->
+                <div>
 
-<strong>
-Rp35.000 / bulan
-</strong>
+                    <span class="stat-label">
+                        PAKET
+                    </span>
 
-<br>
+                    <div class="stat-value">
+                        PREMIUM
+                    </div>
 
-Akses materi Premium untuk
-mengembangkan kemampuan analisis
-dan sistem trading.
+                </div>
 
-</div>
 
+                <div>
 
-</div>
+                    <span class="stat-label">
+                        STATUS
+                    </span>
 
+                    <div class="stat-value">
+                        AKTIF
+                    </div>
 
+                </div>
 
-<!-- =====================================================
-     PREMIUM CARD
-===================================================== -->
 
-<div class="hero-card reveal">
+                <div>
 
+                    <span class="stat-label">
+                        BERAKHIR
+                    </span>
 
-<div class="chart-wrap">
+                    <div
+                        class="stat-value"
+                        id="premiumExpiry"
+                        style="font-size:18px"
+                    >
+                        —
+                    </div>
 
+                </div>
 
-<div class="chart-grid"></div>
+            </div>
 
 
-<div class="chart-badge">
+        </div>
 
-TRADEVESTOR • PREMIUM
 
-</div>
+        <div class="member-card progress-box">
 
+            <div class="progress-header">
 
-<div
-style="
-position:relative;
-z-index:2;
-padding:30px 25px;
-"
->
+                <span>
+                    Progress Pembelajaran
+                </span>
 
+                <span>
+                    11%
+                </span>
 
-<div class="mini">
+            </div>
 
-<strong>
-01
-</strong>
 
-<span>
-Advanced Analysis
-</span>
+            <div class="progress-bar">
 
-</div>
+                <div class="progress-fill"></div>
 
+            </div>
 
-<div class="mini">
 
-<strong>
-02
-</strong>
+            <p
+                style="
+                margin-top:12px;
+                color:var(--muted);
+                font-size:13px;
+                "
+            >
+                1 dari 9 modul tersedia.
+            </p>
 
-<span>
-Trading Framework
-</span>
+        </div>
 
-</div>
-
-
-<div class="mini">
-
-<strong>
-03
-</strong>
-
-<span>
-Risk Management
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-04
-</strong>
-
-<span>
-Case Study
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-05
-</strong>
-
-<span>
-Trading Psychology
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<div class="statbar">
-
-
-<div class="mini">
-
-<strong>
-35K
-</strong>
-
-<span>
-Per Bulan
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-ADV
-</strong>
-
-<span>
-Materi Lanjutan
-</span>
-
-</div>
-
-
-<div class="mini">
-
-<strong>
-LOCK
-</strong>
-
-<span>
-Member Only
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     VALUE
+     CONTINUE
 ===================================================== -->
 
-<section class="section">
+<section class="section-space">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-head">
 
-<div class="section-head">
+            <span class="kicker">
+                CONTINUE LEARNING
+            </span>
 
+            <h2>
+                Lanjutkan pembelajaran lu.
+            </h2>
 
-<span class="kicker">
-PREMIUM
-</span>
+            <p>
+                Mulai dari Market Structure,
+                kemudian lanjutkan ke analisis
+                multi-timeframe dan risk management.
+            </p>
 
-
-<h2>
-
-Trading bukan tentang
-mengetahui semuanya.
-
-</h2>
-
-
-<p>
-
-Yang penting adalah memahami
-informasi mana yang relevan,
-mengapa sebuah keputusan diambil,
-berapa risiko yang ditanggung,
-dan kapan harus tidak mengambil posisi.
-
-</p>
+        </div>
 
 
-</div>
+        <div class="member-card">
+
+            <span class="module-tag">
+                MODULE 01
+            </span>
 
 
-
-<div class="grid-3">
-
-
-<div class="card">
-
-
-<div class="icon">
-01
-</div>
+            <h3
+                style="
+                margin-top:14px;
+                font-size:25px;
+                "
+            >
+                Advanced Market Structure
+            </h3>
 
 
-<h3>
-Berpikir Terstruktur
-</h3>
+            <p
+                style="
+                margin-top:8px;
+                color:var(--muted);
+                "
+            >
+                Pelajari struktur pergerakan harga,
+                trend, BOS, CHOCH, liquidity
+                dan market context.
+            </p>
 
 
-<p>
-
-Belajar menyusun informasi market
-menjadi sebuah kerangka analisis
-yang lebih jelas.
-
-</p>
-
-
-</div>
+            <a
+                href="premium-market-structure.html"
+                class="btn btn-primary"
+                style="margin-top:20px"
+            >
+                Lanjut Belajar →
+            </a>
 
 
+            <div
+                class="module-progress"
+                style="margin-top:25px"
+            >
 
-<div class="card">
+                <span></span>
 
+            </div>
 
-<div class="icon">
-02
-</div>
+        </div>
 
-
-<h3>
-Membuat Keputusan
-</h3>
-
-
-<p>
-
-Tidak sekadar mencari sinyal,
-tetapi memahami alasan di balik
-sebuah setup.
-
-</p>
-
-
-</div>
-
-
-
-<div class="card">
-
-
-<div class="icon">
-03
-</div>
-
-
-<h3>
-Membangun Sistem
-</h3>
-
-
-<p>
-
-Mulai membangun aturan trading
-yang bisa diuji, dicatat
-dan dievaluasi.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     MATERI PREMIUM
+     LIBRARY
 ===================================================== -->
 
 <section
-class="section"
-id="materi-premium"
+    class="section-space"
+    id="library"
 >
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-head">
 
-<div class="section-head">
+            <span class="kicker">
+                PREMIUM LIBRARY
+            </span>
 
+            <h2>
+                Semua materi Premium.
+            </h2>
 
-<span class="kicker">
-PREMIUM LIBRARY
-</span>
+            <p>
+                Pilih modul yang ingin lu pelajari.
+            </p>
 
+        </div>
 
-<h2>
 
-Materi yang akan lu dapatkan
+        <div class="module-grid">
 
-</h2>
 
+            <article class="module-card">
 
-<p>
+                <div class="module-number">
+                    01
+                </div>
 
-Setiap materi Premium dirancang
-untuk membahas topik lebih dalam
-dibanding materi dasar.
+                <span class="module-tag">
+                    AVAILABLE
+                </span>
 
-Preview dapat dilihat,
-sedangkan pembahasan lengkap
-khusus member Premium.
+                <h3>
+                    Advanced Market Structure
+                </h3>
 
-</p>
+                <p>
+                    Memahami swing, HH, HL, LH,
+                    LL, trend, BOS, CHOCH,
+                    liquidity dan konteks market.
+                </p>
 
 
-</div>
+                <div class="module-footer">
 
+                    <div class="module-meta">
 
+                        <span>
+                            20 Bab
+                        </span>
 
-<div class="grid-3">
+                        <span>
+                            Tersedia
+                        </span>
 
+                    </div>
 
-<!-- PREMIUM 01 -->
 
-<div class="card">
+                    <div class="module-progress">
 
-<span class="tag">
-PREMIUM 01
-</span>
+                        <span></span>
 
+                    </div>
 
-<div class="icon">
-◆
-</div>
 
+                    <a
+                        href="premium-market-structure.html"
+                        class="module-btn primary"
+                    >
+                        Buka Materi →
+                    </a>
 
-<h3>
-Advanced Market Structure
-</h3>
+                </div>
 
+            </article>
 
-<p>
 
-Memahami bagaimana struktur market
-terbentuk, berubah dan memberikan
-konteks terhadap pergerakan harga.
 
-</p>
+            <article class="module-card locked">
 
+                <div class="module-number">
+                    02
+                </div>
 
-<div class="notice">
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-🔒 Member Premium
+                <h3>
+                    Multi-Timeframe Analysis
+                </h3>
 
-</div>
+                <p>
+                    Membaca market dari timeframe
+                    besar ke timeframe kecil.
+                </p>
 
+                <div class="module-footer">
 
-<div class="actions">
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
-Buka Materi
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-</a>
+                </div>
 
-</div>
+            </article>
 
-</div>
 
 
+            <article class="module-card locked">
 
-<!-- PREMIUM 02 -->
+                <div class="module-number">
+                    03
+                </div>
 
-<div class="card">
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-<span class="tag">
-PREMIUM 02
-</span>
+                <h3>
+                    Advanced Risk Management
+                </h3>
 
+                <p>
+                    Position sizing, risk per trade,
+                    R:R, drawdown dan expectancy.
+                </p>
 
-<div class="icon">
-◆
-</div>
+                <div class="module-footer">
 
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-<h3>
-Multi-Timeframe Analysis
-</h3>
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-<p>
+                </div>
 
-Belajar menghubungkan timeframe
-besar dengan timeframe kecil
-sebelum mengambil keputusan.
+            </article>
 
-</p>
 
 
-<div class="notice">
+            <article class="module-card locked">
 
-🔒 Member Premium
+                <div class="module-number">
+                    04
+                </div>
 
-</div>
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
+                <h3>
+                    Trading Framework
+                </h3>
 
-<div class="actions">
+                <p>
+                    Mengubah analisis menjadi proses
+                    pengambilan keputusan yang sistematis.
+                </p>
 
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
+                <div class="module-footer">
 
-Buka Materi
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-</a>
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
-</div>
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-</div>
+                </div>
 
+            </article>
 
 
-<!-- PREMIUM 03 -->
 
-<div class="card">
+            <article class="module-card locked">
 
-<span class="tag">
-PREMIUM 03
-</span>
+                <div class="module-number">
+                    05
+                </div>
 
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-<div class="icon">
-◆
-</div>
+                <h3>
+                    Confluence Analysis
+                </h3>
 
+                <p>
+                    Menggabungkan market structure,
+                    level harga, momentum dan faktor lain.
+                </p>
 
-<h3>
-Trading Framework
-</h3>
+                <div class="module-footer">
 
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-<p>
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
-Kerangka berpikir untuk membantu
-mengubah market analysis menjadi
-proses yang lebih sistematis.
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-</p>
+                </div>
 
+            </article>
 
-<div class="notice">
 
-🔒 Member Premium
 
-</div>
+            <article class="module-card locked">
 
+                <div class="module-number">
+                    06
+                </div>
 
-<div class="actions">
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
+                <h3>
+                    Backtesting Framework
+                </h3>
 
-Buka Materi
+                <p>
+                    Menguji strategi menggunakan
+                    data historis secara objektif.
+                </p>
 
-</a>
+                <div class="module-footer">
 
-</div>
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-</div>
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
+                </div>
 
-<!-- PREMIUM 04 -->
+            </article>
 
-<div class="card">
 
-<span class="tag">
-PREMIUM 04
-</span>
 
+            <article class="module-card locked">
 
-<div class="icon">
-◆
-</div>
+                <div class="module-number">
+                    07
+                </div>
 
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-<h3>
-Confluence Analysis
-</h3>
+                <h3>
+                    Entry & Exit Framework
+                </h3>
 
+                <p>
+                    Menyusun aturan entry,
+                    invalidation, Stop Loss dan Take Profit.
+                </p>
 
-<p>
+                <div class="module-footer">
 
-Belajar menggabungkan beberapa
-faktor analisis tanpa membuat
-chart menjadi terlalu rumit.
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-</p>
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-<div class="notice">
+                </div>
 
-🔒 Member Premium
+            </article>
 
-</div>
 
 
-<div class="actions">
+            <article class="module-card locked">
 
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
+                <div class="module-number">
+                    08
+                </div>
 
-Buka Materi
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-</a>
+                <h3>
+                    Trading Psychology
+                </h3>
 
-</div>
+                <p>
+                    Memahami emosi, bias, disiplin
+                    dan kebiasaan trader.
+                </p>
 
-</div>
+                <div class="module-footer">
 
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
-<!-- PREMIUM 05 -->
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-<div class="card">
+                </div>
 
-<span class="tag">
-PREMIUM 05
-</span>
+            </article>
 
 
-<div class="icon">
-◆
-</div>
 
+            <article class="module-card locked">
 
-<h3>
-Advanced Risk Management
-</h3>
+                <div class="module-number">
+                    09
+                </div>
 
+                <span class="module-tag">
+                    COMING SOON
+                </span>
 
-<p>
+                <h3>
+                    Trading Journal
+                </h3>
 
-Membangun sistem pengelolaan risiko
-yang lebih terukur untuk menjaga
-modal dalam jangka panjang.
+                <p>
+                    Membuat jurnal trading,
+                    mengevaluasi keputusan dan
+                    menemukan kesalahan.
+                </p>
 
-</p>
+                <div class="module-footer">
 
+                    <div class="module-meta">
+                        <span>Coming Soon</span>
+                        <span>🔒</span>
+                    </div>
 
-<div class="notice">
+                    <div
+                        class="module-progress locked-progress"
+                    >
+                        <span></span>
+                    </div>
 
-🔒 Member Premium
+                    <button
+                        class="module-btn disabled"
+                        disabled
+                    >
+                        🔒 Segera Hadir
+                    </button>
 
-</div>
+                </div>
 
+            </article>
 
-<div class="actions">
 
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
+        </div>
 
-Buka Materi
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- PREMIUM 06 -->
-
-<div class="card">
-
-<span class="tag">
-PREMIUM 06
-</span>
-
-
-<div class="icon">
-◆
-</div>
-
-
-<h3>
-Trading Journal
-</h3>
-
-
-<p>
-
-Belajar mencatat transaksi,
-menganalisis kesalahan dan
-menemukan pola dari aktivitas
-trading sendiri.
-
-</p>
-
-
-<div class="notice">
-
-🔒 Member Premium
-
-</div>
-
-
-<div class="actions">
-
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
-
-Buka Materi
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- PREMIUM 07 -->
-
-<div class="card">
-
-<span class="tag">
-PREMIUM 07
-</span>
-
-
-<div class="icon">
-◆
-</div>
-
-
-<h3>
-Backtesting Framework
-</h3>
-
-
-<p>
-
-Belajar menguji sebuah strategi
-menggunakan data historis sebelum
-digunakan pada kondisi market nyata.
-
-</p>
-
-
-<div class="notice">
-
-🔒 Member Premium
-
-</div>
-
-
-<div class="actions">
-
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
-
-Buka Materi
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- PREMIUM 08 -->
-
-<div class="card">
-
-<span class="tag">
-PREMIUM 08
-</span>
-
-
-<div class="icon">
-◆
-</div>
-
-
-<h3>
-Entry & Exit Framework
-</h3>
-
-
-<p>
-
-Menyusun aturan entry,
-invalidation, Stop Loss dan
-Take Profit secara lebih sistematis.
-
-</p>
-
-
-<div class="notice">
-
-🔒 Member Premium
-
-</div>
-
-
-<div class="actions">
-
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
-
-Buka Materi
-
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- PREMIUM 09 -->
-
-<div class="card">
-
-<span class="tag">
-PREMIUM 09
-</span>
-
-
-<div class="icon">
-◆
-</div>
-
-
-<h3>
-Trading Psychology
-</h3>
-
-
-<p>
-
-Memahami bagaimana emosi,
-bias dan kebiasaan dapat
-mempengaruhi keputusan trading.
-
-</p>
-
-
-<div class="notice">
-
-🔒 Member Premium
-
-</div>
-
-
-<div class="actions">
-
-<a
-href="#akses-premium"
-class="btn btn-secondary"
->
-
-Buka Materi
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     FREE VS PREMIUM
+     QUICK ACCESS
 ===================================================== -->
 
-<section class="section">
+<section class="section-space">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-head">
 
-<div class="section-head">
+            <span class="kicker">
+                QUICK ACCESS
+            </span>
 
+            <h2>
+                Tools pembelajaran.
+            </h2>
 
-<span class="kicker">
-FREE VS PREMIUM
-</span>
+        </div>
 
 
-<h2>
+        <div class="quick-grid">
 
-Mulai gratis.
-Naik level ketika lu siap.
 
-</h2>
+            <div class="quick-card">
 
+                <strong>
+                    📚 Materi Gratis
+                </strong>
 
-</div>
+                <span>
+                    Kembali ke materi dasar TradeVestor.
+                </span>
 
+                <a
+                    href="pembelajaran.html"
+                    class="module-btn"
+                >
+                    Buka
+                </a>
 
+            </div>
 
-<div class="grid-3">
 
+            <div class="quick-card">
 
-<div class="card">
+                <strong>
+                    🕯 Candlestick
+                </strong>
 
+                <span>
+                    Pelajari bahasa dasar pergerakan harga.
+                </span>
 
-<span class="tag">
-FREE
-</span>
+                <a
+                    href="candlestick.html"
+                    class="module-btn"
+                >
+                    Buka
+                </a>
 
+            </div>
 
-<h3>
-Materi Dasar
-</h3>
 
+            <div class="quick-card">
 
-<p>
+                <strong>
+                    📊 Indikator
+                </strong>
 
-Untuk membangun fondasi
-sebelum masuk ke materi
-yang lebih kompleks.
+                <span>
+                    Pelajari indikator teknikal.
+                </span>
 
-</p>
+                <a
+                    href="indikator.html"
+                    class="module-btn"
+                >
+                    Buka
+                </a>
 
+            </div>
 
-<p>
-✓ Candlestick
-</p>
 
+            <div class="quick-card">
 
-<p>
-✓ Indikator dasar
-</p>
+                <strong>
+                    🧠 Strategi
+                </strong>
 
+                <span>
+                    Pelajari konsep strategi trading.
+                </span>
 
-<p>
-✓ Strategi dasar
-</p>
+                <a
+                    href="strategi.html"
+                    class="module-btn"
+                >
+                    Buka
+                </a>
 
+            </div>
 
-<p>
-✓ Risk management dasar
-</p>
 
+        </div>
 
-<p>
-✓ Roadmap pembelajaran
-</p>
-
-
-<div class="actions">
-
-
-<a
-href="candlestick.html"
-class="btn btn-secondary"
->
-
-Mulai Gratis
-
-</a>
-
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-
-<span class="tag">
-PREMIUM
-</span>
-
-
-<h3>
-Materi Mendalam
-</h3>
-
-
-<p>
-
-Untuk lu yang ingin memahami
-trading lebih jauh dan mulai
-membangun sistem sendiri.
-
-</p>
-
-
-<p>
-✓ Advanced analysis
-</p>
-
-
-<p>
-✓ Market structure
-</p>
-
-
-<p>
-✓ Multi-timeframe
-</p>
-
-
-<p>
-✓ Trading framework
-</p>
-
-
-<p>
-✓ Backtesting
-</p>
-
-
-<p>
-✓ Trading psychology
-</p>
-
-
-</div>
-
-
-
-<div class="card">
-
-
-<span class="tag">
-TUJUAN
-</span>
-
-
-<h3>
-Skill > Sinyal
-</h3>
-
-
-<p>
-
-Tujuan TradeVestor bukan membuat
-lu bergantung pada sinyal.
-
-Tujuannya adalah membantu lu
-memahami alasan di balik
-sebuah keputusan trading.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     CARA BERLANGGANAN
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="section-head">
-
-
-<span class="kicker">
-CARA BERLANGGANAN
-</span>
-
-
-<h2>
-
-Akses Premium dibuat sederhana.
-
-</h2>
-
-
-<p>
-
-Ikuti beberapa langkah berikut
-untuk mendapatkan akses Premium.
-
-</p>
-
-
-</div>
-
-
-
-<div class="grid-4">
-
-
-<div class="card">
-
-
-<div class="icon">
-01
-</div>
-
-
-<h3>
-Buat Akun
-</h3>
-
-
-<p>
-
-Daftar menggunakan email
-untuk membuat akun TradeVestor.
-
-</p>
-
-
-</div>
-
-
-
-<div class="card">
-
-
-<div class="icon">
-02
-</div>
-
-
-<h3>
-Pilih Premium
-</h3>
-
-
-<p>
-
-Pilih membership Premium
-seharga Rp35.000 per bulan.
-
-</p>
-
-
-</div>
-
-
-
-<div class="card">
-
-
-<div class="icon">
-03
-</div>
-
-
-<h3>
-Lakukan Pembayaran
-</h3>
-
-
-<p>
-
-Ikuti instruksi pembayaran
-yang diberikan TradeVestor.
-
-</p>
-
-
-</div>
-
-
-
-<div class="card">
-
-
-<div class="icon">
-04
-</div>
-
-
-<h3>
-Konfirmasi Pembayaran
-</h3>
-
-
-<p>
-
-Kirim bukti pembayaran.
-Setelah pembayaran diverifikasi,
-akses Premium akan diberikan.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-</div>
+<section class="section-space">
+
+    <div class="container">
+
+        <div class="member-card">
+
+            <span class="kicker">
+                TRADEVESTOR PHILOSOPHY
+            </span>
+
+            <h2 style="margin-top:12px">
+                Skill > Sinyal.
+            </h2>
+
+            <p
+                style="
+                max-width:750px;
+                margin-top:15px;
+                color:var(--muted);
+                line-height:1.8;
+                "
+            >
+                Tujuan Premium TradeVestor bukan membuat
+                lu bergantung pada sinyal Buy atau Sell.
+
+                Tujuannya adalah membantu lu memahami
+                bagaimana market bekerja, menyusun analisis,
+                mengelola risiko dan mengevaluasi keputusan
+                sendiri.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     PRICING
-===================================================== -->
+<section class="section-space">
 
-<section
-class="section"
-id="akses-premium"
->
+    <div class="container">
 
-<div class="container">
+        <div class="member-notice">
 
+            <strong>
+                ⚠️ Educational Disclaimer
+            </strong>
 
-<div
-class="card"
-style="
-text-align:center;
-padding:65px 25px;
-"
->
+            <br>
 
+            Seluruh materi TradeVestor Premium ditujukan
+            untuk edukasi.
 
-<span class="kicker">
-TRADEVESTOR PREMIUM
-</span>
+            Trading memiliki risiko kehilangan sebagian
+            atau seluruh modal.
 
+            Tidak ada strategi, indikator, framework atau
+            materi edukasi yang menjamin keuntungan.
 
-<h2>
+        </div>
 
-Rp35.000
-
-<span
-style="
-font-size:.45em;
-opacity:.7;
-"
->
-
-/ bulan
-
-</span>
-
-</h2>
-
-
-<p
-style="
-max-width:650px;
-margin:0 auto;
-color:var(--muted);
-"
->
-
-Satu membership untuk mengakses
-materi trading Premium TradeVestor
-yang lebih mendalam.
-
-</p>
-
-
-
-<div
-class="grid-3"
-style="
-margin-top:35px;
-text-align:left;
-"
->
-
-
-<div>
-✓ Advanced Market Structure
-</div>
-
-
-<div>
-✓ Multi-Timeframe Analysis
-</div>
-
-
-<div>
-✓ Trading Framework
-</div>
-
-
-<div>
-✓ Risk Management
-</div>
-
-
-<div>
-✓ Backtesting
-</div>
-
-
-<div>
-✓ Trading Psychology
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     PAYMENT INFO
-===================================================== -->
-
-<div
-class="notice"
-style="
-max-width:700px;
-margin:40px auto 25px;
-text-align:left;
-"
->
-
-
-<strong>
-🔐 CARA MENDAPATKAN PREMIUM
-</strong>
-
-
-<br><br>
-
-
-<strong>
-Langkah 1 — Buat akun
-</strong>
-
-
-<br>
-
-Klik tombol
-<strong>
-"Daftar / Login"
-</strong>
-di bawah.
-
-<br><br>
-
-
-<strong>
-Langkah 2 — Pembayaran
-</strong>
-
-
-<br>
-
-Setelah memiliki akun,
-ikuti instruksi pembayaran
-sebesar:
-
-<br><br>
-
-
-<strong
-style="
-font-size:1.3rem;
-"
->
-
-Rp35.000 / bulan
-
-</strong>
-
-
-<br><br>
-
-
-<strong>
-Langkah 3 — Konfirmasi
-</strong>
-
-
-<br>
-
-Setelah melakukan pembayaran,
-kirim bukti pembayaran melalui
-WhatsApp TradeVestor.
-
-<br><br>
-
-
-<strong>
-Langkah 4 — Aktivasi
-</strong>
-
-
-<br>
-
-Pembayaran akan diperiksa
-secara manual.
-
-Setelah pembayaran valid,
-akses Premium akan diaktifkan.
-
-</div>
-
-
-
-<!-- =====================================================
-     BUTTON LOGIN
-===================================================== -->
-
-<div
-class="actions"
-style="
-justify-content:center;
-"
->
-
-
-<a
-href="login.html"
-class="btn btn-primary"
->
-
-🔐 Daftar / Login Premium →
-
-</a>
-
-
-<a
-href="https://wa.me/6285872061255?text=Halo%20TradeVestor%2C%20saya%20ingin%20berlangganan%20Premium%20Rp35.000%20per%20bulan.%20Mohon%20informasi%20cara%20pembayaran."
-target="_blank"
-class="btn btn-secondary"
->
-
-💬 Tanya Pembayaran
-
-</a>
-
-
-</div>
-
-
-<p
-style="
-margin-top:20px;
-color:var(--muted);
-font-size:.9rem;
-"
->
-
-Setelah pembayaran dilakukan,
-jangan lupa mengirim bukti pembayaran
-agar akun dapat diverifikasi.
-
-</p>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MEMBER LOGIN
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div
-class="card"
-style="
-text-align:center;
-padding:50px 25px;
-"
->
-
-
-<span class="kicker">
-SUDAH MEMBER?
-</span>
-
-
-<h2>
-
-Sudah membayar Premium?
-
-</h2>
-
-
-<p
-style="
-max-width:600px;
-margin:0 auto;
-color:var(--muted);
-"
->
-
-Jika pembayaran lu sudah
-dikonfirmasi oleh TradeVestor,
-login untuk mengakses area
-Premium.
-
-</p>
-
-
-<div
-class="actions"
-style="
-justify-content:center;
-margin-top:25px;
-"
->
-
-
-<a
-href="login.html"
-class="btn btn-primary"
->
-
-Login Member →
-
-</a>
-
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     DISCLAIMER
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="notice">
-
-
-<strong>
-⚠️ Risiko Trading
-</strong>
-
-
-<p>
-
-Trading memiliki risiko kehilangan
-sebagian atau seluruh modal.
-
-Tidak ada strategi, indikator,
-framework atau materi edukasi
-yang dapat menjamin keuntungan.
-
-TradeVestor menyediakan materi
-untuk tujuan edukasi dan
-pengembangan kemampuan.
-
-</p>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1794,148 +1742,98 @@ pengembangan kemampuan.
 
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
 
-<div class="container">
+    <div class="container">
+
+        <div class="footer">
+
+            <div>
+
+                <div class="brand">
+
+                    <img
+                        src="logo.jpg"
+                        alt="TradeVestor"
+                    >
+
+                    <span>
+                        TRADE<b>VESTOR</b>
+                    </span>
+
+                </div>
+
+                <p style="margin-top:12px">
+
+                    TradeVestor membantu lu memahami
+                    trading secara bertahap melalui
+                    materi edukasi dan framework
+                    yang terstruktur.
+
+                </p>
+
+            </div>
 
 
-<div class="footer">
+            <div>
+
+                <h4>
+                    Premium
+                </h4>
+
+                <a href="premium-member.html">
+                    Dashboard
+                </a>
+
+                <a href="premium-market-structure.html">
+                    Market Structure
+                </a>
+
+                <a href="premium.html">
+                    Premium
+                </a>
+
+            </div>
 
 
-<div>
+            <div>
+
+                <h4>
+                    Lainnya
+                </h4>
+
+                <a href="index.html">
+                    Beranda
+                </a>
+
+                <a href="pembelajaran.html">
+                    Pembelajaran
+                </a>
+
+                <a href="tentang.html">
+                    Tentang
+                </a>
+
+            </div>
+
+        </div>
 
 
-<div class="brand">
+        <div class="copyright">
 
+            © 2026 TradeVestor.
 
-<img
-src="logo.jpg"
-alt="Logo TradeVestor"
->
+            Educational content only —
+            bukan ajakan membeli atau menjual aset.
 
+        </div>
 
-<span>
-
-TRADE<b>VESTOR</b>
-
-</span>
-
-
-</div>
-
-
-<p
-style="
-margin-top:12px;
-max-width:420px;
-"
->
-
-TradeVestor adalah platform edukasi
-trading yang membantu lu memahami
-market, analisis, strategi,
-risk management dan psikologi
-secara lebih terstruktur.
-
-</p>
-
-
-</div>
-
-
-
-<div>
-
-
-<h4>
-Belajar
-</h4>
-
-
-<a href="candlestick.html">
-Candlestick
-</a>
-
-
-<a href="indikator.html">
-Indikator
-</a>
-
-
-<a href="strategi.html">
-Strategi
-</a>
-
-
-<a href="pembelajaran.html">
-Pembelajaran
-</a>
-
-
-<a href="premium.html">
-Premium
-</a>
-
-
-</div>
-
-
-
-<div>
-
-
-<h4>
-Hubungi
-</h4>
-
-
-<a
-href="mailto:startingfromzero95@gmail.com"
->
-Email
-</a>
-
-
-<a
-href="https://wa.me/6285872061255"
-target="_blank"
->
-WhatsApp
-</a>
-
-
-<a
-href="https://www.tiktok.com/@am_zid_23?_r=1&_t=ZS-98n6b4WuMBJ"
-target="_blank"
->
-TikTok @am_zid_23
-</a>
-
-
-</div>
-
-
-</div>
-
-
-
-<div class="copyright">
-
-© 2026 TradeVestor.
-Educational content only —
-bukan ajakan membeli/menjual aset.
-
-</div>
-
-
-</div>
+    </div>
 
 </footer>
 
+
+</div>
 
 
 <!-- =====================================================
@@ -1943,6 +1841,289 @@ bukan ajakan membeli/menjual aset.
 ===================================================== -->
 
 <script src="js/script.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+        const loading =
+            document.getElementById(
+                "authLoading"
+            );
+
+        const content =
+            document.getElementById(
+                "premiumContent"
+            );
+
+        const memberName =
+            document.getElementById(
+                "memberName"
+            );
+
+        const welcomeText =
+            document.getElementById(
+                "welcomeText"
+            );
+
+        const premiumExpiry =
+            document.getElementById(
+                "premiumExpiry"
+            );
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/premium-check",
+                    {
+                        method: "GET",
+                        credentials: "include",
+                        cache: "no-store"
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            /*
+            ==================================================
+            USER BELUM LOGIN
+            ==================================================
+            */
+
+            if (
+                response.status === 401
+            ) {
+
+                window.location.href =
+                    "login.html?redirect=premium-member.html";
+
+                return;
+
+            }
+
+
+            /*
+            ==================================================
+            USER LOGIN TAPI BUKAN PREMIUM
+            ==================================================
+            */
+
+            if (
+                !response.ok ||
+                !data.premium
+            ) {
+
+                alert(
+                    data.message ||
+                    "Akses Premium tidak tersedia."
+                );
+
+                window.location.href =
+                    "premium.html";
+
+                return;
+
+            }
+
+
+            /*
+            ==================================================
+            PREMIUM AKTIF
+            ==================================================
+            */
+
+            const user =
+                data.user;
+
+
+            memberName.textContent =
+                user.name || "Member";
+
+
+            welcomeText.textContent =
+                `Halo ${user.name || "Member"}, selamat datang kembali. Gunakan dashboard ini untuk melanjutkan pembelajaran Premium TradeVestor.`;
+
+
+            if (
+                user.premium_expires_at
+            ) {
+
+                const date =
+                    new Date(
+                        user.premium_expires_at
+                    );
+
+
+                if (
+                    !Number.isNaN(
+                        date.getTime()
+                    )
+                ) {
+
+                    premiumExpiry.textContent =
+                        date.toLocaleDateString(
+                            "id-ID",
+                            {
+                                day: "2-digit",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        );
+
+                } else {
+
+                    premiumExpiry.textContent =
+                        "Aktif";
+
+                }
+
+            } else {
+
+                premiumExpiry.textContent =
+                    "Tidak terbatas";
+
+            }
+
+
+            /*
+            ==================================================
+            TAMPILKAN DASHBOARD
+            ==================================================
+            */
+
+            loading.style.display =
+                "none";
+
+            content.style.display =
+                "block";
+
+
+            /*
+            ==================================================
+            ANIMASI MODULE
+            ==================================================
+            */
+
+            const cards =
+                document.querySelectorAll(
+                    ".module-card"
+                );
+
+
+            cards.forEach(
+                function (card, index) {
+
+                    card.style.opacity =
+                        "0";
+
+                    card.style.transform =
+                        "translateY(15px)";
+
+
+                    setTimeout(
+                        function () {
+
+                            card.style.transition =
+                                "opacity .5s ease, transform .5s ease";
+
+                            card.style.opacity =
+                                "1";
+
+                            card.style.transform =
+                                "translateY(0)";
+
+                        },
+                        80 * index
+                    );
+
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "PREMIUM PAGE ERROR:",
+                error
+            );
+
+
+            alert(
+                "Tidak dapat memeriksa akses Premium."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+
+        /*
+        ======================================================
+        LOGOUT
+        ======================================================
+        */
+
+        const logoutButton =
+            document.getElementById(
+                "logoutButton"
+            );
+
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener(
+                "click",
+                async function () {
+
+                    logoutButton.disabled =
+                        true;
+
+                    logoutButton.textContent =
+                        "Logout...";
+
+
+                    try {
+
+                        await fetch(
+                            "/api/logout",
+                            {
+                                method: "POST",
+                                credentials: "include"
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.error(
+                            "LOGOUT ERROR:",
+                            error
+                        );
+
+                    }
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>
