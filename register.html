@@ -1,536 +1,378 @@
-export default {
-  async fetch(request, env) {
+<!DOCTYPE html>
+<html lang="id">
 
-    const url = new URL(request.url);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    // ==========================================
-    // CORS
-    // ==========================================
+    <title>Daftar — TradeVestor</title>
 
-    if (request.method === "OPTIONS") {
-      return new Response(null, {
-        status: 204,
-        headers: corsHeaders()
-      });
-    }
+    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
+<body>
 
-    // ==========================================
-    // TEST API
-    // ==========================================
+<header class="navbar">
 
-    if (
-      url.pathname === "/api/test" &&
-      request.method === "GET"
-    ) {
+    <div class="container nav-container">
 
-      return json({
-        success: true,
-        message: "API TradeVestor berhasil berjalan."
-      });
+        <a href="index.html" class="brand">
 
-    }
+            <img
+                src="logo.jpg"
+                alt="Logo TradeVestor"
+            >
 
+            <span>
+                TRADE<b>VESTOR</b>
+            </span>
 
-    // ==========================================
-    // TEST DATABASE
-    // ==========================================
+        </a>
 
-    if (
-      url.pathname === "/api/test-db" &&
-      request.method === "GET"
-    ) {
+    </div>
 
-      try {
-
-        const result = await env.DB
-          .prepare(
-            "SELECT COUNT(*) AS total FROM users"
-          )
-          .first();
-
-        return json({
-          success: true,
-          database: "connected",
-          users: result?.total || 0
-        });
-
-      } catch (error) {
-
-        return json({
-          success: false,
-          database: "error",
-          message: error.message
-        }, 500);
-
-      }
-
-    }
+</header>
 
 
-    // ==========================================
-    // REGISTER
-    // ==========================================
+<main>
 
-    if (
-      url.pathname === "/api/register" &&
-      request.method === "POST"
-    ) {
+<section class="section">
 
-      try {
+    <div class="container">
 
-        const body = await request.json();
+        <div
+            class="card"
+            style="
+                max-width:500px;
+                margin:60px auto;
+            "
+        >
 
-        const name = String(
-          body.name || ""
-        ).trim();
+            <div class="section-head">
 
-        const email = String(
-          body.email || ""
-        )
-          .trim()
-          .toLowerCase();
+                <span class="kicker">
+                    TRADEVESTOR
+                </span>
 
-        const password = String(
-          body.password || ""
-        );
+                <h1>
+                    Buat Akun
+                </h1>
+
+                <p>
+                    Bergabung dengan TradeVestor
+                </p>
+
+            </div>
 
 
-        // ------------------------------
-        // VALIDASI
-        // ------------------------------
+            <form id="registerForm">
 
-        if (
-          !name ||
-          !email ||
-          !password
-        ) {
+                <div style="margin-bottom:18px">
 
-          return json({
-            success: false,
-            message:
-              "Nama, email, dan password wajib diisi."
-          }, 400);
+                    <label for="name">
+                        Nama
+                    </label>
 
-        }
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nama lengkap"
+                        required
+                        style="
+                            width:100%;
+                            padding:14px;
+                            margin-top:8px;
+                        "
+                    >
+
+                </div>
+
+
+                <div style="margin-bottom:18px">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="nama@email.com"
+                        required
+                        style="
+                            width:100%;
+                            padding:14px;
+                            margin-top:8px;
+                        "
+                    >
+
+                </div>
+
+
+                <div style="margin-bottom:10px">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Minimal 8 karakter"
+                        minlength="8"
+                        required
+                        style="
+                            width:100%;
+                            padding:14px;
+                            margin-top:8px;
+                        "
+                    >
+
+                </div>
+
+
+                <p
+                    style="
+                        font-size:13px;
+                        color:var(--muted);
+                        margin-bottom:20px;
+                    "
+                >
+                    Password minimal 8 karakter.
+                </p>
+
+
+                <div
+                    id="registerMessage"
+                    style="
+                        display:none;
+                        margin-bottom:20px;
+                        padding:14px;
+                        border-radius:10px;
+                    "
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="registerButton"
+                    style="
+                        width:100%;
+                    "
+                >
+                    Buat Akun
+                </button>
+
+            </form>
+
+
+            <p
+                style="
+                    text-align:center;
+                    margin-top:25px;
+                "
+            >
+
+                Sudah punya akun?
+
+                <a href="login.html">
+                    Login di sini
+                </a>
+
+            </p>
+
+
+            <p
+                style="
+                    text-align:center;
+                    margin-top:15px;
+                "
+            >
+
+                <a href="index.html">
+                    ← Kembali ke Beranda
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+const form =
+    document.getElementById("registerForm");
+
+const message =
+    document.getElementById("registerMessage");
+
+const button =
+    document.getElementById("registerButton");
+
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
 
 
         if (password.length < 8) {
 
-          return json({
-            success: false,
-            message:
-              "Password minimal 8 karakter."
-          }, 400);
+            showMessage(
+                "Password minimal 8 karakter.",
+                false
+            );
+
+            return;
 
         }
 
 
-        if (!email.includes("@")) {
+        button.disabled = true;
 
-          return json({
-            success: false,
-            message:
-              "Format email tidak valid."
-          }, 400);
+        button.textContent =
+            "Membuat akun...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            password: password
+                        })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
+
+                throw new Error(
+                    data.message ||
+                    "Registrasi gagal."
+                );
+
+            }
+
+
+            showMessage(
+                "Akun berhasil dibuat! Mengarahkan ke login...",
+                true
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "login.html";
+
+                },
+                1200
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                error.message ||
+                "Terjadi kesalahan pada server.",
+                false
+            );
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "Buat Akun";
 
         }
-
-
-        // ------------------------------
-        // CEK EMAIL
-        // ------------------------------
-
-        const existingUser =
-          await env.DB
-            .prepare(`
-              SELECT id
-              FROM users
-              WHERE email = ?
-              LIMIT 1
-            `)
-            .bind(email)
-            .first();
-
-
-        if (existingUser) {
-
-          return json({
-            success: false,
-            message:
-              "Email sudah terdaftar."
-          }, 409);
-
-        }
-
-
-        // ------------------------------
-        // HASH PASSWORD
-        // ------------------------------
-
-        const passwordHash =
-          await hashPassword(password);
-
-
-        // ------------------------------
-        // CREATE USER
-        // ------------------------------
-
-        const result =
-          await env.DB
-            .prepare(`
-              INSERT INTO users
-              (
-                name,
-                email,
-                password_hash,
-                plan,
-                premium_expires_at,
-                created_at,
-                updated_at
-              )
-              VALUES
-              (
-                ?,
-                ?,
-                ?,
-                'free',
-                NULL,
-                CURRENT_TIMESTAMP,
-                CURRENT_TIMESTAMP
-              )
-            `)
-            .bind(
-              name,
-              email,
-              passwordHash
-            )
-            .run();
-
-
-        const id =
-          result.meta.last_row_id;
-
-
-        // ------------------------------
-        // SUCCESS
-        // ------------------------------
-
-        return json({
-          success: true,
-
-          message:
-            "Akun berhasil dibuat.",
-
-          user: {
-            id: id,
-            name: name,
-            email: email,
-            plan: "free"
-          }
-
-        });
-
-
-      } catch (error) {
-
-        console.error(
-          "REGISTER ERROR:",
-          error
-        );
-
-        return json({
-          success: false,
-          message:
-            "Terjadi kesalahan pada server.",
-          error:
-            error.message
-        }, 500);
-
-      }
 
     }
+);
 
 
-    // ==========================================
-    // LOGIN
-    // ==========================================
-
-    if (
-      url.pathname === "/api/login" &&
-      request.method === "POST"
-    ) {
-
-      try {
-
-        const body =
-          await request.json();
-
-
-        const email =
-          String(
-            body.email || ""
-          )
-            .trim()
-            .toLowerCase();
-
-
-        const password =
-          String(
-            body.password || ""
-          );
-
-
-        // ------------------------------
-        // VALIDASI
-        // ------------------------------
-
-        if (
-          !email ||
-          !password
-        ) {
-
-          return json({
-            success: false,
-            message:
-              "Email dan password wajib diisi."
-          }, 400);
-
-        }
-
-
-        // ------------------------------
-        // HASH PASSWORD
-        // ------------------------------
-
-        const passwordHash =
-          await hashPassword(password);
-
-
-        // ------------------------------
-        // CARI USER
-        // ------------------------------
-
-        const user =
-          await env.DB
-            .prepare(`
-              SELECT
-                id,
-                name,
-                email,
-                password_hash,
-                plan,
-                premium_expires_at
-              FROM users
-              WHERE email = ?
-              LIMIT 1
-            `)
-            .bind(email)
-            .first();
-
-
-        if (!user) {
-
-          return json({
-            success: false,
-            message:
-              "Email atau password salah."
-          }, 401);
-
-        }
-
-
-        // ------------------------------
-        // CEK PASSWORD
-        // ------------------------------
-
-        if (
-          user.password_hash !==
-          passwordHash
-        ) {
-
-          return json({
-            success: false,
-            message:
-              "Email atau password salah."
-          }, 401);
-
-        }
-
-
-        // ------------------------------
-        // LOGIN BERHASIL
-        // ------------------------------
-
-        return json({
-
-          success: true,
-
-          message:
-            "Login berhasil.",
-
-          user: {
-
-            id: user.id,
-
-            name: user.name,
-
-            email: user.email,
-
-            plan: user.plan,
-
-            premium_expires_at:
-              user.premium_expires_at
-
-          }
-
-        });
-
-
-      } catch (error) {
-
-        console.error(
-          "LOGIN ERROR:",
-          error
-        );
-
-
-        return json({
-
-          success: false,
-
-          message:
-            "Terjadi kesalahan pada server.",
-
-          error:
-            error.message
-
-        }, 500);
-
-      }
-
-    }
-
-
-    // ==========================================
-    // API USER
-    // ==========================================
-
-    if (
-      url.pathname === "/api/user" &&
-      request.method === "GET"
-    ) {
-
-      return json({
-
-        success: false,
-
-        message:
-          "Endpoint user membutuhkan session."
-
-      }, 401);
-
-    }
-
-
-    // ==========================================
-    // 404
-    // ==========================================
-
-    return json({
-
-      success: false,
-
-      message:
-        "Endpoint tidak ditemukan."
-
-    }, 404);
-
-  }
-};
-
-
-// ==========================================
-// HASH PASSWORD
-// ==========================================
-
-async function hashPassword(password) {
-
-  const data =
-    new TextEncoder().encode(password);
-
-
-  const hashBuffer =
-    await crypto.subtle.digest(
-      "SHA-256",
-      data
-    );
-
-
-  return Array.from(
-    new Uint8Array(hashBuffer)
-  )
-    .map(
-      byte =>
-        byte
-          .toString(16)
-          .padStart(2, "0")
-    )
-    .join("");
-
-}
-
-
-// ==========================================
-// JSON RESPONSE
-// ==========================================
-
-function json(
-  data,
-  status = 200
+function showMessage(
+    text,
+    success
 ) {
 
-  return new Response(
+    message.style.display =
+        "block";
 
-    JSON.stringify(data),
+    message.textContent =
+        text;
 
-    {
 
-      status: status,
+    if (success) {
 
-      headers: {
+        message.style.border =
+            "1px solid #22c55e";
 
-        "Content-Type":
-          "application/json",
+    } else {
 
-        ...corsHeaders()
-
-      }
+        message.style.border =
+            "1px solid #ef4444";
 
     }
 
-  );
-
 }
 
+</script>
 
-// ==========================================
-// CORS HEADERS
-// ==========================================
+</body>
 
-function corsHeaders() {
-
-  return {
-
-    "Access-Control-Allow-Origin":
-      "*",
-
-    "Access-Control-Allow-Headers":
-      "Content-Type",
-
-    "Access-Control-Allow-Methods":
-      "GET, POST, OPTIONS"
-
-  };
-
-}
+</html>
