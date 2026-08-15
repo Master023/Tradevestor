@@ -1,5 +1,6 @@
 export default {
   async fetch(request, env) {
+
     const url = new URL(request.url);
 
     // =====================================================
@@ -9,23 +10,27 @@ export default {
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
-        headers: corsHeaders(request)
+        headers: corsHeaders()
       });
     }
 
+
     // =====================================================
-    // TEST API
+    // API TEST
     // =====================================================
 
     if (
       url.pathname === "/api/test" &&
       request.method === "GET"
     ) {
+
       return json({
         success: true,
         message: "API TradeVestor berhasil berjalan."
-      }, 200, request);
+      });
+
     }
+
 
     // =====================================================
     // TEST DATABASE
@@ -35,7 +40,9 @@ export default {
       url.pathname === "/api/test-db" &&
       request.method === "GET"
     ) {
+
       try {
+
         const result = await env.DB
           .prepare(
             "SELECT COUNT(*) AS total FROM users"
@@ -45,19 +52,26 @@ export default {
         return json({
           success: true,
           database: "connected",
-          users: result?.total || 0
-        }, 200, request);
+          users: Number(result?.total || 0)
+        });
 
       } catch (error) {
-        console.error("TEST DB ERROR:", error);
+
+        console.error(
+          "TEST DB ERROR:",
+          error
+        );
 
         return json({
           success: false,
           database: "error",
           message: error.message
-        }, 500, request);
+        }, 500);
+
       }
+
     }
+
 
     // =====================================================
     // REGISTER
@@ -67,45 +81,65 @@ export default {
       url.pathname === "/api/register" &&
       request.method === "POST"
     ) {
+
       try {
-        const body = await request.json();
+
+        const body =
+          await request.json();
+
 
         const name =
           String(body.name || "").trim();
+
 
         const email =
           String(body.email || "")
             .trim()
             .toLowerCase();
 
+
         const password =
           String(body.password || "");
 
+
         // VALIDASI
 
-        if (!name || !email || !password) {
+        if (
+          !name ||
+          !email ||
+          !password
+        ) {
+
           return json({
             success: false,
             message:
               "Nama, email, dan password wajib diisi."
-          }, 400, request);
+          }, 400);
+
         }
 
+
         if (password.length < 8) {
+
           return json({
             success: false,
             message:
               "Password minimal 8 karakter."
-          }, 400, request);
+          }, 400);
+
         }
 
-        if (!email.includes("@")) {
+
+        if (!isValidEmail(email)) {
+
           return json({
             success: false,
             message:
               "Format email tidak valid."
-          }, 400, request);
+          }, 400);
+
         }
+
 
         // CEK EMAIL
 
@@ -122,20 +156,25 @@ export default {
             .bind(email)
             .first();
 
+
         if (existingUser) {
+
           return json({
             success: false,
             message:
               "Email sudah terdaftar."
-          }, 409, request);
+          }, 409);
+
         }
+
 
         // HASH PASSWORD
 
         const passwordHash =
-          await hashPassword(password);
+          await hashString(password);
 
-        // INSERT USER
+
+        // SIMPAN USER
 
         const result =
           await env.DB
@@ -170,35 +209,53 @@ export default {
             )
             .run();
 
+
         const id =
           result.meta.last_row_id;
 
+
         return json({
+
           success: true,
+
           message:
             "Akun berhasil dibuat.",
+
           user: {
             id,
             name,
             email,
-            plan: "free"
+            plan: "free",
+            premium_expires_at: null
           }
-        }, 200, request);
+
+        });
+
 
       } catch (error) {
+
         console.error(
           "REGISTER ERROR:",
           error
         );
 
+
         return json({
+
           success: false,
+
           message:
             "Terjadi kesalahan pada server.",
-          error: error.message
-        }, 500, request);
+
+          error:
+            error.message
+
+        }, 500);
+
       }
+
     }
+
 
     // =====================================================
     // LOGIN
@@ -208,25 +265,39 @@ export default {
       url.pathname === "/api/login" &&
       request.method === "POST"
     ) {
+
       try {
+
         const body =
           await request.json();
+
 
         const email =
           String(body.email || "")
             .trim()
             .toLowerCase();
 
+
         const password =
           String(body.password || "");
 
-        if (!email || !password) {
+
+        if (
+          !email ||
+          !password
+        ) {
+
           return json({
+
             success: false,
+
             message:
               "Email dan password wajib diisi."
-          }, 400, request);
+
+          }, 400);
+
         }
+
 
         // CARI USER
 
@@ -249,46 +320,63 @@ export default {
             .bind(email)
             .first();
 
+
         if (!user) {
+
           return json({
+
             success: false,
+
             message:
               "Email atau password salah."
-          }, 401, request);
+
+          }, 401);
+
         }
+
 
         // CEK PASSWORD
 
         const passwordHash =
-          await hashPassword(password);
+          await hashString(password);
+
 
         if (
           user.password_hash !== passwordHash
         ) {
+
           return json({
+
             success: false,
+
             message:
               "Email atau password salah."
-          }, 401, request);
+
+          }, 401);
+
         }
 
+
+        // =================================================
         // BUAT SESSION
+        // =================================================
 
         const sessionToken =
           generateToken();
 
+
         const tokenHash =
-          await hashPassword(
+          await hashString(
             sessionToken
           );
 
-        // SESSION 7 HARI
 
         const expiresAt =
           new Date(
             Date.now() +
             7 * 24 * 60 * 60 * 1000
           ).toISOString();
+
 
         // SIMPAN SESSION
 
@@ -312,52 +400,90 @@ export default {
           )
           .run();
 
+
         // COOKIE
 
         const headers =
           new Headers(
-            corsHeaders(request)
+            corsHeaders()
           );
+
 
         headers.set(
           "Set-Cookie",
-          `tv_session=${sessionToken}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800`
+          [
+            `tv_session=${sessionToken}`,
+            "Path=/",
+            "HttpOnly",
+            "Secure",
+            "SameSite=Lax",
+            "Max-Age=604800"
+          ].join("; ")
         );
 
+
         return new Response(
+
           JSON.stringify({
+
             success: true,
+
             message:
               "Login berhasil.",
+
             user: {
-              id: user.id,
-              name: user.name,
-              email: user.email,
-              plan: user.plan,
+
+              id:
+                user.id,
+
+              name:
+                user.name,
+
+              email:
+                user.email,
+
+              plan:
+                user.plan,
+
               premium_expires_at:
                 user.premium_expires_at
+
             }
+
           }),
+
           {
             status: 200,
             headers
           }
+
         );
 
+
       } catch (error) {
+
         console.error(
           "LOGIN ERROR:",
           error
         );
 
+
         return json({
+
           success: false,
+
           message:
             "Terjadi kesalahan pada server.",
-          error: error.message
-        }, 500, request);
+
+          error:
+            error.message
+
+        }, 500);
+
       }
+
     }
+
 
     // =====================================================
     // CURRENT USER
@@ -368,102 +494,149 @@ export default {
       url.pathname === "/api/me" &&
       request.method === "GET"
     ) {
-      try {
-        const user =
-          await getCurrentUser(
-            request,
-            env
-          );
 
-        if (!user) {
-          return json({
-            success: false,
-            message:
-              "Belum login."
-          }, 401, request);
-        }
+      return getCurrentUser(
+        request,
+        env
+      );
 
-        return json({
-          success: true,
-          user
-        }, 200, request);
-
-      } catch (error) {
-        console.error(
-          "ME ERROR:",
-          error
-        );
-
-        return json({
-          success: false,
-          message:
-            "Terjadi kesalahan pada server.",
-          error: error.message
-        }, 500, request);
-      }
     }
 
+
     // =====================================================
-    // PREMIUM STATUS
-    // /api/premium
+    // PREMIUM CHECK
     // =====================================================
 
     if (
-      url.pathname === "/api/premium" &&
+      url.pathname === "/api/premium-check" &&
       request.method === "GET"
     ) {
+
       try {
-        const user =
-          await getCurrentUser(
+
+        const result =
+          await authenticateUser(
             request,
             env
           );
 
-        if (!user) {
+
+        if (!result.success) {
+
           return json({
+
             success: false,
+
             premium: false,
+
             message:
-              "Silakan login terlebih dahulu."
-          }, 401, request);
+              result.message
+
+          }, 401);
+
         }
 
-        const premium =
+
+        const user =
+          result.user;
+
+
+        const premiumActive =
           isPremiumActive(user);
 
-        if (!premium) {
+
+        if (!premiumActive) {
+
           return json({
-            success: false,
+
+            success: true,
+
             premium: false,
+
             message:
               "Akun belum memiliki akses Premium.",
-            user
-          }, 403, request);
+
+            user: {
+
+              id:
+                user.id,
+
+              name:
+                user.name,
+
+              email:
+                user.email,
+
+              plan:
+                user.plan,
+
+              premium_expires_at:
+                user.premium_expires_at
+
+            }
+
+          });
+
         }
 
+
         return json({
+
           success: true,
+
           premium: true,
+
           message:
             "Akses Premium aktif.",
-          user
-        }, 200, request);
+
+          user: {
+
+            id:
+              user.id,
+
+            name:
+              user.name,
+
+            email:
+              user.email,
+
+            plan:
+              user.plan,
+
+            premium_expires_at:
+              user.premium_expires_at
+
+          }
+
+        });
+
 
       } catch (error) {
+
         console.error(
-          "PREMIUM ERROR:",
+          "PREMIUM CHECK ERROR:",
           error
         );
 
+
         return json({
+
           success: false,
+
           premium: false,
+
           message:
             "Terjadi kesalahan pada server.",
-          error: error.message
-        }, 500, request);
+
+          error:
+            error.message
+
+        }, 500);
+
       }
+
     }
+
 
     // =====================================================
     // LOGOUT
@@ -473,20 +646,26 @@ export default {
       url.pathname === "/api/logout" &&
       request.method === "POST"
     ) {
+
       try {
+
         const cookies =
           parseCookies(
             request.headers.get("Cookie")
           );
 
+
         const sessionToken =
           cookies.tv_session;
 
+
         if (sessionToken) {
+
           const tokenHash =
-            await hashPassword(
+            await hashString(
               sessionToken
             );
+
 
           await env.DB
             .prepare(
@@ -497,136 +676,131 @@ export default {
             )
             .bind(tokenHash)
             .run();
+
         }
+
 
         const headers =
           new Headers(
-            corsHeaders(request)
+            corsHeaders()
           );
+
 
         headers.set(
           "Set-Cookie",
-          "tv_session=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0"
+          [
+            "tv_session=",
+            "Path=/",
+            "HttpOnly",
+            "Secure",
+            "SameSite=Lax",
+            "Max-Age=0"
+          ].join("; ")
         );
 
+
         return new Response(
+
           JSON.stringify({
+
             success: true,
+
             message:
               "Logout berhasil."
+
           }),
+
           {
             status: 200,
             headers
           }
+
         );
 
+
       } catch (error) {
+
         console.error(
           "LOGOUT ERROR:",
           error
         );
 
+
         return json({
+
           success: false,
+
           message:
             "Terjadi kesalahan pada server.",
-          error: error.message
-        }, 500, request);
+
+          error:
+            error.message
+
+        }, 500);
+
       }
+
     }
 
-    // =====================================================
-    // PROTECT PREMIUM PAGES
-    // =====================================================
-
-    const premiumPages = [
-      "/premium-member.html",
-      "/premium-market-structure.html"
-    ];
-
-    if (
-      premiumPages.includes(url.pathname) &&
-      request.method === "GET"
-    ) {
-      try {
-        const user =
-          await getCurrentUser(
-            request,
-            env
-          );
-
-        // BELUM LOGIN
-
-        if (!user) {
-          return Response.redirect(
-            `${url.origin}/login.html?premium=login`,
-            302
-          );
-        }
-
-        // BUKAN PREMIUM
-
-        if (!isPremiumActive(user)) {
-          return Response.redirect(
-            `${url.origin}/premium.html?premium=required`,
-            302
-          );
-        }
-
-        // PREMIUM AKTIF
-
-        return env.ASSETS.fetch(request);
-
-      } catch (error) {
-        console.error(
-          "PREMIUM PAGE ERROR:",
-          error
-        );
-
-        return new Response(
-          "Terjadi kesalahan saat memeriksa akses Premium.",
-          {
-            status: 500,
-            headers: {
-              "Content-Type": "text/plain; charset=UTF-8"
-            }
-          }
-        );
-      }
-    }
 
     // =====================================================
-    // STATIC ASSETS
+    // 404
     // =====================================================
 
-    return env.ASSETS.fetch(request);
+    return json({
+
+      success: false,
+
+      message:
+        "Endpoint tidak ditemukan.",
+
+      path:
+        url.pathname
+
+    }, 404);
+
   }
 };
 
 
 // =========================================================
-// GET CURRENT USER
+// AUTHENTICATE USER
 // =========================================================
 
-async function getCurrentUser(request, env) {
+async function authenticateUser(
+  request,
+  env
+) {
 
   const cookies =
     parseCookies(
       request.headers.get("Cookie")
     );
 
+
   const sessionToken =
     cookies.tv_session;
 
+
   if (!sessionToken) {
-    return null;
+
+    return {
+
+      success: false,
+
+      message:
+        "Belum login."
+
+    };
+
   }
 
+
   const tokenHash =
-    await hashPassword(
+    await hashString(
       sessionToken
     );
+
 
   const session =
     await env.DB
@@ -636,28 +810,45 @@ async function getCurrentUser(request, env) {
           sessions.id,
           sessions.user_id,
           sessions.expires_at,
+
           users.name,
           users.email,
           users.plan,
           users.premium_expires_at
+
         FROM sessions
+
         INNER JOIN users
           ON users.id = sessions.user_id
+
         WHERE sessions.token_hash = ?
+
         LIMIT 1
         `
       )
       .bind(tokenHash)
       .first();
 
+
   if (!session) {
-    return null;
+
+    return {
+
+      success: false,
+
+      message:
+        "Session tidak valid."
+
+    };
+
   }
+
 
   // SESSION EXPIRED
 
   if (
-    new Date(session.expires_at) <= new Date()
+    new Date(session.expires_at)
+    <= new Date()
   ) {
 
     await env.DB
@@ -670,65 +861,165 @@ async function getCurrentUser(request, env) {
       .bind(session.id)
       .run();
 
-    return null;
+
+    return {
+
+      success: false,
+
+      message:
+        "Session sudah berakhir."
+
+    };
+
   }
 
+
   return {
-    id: session.user_id,
-    name: session.name,
-    email: session.email,
-    plan: session.plan,
-    premium_expires_at:
-      session.premium_expires_at
+
+    success: true,
+
+    user: {
+
+      id:
+        session.user_id,
+
+      name:
+        session.name,
+
+      email:
+        session.email,
+
+      plan:
+        session.plan,
+
+      premium_expires_at:
+        session.premium_expires_at
+
+    }
+
   };
+
 }
 
 
 // =========================================================
-// CHECK PREMIUM
+// CURRENT USER RESPONSE
+// =========================================================
+
+async function getCurrentUser(
+  request,
+  env
+) {
+
+  try {
+
+    const result =
+      await authenticateUser(
+        request,
+        env
+      );
+
+
+    if (!result.success) {
+
+      return json({
+
+        success: false,
+
+        message:
+          result.message
+
+      }, 401);
+
+    }
+
+
+    return json({
+
+      success: true,
+
+      user:
+        result.user
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "ME ERROR:",
+      error
+    );
+
+
+    return json({
+
+      success: false,
+
+      message:
+        "Terjadi kesalahan pada server.",
+
+      error:
+        error.message
+
+    }, 500);
+
+  }
+
+}
+
+
+// =========================================================
+// PREMIUM STATUS
 // =========================================================
 
 function isPremiumActive(user) {
 
-  if (!user) {
+  if (
+    user.plan !== "premium"
+  ) {
+
     return false;
+
   }
 
-  if (user.plan !== "premium") {
+
+  // Jika Premium tidak mempunyai
+  // tanggal expired, tetap aktif.
+
+  if (
+    !user.premium_expires_at
+  ) {
+
+    return true;
+
+  }
+
+
+  const expiry =
+    new Date(
+      user.premium_expires_at
+    );
+
+
+  if (
+    Number.isNaN(
+      expiry.getTime()
+    )
+  ) {
+
     return false;
+
   }
 
-  // Kalau Premium memiliki tanggal expired,
-  // tanggal tersebut harus masih berlaku.
 
-  if (user.premium_expires_at) {
+  return expiry > new Date();
 
-    const expires =
-      new Date(
-        user.premium_expires_at
-      );
-
-    if (
-      Number.isNaN(
-        expires.getTime()
-      )
-    ) {
-      return false;
-    }
-
-    if (
-      expires <= new Date()
-    ) {
-      return false;
-    }
-  }
-
-  return true;
 }
 
 
 // =========================================================
-// GENERATE RANDOM TOKEN
+// GENERATE TOKEN
 // =========================================================
 
 function generateToken() {
@@ -736,7 +1027,11 @@ function generateToken() {
   const bytes =
     new Uint8Array(32);
 
-  crypto.getRandomValues(bytes);
+
+  crypto.getRandomValues(
+    bytes
+  );
+
 
   return Array
     .from(bytes)
@@ -747,24 +1042,29 @@ function generateToken() {
           .padStart(2, "0")
     )
     .join("");
+
 }
 
 
 // =========================================================
-// HASH
+// SHA-256 HASH
 // =========================================================
 
-async function hashPassword(value) {
+async function hashString(
+  value
+) {
 
   const data =
     new TextEncoder()
       .encode(value);
+
 
   const hashBuffer =
     await crypto.subtle.digest(
       "SHA-256",
       data
     );
+
 
   return Array
     .from(
@@ -777,6 +1077,21 @@ async function hashPassword(value) {
           .padStart(2, "0")
     )
     .join("");
+
+}
+
+
+// =========================================================
+// EMAIL VALIDATION
+// =========================================================
+
+function isValidEmail(
+  email
+) {
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    .test(email);
+
 }
 
 
@@ -784,13 +1099,19 @@ async function hashPassword(value) {
 // PARSE COOKIES
 // =========================================================
 
-function parseCookies(cookieHeader) {
+function parseCookies(
+  cookieHeader
+) {
 
   const cookies = {};
 
+
   if (!cookieHeader) {
+
     return cookies;
+
   }
+
 
   cookieHeader
     .split(";")
@@ -798,21 +1119,31 @@ function parseCookies(cookieHeader) {
       cookie => {
 
         const parts =
-          cookie.trim().split("=");
+          cookie.trim()
+            .split("=");
+
 
         const key =
           parts.shift();
 
+
         const value =
           parts.join("=");
 
+
         if (key) {
-          cookies[key] = value;
+
+          cookies[key] =
+            value;
+
         }
+
       }
     );
 
+
   return cookies;
+
 }
 
 
@@ -822,21 +1153,30 @@ function parseCookies(cookieHeader) {
 
 function json(
   data,
-  status = 200,
-  request = null
+  status = 200
 ) {
 
   return new Response(
+
     JSON.stringify(data),
+
     {
+
       status,
+
       headers: {
+
         "Content-Type":
           "application/json",
-        ...corsHeaders(request)
+
+        ...corsHeaders()
+
       }
+
     }
+
   );
+
 }
 
 
@@ -844,31 +1184,22 @@ function json(
 // CORS
 // =========================================================
 
-function corsHeaders(request) {
+function corsHeaders() {
 
-  const origin =
-    request?.headers.get("Origin");
+  return {
 
-  const headers = {
     "Content-Type":
       "application/json",
+
+    "Access-Control-Allow-Origin":
+      "*",
 
     "Access-Control-Allow-Headers":
       "Content-Type",
 
     "Access-Control-Allow-Methods":
       "GET, POST, OPTIONS"
+
   };
 
-  if (origin) {
-    headers[
-      "Access-Control-Allow-Origin"
-    ] = origin;
-
-    headers[
-      "Access-Control-Allow-Credentials"
-    ] = "true";
-  }
-
-  return headers;
 }
