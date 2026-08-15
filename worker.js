@@ -151,30 +151,28 @@ async function register(request, env) {
     // CREATE USER
     // -------------------------
 
-    const id = createId();
+    const result = await env.DB
+  .prepare(`
+    INSERT INTO users
+    (
+      name,
+      email,
+      password_hash,
+      plan,
+      premium_expires_at,
+      created_at,
+      updated_at
+    )
+    VALUES (?, ?, ?, 'free', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  `)
+  .bind(
+    name,
+    email,
+    passwordHash
+  )
+  .run();
 
-    await env.DB
-      .prepare(`
-        INSERT INTO users
-        (
-          id,
-          name,
-          email,
-          password_hash,
-          plan,
-          premium_expires_at,
-          created_at,
-          updated_at
-        )
-        VALUES (?, ?, ?, ?, 'free', NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-      `)
-      .bind(
-        id,
-        name,
-        email,
-        passwordHash
-      )
-      .run();
+const id = result.meta.last_row_id;
 
 
     return json({
