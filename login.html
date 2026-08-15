@@ -2,22 +2,18 @@
 <html lang="id">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Login — TradeVestor</title>
 
-<link rel="icon" href="logo.jpg">
-
-<link
-    rel="stylesheet"
-    href="css/style.css"
+<meta
+    name="description"
+    content="Login ke akun TradeVestor untuk mengakses materi trading."
 >
+
+<link rel="icon" href="logo.jpg">
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 
@@ -56,6 +52,7 @@
 
 .auth-logo p {
     color: var(--muted);
+    margin: 0;
 }
 
 .form-group {
@@ -102,6 +99,7 @@
     padding: 14px;
     border-radius: 10px;
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .auth-message.show {
@@ -111,11 +109,13 @@
 .auth-message.error {
     background: rgba(239,68,68,.12);
     border: 1px solid rgba(239,68,68,.25);
+    color: #fca5a5;
 }
 
 .auth-message.success {
     background: rgba(34,197,94,.12);
     border: 1px solid rgba(34,197,94,.25);
+    color: #86efac;
 }
 
 .auth-footer {
@@ -127,6 +127,7 @@
 .auth-footer a {
     color: #a78bfa;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .back-home {
@@ -169,7 +170,6 @@ Masuk ke akun TradeVestor
 
 <form id="loginForm">
 
-
 <div class="form-group">
 
 <label for="email">
@@ -179,6 +179,7 @@ Email
 <input
     type="email"
     id="email"
+    name="email"
     placeholder="nama@email.com"
     autocomplete="email"
     required
@@ -196,6 +197,7 @@ Password
 <input
     type="password"
     id="password"
+    name="password"
     placeholder="Masukkan password"
     autocomplete="current-password"
     required
@@ -220,7 +222,6 @@ Login
     class="auth-message"
 ></div>
 
-
 </form>
 
 
@@ -239,9 +240,10 @@ Daftar di sini
     href="index.html"
     class="back-home"
 >
-← Kembali ke Beranda
-</a>
 
+← Kembali ke Beranda
+
+</a>
 
 </div>
 
@@ -251,6 +253,18 @@ Daftar di sini
 
 
 <script>
+
+/* ==========================================
+   CONFIG
+========================================== */
+
+const API_URL =
+    "https://tradevestor.startingfromzero95.workers.dev";
+
+
+/* ==========================================
+   ELEMENT
+========================================== */
 
 const form =
     document.getElementById("loginForm");
@@ -262,19 +276,23 @@ const message =
     document.getElementById("message");
 
 
-function showMessage(
-    text,
-    type
-) {
+/* ==========================================
+   MESSAGE
+========================================== */
+
+function showMessage(text, type) {
 
     message.textContent = text;
 
     message.className =
-        "auth-message show " +
-        type;
+        "auth-message show " + type;
 
 }
 
+
+/* ==========================================
+   LOGIN
+========================================== */
 
 form.addEventListener(
     "submit",
@@ -297,10 +315,21 @@ form.addEventListener(
                 .value;
 
 
+        if (!email || !password) {
+
+            showMessage(
+                "Email dan password wajib diisi.",
+                "error"
+            );
+
+            return;
+        }
+
+
         button.disabled = true;
 
         button.textContent =
-            "Login...";
+            "Memproses...";
 
         message.className =
             "auth-message";
@@ -310,7 +339,7 @@ form.addEventListener(
 
             const response =
                 await fetch(
-                    "/api/login",
+                    API_URL + "/api/login",
                     {
                         method: "POST",
 
@@ -319,12 +348,10 @@ form.addEventListener(
                                 "application/json"
                         },
 
-                        credentials: "include",
-
                         body:
                             JSON.stringify({
-                                email,
-                                password
+                                email: email,
+                                password: password
                             })
                     }
                 );
@@ -334,18 +361,71 @@ form.addEventListener(
                 await response.json();
 
 
-            if (!response.ok) {
+            console.log(
+                "LOGIN RESPONSE:",
+                data
+            );
+
+
+            /* ==========================================
+               LOGIN GAGAL
+            ========================================== */
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
 
                 showMessage(
                     data.message ||
-                    "Login gagal.",
+                    "Email atau password salah.",
                     "error"
                 );
 
-                return;
+                button.disabled = false;
 
+                button.textContent =
+                    "Login";
+
+                return;
             }
 
+
+            /* ==========================================
+               SIMPAN DATA USER
+            ========================================== */
+
+            if (!data.user) {
+
+                showMessage(
+                    "Login berhasil tetapi data user tidak ditemukan.",
+                    "error"
+                );
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Login";
+
+                return;
+            }
+
+
+            localStorage.setItem(
+                "tradevestor_user",
+                JSON.stringify(data.user)
+            );
+
+
+            localStorage.setItem(
+                "tradevestor_logged_in",
+                "true"
+            );
+
+
+            /* ==========================================
+               LOGIN BERHASIL
+            ========================================== */
 
             showMessage(
                 "Login berhasil! Mengarahkan...",
@@ -354,7 +434,7 @@ form.addEventListener(
 
 
             setTimeout(
-                () => {
+                function() {
 
                     window.location.href =
                         "premium-member.html";
@@ -363,17 +443,21 @@ form.addEventListener(
                 1000
             );
 
+        }
 
-        } catch (error) {
+        catch (error) {
 
-            console.error(error);
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
 
             showMessage(
-                "Tidak dapat terhubung ke server.",
+                "Tidak dapat terhubung ke server. Silakan coba lagi.",
                 "error"
             );
 
-        } finally {
 
             button.disabled = false;
 
