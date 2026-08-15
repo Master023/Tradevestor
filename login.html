@@ -3,834 +3,389 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Login — TradeVestor</title>
+<title>Login — TradeVestor</title>
 
-    <meta
-        name="description"
-        content="Login ke akun TradeVestor untuk mengakses pembelajaran dan Premium."
-    >
+<link rel="icon" href="logo.jpg">
 
-    <meta
-        name="theme-color"
-        content="#050507"
-    >
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
 
-    <link
-        rel="icon"
-        href="logo.jpg"
-    >
+<style>
 
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 480px;
+}
+
+.auth-card {
+    padding: 40px;
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-logo img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.auth-logo h1 {
+    margin: 15px 0 5px;
+}
+
+.auth-logo p {
+    color: var(--muted);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    border-color: #8b5cf6;
+}
+
+.auth-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.auth-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.auth-message {
+    display: none;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.auth-message.show {
+    display: block;
+}
+
+.auth-message.error {
+    background: rgba(239,68,68,.12);
+    border: 1px solid rgba(239,68,68,.25);
+}
+
+.auth-message.success {
+    background: rgba(34,197,94,.12);
+    border: 1px solid rgba(34,197,94,.25);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 22px;
+    color: var(--muted);
+}
+
+.auth-footer a {
+    color: #a78bfa;
+    text-decoration: none;
+}
+
+.back-home {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: var(--muted);
+    text-decoration: none;
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<main class="auth-page">
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+<div class="auth-box">
 
-<header class="navbar">
+<div class="card auth-card">
 
-    <div class="container nav-container">
+<div class="auth-logo">
 
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <img
-                src="logo.jpg"
-                alt="Logo TradeVestor"
-            >
-
-            <span>
-                TRADE<b>VESTOR</b>
-            </span>
-
-        </a>
-
-
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Buka menu"
-        >
-            ☰
-        </button>
-
-
-        <nav>
-
-            <ul
-                class="nav-links"
-                id="navLinks"
-            >
-
-                <li>
-                    <a href="index.html">
-                        Beranda
-                    </a>
-                </li>
-
-                <li>
-                    <a href="candlestick.html">
-                        Candlestick
-                    </a>
-                </li>
-
-                <li>
-                    <a href="indikator.html">
-                        Indikator
-                    </a>
-                </li>
-
-                <li>
-                    <a href="strategi.html">
-                        Strategi
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pembelajaran.html">
-                        Pembelajaran
-                    </a>
-                </li>
-
-                <li>
-                    <a href="premium.html">
-                        Premium
-                    </a>
-                </li>
-
-                <li>
-                    <a href="tentang.html">
-                        Tentang
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     LOGIN
-===================================================== -->
-
-<main>
-
-<section
-    class="section"
-    style="padding-top:90px;padding-bottom:90px;"
+<img
+    src="logo.jpg"
+    alt="TradeVestor"
 >
 
-    <div
-        class="container"
-        style="
-            max-width:520px;
-            margin:0 auto;
-        "
-    >
+<h1>
+Login
+</h1>
 
+<p>
+Masuk ke akun TradeVestor
+</p>
 
-        <!-- LOGIN CARD -->
+</div>
 
-        <div
-            class="card"
-            style="
-                padding:40px 30px;
-            "
-        >
-
-
-            <!-- HEADER -->
-
-            <div
-                style="
-                    text-align:center;
-                    margin-bottom:32px;
-                "
-            >
 
-                <span class="kicker">
-                    TRADEVESTOR ACCOUNT
-                </span>
+<form id="loginForm">
 
 
-                <h1
-                    style="
-                        margin-top:12px;
-                    "
-                >
-                    Selamat Datang Kembali
-                </h1>
-
-
-                <p
-                    style="
-                        color:var(--muted);
-                        margin-top:12px;
-                    "
-                >
-
-                    Login untuk melanjutkan
-                    pembelajaran dan mengakses
-                    fitur Premium.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- ERROR / SUCCESS MESSAGE -->
-
-            <div
-                id="loginMessage"
-                class="notice"
-                style="
-                    display:none;
-                    margin-bottom:20px;
-                "
-            ></div>
-
-
-
-            <!-- FORM -->
-
-            <form
-                id="loginForm"
-                autocomplete="on"
-            >
-
-
-                <!-- EMAIL -->
-
-                <div
-                    style="
-                        margin-bottom:20px;
-                    "
-                >
-
-                    <label
-                        for="email"
-                        style="
-                            display:block;
-                            margin-bottom:8px;
-                            font-weight:600;
-                        "
-                    >
-                        Email
-                    </label>
-
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="contoh@email.com"
-                        autocomplete="email"
-                        required
-                        style="
-                            width:100%;
-                            padding:14px 16px;
-                            border-radius:10px;
-                            border:1px solid rgba(255,255,255,.12);
-                            background:rgba(255,255,255,.04);
-                            color:inherit;
-                            outline:none;
-                            box-sizing:border-box;
-                        "
-                    >
-
-                </div>
-
-
-
-                <!-- PASSWORD -->
-
-                <div
-                    style="
-                        margin-bottom:12px;
-                    "
-                >
-
-                    <label
-                        for="password"
-                        style="
-                            display:block;
-                            margin-bottom:8px;
-                            font-weight:600;
-                        "
-                    >
-                        Password
-                    </label>
-
-
-                    <div
-                        style="
-                            position:relative;
-                        "
-                    >
-
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Masukkan password"
-                            autocomplete="current-password"
-                            required
-                            minlength="8"
-                            style="
-                                width:100%;
-                                padding:14px 50px 14px 16px;
-                                border-radius:10px;
-                                border:1px solid rgba(255,255,255,.12);
-                                background:rgba(255,255,255,.04);
-                                color:inherit;
-                                outline:none;
-                                box-sizing:border-box;
-                            "
-                        >
-
-
-                        <button
-                            type="button"
-                            id="togglePassword"
-                            aria-label="Tampilkan password"
-                            style="
-                                position:absolute;
-                                right:12px;
-                                top:50%;
-                                transform:translateY(-50%);
-                                background:none;
-                                border:none;
-                                color:inherit;
-                                cursor:pointer;
-                                font-size:18px;
-                            "
-                        >
-                            👁
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- FORGOT -->
-
-                <div
-                    style="
-                        text-align:right;
-                        margin-bottom:25px;
-                    "
-                >
+<div class="form-group">
 
-                    <a
-                        href="#"
-                        id="forgotPassword"
-                        style="
-                            font-size:.9rem;
-                        "
-                    >
-                        Lupa password?
-                    </a>
-
-                </div>
-
-
-
-                <!-- LOGIN BUTTON -->
-
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="loginButton"
-                    style="
-                        width:100%;
-                        justify-content:center;
-                        cursor:pointer;
-                        border:none;
-                    "
-                >
+<label for="email">
+Email
+</label>
 
-                    Login
+<input
+    type="email"
+    id="email"
+    placeholder="nama@email.com"
+    autocomplete="email"
+    required
+>
 
-                </button>
+</div>
 
 
-            </form>
+<div class="form-group">
 
+<label for="password">
+Password
+</label>
 
+<input
+    type="password"
+    id="password"
+    placeholder="Masukkan password"
+    autocomplete="current-password"
+    required
+>
 
-            <!-- REGISTER -->
+</div>
 
-            <div
-                style="
-                    text-align:center;
-                    margin-top:28px;
-                    padding-top:25px;
-                    border-top:1px solid rgba(255,255,255,.08);
-                "
-            >
 
-                <p
-                    style="
-                        color:var(--muted);
-                    "
-                >
+<button
+    type="submit"
+    class="btn btn-primary auth-button"
+    id="loginButton"
+>
 
-                    Belum punya akun?
+Login
 
-                    <a
-                        href="register.html"
-                    >
-                        Buat akun
+</button>
 
-                    </a>
 
-                </p>
+<div
+    id="message"
+    class="auth-message"
+></div>
 
-            </div>
 
+</form>
 
 
-            <!-- PREMIUM INFO -->
+<div class="auth-footer">
 
-            <div
-                class="notice"
-                style="
-                    margin-top:25px;
-                "
-            >
+Belum punya akun?
 
-                <strong>
-                    🔐 Akun TradeVestor
-                </strong>
+<a href="register.html">
+Daftar di sini
+</a>
 
-                <br>
+</div>
 
-                Satu akun dapat digunakan
-                untuk mengakses materi gratis
-                dan, setelah Premium aktif,
-                materi khusus member.
 
-            </div>
+<a
+    href="index.html"
+    class="back-home"
+>
+← Kembali ke Beranda
+</a>
 
 
-        </div>
+</div>
 
-
-
-        <!-- BACK -->
-
-        <div
-            style="
-                text-align:center;
-                margin-top:25px;
-            "
-        >
-
-            <a
-                href="index.html"
-                style="
-                    color:var(--muted);
-                "
-            >
-                ← Kembali ke Beranda
-            </a>
-
-        </div>
-
-
-    </div>
-
-</section>
+</div>
 
 </main>
 
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer">
-
-
-            <div>
-
-                <div class="brand">
-
-                    <img
-                        src="logo.jpg"
-                        alt="Logo TradeVestor"
-                    >
-
-                    <span>
-                        TRADE<b>VESTOR</b>
-                    </span>
-
-                </div>
-
-
-                <p
-                    style="
-                        margin-top:12px;
-                        max-width:420px;
-                    "
-                >
-
-                    TradeVestor membantu lu
-                    memahami trading secara
-                    bertahap melalui materi
-                    edukasi yang terstruktur.
-
-                </p>
-
-            </div>
-
-
-
-            <div>
-
-                <h4>
-                    Belajar
-                </h4>
-
-
-                <a href="candlestick.html">
-                    Candlestick
-                </a>
-
-
-                <a href="indikator.html">
-                    Indikator
-                </a>
-
-
-                <a href="strategi.html">
-                    Strategi
-                </a>
-
-
-                <a href="pembelajaran.html">
-                    Pembelajaran
-                </a>
-
-            </div>
-
-
-
-            <div>
-
-                <h4>
-                    Akun
-                </h4>
-
-
-                <a href="login.html">
-                    Login
-                </a>
-
-
-                <a href="register.html">
-                    Daftar
-                </a>
-
-
-                <a href="premium.html">
-                    Premium
-                </a>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="copyright">
-
-            © 2026 TradeVestor.
-            Educational content only —
-            bukan ajakan membeli atau menjual aset.
-
-        </div>
-
-
-    </div>
-
-</footer>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script src="js/script.js"></script>
-
-
 <script>
 
-/* =====================================================
-   TOGGLE PASSWORD
-===================================================== */
-
-const togglePassword =
-    document.getElementById("togglePassword");
-
-const password =
-    document.getElementById("password");
-
-
-if (togglePassword && password) {
-
-    togglePassword.addEventListener(
-        "click",
-        function () {
-
-            if (password.type === "password") {
-
-                password.type = "text";
-
-                togglePassword.textContent = "🙈";
-
-            } else {
-
-                password.type = "password";
-
-                togglePassword.textContent = "👁";
-
-            }
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   LOGIN FORM
-===================================================== */
-
-const loginForm =
+const form =
     document.getElementById("loginForm");
 
-const loginMessage =
-    document.getElementById("loginMessage");
-
-const loginButton =
+const button =
     document.getElementById("loginButton");
 
-
-if (loginForm) {
-
-    loginForm.addEventListener(
-        "submit",
-        async function (event) {
-
-            event.preventDefault();
+const message =
+    document.getElementById("message");
 
 
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim()
-                    .toLowerCase();
+function showMessage(
+    text,
+    type
+) {
+
+    message.textContent = text;
+
+    message.className =
+        "auth-message show " +
+        type;
+
+}
 
 
-            const passwordValue =
-                document
-                    .getElementById("password")
-                    .value;
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
 
 
-            if (!email || !passwordValue) {
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Login...";
+
+        message.className =
+            "auth-message";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/login",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        credentials: "include",
+
+                        body:
+                            JSON.stringify({
+                                email,
+                                password
+                            })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
 
                 showMessage(
-                    "Email dan password wajib diisi.",
+                    data.message ||
+                    "Login gagal.",
                     "error"
                 );
 
                 return;
 
             }
-
-
-            if (passwordValue.length < 8) {
-
-                showMessage(
-                    "Password minimal 8 karakter.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /*
-             * =================================================
-             * BACKEND AUTHENTICATION AKAN DIMASUKKAN DI SINI
-             * =================================================
-             *
-             * Contoh alur nanti:
-             *
-             * const response = await fetch("/api/login", {
-             *
-             *     method: "POST",
-             *
-             *     headers: {
-             *         "Content-Type": "application/json"
-             *     },
-             *
-             *     body: JSON.stringify({
-             *         email: email,
-             *         password: passwordValue
-             *     })
-             *
-             * });
-             *
-             *
-             * const data = await response.json();
-             *
-             *
-             * Jika login berhasil:
-             *
-             * window.location.href =
-             *     "premium-member.html";
-             *
-             *
-             * Jika akun belum Premium:
-             *
-             * window.location.href =
-             *     "premium.html";
-             *
-             */
-
-
-            loginButton.disabled = true;
-
-            loginButton.textContent =
-                "Memproses...";
-
-
-            /*
-             * UNTUK SEKARANG
-             *
-             * Kita belum mengirim password
-             * ke server karena backend belum dibuat.
-             */
-
-            setTimeout(function () {
-
-                loginButton.disabled = false;
-
-                loginButton.textContent =
-                    "Login";
-
-
-                showMessage(
-                    "Halaman login sudah siap. Sistem authentication akan kita hubungkan pada tahap berikutnya.",
-                    "success"
-                );
-
-            }, 700);
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-function showMessage(message, type) {
-
-    if (!loginMessage) return;
-
-
-    loginMessage.style.display = "block";
-
-    loginMessage.textContent = message;
-
-
-    if (type === "error") {
-
-        loginMessage.style.borderColor =
-            "rgba(255,80,80,.3)";
-
-    } else {
-
-        loginMessage.style.borderColor =
-            "rgba(80,255,160,.3)";
-
-    }
-
-}
-
-
-
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
-
-const forgotPassword =
-    document.getElementById("forgotPassword");
-
-
-if (forgotPassword) {
-
-    forgotPassword.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
 
 
             showMessage(
-                "Fitur reset password akan kita aktifkan setelah sistem authentication terhubung.",
+                "Login berhasil! Mengarahkan...",
                 "success"
             );
 
-        }
-    );
 
-}
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        "premium-member.html";
+
+                },
+                1000
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                "Tidak dapat terhubung ke server.",
+                "error"
+            );
+
+        } finally {
+
+            button.disabled = false;
+
+            button.textContent =
+                "Login";
+
+        }
+
+    }
+);
 
 </script>
-
 
 </body>
 
