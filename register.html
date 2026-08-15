@@ -2,346 +2,602 @@
 <html lang="id">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Daftar — TradeVestor</title>
 
 <meta
-name="description"
-content="Buat akun TradeVestor dan mulai belajar trading."
+    name="description"
+    content="Buat akun TradeVestor dan mulai belajar trading."
 >
 
-<link rel="icon" href="logo.jpg">
+<link
+    rel="icon"
+    href="logo.jpg"
+>
 
-<link rel="stylesheet" href="css/style.css">
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
 
 <style>
 
+/* ==============================
+   REGISTER PAGE
+============================== */
+
 .register-page {
+
     min-height: 100vh;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     padding: 30px 20px;
+
 }
+
+
+/* ==============================
+   CONTAINER
+============================== */
 
 .register-container {
+
     width: 100%;
+
     max-width: 460px;
+
 }
+
+
+/* ==============================
+   LOGO
+============================== */
 
 .register-logo {
+
     text-align: center;
+
     margin-bottom: 25px;
+
 }
+
 
 .register-logo a {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 10px;
+
     text-decoration: none;
+
     color: inherit;
+
     font-size: 22px;
+
     font-weight: 700;
+
 }
+
 
 .register-logo img {
+
     width: 42px;
+
     height: 42px;
+
     object-fit: cover;
+
     border-radius: 10px;
+
 }
+
+
+/* ==============================
+   CARD
+============================== */
 
 .register-card {
+
     padding: 40px 30px;
+
     border-radius: 20px;
+
     background: rgba(255,255,255,0.03);
+
     border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.25);
+
 }
+
+
+/* ==============================
+   HEADER
+============================== */
 
 .register-header {
+
     text-align: center;
+
     margin-bottom: 30px;
+
 }
+
 
 .register-header h1 {
+
     margin-bottom: 10px;
+
     font-size: 32px;
+
 }
+
 
 .register-header p {
+
     color: var(--muted);
+
     margin: 0;
+
 }
+
+
+/* ==============================
+   FORM
+============================== */
 
 .form-group {
+
     margin-bottom: 20px;
+
 }
+
 
 .form-group label {
+
     display: block;
+
     margin-bottom: 8px;
+
     font-weight: 600;
+
 }
+
 
 .form-group input {
+
     width: 100%;
+
     box-sizing: border-box;
+
     padding: 14px 15px;
+
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.04);
+
+    border: 1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.04);
+
     color: inherit;
+
     outline: none;
+
     font-size: 15px;
+
 }
+
 
 .form-group input:focus {
+
     border-color: #8b5cf6;
+
 }
+
+
+/* ==============================
+   PASSWORD INFO
+============================== */
 
 .password-info {
+
     font-size: 13px;
+
     color: var(--muted);
+
     margin-top: 7px;
+
 }
+
+
+/* ==============================
+   BUTTON
+============================== */
 
 .register-button {
+
     width: 100%;
+
     border: none;
+
     cursor: pointer;
+
     margin-top: 5px;
+
 }
+
 
 .register-button:disabled {
+
     opacity: 0.6;
+
     cursor: not-allowed;
+
 }
+
+
+/* ==============================
+   MESSAGE
+============================== */
 
 .message {
+
     display: none;
+
     padding: 13px 15px;
+
     border-radius: 10px;
+
     margin-bottom: 20px;
+
     font-size: 14px;
+
     line-height: 1.5;
+
 }
+
 
 .message.error {
+
     display: block;
-    background: rgba(239,68,68,0.12);
-    border: 1px solid rgba(239,68,68,0.3);
+
+    background:
+        rgba(239,68,68,0.12);
+
+    border:
+        1px solid rgba(239,68,68,0.3);
+
     color: #fca5a5;
+
 }
+
 
 .message.success {
+
     display: block;
-    background: rgba(34,197,94,0.12);
-    border: 1px solid rgba(34,197,94,0.3);
+
+    background:
+        rgba(34,197,94,0.12);
+
+    border:
+        1px solid rgba(34,197,94,0.3);
+
     color: #86efac;
+
 }
+
+
+/* ==============================
+   FOOTER
+============================== */
 
 .register-footer {
+
     text-align: center;
+
     margin-top: 25px;
+
     color: var(--muted);
+
 }
+
 
 .register-footer a {
+
     color: inherit;
+
     font-weight: 600;
+
 }
 
+
 .back-home {
+
     display: block;
+
     text-align: center;
+
     margin-top: 20px;
+
     color: var(--muted);
+
     text-decoration: none;
+
     font-size: 14px;
+
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 500px) {
+
+    .register-card {
+
+        padding: 30px 20px;
+
+    }
+
+    .register-header h1 {
+
+        font-size: 28px;
+
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <main class="register-page">
 
+
 <div class="register-container">
 
-    <!-- LOGO -->
 
-    <div class="register-logo">
+<!-- ==============================
+     LOGO
+============================== -->
 
-        <a href="index.html">
+<div class="register-logo">
 
-            <img
-                src="logo.jpg"
-                alt="TradeVestor"
-            >
+<a href="index.html">
 
-            <span>
-                TRADE<b>VESTOR</b>
-            </span>
+<img
+    src="logo.jpg"
+    alt="TradeVestor"
+>
 
-        </a>
+<span>
+TRADE<b>VESTOR</b>
+</span>
 
-    </div>
+</a>
 
-
-    <!-- CARD -->
-
-    <div class="register-card">
-
-        <div class="register-header">
-
-            <h1>
-                Buat Akun
-            </h1>
-
-            <p>
-                Bergabung dengan TradeVestor
-            </p>
-
-        </div>
+</div>
 
 
-        <!-- MESSAGE -->
 
-        <div
-            id="message"
-            class="message"
-        ></div>
+<!-- ==============================
+     CARD
+============================== -->
 
-
-        <!-- FORM -->
-
-        <form id="registerForm">
-
-            <!-- NAME -->
-
-            <div class="form-group">
-
-                <label for="name">
-                    Nama
-                </label>
-
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Masukkan nama"
-                    autocomplete="name"
-                    required
-                >
-
-            </div>
+<div class="register-card">
 
 
-            <!-- EMAIL -->
+<div class="register-header">
 
-            <div class="form-group">
+<h1>
+Buat Akun
+</h1>
 
-                <label for="email">
-                    Email
-                </label>
+<p>
+Bergabung dengan TradeVestor
+</p>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="nama@email.com"
-                    autocomplete="email"
-                    required
-                >
-
-            </div>
+</div>
 
 
-            <!-- PASSWORD -->
 
-            <div class="form-group">
+<!-- ==============================
+     MESSAGE
+============================== -->
 
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Minimal 8 karakter"
-                    autocomplete="new-password"
-                    minlength="8"
-                    required
-                >
-
-                <div class="password-info">
-                    Password minimal 8 karakter.
-                </div>
-
-            </div>
+<div
+    id="message"
+    class="message"
+></div>
 
 
-            <!-- BUTTON -->
 
-            <button
-                type="submit"
-                id="registerButton"
-                class="btn btn-primary register-button"
-            >
-                Buat Akun
-            </button>
+<!-- ==============================
+     FORM
+============================== -->
 
-        </form>
+<form id="registerForm">
 
 
-        <!-- LOGIN -->
+<!-- NAME -->
 
-        <div class="register-footer">
+<div class="form-group">
 
-            Sudah punya akun?
+<label for="name">
+Nama
+</label>
 
-            <a href="login.html">
-                Login di sini
-            </a>
+<input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Masukkan nama"
+    autocomplete="name"
+    required
+>
 
-        </div>
-
-    </div>
+</div>
 
 
-    <a
-        href="index.html"
-        class="back-home"
-    >
-        ← Kembali ke Beranda
-    </a>
+
+<!-- EMAIL -->
+
+<div class="form-group">
+
+<label for="email">
+Email
+</label>
+
+<input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="nama@email.com"
+    autocomplete="email"
+    required
+>
+
+</div>
+
+
+
+<!-- PASSWORD -->
+
+<div class="form-group">
+
+<label for="password">
+Password
+</label>
+
+<input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Minimal 8 karakter"
+    autocomplete="new-password"
+    minlength="8"
+    required
+>
+
+<div class="password-info">
+
+Password minimal 8 karakter.
+
+</div>
+
+</div>
+
+
+
+<!-- BUTTON -->
+
+<button
+    type="submit"
+    id="registerButton"
+    class="btn btn-primary register-button"
+>
+
+Buat Akun
+
+</button>
+
+
+</form>
+
+
+
+<!-- ==============================
+     LOGIN
+============================== -->
+
+<div class="register-footer">
+
+Sudah punya akun?
+
+<a href="login.html">
+Login di sini
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==============================
+     BACK HOME
+============================== -->
+
+<a
+    href="index.html"
+    class="back-home"
+>
+
+← Kembali ke Beranda
+
+</a>
+
 
 </div>
 
 </main>
 
 
+
 <script>
 
-const API_URL =
-"https://tradevestor.startingfromzero95.workers.dev";
+/* =====================================================
+   TRADEVESTOR REGISTER SYSTEM
+===================================================== */
 
+
+/* ==============================
+   API
+============================== */
+
+const API_URL =
+    "https://tradevestor.startingfromzero95.workers.dev";
+
+
+/* ==============================
+   ELEMENTS
+============================== */
 
 const form =
-document.getElementById("registerForm");
+    document.getElementById("registerForm");
 
 const button =
-document.getElementById("registerButton");
+    document.getElementById("registerButton");
 
 const message =
-document.getElementById("message");
+    document.getElementById("message");
 
+
+/* ==============================
+   SHOW MESSAGE
+============================== */
 
 function showMessage(text, type) {
 
@@ -353,12 +609,20 @@ function showMessage(text, type) {
 }
 
 
+/* ==============================
+   SUBMIT REGISTER
+============================== */
+
 form.addEventListener(
     "submit",
     async function(event) {
 
         event.preventDefault();
 
+
+        /* ==========================
+           GET DATA
+        ========================== */
 
         const name =
             document
@@ -381,14 +645,23 @@ form.addEventListener(
                 .value;
 
 
-        if (!name || !email || !password) {
+        /* ==========================
+           VALIDATION
+        ========================== */
+
+        if (
+            !name ||
+            !email ||
+            !password
+        ) {
 
             showMessage(
-                "Semua data wajib diisi.",
+                "Nama, email, dan password wajib diisi.",
                 "error"
             );
 
             return;
+
         }
 
 
@@ -400,18 +673,26 @@ form.addEventListener(
             );
 
             return;
+
         }
 
+
+        /* ==========================
+           LOADING
+        ========================== */
 
         button.disabled = true;
 
         button.textContent =
             "Membuat akun...";
 
-
         message.className =
             "message";
 
+
+        /* ==========================
+           REQUEST API
+        ========================== */
 
         try {
 
@@ -419,27 +700,73 @@ form.addEventListener(
                 await fetch(
                     API_URL + "/api/register",
                     {
+
                         method: "POST",
 
                         headers: {
+
                             "Content-Type":
                                 "application/json"
+
                         },
 
-                        body: JSON.stringify({
-                            name: name,
-                            email: email,
-                            password: password
-                        })
+                        body:
+                            JSON.stringify({
+
+                                name:
+                                    name,
+
+                                email:
+                                    email,
+
+                                password:
+                                    password
+
+                            })
+
                     }
                 );
 
 
-            const data =
-                await response.json();
+            /* ==========================
+               READ RESPONSE
+            ========================== */
+
+            let data;
+
+            try {
+
+                data =
+                    await response.json();
+
+            } catch {
+
+                data = {
+
+                    success: false,
+
+                    message:
+                        "Response server tidak valid."
+
+                };
+
+            }
 
 
-            if (!response.ok || !data.success) {
+            console.log(
+                "REGISTER RESPONSE:",
+                data
+            );
+
+
+            /* ==========================
+               FAILED
+            ========================== */
+
+            if (
+                !response.ok ||
+                data.success !== true
+            ) {
 
                 showMessage(
                     data.message ||
@@ -447,36 +774,61 @@ form.addEventListener(
                     "error"
                 );
 
-                button.disabled = false;
+                button.disabled =
+                    false;
 
                 button.textContent =
                     "Buat Akun";
 
                 return;
+
             }
 
 
+            /* ==========================
+               SUCCESS
+            ========================== */
+
             showMessage(
-                "Akun berhasil dibuat. Mengarahkan ke halaman login...",
+                "✓ Akun berhasil dibuat. Mengarahkan ke login...",
                 "success"
             );
+
+
+            button.textContent =
+                "Akun Berhasil Dibuat";
+
+
+            button.disabled =
+                true;
 
 
             form.reset();
 
 
+            /* ==========================
+               REDIRECT LOGIN
+            ========================== */
+
             setTimeout(
                 function() {
 
                     window.location.href =
-                        "login.html";
+                        "login.html?registered=1";
 
                 },
                 1200
             );
 
 
-        } catch (error) {
+        }
+
+
+        /* ==========================
+           NETWORK ERROR
+        ========================== */
+
+        catch (error) {
 
             console.error(
                 "REGISTER ERROR:",
@@ -490,16 +842,20 @@ form.addEventListener(
             );
 
 
-            button.disabled = false;
+            button.disabled =
+                false;
+
 
             button.textContent =
                 "Buat Akun";
+
         }
 
     }
 );
 
 </script>
+
 
 </body>
 
