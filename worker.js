@@ -3,7 +3,7 @@ export default {
     const url = new URL(request.url);
 
     // ==============================
-    // CORS
+    // CORS / OPTIONS
     // ==============================
 
     if (request.method === "OPTIONS") {
@@ -64,14 +64,6 @@ export default {
       request.method === "POST"
     ) {
       try {
-        // Pastikan DB tersedia
-        if (!env.DB) {
-          return json({
-            success: false,
-            message: "Binding DB tidak ditemukan pada Worker."
-          }, 500);
-        }
-
         const body = await request.json();
 
         const name = String(body.name || "").trim();
@@ -81,10 +73,6 @@ export default {
           .toLowerCase();
 
         const password = String(body.password || "");
-
-        // ==============================
-        // VALIDASI
-        // ==============================
 
         if (!name || !email || !password) {
           return json({
@@ -110,17 +98,15 @@ export default {
           }, 400);
         }
 
-        // ==============================
-        // CEK EMAIL
-        // ==============================
-
         const existingUser = await env.DB
-          .prepare(`
+          .prepare(
+            `
             SELECT id
             FROM users
             WHERE email = ?
             LIMIT 1
-          `)
+            `
+          )
           .bind(email)
           .first();
 
@@ -132,20 +118,14 @@ export default {
           }, 409);
         }
 
-        // ==============================
-        // HASH PASSWORD
-        // ==============================
-
         const passwordHash =
           await hashPassword(password);
 
-        // ==============================
-        // INSERT USER
-        // ==============================
-
         const result = await env.DB
-          .prepare(`
-            INSERT INTO users (
+          .prepare(
+            `
+            INSERT INTO users
+            (
               name,
               email,
               password_hash,
@@ -154,7 +134,8 @@ export default {
               created_at,
               updated_at
             )
-            VALUES (
+            VALUES
+            (
               ?,
               ?,
               ?,
@@ -163,7 +144,8 @@ export default {
               CURRENT_TIMESTAMP,
               CURRENT_TIMESTAMP
             )
-          `)
+            `
+          )
           .bind(
             name,
             email,
@@ -172,10 +154,6 @@ export default {
           .run();
 
         const id = result.meta.last_row_id;
-
-        // ==============================
-        // BERHASIL
-        // ==============================
 
         return json({
           success: true,
@@ -196,15 +174,11 @@ export default {
           error
         );
 
-        // SENGAJA MENAMPILKAN ERROR
-        // UNTUK DEBUGGING
         return json({
           success: false,
           message:
-            "REGISTER ERROR",
-          error:
-            error?.message ||
-            String(error)
+            "Terjadi kesalahan pada server.",
+          error: error.message
         }, 500);
       }
     }
@@ -218,14 +192,6 @@ export default {
       request.method === "POST"
     ) {
       try {
-
-        if (!env.DB) {
-          return json({
-            success: false,
-            message:
-              "Binding DB tidak ditemukan pada Worker."
-          }, 500);
-        }
 
         const body = await request.json();
 
@@ -245,7 +211,8 @@ export default {
         }
 
         const user = await env.DB
-          .prepare(`
+          .prepare(
+            `
             SELECT
               id,
               name,
@@ -256,7 +223,8 @@ export default {
             FROM users
             WHERE email = ?
             LIMIT 1
-          `)
+            `
+          )
           .bind(email)
           .first();
 
@@ -281,19 +249,78 @@ export default {
           }, 401);
         }
 
-        return json({
-          success: true,
-          message:
-            "Login berhasil.",
-          user: {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            plan: user.plan,
-            premium_expires_at:
-              user.premium_expires_at
+        // ==============================
+        // BUAT SESSION
+        // ==============================
+
+        const sessionToken =
+          crypto.randomUUID() +
+          "-" +
+          crypto.randomUUID();
+
+        const tokenHash =
+          await hashPassword(sessionToken);
+
+        const expiresAt =
+          new Date(
+            Date.now() + 7 * 24 * 60 * 60 * 1000
+          ).toISOString();
+
+        await env.DB
+          .prepare(
+            `
+            INSERT INTO sessions
+            (
+              user_id,
+              token_hash,
+              expires_at
+            )
+            VALUES (?, ?, ?)
+            `
+          )
+          .bind(
+            user.id,
+            tokenHash,
+            expiresAt
+          )
+          .run();
+
+        // ==============================
+        // COOKIE SESSION
+        // ==============================
+
+        const headers = {
+          "Content-Type": "application/json",
+          ...corsHeaders(),
+
+          "Set-Cookie":
+            `tv_session=${sessionToken}; ` +
+            `Path=/; ` +
+            `HttpOnly; ` +
+            `Secure; ` +
+            `SameSite=Lax; ` +
+            `Max-Age=604800`
+        };
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message:
+              "Login berhasil.",
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              plan: user.plan,
+              premium_expires_at:
+                user.premium_expires_at
+            }
+          }),
+          {
+            status: 200,
+            headers
           }
-        });
+        );
 
       } catch (error) {
 
@@ -305,10 +332,188 @@ export default {
         return json({
           success: false,
           message:
-            "LOGIN ERROR",
-          error:
-            error?.message ||
-            String(error)
+            "Terjadi kesalahan pada server.",
+          error: error.message
+        }, 500);
+      }
+    }
+
+    // ==============================
+    // CEK SESSION / USER
+    // ==============================
+
+    if (
+      url.pathname === "/api/me" &&
+      request.method === "GET"
+    ) {
+      try {
+
+        const sessionToken =
+          getCookie(
+            request,
+            "tv_session"
+          );
+
+        if (!sessionToken) {
+          return json({
+            success: false,
+            authenticated: false,
+            message:
+              "Belum login."
+          }, 401);
+        }
+
+        const tokenHash =
+          await hashPassword(sessionToken);
+
+        const session = await env.DB
+          .prepare(
+            `
+            SELECT
+              sessions.id,
+              sessions.user_id,
+              sessions.expires_at,
+              users.name,
+              users.email,
+              users.plan,
+              users.premium_expires_at
+            FROM sessions
+            INNER JOIN users
+              ON users.id = sessions.user_id
+            WHERE sessions.token_hash = ?
+            LIMIT 1
+            `
+          )
+          .bind(tokenHash)
+          .first();
+
+        if (!session) {
+          return json({
+            success: false,
+            authenticated: false,
+            message:
+              "Session tidak valid."
+          }, 401);
+        }
+
+        if (
+          new Date(session.expires_at) <=
+          new Date()
+        ) {
+
+          await env.DB
+            .prepare(
+              `
+              DELETE FROM sessions
+              WHERE id = ?
+              `
+            )
+            .bind(session.id)
+            .run();
+
+          return json({
+            success: false,
+            authenticated: false,
+            message:
+              "Session sudah kedaluwarsa."
+          }, 401);
+        }
+
+        return json({
+          success: true,
+          authenticated: true,
+          user: {
+            id: session.user_id,
+            name: session.name,
+            email: session.email,
+            plan: session.plan,
+            premium_expires_at:
+              session.premium_expires_at
+          }
+        });
+
+      } catch (error) {
+
+        console.error(
+          "ME ERROR:",
+          error
+        );
+
+        return json({
+          success: false,
+          authenticated: false,
+          message:
+            "Terjadi kesalahan pada server.",
+          error: error.message
+        }, 500);
+      }
+    }
+
+    // ==============================
+    // LOGOUT
+    // ==============================
+
+    if (
+      url.pathname === "/api/logout" &&
+      request.method === "POST"
+    ) {
+      try {
+
+        const sessionToken =
+          getCookie(
+            request,
+            "tv_session"
+          );
+
+        if (sessionToken) {
+
+          const tokenHash =
+            await hashPassword(
+              sessionToken
+            );
+
+          await env.DB
+            .prepare(
+              `
+              DELETE FROM sessions
+              WHERE token_hash = ?
+              `
+            )
+            .bind(tokenHash)
+            .run();
+        }
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message:
+              "Logout berhasil."
+          }),
+          {
+            status: 200,
+            headers: {
+              "Content-Type":
+                "application/json",
+              ...corsHeaders(),
+
+              "Set-Cookie":
+                "tv_session=; " +
+                "Path=/; " +
+                "HttpOnly; " +
+                "Secure; " +
+                "SameSite=Lax; " +
+                "Max-Age=0"
+            }
+          }
+        );
+
+      } catch (error) {
+
+        return json({
+          success: false,
+          message:
+            "Gagal logout.",
+          error: error.message
         }, 500);
       }
     }
@@ -356,6 +561,38 @@ async function hashPassword(password) {
 
 
 // ==========================================
+// GET COOKIE
+// ==========================================
+
+function getCookie(request, name) {
+
+  const cookieHeader =
+    request.headers.get("Cookie");
+
+  if (!cookieHeader) {
+    return null;
+  }
+
+  const cookies =
+    cookieHeader.split(";");
+
+  for (const cookie of cookies) {
+
+    const [key, ...value] =
+      cookie.trim().split("=");
+
+    if (key === name) {
+
+      return value.join("=");
+
+    }
+  }
+
+  return null;
+}
+
+
+// ==========================================
 // JSON RESPONSE
 // ==========================================
 
@@ -376,16 +613,22 @@ function json(data, status = 200) {
 
 
 // ==========================================
-// CORS
+// CORS HEADERS
 // ==========================================
 
 function corsHeaders() {
 
   return {
-    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin":
+      "https://tradevestor.startingfromzero95.workers.dev",
+
     "Access-Control-Allow-Headers":
       "Content-Type",
+
     "Access-Control-Allow-Methods":
-      "GET, POST, OPTIONS"
+      "GET, POST, OPTIONS",
+
+    "Access-Control-Allow-Credentials":
+      "true"
   };
 }
