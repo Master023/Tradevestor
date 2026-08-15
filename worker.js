@@ -33,7 +33,7 @@ export default {
 
 
     // =====================================================
-    // TEST DATABASE
+    // DATABASE TEST
     // =====================================================
 
     if (
@@ -57,10 +57,7 @@ export default {
 
       } catch (error) {
 
-        console.error(
-          "TEST DB ERROR:",
-          error
-        );
+        console.error("TEST DB ERROR:", error);
 
         return json({
           success: false,
@@ -84,31 +81,21 @@ export default {
 
       try {
 
-        const body =
-          await request.json();
-
+        const body = await request.json();
 
         const name =
           String(body.name || "").trim();
-
 
         const email =
           String(body.email || "")
             .trim()
             .toLowerCase();
 
-
         const password =
           String(body.password || "");
 
 
-        // VALIDASI
-
-        if (
-          !name ||
-          !email ||
-          !password
-        ) {
+        if (!name || !email || !password) {
 
           return json({
             success: false,
@@ -141,8 +128,6 @@ export default {
         }
 
 
-        // CEK EMAIL
-
         const existingUser =
           await env.DB
             .prepare(
@@ -168,13 +153,9 @@ export default {
         }
 
 
-        // HASH PASSWORD
-
         const passwordHash =
           await hashString(password);
 
-
-        // SIMPAN USER
 
         const result =
           await env.DB
@@ -231,14 +212,12 @@ export default {
 
         });
 
-
       } catch (error) {
 
         console.error(
           "REGISTER ERROR:",
           error
         );
-
 
         return json({
 
@@ -282,10 +261,7 @@ export default {
           String(body.password || "");
 
 
-        if (
-          !email ||
-          !password
-        ) {
+        if (!email || !password) {
 
           return json({
 
@@ -298,8 +274,6 @@ export default {
 
         }
 
-
-        // CARI USER
 
         const user =
           await env.DB
@@ -335,8 +309,6 @@ export default {
         }
 
 
-        // CEK PASSWORD
-
         const passwordHash =
           await hashString(password);
 
@@ -358,7 +330,7 @@ export default {
 
 
         // =================================================
-        // BUAT SESSION
+        // SESSION
         // =================================================
 
         const sessionToken =
@@ -366,9 +338,7 @@ export default {
 
 
         const tokenHash =
-          await hashString(
-            sessionToken
-          );
+          await hashString(sessionToken);
 
 
         const expiresAt =
@@ -377,8 +347,6 @@ export default {
             7 * 24 * 60 * 60 * 1000
           ).toISOString();
 
-
-        // SIMPAN SESSION
 
         await env.DB
           .prepare(
@@ -400,8 +368,6 @@ export default {
           )
           .run();
 
-
-        // COOKIE
 
         const headers =
           new Headers(
@@ -459,14 +425,12 @@ export default {
 
         );
 
-
       } catch (error) {
 
         console.error(
           "LOGIN ERROR:",
           error
         );
-
 
         return json({
 
@@ -487,7 +451,6 @@ export default {
 
     // =====================================================
     // CURRENT USER
-    // /api/me
     // =====================================================
 
     if (
@@ -537,79 +500,27 @@ export default {
         }
 
 
-        const user =
-          result.user;
-
-
-        const premiumActive =
-          isPremiumActive(user);
-
-
-        if (!premiumActive) {
-
-          return json({
-
-            success: true,
-
-            premium: false,
-
-            message:
-              "Akun belum memiliki akses Premium.",
-
-            user: {
-
-              id:
-                user.id,
-
-              name:
-                user.name,
-
-              email:
-                user.email,
-
-              plan:
-                user.plan,
-
-              premium_expires_at:
-                user.premium_expires_at
-
-            }
-
-          });
-
-        }
+        const premium =
+          isPremiumActive(
+            result.user
+          );
 
 
         return json({
 
           success: true,
 
-          premium: true,
+          premium,
 
           message:
-            "Akses Premium aktif.",
+            premium
+              ? "Akses Premium aktif."
+              : "Akun belum memiliki akses Premium.",
 
-          user: {
-
-            id:
-              user.id,
-
-            name:
-              user.name,
-
-            email:
-              user.email,
-
-            plan:
-              user.plan,
-
-            premium_expires_at:
-              user.premium_expires_at
-
-          }
+          user:
+            result.user
 
         });
-
 
       } catch (error) {
 
@@ -617,7 +528,6 @@ export default {
           "PREMIUM CHECK ERROR:",
           error
         );
-
 
         return json({
 
@@ -717,14 +627,12 @@ export default {
 
         );
 
-
       } catch (error) {
 
         console.error(
           "LOGOUT ERROR:",
           error
         );
-
 
         return json({
 
@@ -739,6 +647,62 @@ export default {
         }, 500);
 
       }
+
+    }
+
+
+    // =====================================================
+    // PROTECT PREMIUM HTML
+    // =====================================================
+
+    if (
+      request.method === "GET" &&
+      isPremiumPage(url.pathname)
+    ) {
+
+      const auth =
+        await authenticateUser(
+          request,
+          env
+        );
+
+
+      if (!auth.success) {
+
+        return Response.redirect(
+          `${url.origin}/login.html?redirect=${encodeURIComponent(url.pathname)}`,
+          302
+        );
+
+      }
+
+
+      if (
+        !isPremiumActive(
+          auth.user
+        )
+      ) {
+
+        return Response.redirect(
+          `${url.origin}/premium.html?access=required`,
+          302
+        );
+
+      }
+
+    }
+
+
+    // =====================================================
+    // STATIC ASSETS
+    // =====================================================
+
+    if (
+      env.ASSETS &&
+      typeof env.ASSETS.fetch === "function"
+    ) {
+
+      return env.ASSETS.fetch(request);
 
     }
 
@@ -761,6 +725,38 @@ export default {
 
   }
 };
+
+
+// =========================================================
+// PREMIUM PAGE DETECTOR
+// =========================================================
+
+function isPremiumPage(pathname) {
+
+  const protectedPages = [
+
+    "/premium-member.html",
+
+    "/premium-market-structure.html",
+
+    "/premium-mtf.html",
+
+    "/premium-risk.html",
+
+    "/premium-psychology.html",
+
+    "/premium-strategy.html",
+
+    "/premium-indicators.html"
+
+  ];
+
+
+  return protectedPages.includes(
+    pathname.toLowerCase()
+  );
+
+}
 
 
 // =========================================================
@@ -844,8 +840,6 @@ async function authenticateUser(
   }
 
 
-  // SESSION EXPIRED
-
   if (
     new Date(session.expires_at)
     <= new Date()
@@ -903,7 +897,7 @@ async function authenticateUser(
 
 
 // =========================================================
-// CURRENT USER RESPONSE
+// CURRENT USER
 // =========================================================
 
 async function getCurrentUser(
@@ -942,7 +936,6 @@ async function getCurrentUser(
         result.user
 
     });
-
 
   } catch (error) {
 
@@ -983,9 +976,6 @@ function isPremiumActive(user) {
 
   }
 
-
-  // Jika Premium tidak mempunyai
-  // tanggal expired, tetap aktif.
 
   if (
     !user.premium_expires_at
@@ -1047,7 +1037,7 @@ function generateToken() {
 
 
 // =========================================================
-// SHA-256 HASH
+// SHA-256
 // =========================================================
 
 async function hashString(
@@ -1096,7 +1086,7 @@ function isValidEmail(
 
 
 // =========================================================
-// PARSE COOKIES
+// COOKIE PARSER
 // =========================================================
 
 function parseCookies(
