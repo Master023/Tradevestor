@@ -27,17 +27,12 @@
         href="logo.jpg"
     >
 
-    <!-- CSS UTAMA -->
     <link
         rel="stylesheet"
         href="css/style.css"
     >
 
     <style>
-
-        /* =====================================================
-           PREMIUM MEMBER DASHBOARD
-        ===================================================== */
 
         .member-hero {
             padding: 80px 0 45px;
@@ -286,6 +281,7 @@
             border: 1px solid rgba(255,255,255,.1);
             background: rgba(255,255,255,.04);
             color: inherit;
+            cursor: pointer;
         }
 
         .module-btn.primary {
@@ -336,14 +332,18 @@
         }
 
         .logout-btn {
-            border: 0;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.04);
+            color: inherit;
             cursor: pointer;
             font: inherit;
+            padding: 9px 14px;
+            border-radius: 9px;
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+        .user-name {
+            font-weight: 800;
+        }
 
         @media (max-width: 900px) {
 
@@ -393,10 +393,6 @@
 
 <body>
 
-
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
 
 <header>
 
@@ -480,6 +476,16 @@
                     </a>
                 </li>
 
+                <li>
+                    <button
+                        type="button"
+                        class="logout-btn"
+                        id="logoutButton"
+                    >
+                        Logout
+                    </button>
+                </li>
+
             </ul>
 
         </nav>
@@ -490,16 +496,8 @@
 
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
 
-
-<!-- =====================================================
-     MEMBER HERO
-===================================================== -->
 
 <section class="member-hero">
 
@@ -507,8 +505,6 @@
 
         <div class="member-grid">
 
-
-            <!-- MEMBER INFO -->
 
             <div class="member-card">
 
@@ -523,10 +519,15 @@
 
                 <h1 class="member-title">
 
-                    Selamat datang
-                    di <span class="gradient">
-                    TradeVestor Premium.
+                    Selamat datang,
+                    <span
+                        class="gradient user-name"
+                        id="userName"
+                    >
+                        Member
                     </span>
+
+                    di TradeVestor Premium.
 
                 </h1>
 
@@ -582,8 +583,6 @@
 
 
 
-            <!-- MEMBER STAT -->
-
             <div class="member-card member-stat-card">
 
                 <div>
@@ -615,16 +614,15 @@
                 <div>
 
                     <span class="stat-label">
-                        HARGA
+                        BERLAKU SAMPAI
                     </span>
 
-                    <div class="stat-value">
-                        Rp35K
+                    <div
+                        class="stat-value"
+                        id="premiumExpiry"
+                    >
+                        —
                     </div>
-
-                    <span class="stat-label">
-                        / bulan
-                    </span>
 
                 </div>
 
@@ -633,10 +631,6 @@
 
         </div>
 
-
-        <!-- =================================================
-             PROGRESS
-        ================================================= -->
 
         <div class="member-card progress-box">
 
@@ -679,10 +673,6 @@
 </section>
 
 
-
-<!-- =====================================================
-     CONTINUE LEARNING
-===================================================== -->
 
 <section class="section-space">
 
@@ -790,10 +780,6 @@
 
 
 
-<!-- =====================================================
-     PREMIUM LIBRARY
-===================================================== -->
-
 <section
     class="section-space"
     id="library"
@@ -822,8 +808,6 @@
 
         <div class="module-grid">
 
-
-            <!-- MODULE 01 -->
 
             <article class="module-card">
 
@@ -884,8 +868,6 @@
 
 
 
-            <!-- MODULE 02 -->
-
             <article class="module-card locked">
 
                 <div class="module-number">
@@ -943,8 +925,6 @@
             </article>
 
 
-
-            <!-- MODULE 03 -->
 
             <article class="module-card locked">
 
@@ -1004,8 +984,6 @@
 
 
 
-            <!-- MODULE 04 -->
-
             <article class="module-card locked">
 
                 <div class="module-number">
@@ -1063,8 +1041,6 @@
             </article>
 
 
-
-            <!-- MODULE 05 -->
 
             <article class="module-card locked">
 
@@ -1124,8 +1100,6 @@
 
 
 
-            <!-- MODULE 06 -->
-
             <article class="module-card locked">
 
                 <div class="module-number">
@@ -1183,8 +1157,6 @@
             </article>
 
 
-
-            <!-- MODULE 07 -->
 
             <article class="module-card locked">
 
@@ -1244,8 +1216,6 @@
 
 
 
-            <!-- MODULE 08 -->
-
             <article class="module-card locked">
 
                 <div class="module-number">
@@ -1303,8 +1273,6 @@
             </article>
 
 
-
-            <!-- MODULE 09 -->
 
             <article class="module-card locked">
 
@@ -1371,10 +1339,6 @@
 </section>
 
 
-
-<!-- =====================================================
-     QUICK ACCESS
-===================================================== -->
 
 <section class="section-space">
 
@@ -1491,10 +1455,6 @@
 
 
 
-<!-- =====================================================
-     MEMBER NOTE
-===================================================== -->
-
 <section class="section-space">
 
     <div class="container">
@@ -1555,10 +1515,6 @@
 
 
 
-<!-- =====================================================
-     DISCLAIMER
-===================================================== -->
-
 <section class="section-space">
 
     <div class="container">
@@ -1591,10 +1547,6 @@
 </main>
 
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
 <footer>
 
@@ -1698,10 +1650,6 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script src="js/script.js"></script>
 
 
@@ -1709,41 +1657,298 @@
 
     /*
     ========================================================
-    PREMIUM MEMBER DASHBOARD
-    ========================================================
-
-    Untuk sekarang dashboard ini menggunakan tampilan
-    statis.
-
-    Jangan gunakan localStorage sebagai sistem keamanan
-    pembayaran.
-
-    Ketika sistem login/backend sudah dibuat, status member
-    seharusnya diperiksa oleh server sebelum materi Premium
-    diberikan.
-
+    TRADEVESTOR PREMIUM ACCESS CONTROL
     ========================================================
     */
 
+    const API_URL =
+        "https://tradevestor.startingfromzero95.workers.dev";
 
-    // Animasi sederhana ketika halaman selesai dimuat
+
+    async function checkPremiumAccess() {
+
+        try {
+
+            const response =
+                await fetch(
+                    API_URL + "/api/me",
+                    {
+                        method: "GET",
+                        credentials: "include"
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            /*
+            ================================================
+            BELUM LOGIN
+            ================================================
+            */
+
+            if (
+                !response.ok ||
+                !data.success ||
+                !data.user
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            const user =
+                data.user;
+
+
+            /*
+            ================================================
+            CEK PLAN
+            ================================================
+            */
+
+            if (
+                user.plan !== "premium"
+            ) {
+
+                alert(
+                    "Halaman ini khusus member Premium."
+                );
+
+                window.location.href =
+                    "premium.html";
+
+                return;
+
+            }
+
+
+            /*
+            ================================================
+            CEK EXPIRATION
+            ================================================
+            */
+
+            if (
+                user.premium_expires_at
+            ) {
+
+                const expiry =
+                    new Date(
+                        user.premium_expires_at
+                    );
+
+
+                const now =
+                    new Date();
+
+
+                if (
+                    expiry <= now
+                ) {
+
+                    alert(
+                        "Membership Premium lu sudah berakhir."
+                    );
+
+                    window.location.href =
+                        "premium.html";
+
+                    return;
+
+                }
+
+
+                const expiryElement =
+                    document.getElementById(
+                        "premiumExpiry"
+                    );
+
+
+                if (expiryElement) {
+
+                    expiryElement.textContent =
+                        expiry.toLocaleDateString(
+                            "id-ID",
+                            {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        );
+
+                }
+
+            }
+
+
+            /*
+            ================================================
+            TAMPILKAN NAMA USER
+            ================================================
+            */
+
+            const nameElement =
+                document.getElementById(
+                    "userName"
+                );
+
+
+            if (nameElement) {
+
+                nameElement.textContent =
+                    user.name;
+
+            }
+
+
+            console.log(
+                "Premium access granted:",
+                user.email
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "PREMIUM ACCESS ERROR:",
+                error
+            );
+
+
+            alert(
+                "Tidak dapat memverifikasi akun."
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+
+    /*
+    ========================================================
+    LOGOUT
+    ========================================================
+    */
+
+    async function logoutUser() {
+
+        try {
+
+            const response =
+                await fetch(
+                    API_URL + "/api/logout",
+                    {
+                        method: "POST",
+                        credentials: "include"
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (data.success) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            alert(
+                "Logout gagal."
+            );
+
+        } catch (error) {
+
+            console.error(
+                "LOGOUT ERROR:",
+                error
+            );
+
+            alert(
+                "Tidak dapat melakukan logout."
+            );
+
+        }
+
+    }
+
+
+    /*
+    ========================================================
+    INIT
+    ========================================================
+    */
 
     document.addEventListener(
         "DOMContentLoaded",
         function () {
+
+
+            /*
+            CEK PREMIUM
+            */
+
+            checkPremiumAccess();
+
+
+            /*
+            LOGOUT BUTTON
+            */
+
+            const logoutButton =
+                document.getElementById(
+                    "logoutButton"
+                );
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    logoutUser
+                );
+
+            }
+
+
+            /*
+            ANIMASI MODULE
+            */
 
             const cards =
                 document.querySelectorAll(
                     ".module-card"
                 );
 
-            cards.forEach(
-                function (card, index) {
 
-                    card.style.opacity = "0";
+            cards.forEach(
+                function (
+                    card,
+                    index
+                ) {
+
+                    card.style.opacity =
+                        "0";
 
                     card.style.transform =
                         "translateY(15px)";
+
 
                     setTimeout(
                         function () {
@@ -1751,7 +1956,8 @@
                             card.style.transition =
                                 "opacity .5s ease, transform .5s ease";
 
-                            card.style.opacity = "1";
+                            card.style.opacity =
+                                "1";
 
                             card.style.transform =
                                 "translateY(0)";
