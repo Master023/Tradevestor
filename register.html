@@ -1,10 +1,12 @@
 export default {
   async fetch(request, env) {
+
     const url = new URL(request.url);
 
-    // ==============================
-    // CORS / OPTIONS
-    // ==============================
+    // ==========================================
+    // CORS
+    // ==========================================
+
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
@@ -12,23 +14,39 @@ export default {
       });
     }
 
-    // ==============================
+
+    // ==========================================
     // TEST API
-    // ==============================
-    if (url.pathname === "/api/test" && request.method === "GET") {
+    // ==========================================
+
+    if (
+      url.pathname === "/api/test" &&
+      request.method === "GET"
+    ) {
+
       return json({
         success: true,
-        message: "TradeVestor API berhasil berjalan."
+        message: "API TradeVestor berhasil berjalan."
       });
+
     }
 
-    // ==============================
+
+    // ==========================================
     // TEST DATABASE
-    // ==============================
-    if (url.pathname === "/api/test-db" && request.method === "GET") {
+    // ==========================================
+
+    if (
+      url.pathname === "/api/test-db" &&
+      request.method === "GET"
+    ) {
+
       try {
+
         const result = await env.DB
-          .prepare("SELECT COUNT(*) AS total FROM users")
+          .prepare(
+            "SELECT COUNT(*) AS total FROM users"
+          )
           .first();
 
         return json({
@@ -38,228 +56,396 @@ export default {
         });
 
       } catch (error) {
+
         return json({
           success: false,
           database: "error",
           message: error.message
         }, 500);
+
       }
+
     }
 
-    // ==============================
+
+    // ==========================================
     // REGISTER
-    // ==============================
+    // ==========================================
+
     if (
       url.pathname === "/api/register" &&
       request.method === "POST"
     ) {
+
       try {
+
         const body = await request.json();
 
-        const name = String(body.name || "").trim();
-        const email = String(body.email || "")
+        const name = String(
+          body.name || ""
+        ).trim();
+
+        const email = String(
+          body.email || ""
+        )
           .trim()
           .toLowerCase();
-        const password = String(body.password || "");
 
-        // Validasi
-        if (!name || !email || !password) {
+        const password = String(
+          body.password || ""
+        );
+
+
+        // ------------------------------
+        // VALIDASI
+        // ------------------------------
+
+        if (
+          !name ||
+          !email ||
+          !password
+        ) {
+
           return json({
             success: false,
-            message: "Nama, email, dan password wajib diisi."
+            message:
+              "Nama, email, dan password wajib diisi."
           }, 400);
+
         }
+
 
         if (password.length < 8) {
+
           return json({
             success: false,
-            message: "Password minimal 8 karakter."
+            message:
+              "Password minimal 8 karakter."
           }, 400);
+
         }
 
-        // Validasi email sederhana
+
         if (!email.includes("@")) {
+
           return json({
             success: false,
-            message: "Format email tidak valid."
+            message:
+              "Format email tidak valid."
           }, 400);
+
         }
 
-        // Cek email
-        const existingUser = await env.DB
-          .prepare(`
-            SELECT id
-            FROM users
-            WHERE email = ?
-            LIMIT 1
-          `)
-          .bind(email)
-          .first();
+
+        // ------------------------------
+        // CEK EMAIL
+        // ------------------------------
+
+        const existingUser =
+          await env.DB
+            .prepare(`
+              SELECT id
+              FROM users
+              WHERE email = ?
+              LIMIT 1
+            `)
+            .bind(email)
+            .first();
+
 
         if (existingUser) {
+
           return json({
             success: false,
-            message: "Email sudah terdaftar."
+            message:
+              "Email sudah terdaftar."
           }, 409);
+
         }
 
-        // Hash password
-        const passwordHash = await hashPassword(password);
 
-        // Buat user
-        const result = await env.DB
-          .prepare(`
-            INSERT INTO users
-            (
+        // ------------------------------
+        // HASH PASSWORD
+        // ------------------------------
+
+        const passwordHash =
+          await hashPassword(password);
+
+
+        // ------------------------------
+        // CREATE USER
+        // ------------------------------
+
+        const result =
+          await env.DB
+            .prepare(`
+              INSERT INTO users
+              (
+                name,
+                email,
+                password_hash,
+                plan,
+                premium_expires_at,
+                created_at,
+                updated_at
+              )
+              VALUES
+              (
+                ?,
+                ?,
+                ?,
+                'free',
+                NULL,
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP
+              )
+            `)
+            .bind(
               name,
               email,
-              password_hash,
-              plan,
-              premium_expires_at,
-              created_at,
-              updated_at
+              passwordHash
             )
-            VALUES
-            (
-              ?,
-              ?,
-              ?,
-              'free',
-              NULL,
-              CURRENT_TIMESTAMP,
-              CURRENT_TIMESTAMP
-            )
-          `)
-          .bind(
-            name,
-            email,
-            passwordHash
-          )
-          .run();
+            .run();
 
-        const id = result.meta.last_row_id;
+
+        const id =
+          result.meta.last_row_id;
+
+
+        // ------------------------------
+        // SUCCESS
+        // ------------------------------
 
         return json({
           success: true,
-          message: "Akun berhasil dibuat.",
+
+          message:
+            "Akun berhasil dibuat.",
+
           user: {
             id: id,
             name: name,
             email: email,
             plan: "free"
           }
+
         });
 
+
       } catch (error) {
-        console.error("REGISTER ERROR:", error);
+
+        console.error(
+          "REGISTER ERROR:",
+          error
+        );
 
         return json({
           success: false,
-          message: "Terjadi kesalahan pada server.",
-          error: error.message
+          message:
+            "Terjadi kesalahan pada server.",
+          error:
+            error.message
         }, 500);
+
       }
+
     }
 
-    // ==============================
+
+    // ==========================================
     // LOGIN
-    // ==============================
+    // ==========================================
+
     if (
       url.pathname === "/api/login" &&
       request.method === "POST"
     ) {
+
       try {
-        const body = await request.json();
 
-        const email = String(body.email || "")
-          .trim()
-          .toLowerCase();
+        const body =
+          await request.json();
 
-        const password = String(body.password || "");
 
-        if (!email || !password) {
+        const email =
+          String(
+            body.email || ""
+          )
+            .trim()
+            .toLowerCase();
+
+
+        const password =
+          String(
+            body.password || ""
+          );
+
+
+        // ------------------------------
+        // VALIDASI
+        // ------------------------------
+
+        if (
+          !email ||
+          !password
+        ) {
+
           return json({
             success: false,
-            message: "Email dan password wajib diisi."
+            message:
+              "Email dan password wajib diisi."
           }, 400);
+
         }
 
-        const passwordHash = await hashPassword(password);
 
-        const user = await env.DB
-          .prepare(`
-            SELECT
-              id,
-              name,
-              email,
-              password_hash,
-              plan,
-              premium_expires_at
-            FROM users
-            WHERE email = ?
-            LIMIT 1
-          `)
-          .bind(email)
-          .first();
+        // ------------------------------
+        // HASH PASSWORD
+        // ------------------------------
+
+        const passwordHash =
+          await hashPassword(password);
+
+
+        // ------------------------------
+        // CARI USER
+        // ------------------------------
+
+        const user =
+          await env.DB
+            .prepare(`
+              SELECT
+                id,
+                name,
+                email,
+                password_hash,
+                plan,
+                premium_expires_at
+              FROM users
+              WHERE email = ?
+              LIMIT 1
+            `)
+            .bind(email)
+            .first();
+
 
         if (!user) {
+
           return json({
             success: false,
-            message: "Email atau password salah."
+            message:
+              "Email atau password salah."
           }, 401);
+
         }
 
-        if (user.password_hash !== passwordHash) {
+
+        // ------------------------------
+        // CEK PASSWORD
+        // ------------------------------
+
+        if (
+          user.password_hash !==
+          passwordHash
+        ) {
+
           return json({
             success: false,
-            message: "Email atau password salah."
+            message:
+              "Email atau password salah."
           }, 401);
+
         }
+
+
+        // ------------------------------
+        // LOGIN BERHASIL
+        // ------------------------------
 
         return json({
+
           success: true,
-          message: "Login berhasil.",
+
+          message:
+            "Login berhasil.",
+
           user: {
+
             id: user.id,
+
             name: user.name,
+
             email: user.email,
+
             plan: user.plan,
+
             premium_expires_at:
               user.premium_expires_at
+
           }
+
         });
 
+
       } catch (error) {
-        console.error("LOGIN ERROR:", error);
+
+        console.error(
+          "LOGIN ERROR:",
+          error
+        );
+
 
         return json({
+
           success: false,
-          message: "Terjadi kesalahan pada server.",
-          error: error.message
+
+          message:
+            "Terjadi kesalahan pada server.",
+
+          error:
+            error.message
+
         }, 500);
+
       }
+
     }
 
-    // ==============================
-    // CEK USER
-    // ==============================
+
+    // ==========================================
+    // API USER
+    // ==========================================
+
     if (
       url.pathname === "/api/user" &&
       request.method === "GET"
     ) {
+
       return json({
+
         success: false,
-        message: "Endpoint user membutuhkan sistem session."
+
+        message:
+          "Endpoint user membutuhkan session."
+
       }, 401);
+
     }
 
-    // ==============================
+
+    // ==========================================
     // 404
-    // ==============================
+    // ==========================================
+
     return json({
+
       success: false,
-      message: "Endpoint tidak ditemukan."
+
+      message:
+        "Endpoint tidak ditemukan."
+
     }, 404);
+
   }
 };
 
@@ -269,20 +455,29 @@ export default {
 // ==========================================
 
 async function hashPassword(password) {
-  const data = new TextEncoder().encode(password);
 
-  const hashBuffer = await crypto.subtle.digest(
-    "SHA-256",
-    data
-  );
+  const data =
+    new TextEncoder().encode(password);
+
+
+  const hashBuffer =
+    await crypto.subtle.digest(
+      "SHA-256",
+      data
+    );
+
 
   return Array.from(
     new Uint8Array(hashBuffer)
   )
     .map(
-      byte => byte.toString(16).padStart(2, "0")
+      byte =>
+        byte
+          .toString(16)
+          .padStart(2, "0")
     )
     .join("");
+
 }
 
 
@@ -290,17 +485,32 @@ async function hashPassword(password) {
 // JSON RESPONSE
 // ==========================================
 
-function json(data, status = 200) {
+function json(
+  data,
+  status = 200
+) {
+
   return new Response(
+
     JSON.stringify(data),
+
     {
+
       status: status,
+
       headers: {
-        "Content-Type": "application/json",
+
+        "Content-Type":
+          "application/json",
+
         ...corsHeaders()
+
       }
+
     }
+
   );
+
 }
 
 
@@ -309,9 +519,18 @@ function json(data, status = 200) {
 // ==========================================
 
 function corsHeaders() {
+
   return {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+
+    "Access-Control-Allow-Origin":
+      "*",
+
+    "Access-Control-Allow-Headers":
+      "Content-Type",
+
+    "Access-Control-Allow-Methods":
+      "GET, POST, OPTIONS"
+
   };
+
 }
