@@ -4,7 +4,7 @@ export default {
     const url = new URL(request.url);
 
     // =====================================================
-    // CORS / OPTIONS
+    // OPTIONS / CORS
     // =====================================================
 
     if (request.method === "OPTIONS") {
@@ -330,7 +330,7 @@ export default {
 
 
         // =================================================
-        // SESSION
+        // CREATE SESSION
         // =================================================
 
         const sessionToken =
@@ -537,6 +537,345 @@ export default {
 
           message:
             "Terjadi kesalahan pada server.",
+
+          error:
+            error.message
+
+        }, 500);
+
+      }
+
+    }
+
+
+    // =====================================================
+    // ACTIVATE PREMIUM CODE
+    // =====================================================
+
+    if (
+      url.pathname === "/api/activate-premium" &&
+      request.method === "POST"
+    ) {
+
+      try {
+
+        // -------------------------------------------------
+        // Pastikan user sudah login
+        // -------------------------------------------------
+
+        const auth =
+          await authenticateUser(
+            request,
+            env
+          );
+
+
+        if (!auth.success) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Silakan login terlebih dahulu."
+
+          }, 401);
+
+        }
+
+
+        const user =
+          auth.user;
+
+
+        // -------------------------------------------------
+        // Ambil kode
+        // -------------------------------------------------
+
+        const body =
+          await request.json();
+
+
+        const code =
+          String(body.code || "")
+            .trim()
+            .toUpperCase();
+
+
+        if (!code) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Kode Premium wajib diisi."
+
+          }, 400);
+
+        }
+
+
+        // -------------------------------------------------
+        // Cari kode
+        // -------------------------------------------------
+
+        const premiumCode =
+          await env.DB
+            .prepare(
+              `
+              SELECT
+                id,
+                code,
+                duration_days,
+                used,
+                used_by,
+                used_at
+              FROM premium_codes
+              WHERE code = ?
+              LIMIT 1
+              `
+            )
+            .bind(code)
+            .first();
+
+
+        if (!premiumCode) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Kode Premium tidak ditemukan."
+
+          }, 404);
+
+        }
+
+
+        // -------------------------------------------------
+        // KODE SUDAH DIPAKAI
+        // -------------------------------------------------
+
+        if (
+          Number(premiumCode.used) === 1
+        ) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Kode Premium sudah digunakan."
+
+          }, 409);
+
+        }
+
+
+        // -------------------------------------------------
+        // CEK PREMIUM LAMA
+        // -------------------------------------------------
+
+        const now =
+          new Date();
+
+
+        let startDate =
+          now;
+
+
+        if (
+          user.premium_expires_at
+        ) {
+
+          const oldExpiry =
+            new Date(
+              user.premium_expires_at
+            );
+
+
+          if (
+            !Number.isNaN(
+              oldExpiry.getTime()
+            ) &&
+            oldExpiry > now
+          ) {
+
+            startDate =
+              oldExpiry;
+
+          }
+
+        }
+
+
+        // -------------------------------------------------
+        // HITUNG EXPIRY
+        // -------------------------------------------------
+
+        const durationDays =
+          Number(
+            premiumCode.duration_days || 30
+          );
+
+
+        const expiryDate =
+          new Date(
+            startDate.getTime() +
+            durationDays *
+            24 *
+            60 *
+            60 *
+            1000
+          );
+
+
+        // -------------------------------------------------
+        // UPDATE USER + KODE
+        // SATU TRANSAKSI
+        // -------------------------------------------------
+
+        const updateUser =
+          await env.DB
+            .prepare(
+              `
+              UPDATE users
+              SET
+                plan = 'premium',
+                premium_expires_at = ?,
+                updated_at = CURRENT_TIMESTAMP
+              WHERE id = ?
+              `
+            )
+            .bind(
+              expiryDate.toISOString(),
+              user.id
+            )
+            .run();
+
+
+        if (
+          !updateUser.success
+        ) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Gagal mengaktifkan Premium."
+
+          }, 500);
+
+        }
+
+
+        const markCode =
+          await env.DB
+            .prepare(
+              `
+              UPDATE premium_codes
+              SET
+                used = 1,
+                used_by = ?,
+                used_at = CURRENT_TIMESTAMP
+              WHERE id = ?
+                AND used = 0
+              `
+            )
+            .bind(
+              user.id,
+              premiumCode.id
+            )
+            .run();
+
+
+        // -------------------------------------------------
+        // Proteksi jika kode ternyata sudah dipakai
+        // -------------------------------------------------
+
+        if (
+          !markCode.success ||
+          Number(markCode.meta?.changes || 0) !== 1
+        ) {
+
+          // rollback manual user
+          await env.DB
+            .prepare(
+              `
+              UPDATE users
+              SET
+                plan = 'free',
+                premium_expires_at = NULL,
+                updated_at = CURRENT_TIMESTAMP
+              WHERE id = ?
+              `
+            )
+            .bind(user.id)
+            .run();
+
+
+          return json({
+
+            success: false,
+
+            message:
+              "Kode sudah digunakan atau proses aktivasi gagal."
+
+          }, 409);
+
+        }
+
+
+        // -------------------------------------------------
+        // SUKSES
+        // -------------------------------------------------
+
+        return json({
+
+          success: true,
+
+          message:
+            "Premium berhasil diaktifkan.",
+
+          premium: true,
+
+          user: {
+
+            id:
+              user.id,
+
+            name:
+              user.name,
+
+            email:
+              user.email,
+
+            plan:
+              "premium",
+
+            premium_expires_at:
+              expiryDate.toISOString()
+
+          }
+
+        });
+
+      } catch (error) {
+
+        console.error(
+          "ACTIVATE PREMIUM ERROR:",
+          error
+        );
+
+        return json({
+
+          success: false,
+
+          message:
+            "Terjadi kesalahan saat mengaktifkan Premium.",
 
           error:
             error.message
