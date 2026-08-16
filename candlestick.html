@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -13,13 +14,24 @@
 
     <meta
         name="description"
-        content="Belajar candlestick dari dasar, memahami body, wick, bullish, bearish, dan pola candlestick."
+        content="Pelajari candlestick dari dasar, mulai dari Open, High, Low, Close, struktur candle, bullish, bearish, pola candlestick, hingga market context."
     >
 
-    <link rel="icon" href="logo.jpg">
+    <meta
+        name="theme-color"
+        content="#07070b"
+    >
 
-    <!-- CSS UTAMA -->
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="icon"
+        href="logo.jpg"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
 
 
@@ -34,7 +46,10 @@
 
     <div class="container nav-container">
 
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="brand"
+        >
 
             <img
                 src="logo.jpg"
@@ -135,6 +150,7 @@
 <main>
 
 
+
 <!-- =====================================================
      HERO
 ===================================================== -->
@@ -146,26 +162,34 @@
         <div class="reveal">
 
             <span class="eyebrow">
+
+                <span class="dot"></span>
+
                 PRICE ACTION • FREE
+
             </span>
 
 
             <h1>
+
                 Kuasai Candlestick
                 <span class="gradient">
                     dari Dasar.
                 </span>
+
             </h1>
 
 
             <p class="lead">
 
-                Sebelum belajar indikator atau strategi,
-                lu harus memahami bahasa dasar yang
-                digunakan harga untuk bergerak.
+                Sebelum mempelajari indikator atau strategi,
+                pahami terlebih dahulu bahasa dasar pergerakan
+                harga.
 
-                Di halaman ini kita akan membahas
-                candlestick dari nol.
+                Di halaman ini lu akan belajar bagaimana
+                candlestick terbentuk, bagaimana membaca
+                Open, High, Low, Close, serta bagaimana
+                memahami pola dan konteksnya.
 
             </p>
 
@@ -176,7 +200,7 @@
                     href="#dasar"
                     class="btn btn-primary"
                 >
-                    Mulai Belajar ↓
+                    🚀 Mulai Belajar
                 </a>
 
 
@@ -189,6 +213,15 @@
 
             </div>
 
+
+            <div class="notice">
+
+                ⚠️ Materi TradeVestor dibuat untuk edukasi.
+                Tidak ada pola candlestick yang menjamin
+                harga akan bergerak sesuai prediksi.
+
+            </div>
+
         </div>
 
     </div>
@@ -198,14 +231,82 @@
 
 
 <!-- =====================================================
-     PENGENALAN
+     VISUAL CANDLESTICK
 ===================================================== -->
 
 <section class="section">
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
+
+            <span class="kicker">
+                VISUAL CANDLESTICK
+            </span>
+
+
+            <h2>
+                Lihat candlestick secara langsung.
+            </h2>
+
+
+            <p>
+
+                Sebelum masuk ke teori yang lebih dalam,
+                gunakan visual berikut untuk memahami
+                bagaimana informasi harga direpresentasikan
+                dalam candlestick.
+
+            </p>
+
+        </div>
+
+
+        <div class="candlestick-visual-card reveal">
+
+
+            <img
+                src="assets/42298.jpg"
+                alt="Visual candlestick TradeVestor"
+                class="candlestick-image"
+            >
+
+
+            <div class="candlestick-caption">
+
+                <strong>
+                    OPEN • HIGH • LOW • CLOSE
+                </strong>
+
+
+                <span>
+
+                    Satu candle menyimpan informasi
+                    pergerakan harga dalam satu periode.
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FUNDAMENTAL
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
 
             <span class="kicker">
                 01 • FUNDAMENTAL
@@ -219,11 +320,10 @@
 
             <p>
 
-                Candlestick adalah cara untuk
-                menggambarkan pergerakan harga
-                dalam periode tertentu.
+                Candlestick adalah metode visualisasi
+                pergerakan harga dalam periode tertentu.
 
-                Satu candle memberikan empat
+                Satu candle dapat memberikan empat
                 informasi utama:
 
                 Open, High, Low dan Close.
@@ -237,76 +337,92 @@
         <div class="grid-4">
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     O
                 </div>
 
+
                 <h3>
                     Open
                 </h3>
 
+
                 <p>
+
                     Harga ketika periode candle
                     dimulai.
+
                 </p>
 
             </div>
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     H
                 </div>
 
+
                 <h3>
                     High
                 </h3>
 
+
                 <p>
+
                     Harga tertinggi yang dicapai
                     selama periode tersebut.
+
                 </p>
 
             </div>
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     L
                 </div>
 
+
                 <h3>
                     Low
                 </h3>
 
+
                 <p>
+
                     Harga terendah yang dicapai
                     selama periode tersebut.
+
                 </p>
 
             </div>
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     C
                 </div>
 
+
                 <h3>
                     Close
                 </h3>
 
+
                 <p>
+
                     Harga ketika periode candle
                     berakhir.
+
                 </p>
 
             </div>
@@ -330,10 +446,11 @@
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
 
             <span class="kicker">
-                02 • STRUKTUR
+                02 • STRUKTUR CANDLE
             </span>
 
 
@@ -344,9 +461,9 @@
 
             <p>
 
-                Sebelum menghafal pola candlestick,
-                pahami terlebih dahulu bagaimana
-                sebuah candle terbentuk.
+                Jangan langsung menghafal pola.
+                Pahami dulu bagaimana sebuah candle
+                terbentuk dari pergerakan harga.
 
             </p>
 
@@ -357,21 +474,26 @@
         <div class="grid-4">
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     01
                 </div>
 
+
                 <h3>
                     Body
                 </h3>
 
+
                 <p>
 
-                    Bagian antara Open dan Close.
-                    Body besar menunjukkan perubahan
-                    harga yang relatif kuat.
+                    Body merupakan area antara
+                    harga Open dan Close.
+
+                    Semakin besar body,
+                    semakin besar perubahan harga
+                    antara pembukaan dan penutupan.
 
                 </p>
 
@@ -379,21 +501,23 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     02
                 </div>
 
+
                 <h3>
                     Upper Wick
                 </h3>
 
+
                 <p>
 
-                    Menunjukkan harga tertinggi yang
-                    sempat dicapai sebelum candle
-                    ditutup.
+                    Upper wick menunjukkan area
+                    antara body dan harga tertinggi
+                    yang dicapai dalam periode tersebut.
 
                 </p>
 
@@ -401,21 +525,23 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     03
                 </div>
 
+
                 <h3>
                     Lower Wick
                 </h3>
 
+
                 <p>
 
-                    Menunjukkan harga terendah yang
-                    sempat dicapai selama periode
-                    candle.
+                    Lower wick menunjukkan area
+                    antara body dan harga terendah
+                    yang dicapai dalam periode tersebut.
 
                 </p>
 
@@ -423,20 +549,26 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     04
                 </div>
 
+
                 <h3>
                     Close
                 </h3>
 
+
                 <p>
 
-                    Harga terakhir ketika periode
-                    candle selesai.
+                    Close adalah harga terakhir
+                    ketika periode candle selesai.
+
+                    Close sangat penting untuk
+                    membaca hasil akhir pergerakan
+                    harga pada candle tersebut.
 
                 </p>
 
@@ -451,14 +583,15 @@
 
 
 <!-- =====================================================
-     BULLISH & BEARISH
+     BULLISH BEARISH
 ===================================================== -->
 
 <section class="section">
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
 
             <span class="kicker">
                 03 • BUYER VS SELLER
@@ -472,9 +605,9 @@
 
             <p>
 
-                Warna candle biasanya digunakan
-                untuk membantu membaca hubungan
-                antara Open dan Close.
+                Perbedaan Open dan Close membantu kita
+                memahami apakah harga berakhir lebih
+                tinggi atau lebih rendah dari pembukaannya.
 
             </p>
 
@@ -485,7 +618,7 @@
         <div class="grid-2">
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     ↑
@@ -499,20 +632,27 @@
 
                 <p>
 
-                    Bullish terjadi ketika harga
+                    Bullish candle terbentuk ketika
                     Close berada di atas Open.
 
-                    Secara sederhana, harga berakhir
-                    lebih tinggi dibandingkan harga
-                    pembukaannya.
+                    Artinya harga berakhir lebih tinggi
+                    dibandingkan harga pembukaannya.
 
                 </p>
+
+
+                <div class="notice">
+
+                    Buyer berhasil membawa harga
+                    lebih tinggi dibandingkan Open.
+
+                </div>
 
             </div>
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     ↓
@@ -526,13 +666,21 @@
 
                 <p>
 
-                    Bearish terjadi ketika harga
+                    Bearish candle terbentuk ketika
                     Close berada di bawah Open.
 
-                    Artinya harga berakhir lebih
-                    rendah dibandingkan pembukaannya.
+                    Artinya harga berakhir lebih rendah
+                    dibandingkan harga pembukaannya.
 
                 </p>
+
+
+                <div class="notice">
+
+                    Seller berhasil membawa harga
+                    lebih rendah dibandingkan Open.
+
+                </div>
 
             </div>
 
@@ -548,11 +696,12 @@
      ROADMAP
 ===================================================== -->
 
-<section class="section">
+<section class="section section-dark">
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
 
             <span class="kicker">
                 ROADMAP
@@ -568,9 +717,9 @@
             <p>
 
                 Jangan hanya menghafal nama pola.
-                Pahami juga bagaimana pola tersebut
-                terbentuk dan dalam konteks apa pola
-                tersebut muncul.
+                Pelajari bagaimana pola terbentuk
+                dan dalam kondisi market seperti apa
+                pola tersebut menjadi lebih relevan.
 
             </p>
 
@@ -583,7 +732,7 @@
 
             <a
                 href="#pola"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -598,10 +747,15 @@
 
                 <p>
 
-                    Pelajari Doji, Hammer,
-                    Shooting Star dan Engulfing.
+                    Doji, Hammer, Shooting Star,
+                    Engulfing dan pola lainnya.
 
                 </p>
+
+
+                <strong>
+                    Pelajari →
+                </strong>
 
             </a>
 
@@ -609,7 +763,7 @@
 
             <a
                 href="#pola"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -624,10 +778,15 @@
 
                 <p>
 
-                    Pelajari pola yang terdiri
-                    dari dua atau tiga candle.
+                    Pola yang terbentuk dari
+                    dua atau tiga candle.
 
                 </p>
+
+
+                <strong>
+                    Pelajari →
+                </strong>
 
             </a>
 
@@ -635,7 +794,7 @@
 
             <a
                 href="#konteks"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -650,10 +809,16 @@
 
                 <p>
 
-                    Pelajari bagaimana lokasi pola
-                    memengaruhi maknanya.
+                    Pelajari hubungan candle
+                    dengan trend, support,
+                    resistance dan struktur market.
 
                 </p>
+
+
+                <strong>
+                    Pelajari →
+                </strong>
 
             </a>
 
@@ -676,7 +841,8 @@
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
 
             <span class="kicker">
                 04 • CANDLE PATTERNS
@@ -690,8 +856,11 @@
 
             <p>
 
-                Berikut beberapa pola yang umum
-                dipelajari dalam analisis price action.
+                Pola candlestick dapat membantu trader
+                membaca perilaku harga.
+
+                Namun pola bukan alat prediksi yang
+                berdiri sendiri.
 
             </p>
 
@@ -704,7 +873,7 @@
 
             <a
                 href="#doji"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -719,11 +888,15 @@
 
                 <p>
 
-                    Open dan Close berada sangat
-                    dekat sehingga body candle
-                    menjadi kecil.
+                    Open dan Close berada
+                    sangat berdekatan.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Doji →
+                </strong>
 
             </a>
 
@@ -731,7 +904,7 @@
 
             <a
                 href="#hammer"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -746,10 +919,15 @@
 
                 <p>
 
-                    Body kecil dengan lower wick
-                    yang relatif panjang.
+                    Body relatif kecil dengan
+                    lower wick yang panjang.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Hammer →
+                </strong>
 
             </a>
 
@@ -757,7 +935,7 @@
 
             <a
                 href="#shooting-star"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -772,10 +950,15 @@
 
                 <p>
 
-                    Body kecil dengan upper wick
-                    yang relatif panjang.
+                    Body relatif kecil dengan
+                    upper wick yang panjang.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Shooting Star →
+                </strong>
 
             </a>
 
@@ -783,7 +966,7 @@
 
             <a
                 href="#engulfing"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -798,10 +981,16 @@
 
                 <p>
 
-                    Pola dua candle dengan body
-                    candle kedua yang lebih besar.
+                    Pola dua candle dengan
+                    body candle kedua yang
+                    relatif besar.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Engulfing →
+                </strong>
 
             </a>
 
@@ -809,7 +998,7 @@
 
             <a
                 href="#morning-star"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -824,11 +1013,16 @@
 
                 <p>
 
-                    Pola tiga candle yang sering
-                    dipelajari sebagai potensi
-                    perubahan momentum.
+                    Pola tiga candle yang
+                    sering diperhatikan sebagai
+                    potensi perubahan momentum.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Morning Star →
+                </strong>
 
             </a>
 
@@ -836,7 +1030,7 @@
 
             <a
                 href="#evening-star"
-                class="card"
+                class="card reveal"
             >
 
                 <div class="icon">
@@ -851,10 +1045,16 @@
 
                 <p>
 
-                    Pola tiga candle yang sering
-                    diperhatikan setelah kenaikan.
+                    Pola tiga candle yang
+                    sering diperhatikan setelah
+                    kenaikan harga.
 
                 </p>
+
+
+                <strong>
+                    Pelajari Evening Star →
+                </strong>
 
             </a>
 
@@ -877,7 +1077,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 01
@@ -908,8 +1108,8 @@
 
             <p>
 
-                Doji dapat menunjukkan adanya
-                keseimbangan sementara atau
+                Kondisi tersebut dapat menunjukkan
+                adanya keseimbangan sementara atau
                 keraguan antara buyer dan seller.
 
             </p>
@@ -918,13 +1118,25 @@
             <p>
 
                 Namun Doji tidak otomatis berarti
-                Buy atau Sell.
+                harga akan naik atau turun.
 
-                Konteks market tetap penting.
+                Konteks market tetap sangat penting.
 
             </p>
 
-        </div>
+
+            <div class="notice">
+
+                <strong>
+                    Ingat:
+                </strong>
+
+                Doji adalah informasi tentang kondisi
+                candle, bukan sinyal entry otomatis.
+
+            </div>
+
+        </article>
 
     </div>
 
@@ -943,7 +1155,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 02
@@ -958,37 +1170,48 @@
             <p>
 
                 Hammer memiliki body relatif kecil
-                dan lower wick yang panjang.
+                dengan lower wick yang panjang.
 
             </p>
 
 
             <p>
 
-                Pola ini sering diperhatikan setelah
-                harga mengalami penurunan.
+                Pola ini sering diperhatikan ketika
+                muncul setelah harga mengalami
+                penurunan.
 
             </p>
 
 
             <p>
 
-                Lower wick yang panjang dapat
-                menunjukkan bahwa harga sempat
-                ditekan lebih rendah tetapi kemudian
-                mengalami penolakan.
+                Lower wick yang panjang menunjukkan
+                bahwa harga sempat bergerak lebih
+                rendah sebelum akhirnya kembali
+                mendekati area pembukaan atau
+                penutupan.
 
             </p>
 
 
             <p>
 
-                Hammer sebaiknya tidak digunakan
-                sendirian sebagai alasan entry.
+                Hammer akan lebih menarik untuk
+                dianalisis jika muncul di area
+                support atau area demand yang relevan.
 
             </p>
 
-        </div>
+
+            <div class="notice">
+
+                Jangan menggunakan Hammer sendirian
+                sebagai alasan untuk melakukan entry.
+
+            </div>
+
+        </article>
 
     </div>
 
@@ -1007,7 +1230,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 03
@@ -1021,8 +1244,8 @@
 
             <p>
 
-                Shooting Star memiliki body kecil
-                dengan upper wick yang panjang.
+                Shooting Star memiliki body relatif
+                kecil dengan upper wick yang panjang.
 
             </p>
 
@@ -1038,20 +1261,29 @@
             <p>
 
                 Upper wick yang panjang menunjukkan
-                harga sempat bergerak lebih tinggi
-                tetapi kemudian mengalami penolakan.
+                bahwa harga sempat bergerak lebih tinggi
+                sebelum akhirnya kembali turun.
 
             </p>
 
 
             <p>
 
-                Konfirmasi tambahan tetap diperlukan
-                sebelum mengambil keputusan trading.
+                Pola tersebut dapat menjadi informasi
+                mengenai adanya penolakan harga pada
+                area tertentu.
 
             </p>
 
-        </div>
+
+            <div class="notice">
+
+                Tunggu konfirmasi dan perhatikan
+                lokasi pola sebelum mengambil keputusan.
+
+            </div>
+
+        </article>
 
     </div>
 
@@ -1070,7 +1302,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 04
@@ -1084,39 +1316,52 @@
 
             <p>
 
-                Engulfing adalah pola dua candle
-                ketika body candle kedua lebih besar
-                dan menutupi body candle sebelumnya.
+                Engulfing merupakan pola dua candle
+                ketika body candle kedua relatif besar
+                dibandingkan body candle sebelumnya
+                dan menutupi body candle tersebut.
 
             </p>
+
+
+            <h3>
+                Bullish Engulfing
+            </h3>
 
 
             <p>
 
-                Dua bentuk yang umum dipelajari
-                adalah Bullish Engulfing dan
-                Bearish Engulfing.
+                Bullish Engulfing biasanya muncul
+                setelah tekanan bearish dan menunjukkan
+                bahwa buyer mengambil kontrol yang lebih
+                besar pada candle kedua.
 
             </p>
+
+
+            <h3>
+                Bearish Engulfing
+            </h3>
 
 
             <p>
 
-                Bullish Engulfing biasanya menunjukkan
-                perubahan tekanan dari seller menuju
-                buyer.
+                Bearish Engulfing merupakan kondisi
+                sebaliknya ketika tekanan seller menjadi
+                lebih dominan.
 
             </p>
 
 
-            <p>
+            <div class="notice">
 
-                Bearish Engulfing menunjukkan kondisi
-                sebaliknya.
+                Engulfing lebih bermakna ketika dibaca
+                bersama trend, support, resistance,
+                volume atau struktur market.
 
-            </p>
+            </div>
 
-        </div>
+        </article>
 
     </div>
 
@@ -1135,7 +1380,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 05
@@ -1149,10 +1394,10 @@
 
             <p>
 
-                Morning Star merupakan pola tiga
-                candle yang sering dipelajari sebagai
-                potensi perubahan momentum bearish
-                menuju bullish.
+                Morning Star merupakan pola tiga candle
+                yang sering dipelajari sebagai potensi
+                perubahan momentum dari bearish menuju
+                bullish.
 
             </p>
 
@@ -1160,12 +1405,21 @@
             <p>
 
                 Pola ini lebih menarik ketika muncul
-                setelah penurunan dan berada di area
-                harga yang relevan.
+                setelah penurunan harga dan berada
+                di area yang relevan secara teknikal.
 
             </p>
 
-        </div>
+
+            <p>
+
+                Trader biasanya menunggu konfirmasi
+                dari candle berikutnya atau struktur
+                harga sebelum mengambil keputusan.
+
+            </p>
+
+        </article>
 
     </div>
 
@@ -1184,7 +1438,7 @@
 
     <div class="container">
 
-        <div class="article">
+        <article class="article reveal">
 
             <span class="tag">
                 PATTERN 06
@@ -1198,10 +1452,10 @@
 
             <p>
 
-                Evening Star merupakan pola tiga
-                candle yang sering dipelajari sebagai
-                potensi perubahan momentum bullish
-                menuju bearish.
+                Evening Star merupakan pola tiga candle
+                yang sering dipelajari sebagai potensi
+                perubahan momentum dari bullish menuju
+                bearish.
 
             </p>
 
@@ -1213,7 +1467,16 @@
 
             </p>
 
-        </div>
+
+            <p>
+
+                Sama seperti Morning Star, pola ini
+                sebaiknya dikombinasikan dengan konteks
+                market dan konfirmasi tambahan.
+
+            </p>
+
+        </article>
 
     </div>
 
@@ -1222,7 +1485,7 @@
 
 
 <!-- =====================================================
-     KONTEKS MARKET
+     MARKET CONTEXT
 ===================================================== -->
 
 <section
@@ -1232,7 +1495,8 @@
 
     <div class="container">
 
-        <div class="section-head">
+
+        <div class="section-head reveal">
 
             <span class="kicker">
                 05 • MARKET CONTEXT
@@ -1246,9 +1510,9 @@
 
             <p>
 
-                Pola yang sama bisa memiliki makna
-                berbeda tergantung posisi candle
-                terhadap struktur market.
+                Pola yang sama dapat memberikan
+                informasi yang berbeda tergantung
+                di mana pola tersebut muncul.
 
             </p>
 
@@ -1259,7 +1523,7 @@
         <div class="grid-4">
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     01
@@ -1282,7 +1546,7 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     02
@@ -1305,7 +1569,7 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     03
@@ -1328,7 +1592,7 @@
 
 
 
-            <div class="card">
+            <div class="card reveal">
 
                 <div class="icon">
                     04
@@ -1358,16 +1622,249 @@
 
 
 <!-- =====================================================
-     CTA
+     CANDLE READING FRAMEWORK
+===================================================== -->
+
+<section class="section section-dark">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <span class="kicker">
+                TRADING FRAMEWORK
+            </span>
+
+
+            <h2>
+                Cara berpikir saat membaca candle.
+            </h2>
+
+
+            <p>
+
+                Jangan bertanya hanya
+                "Pola apa ini?"
+
+                Tanyakan juga apa yang sedang
+                dilakukan buyer dan seller.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="grid-4">
+
+
+            <div class="card reveal">
+
+                <div class="number">
+                    01
+                </div>
+
+
+                <h3>
+                    Di mana?
+                </h3>
+
+
+                <p>
+
+                    Tentukan lokasi candle terhadap
+                    support, resistance dan struktur
+                    market.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card reveal">
+
+                <div class="number">
+                    02
+                </div>
+
+
+                <h3>
+                    Sebelumnya bagaimana?
+                </h3>
+
+
+                <p>
+
+                    Lihat pergerakan harga sebelum
+                    pola terbentuk.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card reveal">
+
+                <div class="number">
+                    03
+                </div>
+
+
+                <h3>
+                    Siapa yang dominan?
+                </h3>
+
+
+                <p>
+
+                    Amati apakah buyer atau seller
+                    menunjukkan tekanan yang lebih kuat.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card reveal">
+
+                <div class="number">
+                    04
+                </div>
+
+
+                <h3>
+                    Apa konfirmasinya?
+                </h3>
+
+
+                <p>
+
+                    Jangan mengambil keputusan hanya
+                    berdasarkan satu candle.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK CHECKLIST
 ===================================================== -->
 
 <section class="section">
 
     <div class="container">
 
+
+        <div class="section-head reveal">
+
+            <span class="kicker">
+                CANDLESTICK CHECKLIST
+            </span>
+
+
+            <h2>
+                Sebelum menggunakan pola candlestick.
+            </h2>
+
+
+            <p>
+
+                Gunakan checklist sederhana ini
+                sebelum menjadikan pola sebagai
+                bagian dari analisis.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="article reveal">
+
+
+            <div class="check">
+
+                ✓ Apakah trend market sudah jelas?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah pola muncul di area yang relevan?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah ada support atau resistance?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah struktur market mendukung?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah ada konfirmasi tambahan?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah Stop Loss sudah ditentukan?
+
+            </div>
+
+
+            <div class="check">
+
+                ✓ Apakah risk/reward masuk akal?
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA NEXT
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
         <div
-            class="card"
-            style="text-align:center;padding:55px 25px"
+            class="card reveal"
+            style="
+                text-align:center;
+                padding:55px 25px;
+            "
         >
 
             <span class="kicker">
@@ -1376,7 +1873,7 @@
 
 
             <h2>
-                Sudah memahami Candlestick?
+                Candlestick sudah mulai dipahami?
             </h2>
 
 
@@ -1388,16 +1885,19 @@
                 "
             >
 
-                Sekarang lu bisa lanjut mempelajari
-                indikator teknikal dan bagaimana
-                menggunakannya bersama price action.
+                Sekarang waktunya belajar bagaimana
+                candlestick dapat dikombinasikan
+                dengan indikator untuk membangun
+                analisis yang lebih terstruktur.
 
             </p>
 
 
             <div
                 class="actions"
-                style="justify-content:center"
+                style="
+                    justify-content:center;
+                "
             >
 
                 <a
@@ -1409,13 +1909,61 @@
 
 
                 <a
+                    href="strategi.html"
+                    class="btn btn-secondary"
+                >
+                    Pelajari Strategi
+                </a>
+
+
+                <a
                     href="index.html"
                     class="btn btn-secondary"
                 >
-                    ← Kembali ke Beranda
+                    ← Beranda
                 </a>
 
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DISCLAIMER
+===================================================== -->
+
+<section class="section disclaimer-section">
+
+    <div class="container">
+
+        <div class="disclaimer reveal">
+
+            <strong>
+                ⚠️ Penting
+            </strong>
+
+
+            <p>
+
+                Candlestick dan pola price action
+                tidak dapat menjamin arah harga.
+
+                Semua keputusan trading memiliki risiko.
+                Gunakan risk management dan jangan
+                mempertaruhkan dana yang tidak sanggup
+                lu kehilangan.
+
+                Seluruh materi TradeVestor dibuat untuk
+                tujuan edukasi dan bukan merupakan
+                rekomendasi membeli atau menjual aset
+                tertentu.
+
+            </p>
 
         </div>
 
@@ -1436,37 +1984,49 @@
 
     <div class="container">
 
-        <div class="footer">
+
+        <div class="footer-grid">
 
 
-            <div>
+            <!-- BRAND -->
 
-                <div class="brand">
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="brand"
+                >
 
                     <img
                         src="logo.jpg"
                         alt="Logo TradeVestor"
                     >
 
+
                     <span>
                         TRADE<b>VESTOR</b>
                     </span>
 
-                </div>
+                </a>
 
 
-                <p style="margin-top:12px;max-width:420px">
+                <p>
 
-                    TradeVestor membantu lu memahami
-                    trading secara bertahap mulai dari
-                    price action, candlestick, indikator,
-                    strategi hingga risk management.
+                    TradeVestor adalah platform edukasi
+                    yang membantu lu memahami trading
+                    secara bertahap.
+
+                    Mulai dari candlestick, price action,
+                    indikator, strategi hingga risk
+                    management.
 
                 </p>
 
             </div>
 
 
+
+            <!-- BELAJAR -->
 
             <div>
 
@@ -1498,10 +2058,12 @@
 
 
 
+            <!-- TRADEVESTOR -->
+
             <div>
 
                 <h4>
-                    Lainnya
+                    TradeVestor
                 </h4>
 
 
@@ -1517,6 +2079,31 @@
 
                 <a href="index.html">
                     Beranda
+                </a>
+
+
+                <a
+                    href="mailto:startingfromzero95@gmail.com"
+                >
+                    Email
+                </a>
+
+
+                <a
+                    href="https://wa.me/6285872061255"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+
+                <a
+                    href="https://www.tiktok.com/@am_zid_23"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    TikTok
                 </a>
 
             </div>
@@ -1540,10 +2127,149 @@
 
 
 <!-- =====================================================
+     CANDLESTICK VISUAL CSS
+===================================================== -->
+
+<style>
+
+.candlestick-visual-card {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 14px;
+
+    background:
+        rgba(255,255,255,0.03);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius:
+        22px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35);
+
+}
+
+
+.candlestick-image {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+
+    border-radius: 14px;
+
+}
+
+
+.candlestick-caption {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        18px
+        10px
+        5px;
+
+}
+
+
+.candlestick-caption strong {
+
+    font-size: 14px;
+
+    letter-spacing:
+        0.5px;
+
+}
+
+
+.candlestick-caption span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.6;
+
+}
+
+
+@media (max-width:700px) {
+
+    .candlestick-visual-card {
+
+        padding: 8px;
+
+        border-radius: 16px;
+
+    }
+
+
+    .candlestick-image {
+
+        max-height: 450px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .candlestick-caption {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap: 6px;
+
+        padding:
+            14px
+            6px
+            5px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
 <script src="js/script.js"></script>
+
 
 </body>
 
