@@ -41,20 +41,17 @@ img {
 
 
 /* ============================================================
-   NAVBAR
+   TRADEVESTOR NAVBAR
 ============================================================ */
 
-.navbar {
+header.navbar {
     position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
-
-    z-index: 5000;
+    z-index: 9999;
 
     background: rgba(8, 9, 7, 0.96);
-
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -66,69 +63,49 @@ img {
 ============================================================ */
 
 .nav-container {
-
     position: relative;
 
     min-height: 76px;
 
     display: flex;
-
     align-items: center;
 
-    width: min(1180px, calc(100% - 40px));
-
-    margin: auto;
-
-    gap: 14px;
-
+    gap: 20px;
 }
 
 
 /* ============================================================
-   BRAND
+   LOGO
 ============================================================ */
 
-.brand {
-
-    display: inline-flex;
-
+.nav-container .brand {
+    display: flex;
     align-items: center;
 
     gap: 12px;
 
-    flex-shrink: 0;
-
     font-size: 22px;
-
     font-weight: 900;
 
     letter-spacing: -1px;
 
-    color: #ffffff;
+    flex-shrink: 0;
 
     position: relative;
-
-    z-index: 5003;
-
-    pointer-events: auto;
+    z-index: 10002;
 }
 
-.brand img {
-
+.nav-container .brand img {
     width: 45px;
-
     height: 45px;
 
     object-fit: cover;
 
     border-radius: 50%;
-
 }
 
-.brand b {
-
+.nav-container .brand b {
     color: #f4d36b;
-
 }
 
 
@@ -137,95 +114,41 @@ img {
 ============================================================ */
 
 .nav-container nav {
-
-    display: block;
-
     margin-left: auto;
-
 }
 
-
-/* ============================================================
-   NAV LINKS
-============================================================ */
-
 .nav-links {
-
     list-style: none;
 
     display: flex;
-
     align-items: center;
-
-    justify-content: flex-end;
 
     gap: 22px;
 
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
-
     list-style: none;
-
 }
 
 .nav-links a {
-
     display: inline-flex;
-
     align-items: center;
-
-    justify-content: center;
-
-    min-height: 40px;
 
     color: #ddd;
 
     font-size: 14px;
 
-    transition:
-        color .2s ease,
-        background .2s ease;
+    text-decoration: none;
 
+    transition: .25s;
 }
 
-.nav-links a:hover {
-
-    color: #f4d36b;
-
-}
-
+.nav-links a:hover,
 .nav-links a.active {
-
     color: #f4d36b;
-
-}
-
-
-/* ============================================================
-   PREMIUM CTA
-============================================================ */
-
-.nav-cta {
-
-    padding: 10px 16px !important;
-
-    border-radius: 10px;
-
-    background: #f4d36b;
-
-    color: #111 !important;
-
-    font-weight: 700;
-
-}
-
-.nav-cta:hover {
-
-    color: #111 !important;
-
-    background: #ffe28b;
-
 }
 
 
@@ -234,25 +157,18 @@ img {
 ============================================================ */
 
 .nav-auth {
-
     display: flex;
-
     align-items: center;
 
-    justify-content: center;
-
     gap: 8px;
-
-    margin-left: auto;
 
     flex-shrink: 0;
 
     position: relative;
 
-    z-index: 6000;
+    z-index: 10002;
 
-    pointer-events: auto;
-
+    white-space: nowrap;
 }
 
 
@@ -261,62 +177,47 @@ img {
 ============================================================ */
 
 .nav-login {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
-    min-height: 40px;
+    min-height: 38px;
 
     padding: 0 14px;
 
     border-radius: 10px;
 
-    background: rgba(255,255,255,0.05);
+    color: #fff;
 
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,.045);
 
-    color: #ffffff !important;
+    border: 1px solid rgba(255,255,255,.10);
 
     font-size: 14px;
+    font-weight: 600;
 
-    font-weight: 700;
+    text-decoration: none;
 
     cursor: pointer;
 
-    position: relative;
-
-    z-index: 6001;
-
     pointer-events: auto;
 
-    user-select: none;
+    position: relative;
+    z-index: 10003;
 
     transition:
         background .2s ease,
         border-color .2s ease,
         transform .2s ease;
-
 }
 
 .nav-login:hover {
+    background: rgba(244,211,107,.12);
 
-    background: rgba(244,211,107,0.12);
-
-    border-color: rgba(244,211,107,0.45);
-
-    color: #f4d36b !important;
+    border-color: rgba(244,211,107,.4);
 
     transform: translateY(-1px);
-
-}
-
-.nav-login:active {
-
-    transform: translateY(0);
-
 }
 
 
@@ -325,53 +226,42 @@ img {
 ============================================================ */
 
 .nav-user {
-
     display: inline-flex;
 
     align-items: center;
 
-    justify-content: center;
-
     gap: 7px;
 
-    min-height: 40px;
+    min-height: 38px;
 
-    max-width: 180px;
+    max-width: 150px;
 
     padding: 0 12px;
 
     border-radius: 10px;
 
-    background: rgba(255,255,255,0.05);
+    color: #fff;
 
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,.045);
 
-    color: #ffffff;
+    border: 1px solid rgba(255,255,255,.10);
 
     font-size: 14px;
-
-    font-weight: 700;
+    font-weight: 600;
 
     white-space: nowrap;
 
     overflow: hidden;
-
     text-overflow: ellipsis;
 
     position: relative;
-
-    z-index: 6001;
-
-    pointer-events: auto;
-
+    z-index: 10003;
 }
 
 .nav-user::before {
-
     content: "";
 
     width: 7px;
-
     height: 7px;
 
     flex-shrink: 0;
@@ -379,9 +269,6 @@ img {
     border-radius: 50%;
 
     background: #25d98a;
-
-    box-shadow: 0 0 8px rgba(37,217,138,0.5);
-
 }
 
 
@@ -390,96 +277,80 @@ img {
 ============================================================ */
 
 .nav-logout {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
-    min-height: 40px;
+    min-height: 38px;
 
-    padding: 0 14px;
+    padding: 0 13px;
 
     border-radius: 10px;
 
-    background: rgba(255,70,70,0.08);
+    color: #fff;
 
-    border: 1px solid rgba(255,70,70,0.20);
+    background: rgba(255,70,70,.10);
 
-    color: #ffffff;
+    border: 1px solid rgba(255,70,70,.18);
+
+    font-family: inherit;
 
     font-size: 14px;
-
-    font-weight: 700;
+    font-weight: 600;
 
     cursor: pointer;
 
-    position: relative;
-
-    z-index: 6002;
-
     pointer-events: auto;
 
-    user-select: none;
+    position: relative;
+    z-index: 10003;
 
     transition:
         background .2s ease,
         border-color .2s ease,
         transform .2s ease;
-
 }
 
 .nav-logout:hover {
+    background: rgba(255,70,70,.20);
 
-    background: rgba(255,70,70,0.18);
-
-    border-color: rgba(255,70,70,0.40);
+    border-color: rgba(255,70,70,.4);
 
     transform: translateY(-1px);
-
-}
-
-.nav-logout:active {
-
-    transform: translateY(0);
-
 }
 
 .nav-logout:disabled {
-
     opacity: .6;
 
     cursor: wait;
-
 }
 
 
 /* ============================================================
-   HAMBURGER BUTTON
+   HAMBURGER
 ============================================================ */
 
 .menu-btn {
-
     display: none;
 
     width: 44px;
-
     height: 44px;
 
     flex-shrink: 0;
 
     align-items: center;
-
     justify-content: center;
 
-    border: 1px solid rgba(255,255,255,0.10);
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,.10);
 
     border-radius: 10px;
 
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,.04);
 
-    color: #ffffff;
+    color: #fff;
 
     font-size: 25px;
 
@@ -487,32 +358,242 @@ img {
 
     cursor: pointer;
 
-    position: relative;
-
-    z-index: 7000;
-
     pointer-events: auto;
 
-    touch-action: manipulation;
+    position: relative;
 
+    z-index: 10005;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
 }
 
 .menu-btn:hover {
+    background: rgba(244,211,107,.10);
 
-    background: rgba(244,211,107,0.10);
+    border-color: rgba(244,211,107,.35);
+}
 
-    border-color: rgba(244,211,107,0.35);
 
-    color: #f4d36b;
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media (min-width: 901px) {
+
+    .nav-container {
+        width: min(1180px, calc(100% - 40px));
+        margin: auto;
+    }
 
 }
 
-.menu-btn:active {
 
-    transform: scale(.96);
+/* ============================================================
+   TABLET / MOBILE
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .nav-container {
+        width: min(100% - 28px, 1180px);
+
+        margin: auto;
+
+        gap: 8px;
+    }
+
+
+    /* -----------------------------------------
+       Sembunyikan menu utama
+    ----------------------------------------- */
+
+    .nav-container nav {
+        position: static;
+    }
+
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 76px;
+
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 12px 16px 18px;
+
+        background: #080907;
+
+        border-bottom: 1px solid rgba(255,255,255,.10);
+
+        box-shadow: 0 15px 30px rgba(0,0,0,.35);
+
+        z-index: 10000;
+    }
+
+
+    .nav-links.show {
+        display: flex;
+    }
+
+
+    .nav-links li {
+        width: 100%;
+    }
+
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 13px 10px;
+
+        border-radius: 8px;
+    }
+
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(244,211,107,.06);
+    }
+
+
+    /* -----------------------------------------
+       AUTH TETAP DI LUAR MENU
+    ----------------------------------------- */
+
+    .nav-auth {
+        margin-left: auto;
+
+        gap: 6px;
+    }
+
+
+    /* -----------------------------------------
+       HAMBURGER TETAP TERLIHAT
+    ----------------------------------------- */
+
+    .menu-btn {
+        display: inline-flex;
+    }
 
 }
 
+
+/* ============================================================
+   HP KECIL
+============================================================ */
+
+@media (max-width: 600px) {
+
+    .nav-container {
+        min-height: 68px;
+    }
+
+
+    .nav-links {
+        top: 68px;
+    }
+
+
+    .nav-container .brand {
+        gap: 8px;
+
+        font-size: 17px;
+    }
+
+
+    .nav-container .brand img {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .nav-login {
+        min-height: 36px;
+
+        padding: 0 9px;
+
+        font-size: 12px;
+    }
+
+
+    .nav-user {
+        min-height: 36px;
+
+        max-width: 95px;
+
+        padding: 0 8px;
+
+        font-size: 12px;
+    }
+
+
+    .nav-logout {
+        min-height: 36px;
+
+        width: 36px;
+
+        padding: 0;
+
+        font-size: 0;
+    }
+
+
+    .nav-logout::before {
+        content: "↪";
+
+        font-size: 17px;
+    }
+
+
+    .menu-btn {
+        width: 40px;
+        height: 40px;
+
+        font-size: 23px;
+    }
+
+}
+
+
+/* ============================================================
+   HP SANGAT KECIL
+============================================================ */
+
+@media (max-width: 380px) {
+
+    .nav-container .brand span {
+        display: none;
+    }
+
+
+    .nav-login {
+        font-size: 11px;
+
+        padding: 0 8px;
+    }
+
+
+    .nav-user {
+        max-width: 80px;
+
+        font-size: 11px;
+    }
+
+}
+    
 
 /* ============================================================
    HERO
