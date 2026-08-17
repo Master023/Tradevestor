@@ -625,3 +625,180 @@ footer {
         border-bottom: 1px solid rgba(255,255,255,.08);
     }
 }
+
+/* ============================================================
+   TRADEVESTOR AUTH NAVBAR
+   Login / Register berada di luar menu hamburger
+============================================================ */
+
+
+/* ============================================================
+   AUTH CONTAINER
+============================================================ */
+
+.nav-auth {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+}
+
+
+/* ============================================================
+   LOGIN / REGISTER
+============================================================ */
+
+.nav-login {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 14px;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    text-decoration: none;
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.nav-login:hover {
+
+    background: rgba(120,90,255,.14);
+
+    border-color: rgba(120,90,255,.40);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ============================================================
+   HAMBURGER
+============================================================ */
+
+.menu-btn {
+
+    flex-shrink: 0;
+
+}
+
+
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media (min-width: 901px) {
+
+    .nav-auth {
+
+        margin-left: auto;
+
+    }
+
+
+    .menu-btn {
+
+        margin-left: 10px;
+
+    }
+
+}
+
+
+/* ============================================================
+   TABLET / MOBILE
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .nav-container {
+
+        display: flex;
+
+        align-items: center;
+
+    }
+
+
+    .nav-auth {
+
+        margin-left: auto;
+
+        margin-right: 4px;
+
+    }
+
+
+    .nav-login {
+
+        min-height: 36px;
+
+        padding: 0 11px;
+
+        font-size: .78rem;
+
+    }
+
+
+    .menu-btn {
+
+        margin-left: 0;
+
+    }
+
+}
+
+
+/* ============================================================
+   HP KECIL
+============================================================ */
+
+@media (max-width: 480px) {
+
+    .nav-login {
+
+        min-height: 34px;
+
+        padding: 0 9px;
+
+        border-radius: 9px;
+
+        font-size: .72rem;
+
+    }
+
+}
