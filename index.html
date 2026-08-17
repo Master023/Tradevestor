@@ -2,23 +2,41 @@
 <html lang="id">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>TradeVestor — Belajar Trading dari Nol</title>
 
   <meta
     name="description"
-    content="TradeVestor adalah platform edukasi trading untuk belajar candlestick, indikator, strategi, risk management, entry, Stop Loss, Take Profit dan psikologi trading dari dasar hingga tingkat lanjut."
+    content="TradeVestor adalah platform edukasi trading untuk belajar candlestick, indikator, strategi, risk management dan psikologi trading."
   >
 
-  <meta name="theme-color" content="#07070b">
+  <meta
+    name="theme-color"
+    content="#07070b"
+  >
 
-  <link rel="icon" href="logo.jpg">
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="icon"
+    href="logo.jpg"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      NAVBAR
@@ -28,7 +46,13 @@
 
   <div class="container nav-container">
 
-    <a href="index.html" class="brand">
+
+    <!-- BRAND -->
+
+    <a
+      href="index.html"
+      class="brand"
+    >
 
       <img
         src="logo.jpg"
@@ -41,13 +65,20 @@
 
     </a>
 
+
+    <!-- HAMBURGER -->
+
     <button
       class="menu-btn"
       id="menuBtn"
       aria-label="Buka menu"
+      type="button"
     >
       ☰
     </button>
+
+
+    <!-- NAVIGATION -->
 
     <nav>
 
@@ -56,59 +87,129 @@
         id="navLinks"
       >
 
+
         <li>
+
           <a
             class="active"
             href="index.html"
           >
             Beranda
           </a>
+
         </li>
 
+
         <li>
+
           <a href="candlestick.html">
             Candlestick
           </a>
+
         </li>
 
+
         <li>
+
           <a href="indikator.html">
             Indikator
           </a>
+
         </li>
 
+
         <li>
+
           <a href="strategi.html">
             Strategi
           </a>
+
         </li>
 
+
         <li>
+
           <a href="pembelajaran.html">
             Pembelajaran
           </a>
+
         </li>
 
+
         <li>
+
           <a href="premium.html">
             Premium
           </a>
+
         </li>
 
+
         <li>
+
           <a href="tentang.html">
             Tentang
           </a>
+
         </li>
 
+
+        <!-- =================================================
+             AUTH AREA
+        ================================================= -->
+
+        <li class="nav-auth">
+
+
+          <!-- BELUM LOGIN -->
+
+          <a
+            href="login.html"
+            data-auth-login
+            class="nav-auth-login"
+          >
+            Login / Register
+          </a>
+
+
+          <!-- SUDAH LOGIN -->
+
+          <span
+            data-auth-user
+            class="nav-auth-user"
+            style="display:none;"
+          >
+          </span>
+
+
+          <!-- LOGOUT -->
+
+          <a
+            href="#"
+            data-auth-logout
+            class="nav-auth-logout"
+            style="display:none;"
+          >
+            Logout
+          </a>
+
+
+        </li>
+
+
+        <!-- PREMIUM CTA -->
+
         <li>
+
           <a
             href="premium.html"
             class="nav-cta"
           >
             Premium →
           </a>
+
         </li>
+
 
       </ul>
 
@@ -117,6 +218,7 @@
   </div>
 
 </header>
+
 
 
 <!-- =====================================================
@@ -134,7 +236,9 @@
 
   <div class="container hero-grid">
 
+
     <div class="hero-content reveal">
+
 
       <div class="eyebrow">
 
@@ -174,6 +278,7 @@
 
       <div class="actions">
 
+
         <a
           href="pembelajaran.html"
           class="btn btn-primary"
@@ -189,6 +294,7 @@
           Pelajari Candlestick
         </a>
 
+
       </div>
 
 
@@ -200,16 +306,17 @@
 
       </div>
 
+
     </div>
 
 
-    <!-- =================================================
-         HERO VISUAL
-    ================================================= -->
+    <!-- HERO VISUAL -->
 
     <div class="hero-visual reveal">
 
+
       <div class="chart-card">
+
 
         <div class="chart-header">
 
@@ -227,8 +334,6 @@
 
         </div>
 
-
-        <!-- VISUAL CANDLESTICK -->
 
         <div
           class="chart-area"
@@ -277,44 +382,52 @@
 
         </div>
 
+
       </div>
 
 
-      <!-- Floating Analysis Card -->
-
       <div class="floating-analysis">
+
 
         <small>
           TRADE CHECKLIST
         </small>
 
+
         <strong>
           Jangan Entry Sebelum...
         </strong>
+
 
         <div class="check">
           ✓ Trend jelas
         </div>
 
+
         <div class="check">
           ✓ Ada konfirmasi
         </div>
+
 
         <div class="check">
           ✓ SL sudah ditentukan
         </div>
 
+
         <div class="check">
           ✓ Risk/Reward masuk akal
         </div>
 
+
       </div>
+
 
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -325,16 +438,19 @@
 
   <div class="container">
 
+
     <div class="section-head reveal">
 
       <span class="kicker">
         ROADMAP
       </span>
 
+
       <h2>
         Trading bukan dimulai dari tombol Buy.
         Trading dimulai dari pemahaman.
       </h2>
+
 
       <p>
 
@@ -357,9 +473,11 @@
           01
         </div>
 
+
         <h3>
           Fondasi
         </h3>
+
 
         <p>
 
@@ -369,11 +487,13 @@
 
         </p>
 
+
         <a href="pembelajaran.html">
           Mulai dari dasar →
         </a>
 
       </div>
+
 
 
       <div class="card reveal">
@@ -382,9 +502,11 @@
           02
         </div>
 
+
         <h3>
           Price Action
         </h3>
+
 
         <p>
 
@@ -395,11 +517,13 @@
 
         </p>
 
+
         <a href="candlestick.html">
           Pelajari price action →
         </a>
 
       </div>
+
 
 
       <div class="card reveal">
@@ -408,9 +532,11 @@
           03
         </div>
 
+
         <h3>
           Analisis
         </h3>
+
 
         <p>
 
@@ -420,11 +546,13 @@
 
         </p>
 
+
         <a href="indikator.html">
           Pelajari indikator →
         </a>
 
       </div>
+
 
 
       <div class="card reveal">
@@ -433,9 +561,11 @@
           04
         </div>
 
+
         <h3>
           Eksekusi
         </h3>
+
 
         <p>
 
@@ -445,17 +575,20 @@
 
         </p>
 
+
         <a href="strategi.html">
           Pelajari strategi →
         </a>
 
       </div>
 
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -466,17 +599,22 @@
 
   <div class="container">
 
+
     <div class="section-head reveal">
 
       <span class="kicker">
         EXPLORE TRADEVESTOR
       </span>
 
+
       <h2>
+
         Pilih satu topik.
         Kuasai satu konsep.
         Naik ke level berikutnya.
+
       </h2>
+
 
       <p>
 
@@ -501,13 +639,16 @@
           ◒
         </div>
 
+
         <span class="tag">
           FREE
         </span>
 
+
         <h3>
           Candlestick
         </h3>
+
 
         <p>
 
@@ -517,11 +658,13 @@
 
         </p>
 
+
         <strong>
           Pelajari Candlestick →
         </strong>
 
       </a>
+
 
 
       <a
@@ -533,13 +676,16 @@
           ⌁
         </div>
 
+
         <span class="tag">
           FREE
         </span>
 
+
         <h3>
           Indikator
         </h3>
+
 
         <p>
 
@@ -549,11 +695,13 @@
 
         </p>
 
+
         <strong>
           Pelajari Indikator →
         </strong>
 
       </a>
+
 
 
       <a
@@ -565,13 +713,16 @@
           ↗
         </div>
 
+
         <span class="tag">
           FREE
         </span>
 
+
         <h3>
           Strategi
         </h3>
+
 
         <p>
 
@@ -581,11 +732,13 @@
 
         </p>
 
+
         <strong>
           Pelajari Strategi →
         </strong>
 
       </a>
+
 
 
       <a
@@ -597,13 +750,16 @@
           ▣
         </div>
 
+
         <span class="tag">
           FREE
         </span>
 
+
         <h3>
           Roadmap Pembelajaran
         </h3>
+
 
         <p>
 
@@ -613,11 +769,13 @@
 
         </p>
 
+
         <strong>
           Lihat Roadmap →
         </strong>
 
       </a>
+
 
 
       <a
@@ -629,13 +787,16 @@
           ◆
         </div>
 
+
         <span class="tag premium-tag">
           PREMIUM
         </span>
 
+
         <h3>
           TradeVestor Premium
         </h3>
+
 
         <p>
 
@@ -645,11 +806,13 @@
 
         </p>
 
+
         <strong>
           Lihat Materi Premium →
         </strong>
 
       </a>
+
 
 
       <a
@@ -661,13 +824,16 @@
           i
         </div>
 
+
         <span class="tag">
           INFO
         </span>
 
+
         <h3>
           Tentang TradeVestor
         </h3>
+
 
         <p>
 
@@ -677,17 +843,20 @@
 
         </p>
 
+
         <strong>
           Tentang Kami →
         </strong>
 
       </a>
 
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -698,16 +867,19 @@
 
   <div class="container">
 
+
     <div class="section-head reveal">
 
       <span class="kicker">
         FREE MATERIAL
       </span>
 
+
       <h2>
         Mulai dari materi yang
         paling penting.
       </h2>
+
 
       <p>
 
@@ -729,9 +901,11 @@
           BASIC 01
         </span>
 
+
         <h3>
           Apa sebenarnya Candlestick?
         </h3>
+
 
         <p>
 
@@ -745,6 +919,7 @@
 
         </p>
 
+
         <a
           href="candlestick.html"
           class="btn btn-secondary"
@@ -755,16 +930,19 @@
       </article>
 
 
+
       <article class="article reveal">
 
         <span class="tag">
           BASIC 02
         </span>
 
+
         <h3>
           Kenapa Risk Management
           Lebih Penting dari Entry?
         </h3>
+
 
         <p>
 
@@ -777,6 +955,7 @@
 
         </p>
 
+
         <a
           href="strategi.html#risk"
           class="btn btn-secondary"
@@ -786,11 +965,13 @@
 
       </article>
 
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -801,16 +982,21 @@
 
   <div class="container">
 
+
     <div class="premium-box reveal">
 
       <span class="kicker">
         TRADEVESTOR PREMIUM
       </span>
 
+
       <h2>
+
         Kalau dasar sudah kuat,
         saatnya masuk lebih dalam.
+
       </h2>
+
 
       <p>
 
@@ -827,13 +1013,24 @@
 
       <div class="premium-features">
 
-        <span>🔒 Materi mendalam</span>
+        <span>
+          🔒 Materi mendalam
+        </span>
 
-        <span>📊 Studi kasus chart</span>
 
-        <span>🧠 Framework analisis</span>
+        <span>
+          📊 Studi kasus chart
+        </span>
 
-        <span>📈 Strategi lanjutan</span>
+
+        <span>
+          🧠 Framework analisis
+        </span>
+
+
+        <span>
+          📈 Strategi lanjutan
+        </span>
 
       </div>
 
@@ -845,11 +1042,13 @@
         Lihat Premium →
       </a>
 
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -860,7 +1059,9 @@
 
   <div class="container">
 
+
     <div class="social-box reveal">
+
 
       <div>
 
@@ -868,10 +1069,12 @@
           TIKTOK EDUCATION
         </span>
 
+
         <h2>
           Belajar trading
           nggak harus sendirian.
         </h2>
+
 
         <p>
 
@@ -895,11 +1098,13 @@
         TikTok @am_zid_23 ↗
       </a>
 
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -910,11 +1115,14 @@
 
   <div class="container">
 
+
     <div class="disclaimer">
+
 
       <strong>
         ⚠️ Pahami risikonya sebelum mulai
       </strong>
+
 
       <p>
 
@@ -932,13 +1140,16 @@
 
       </p>
 
+
     </div>
 
   </div>
 
 </section>
 
+
 </main>
+
 
 
 <!-- =====================================================
@@ -949,10 +1160,12 @@
 
   <div class="container">
 
+
     <div class="footer-grid">
 
 
       <div class="footer-brand">
+
 
         <a
           href="index.html"
@@ -963,6 +1176,7 @@
             src="logo.jpg"
             alt="Logo TradeVestor"
           >
+
 
           <span>
             TRADE<b>VESTOR</b>
@@ -979,7 +1193,9 @@
 
         </p>
 
+
       </div>
+
 
 
       <div>
@@ -988,23 +1204,29 @@
           Belajar
         </h4>
 
+
         <a href="candlestick.html">
           Candlestick
         </a>
+
 
         <a href="indikator.html">
           Indikator
         </a>
 
+
         <a href="strategi.html">
           Strategi
         </a>
+
 
         <a href="pembelajaran.html">
           Pembelajaran
         </a>
 
+
       </div>
+
 
 
       <div>
@@ -1013,19 +1235,23 @@
           TradeVestor
         </h4>
 
+
         <a href="premium.html">
           Premium
         </a>
 
+
         <a href="tentang.html">
           Tentang
         </a>
+
 
         <a
           href="mailto:startingfromzero95@gmail.com"
         >
           Email
         </a>
+
 
         <a
           href="https://wa.me/6285872061255"
@@ -1035,6 +1261,7 @@
           WhatsApp
         </a>
 
+
         <a
           href="https://www.tiktok.com/@am_zid_23"
           target="_blank"
@@ -1043,7 +1270,9 @@
           TikTok
         </a>
 
+
       </div>
+
 
     </div>
 
@@ -1055,16 +1284,88 @@
 
     </div>
 
+
   </div>
 
 </footer>
+
 
 
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
+<script src="js/auth.js"></script>
+
 <script src="js/script.js"></script>
 
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    /*
+     * Update Login/Register atau
+     * User/Logout pada navbar.
+     */
+
+    if (
+      window.TradeVestorAuth &&
+      typeof
+        window.TradeVestorAuth
+          .updateAuthNavbar === "function"
+    ) {
+
+      window.TradeVestorAuth
+        .updateAuthNavbar();
+
+    }
+
+
+    /*
+     * Logout button
+     */
+
+    const logoutButton =
+      document.querySelector(
+        "[data-auth-logout]"
+      );
+
+
+    if (logoutButton) {
+
+      logoutButton.addEventListener(
+        "click",
+        async function (event) {
+
+          event.preventDefault();
+
+
+          if (
+            window.TradeVestorAuth &&
+            typeof
+              window.TradeVestorAuth
+                .handleLogout === "function"
+          ) {
+
+            await window.TradeVestorAuth
+              .handleLogout();
+
+          }
+
+        }
+      );
+
+    }
+
+  }
+);
+
+</script>
+
+
 </body>
+
 </html>
