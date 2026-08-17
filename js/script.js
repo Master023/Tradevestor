@@ -19,22 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function initMobileMenu() {
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const navLinks =
+        document.getElementById("navLinks");
+
 
     if (!menuBtn || !navLinks) {
-        console.warn("Navbar menu tidak ditemukan.");
         return;
     }
 
 
-    // ========================================================
-    // HAMBURGER CLICK
-    // ========================================================
+    menuBtn.addEventListener("click", (event) => {
 
-    menuBtn.addEventListener("click", function (event) {
-
-        event.preventDefault();
         event.stopPropagation();
 
         navLinks.classList.toggle("show");
@@ -47,31 +45,36 @@ function initMobileMenu() {
             isOpen ? "true" : "false"
         );
 
-        // Ubah icon
-        menuBtn.textContent =
-            isOpen ? "✕" : "☰";
+        menuBtn.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Tutup menu"
+                : "Buka menu"
+        );
 
     });
 
 
-    // ========================================================
-    // LINK NAVIGATION
-    // ========================================================
+    // Tutup menu ketika link diklik
 
     const links =
         navLinks.querySelectorAll("a");
 
-    links.forEach(link => {
+
+    links.forEach((link) => {
 
         link.addEventListener("click", () => {
 
             navLinks.classList.remove("show");
 
-            menuBtn.textContent = "☰";
-
             menuBtn.setAttribute(
                 "aria-expanded",
                 "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                "Buka menu"
             );
 
         });
@@ -79,30 +82,28 @@ function initMobileMenu() {
     });
 
 
-    // ========================================================
-    // KLIK DI LUAR MENU
-    // ========================================================
+    // Tutup menu jika klik di luar navbar
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("click", (event) => {
 
-        const clickedInsideMenu =
-            navLinks.contains(event.target);
-
-        const clickedMenuButton =
-            menuBtn.contains(event.target);
+        const navbar =
+            document.querySelector(".navbar");
 
         if (
-            !clickedInsideMenu &&
-            !clickedMenuButton
+            navbar &&
+            !navbar.contains(event.target)
         ) {
 
             navLinks.classList.remove("show");
 
-            menuBtn.textContent = "☰";
-
             menuBtn.setAttribute(
                 "aria-expanded",
                 "false"
+            );
+
+            menuBtn.setAttribute(
+                "aria-label",
+                "Buka menu"
             );
 
         }
@@ -121,14 +122,15 @@ async function initNavbarAuth() {
     const navAuth =
         document.getElementById("navAuth");
 
+
     if (!navAuth) {
         return;
     }
 
 
-    // ========================================================
-    // CEK AUTH SYSTEM
-    // ========================================================
+    // --------------------------------------------------------
+    // Auth system belum tersedia
+    // --------------------------------------------------------
 
     if (
         typeof window.TradeVestorAuth ===
@@ -146,9 +148,9 @@ async function initNavbarAuth() {
     }
 
 
-    // ========================================================
-    // CEK SESSION
-    // ========================================================
+    // --------------------------------------------------------
+    // Cek user
+    // --------------------------------------------------------
 
     try {
 
@@ -156,10 +158,6 @@ async function initNavbarAuth() {
             await window.TradeVestorAuth
                 .getCurrentUser();
 
-
-        // ====================================================
-        // BELUM LOGIN
-        // ====================================================
 
         if (
             !result ||
@@ -175,21 +173,17 @@ async function initNavbarAuth() {
         }
 
 
-        // ====================================================
-        // SUDAH LOGIN
-        // ====================================================
-
         const user =
             result.data.user;
+
 
         renderLoggedIn(
             navAuth,
             user
         );
 
-    }
 
-    catch (error) {
+    } catch (error) {
 
         console.error(
             "NAVBAR AUTH ERROR:",
@@ -204,7 +198,7 @@ async function initNavbarAuth() {
 
 
 // ============================================================
-// LOGGED OUT
+// USER BELUM LOGIN
 // ============================================================
 
 function renderLoggedOut(navAuth) {
@@ -224,7 +218,7 @@ function renderLoggedOut(navAuth) {
 
 
 // ============================================================
-// LOGGED IN
+// USER SUDAH LOGIN
 // ============================================================
 
 function renderLoggedIn(
@@ -258,10 +252,6 @@ function renderLoggedIn(
     `;
 
 
-    // ========================================================
-    // LOGOUT BUTTON
-    // ========================================================
-
     const logoutButton =
         document.getElementById(
             "navLogout"
@@ -275,92 +265,113 @@ function renderLoggedIn(
 
     logoutButton.addEventListener(
         "click",
-        async function (event) {
+        handleNavbarLogout
+    );
 
-            event.preventDefault();
-            event.stopPropagation();
-
-
-            // ------------------------------------------------
-            // Cegah double click
-            // ------------------------------------------------
-
-            logoutButton.disabled = true;
-
-            logoutButton.textContent = "...";
+}
 
 
-            try {
+// ============================================================
+// LOGOUT
+// ============================================================
 
-                const result =
-                    await window.TradeVestorAuth
-                        .logoutUser();
+async function handleNavbarLogout(event) {
 
+    event.preventDefault();
 
-                // ============================================
-                // BERHASIL
-                // ============================================
-
-                if (
-                    result &&
-                    result.ok &&
-                    result.data &&
-                    result.data.success
-                ) {
-
-                    window.location.href =
-                        "index.html";
-
-                    return;
-
-                }
+    event.stopPropagation();
 
 
-                // ============================================
-                // GAGAL
-                // ============================================
-
-                console.error(
-                    "Logout gagal:",
-                    result
-                );
+    const logoutButton =
+        event.currentTarget;
 
 
-                logoutButton.disabled = false;
+    if (
+        !window.TradeVestorAuth ||
+        typeof window.TradeVestorAuth.logoutUser !==
+        "function"
+    ) {
 
-                logoutButton.textContent =
-                    "Logout";
+        console.error(
+            "logoutUser() tidak ditemukan."
+        );
 
+        return;
 
-                alert(
-                    result?.data?.message ||
-                    "Logout gagal."
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "LOGOUT ERROR:",
-                    error
-                );
+    }
 
 
-                logoutButton.disabled = false;
+    // Cegah double click
 
-                logoutButton.textContent =
-                    "Logout";
+    if (logoutButton.disabled) {
+        return;
+    }
 
 
-                alert(
-                    "Tidak dapat terhubung ke server."
-                );
+    logoutButton.disabled = true;
 
-            }
+    logoutButton.textContent = "...";
+
+
+    try {
+
+        const result =
+            await window.TradeVestorAuth
+                .logoutUser();
+
+
+        if (
+            result &&
+            result.ok &&
+            result.data &&
+            result.data.success
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
 
         }
-    );
+
+
+        console.error(
+            "Logout gagal:",
+            result?.data
+        );
+
+
+        logoutButton.disabled = false;
+
+        logoutButton.textContent =
+            "Logout";
+
+
+        alert(
+            result?.data?.message ||
+            "Logout gagal."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "LOGOUT ERROR:",
+            error
+        );
+
+
+        logoutButton.disabled = false;
+
+        logoutButton.textContent =
+            "Logout";
+
+
+        alert(
+            "Tidak dapat terhubung ke server."
+        );
+
+    }
 
 }
 
@@ -373,30 +384,15 @@ function escapeHTML(value) {
 
     return String(value)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
+        .replace(/&/g, "&amp;")
 
-        .replace(
-            /</g,
-            "&lt;"
-        )
+        .replace(/</g, "&lt;")
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
+        .replace(/>/g, "&gt;")
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+        .replace(/"/g, "&quot;")
 
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/'/g, "&#039;");
 
 }
 
@@ -418,52 +414,48 @@ function initRevealAnimation() {
     }
 
 
-    // ========================================================
-    // FALLBACK
-    // ========================================================
-
     if (
         !("IntersectionObserver" in window)
     ) {
 
-        elements.forEach(element => {
+        elements.forEach(
+            element => {
 
-            element.classList.add(
-                "visible"
-            );
+                element.classList.add(
+                    "visible"
+                );
 
-        });
+            }
+        );
 
         return;
 
     }
 
 
-    // ========================================================
-    // OBSERVER
-    // ========================================================
-
     const observer =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    entry => {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                            entry.target.classList.add(
+                                "visible"
+                            );
 
-                        observer.unobserve(
-                            entry.target
-                        );
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
 
                     }
-
-                });
+                );
 
             },
             {
@@ -472,10 +464,14 @@ function initRevealAnimation() {
         );
 
 
-    elements.forEach(element => {
+    elements.forEach(
+        element => {
 
-        observer.observe(element);
+            observer.observe(
+                element
+            );
 
-    });
+        }
+    );
 
 }
