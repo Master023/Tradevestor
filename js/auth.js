@@ -31,7 +31,9 @@ async function apiRequest(endpoint, options = {}) {
     let data = {};
 
     try {
+
         data = await response.json();
+
     } catch (error) {
 
         data = {
@@ -60,7 +62,6 @@ async function loginUser(email, password) {
         "/api/login",
         {
             method: "POST",
-
             body: {
                 email,
                 password
@@ -85,7 +86,6 @@ async function registerUser(
         "/api/register",
         {
             method: "POST",
-
             body: {
                 name,
                 email,
@@ -146,7 +146,7 @@ async function logoutUser() {
 
 
 // ============================================================
-// REDIRECT USER
+// REDIRECT AFTER LOGIN
 // ============================================================
 
 function redirectAfterLogin() {
@@ -159,9 +159,15 @@ function redirectAfterLogin() {
     const redirect =
         params.get("redirect");
 
+
+    // --------------------------------------------------------
+    // Jika user sebelumnya mencoba membuka halaman tertentu
+    // --------------------------------------------------------
+
     if (
         redirect &&
-        redirect.startsWith("/")
+        redirect.startsWith("/") &&
+        !redirect.startsWith("//")
     ) {
 
         window.location.href = redirect;
@@ -170,8 +176,15 @@ function redirectAfterLogin() {
 
     }
 
-    window.location.href =
-        "/premium-member.html";
+
+    // --------------------------------------------------------
+    // Setelah login normal
+    //
+    // Jangan langsung masuk halaman premium.
+    // Masuk ke dashboard/home terlebih dahulu.
+    // --------------------------------------------------------
+
+    window.location.href = "/index.html";
 
 }
 
@@ -187,15 +200,32 @@ async function redirectIfLoggedIn() {
         const result =
             await getCurrentUser();
 
+
+        // ----------------------------------------------------
+        // Belum login
+        // Tetap di halaman login/register.
+        // ----------------------------------------------------
+
         if (
-            result.ok &&
-            result.data.success
+            !result.ok ||
+            !result.data.success
         ) {
 
-            window.location.href =
-                "/premium-member.html";
+            return false;
 
         }
+
+
+        // ----------------------------------------------------
+        // Sudah login
+        // Arahkan ke halaman utama.
+        // ----------------------------------------------------
+
+        window.location.href =
+            "/index.html";
+
+        return true;
+
 
     } catch (error) {
 
@@ -204,13 +234,15 @@ async function redirectIfLoggedIn() {
             error
         );
 
+        return false;
+
     }
 
 }
 
 
 // ============================================================
-// PROTECT FRONTEND PAGE
+// REQUIRE PREMIUM
 // ============================================================
 
 async function requirePremium() {
@@ -219,6 +251,11 @@ async function requirePremium() {
 
         const result =
             await checkPremium();
+
+
+        // ----------------------------------------------------
+        // Belum login
+        // ----------------------------------------------------
 
         if (
             !result.ok ||
@@ -234,6 +271,11 @@ async function requirePremium() {
 
         }
 
+
+        // ----------------------------------------------------
+        // Sudah login tapi belum Premium
+        // ----------------------------------------------------
+
         if (
             !result.data.premium
         ) {
@@ -245,7 +287,13 @@ async function requirePremium() {
 
         }
 
+
+        // ----------------------------------------------------
+        // Premium aktif
+        // ----------------------------------------------------
+
         return result.data.user;
+
 
     } catch (error) {
 
@@ -253,6 +301,7 @@ async function requirePremium() {
             "PREMIUM AUTH ERROR:",
             error
         );
+
 
         window.location.href =
             `/login.html?redirect=${encodeURIComponent(
@@ -273,13 +322,21 @@ async function requirePremium() {
 window.TradeVestorAuth = {
 
     apiRequest,
+
     loginUser,
+
     registerUser,
+
     getCurrentUser,
+
     checkPremium,
+
     logoutUser,
+
     redirectAfterLogin,
+
     redirectIfLoggedIn,
+
     requirePremium
 
 };
