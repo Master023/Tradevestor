@@ -69,10 +69,11 @@
 
 
     <!-- =================================================
-         NAVIGATION
+         NAVIGATION MENU
+         MENU INI HANYA UNTUK LINK NAVIGASI
     ================================================== -->
 
-    <nav>
+    <nav class="main-navigation">
 
       <ul
         class="nav-links"
@@ -80,68 +81,66 @@
       >
 
         <li>
-
           <a
             class="active"
             href="index.html"
           >
             Beranda
           </a>
-
         </li>
 
 
         <li>
-
-          <a href="candlestick.html">
+          <a
+            href="candlestick.html"
+            data-require-login="true"
+          >
             Candlestick
           </a>
-
         </li>
 
 
         <li>
-
-          <a href="indikator.html">
+          <a
+            href="indikator.html"
+            data-require-login="true"
+          >
             Indikator
           </a>
-
         </li>
 
 
         <li>
-
-          <a href="strategi.html">
+          <a
+            href="strategi.html"
+            data-require-login="true"
+          >
             Strategi
           </a>
-
         </li>
 
 
         <li>
-
-          <a href="pembelajaran.html">
+          <a
+            href="pembelajaran.html"
+            data-require-login="true"
+          >
             Pembelajaran
           </a>
-
         </li>
 
 
         <li>
-
           <a href="premium.html">
             Premium
           </a>
-
         </li>
 
 
         <li>
-
           <a href="tentang.html">
             Tentang
           </a>
-
         </li>
 
       </ul>
@@ -150,15 +149,16 @@
 
 
     <!-- =================================================
-         LOGIN / REGISTER / USER / LOGOUT
+         AUTH AREA
 
-         Bagian ini sengaja berada DI LUAR menu ☰.
-         
-         Belum login:
-         Login / Register
+         PENTING:
+         AREA INI BERADA DI LUAR MENU ☰
 
-         Sudah login:
-         Nama User | Logout
+         BELUM LOGIN:
+         [ Login / Register ]
+
+         SUDAH LOGIN:
+         [ ● Nama ] [ Logout ]
     ================================================== -->
 
     <div
@@ -169,6 +169,7 @@
       <a
         href="login.html"
         class="nav-login"
+        id="navLogin"
       >
         Login / Register
       </a>
@@ -185,16 +186,16 @@
       id="menuBtn"
       type="button"
       aria-label="Buka menu"
+      aria-expanded="false"
     >
-
       ☰
-
     </button>
 
 
   </div>
 
 </header>
+
 
 
 <!-- =====================================================
@@ -228,6 +229,7 @@
       <h1>
 
         Jangan cuma
+
         <span class="gradient">
           menebak arah harga.
         </span>
@@ -258,6 +260,7 @@
         <a
           href="pembelajaran.html"
           class="btn btn-primary"
+          data-require-login="true"
         >
           🚀 Mulai Belajar Gratis
         </a>
@@ -266,6 +269,7 @@
         <a
           href="candlestick.html"
           class="btn btn-secondary"
+          data-require-login="true"
         >
           Pelajari Candlestick
         </a>
@@ -277,6 +281,7 @@
       <div class="notice">
 
         ⚠️ Trading memiliki risiko kehilangan modal.
+
         TradeVestor adalah platform edukasi,
         bukan pemberi sinyal dan bukan jaminan profit.
 
@@ -286,7 +291,10 @@
     </div>
 
 
-    <!-- HERO VISUAL -->
+
+    <!-- =================================================
+         HERO VISUAL
+    ================================================== -->
 
     <div class="hero-visual reveal">
 
@@ -360,6 +368,7 @@
 
 
       </div>
+
 
 
       <div class="floating-analysis">
@@ -449,11 +458,9 @@
           01
         </div>
 
-
         <h3>
           Fondasi
         </h3>
-
 
         <p>
 
@@ -463,8 +470,10 @@
 
         </p>
 
-
-        <a href="pembelajaran.html">
+        <a
+          href="pembelajaran.html"
+          data-require-login="true"
+        >
           Mulai dari dasar →
         </a>
 
@@ -478,11 +487,9 @@
           02
         </div>
 
-
         <h3>
           Price Action
         </h3>
-
 
         <p>
 
@@ -493,8 +500,10 @@
 
         </p>
 
-
-        <a href="candlestick.html">
+        <a
+          href="candlestick.html"
+          data-require-login="true"
+        >
           Pelajari price action →
         </a>
 
@@ -508,11 +517,9 @@
           03
         </div>
 
-
         <h3>
           Analisis
         </h3>
-
 
         <p>
 
@@ -522,8 +529,10 @@
 
         </p>
 
-
-        <a href="indikator.html">
+        <a
+          href="indikator.html"
+          data-require-login="true"
+        >
           Pelajari indikator →
         </a>
 
@@ -537,11 +546,9 @@
           04
         </div>
 
-
         <h3>
           Eksekusi
         </h3>
-
 
         <p>
 
@@ -551,8 +558,10 @@
 
         </p>
 
-
-        <a href="strategi.html">
+        <a
+          href="strategi.html"
+          data-require-login="true"
+        >
           Pelajari strategi →
         </a>
 
@@ -603,28 +612,29 @@
     </div>
 
 
+
     <div class="learning-grid">
 
+
+      <!-- CANDLESTICK -->
 
       <a
         href="candlestick.html"
         class="learning-card reveal"
+        data-require-login="true"
       >
 
         <div class="learning-icon">
           ◒
         </div>
 
-
         <span class="tag">
           FREE
         </span>
 
-
         <h3>
           Candlestick
         </h3>
-
 
         <p>
 
@@ -634,7 +644,6 @@
 
         </p>
 
-
         <strong>
           Pelajari Candlestick →
         </strong>
@@ -643,25 +652,25 @@
 
 
 
+      <!-- INDIKATOR -->
+
       <a
         href="indikator.html"
         class="learning-card reveal"
+        data-require-login="true"
       >
 
         <div class="learning-icon">
           ⌁
         </div>
 
-
         <span class="tag">
           FREE
         </span>
 
-
         <h3>
           Indikator
         </h3>
-
 
         <p>
 
@@ -671,7 +680,6 @@
 
         </p>
 
-
         <strong>
           Pelajari Indikator →
         </strong>
@@ -680,25 +688,25 @@
 
 
 
+      <!-- STRATEGI -->
+
       <a
         href="strategi.html"
         class="learning-card reveal"
+        data-require-login="true"
       >
 
         <div class="learning-icon">
           ↗
         </div>
 
-
         <span class="tag">
           FREE
         </span>
 
-
         <h3>
           Strategi
         </h3>
-
 
         <p>
 
@@ -708,7 +716,6 @@
 
         </p>
 
-
         <strong>
           Pelajari Strategi →
         </strong>
@@ -717,25 +724,25 @@
 
 
 
+      <!-- ROADMAP -->
+
       <a
         href="pembelajaran.html"
         class="learning-card reveal"
+        data-require-login="true"
       >
 
         <div class="learning-icon">
           ▣
         </div>
 
-
         <span class="tag">
           FREE
         </span>
 
-
         <h3>
           Roadmap Pembelajaran
         </h3>
-
 
         <p>
 
@@ -745,7 +752,6 @@
 
         </p>
 
-
         <strong>
           Lihat Roadmap →
         </strong>
@@ -753,6 +759,8 @@
       </a>
 
 
+
+      <!-- PREMIUM -->
 
       <a
         href="premium.html"
@@ -763,16 +771,13 @@
           ◆
         </div>
 
-
         <span class="tag premium-tag">
           PREMIUM
         </span>
 
-
         <h3>
           TradeVestor Premium
         </h3>
-
 
         <p>
 
@@ -782,7 +787,6 @@
 
         </p>
 
-
         <strong>
           Lihat Materi Premium →
         </strong>
@@ -790,6 +794,8 @@
       </a>
 
 
+
+      <!-- TENTANG -->
 
       <a
         href="tentang.html"
@@ -800,16 +806,13 @@
           i
         </div>
 
-
         <span class="tag">
           INFO
         </span>
 
-
         <h3>
           Tentang TradeVestor
         </h3>
-
 
         <p>
 
@@ -818,7 +821,6 @@
           kanal edukasi kami.
 
         </p>
-
 
         <strong>
           Tentang Kami →
@@ -868,6 +870,7 @@
     </div>
 
 
+
     <div class="split">
 
 
@@ -899,6 +902,7 @@
         <a
           href="candlestick.html"
           class="btn btn-secondary"
+          data-require-login="true"
         >
           Bongkar Candlestick →
         </a>
@@ -935,6 +939,7 @@
         <a
           href="strategi.html#risk"
           class="btn btn-secondary"
+          data-require-login="true"
         >
           Pelajari Risk Management →
         </a>
@@ -993,16 +998,13 @@
           🔒 Materi mendalam
         </span>
 
-
         <span>
           📊 Studi kasus chart
         </span>
 
-
         <span>
           🧠 Framework analisis
         </span>
-
 
         <span>
           📈 Strategi lanjutan
@@ -1104,6 +1106,7 @@
 
         Trading memiliki risiko kehilangan
         sebagian atau seluruh modal.
+
         Jadi bijaklah dalam mengambil keputusan.
 
         Tidak ada strategi yang menjamin
@@ -1153,7 +1156,6 @@
             alt="Logo TradeVestor"
           >
 
-
           <span>
             TRADE<b>VESTOR</b>
           </span>
@@ -1181,22 +1183,34 @@
         </h4>
 
 
-        <a href="candlestick.html">
+        <a
+          href="candlestick.html"
+          data-require-login="true"
+        >
           Candlestick
         </a>
 
 
-        <a href="indikator.html">
+        <a
+          href="indikator.html"
+          data-require-login="true"
+        >
           Indikator
         </a>
 
 
-        <a href="strategi.html">
+        <a
+          href="strategi.html"
+          data-require-login="true"
+        >
           Strategi
         </a>
 
 
-        <a href="pembelajaran.html">
+        <a
+          href="pembelajaran.html"
+          data-require-login="true"
+        >
           Pembelajaran
         </a>
 
@@ -1278,66 +1292,343 @@
 
 <script>
 
+/* ========================================================
+   TRADEVESTOR NAVBAR SYSTEM
+======================================================== */
+
 document.addEventListener(
   "DOMContentLoaded",
-  function () {
-
-    /*
-     * Update Login/Register atau
-     * User/Logout pada navbar.
-     */
-
-    if (
-      window.TradeVestorAuth &&
-      typeof
-        window.TradeVestorAuth
-          .updateAuthNavbar === "function"
-    ) {
-
-      window.TradeVestorAuth
-        .updateAuthNavbar();
-
-    }
+  async function () {
 
 
-    /*
-     * Logout button
-     */
+    /* ====================================================
+       ELEMENT
+    ==================================================== */
 
-    const logoutButton =
-      document.querySelector(
-        "[data-auth-logout]"
-      );
+    const navAuth =
+      document.getElementById("navAuth");
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
 
 
-    if (logoutButton) {
+    /* ====================================================
+       MOBILE MENU
+    ==================================================== */
 
-      logoutButton.addEventListener(
+    if (menuBtn && navLinks) {
+
+      menuBtn.addEventListener(
         "click",
-        async function (event) {
+        function (event) {
 
           event.preventDefault();
 
+          event.stopPropagation();
 
-          if (
-            window.TradeVestorAuth &&
-            typeof
-              window.TradeVestorAuth
-                .handleLogout === "function"
-          ) {
+          const isOpen =
+            navLinks.classList.toggle("active");
 
-            await window.TradeVestorAuth
-              .handleLogout();
-
-          }
+          menuBtn.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+          );
 
         }
       );
 
+
+      /* Tutup menu ketika klik link */
+
+      navLinks
+        .querySelectorAll("a")
+        .forEach(
+          function (link) {
+
+            link.addEventListener(
+              "click",
+              function () {
+
+                navLinks.classList.remove(
+                  "active"
+                );
+
+                menuBtn.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+              }
+            );
+
+          }
+        );
+
     }
+
+
+    /* ====================================================
+       CEK LOGIN
+    ==================================================== */
+
+    let loggedIn = false;
+    let currentUser = null;
+
+
+    try {
+
+      if (
+        window.TradeVestorAuth &&
+        typeof
+          window.TradeVestorAuth
+            .getCurrentUser === "function"
+      ) {
+
+        const result =
+          await window.TradeVestorAuth
+            .getCurrentUser();
+
+
+        if (
+          result &&
+          result.ok &&
+          result.data &&
+          result.data.success
+        ) {
+
+          loggedIn = true;
+
+          currentUser =
+            result.data.user;
+
+        }
+
+      }
+
+    } catch (error) {
+
+      console.error(
+        "NAVBAR AUTH ERROR:",
+        error
+      );
+
+    }
+
+
+    /* ====================================================
+       RENDER LOGIN / USER
+    ==================================================== */
+
+    if (navAuth) {
+
+
+      /* ================================================
+         BELUM LOGIN
+      ================================================ */
+
+      if (!loggedIn) {
+
+        navAuth.innerHTML = `
+
+          <a
+            href="login.html"
+            class="nav-login"
+            id="navLogin"
+          >
+            Login / Register
+          </a>
+
+        `;
+
+      }
+
+
+      /* ================================================
+         SUDAH LOGIN
+      ================================================ */
+
+      else {
+
+        const safeName =
+          currentUser &&
+          currentUser.name
+            ? currentUser.name
+            : "User";
+
+
+        navAuth.innerHTML = `
+
+          <span
+            class="nav-user"
+            title="${escapeHtml(safeName)}"
+          >
+            ${escapeHtml(safeName)}
+          </span>
+
+          <button
+            type="button"
+            class="nav-logout"
+            id="navLogout"
+          >
+            Logout
+          </button>
+
+        `;
+
+
+        /* ==============================================
+           LOGOUT
+        ============================================== */
+
+        const logoutButton =
+          document.getElementById(
+            "navLogout"
+          );
+
+
+        if (logoutButton) {
+
+          logoutButton.addEventListener(
+            "click",
+            async function (event) {
+
+              event.preventDefault();
+
+              event.stopPropagation();
+
+
+              logoutButton.disabled = true;
+
+              logoutButton.textContent =
+                "Logout...";
+
+
+              try {
+
+                const result =
+                  await window.TradeVestorAuth
+                    .logoutUser();
+
+
+                if (
+                  result &&
+                  result.ok &&
+                  result.data &&
+                  result.data.success
+                ) {
+
+                  window.location.href =
+                    "/index.html";
+
+                  return;
+
+                }
+
+
+                alert(
+                  result?.data?.message ||
+                  "Logout gagal."
+                );
+
+
+              } catch (error) {
+
+                console.error(
+                  "LOGOUT ERROR:",
+                  error
+                );
+
+                alert(
+                  "Terjadi kesalahan saat logout."
+                );
+
+              }
+
+
+              logoutButton.disabled = false;
+
+              logoutButton.textContent =
+                "Logout";
+
+            }
+          );
+
+        }
+
+      }
+
+    }
+
+
+    /* ====================================================
+       PROTEKSI LINK MATERI GRATIS
+       
+       Premium TIDAK terkena sistem ini.
+       Premium tetap bisa dibuka tanpa login
+       agar halaman premium bisa menjelaskan harga/
+       pembayaran terlebih dahulu.
+    ==================================================== */
+
+    const protectedLinks =
+      document.querySelectorAll(
+        "[data-require-login='true']"
+      );
+
+
+    protectedLinks.forEach(
+      function (link) {
+
+        link.addEventListener(
+          "click",
+          async function (event) {
+
+            if (loggedIn) {
+
+              return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            const destination =
+              link.getAttribute("href");
+
+
+            window.location.href =
+              "/login.html?redirect=" +
+              encodeURIComponent(
+                destination
+              );
+
+          }
+        );
+
+      }
+    );
 
   }
 );
+
+
+/* ========================================================
+   ESCAPE HTML
+======================================================== */
+
+function escapeHtml(value) {
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
 
 </script>
 
