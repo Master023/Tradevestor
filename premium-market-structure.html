@@ -10,14 +10,17 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Advanced Market Structure — TradeVestor Premium</title>
+<title>Module 01 — Advanced Market Structure | TradeVestor</title>
 
 <meta
     name="description"
-    content="Pelajari Advanced Market Structure mulai dari Swing High, Swing Low, Higher High, Higher Low, Lower High, Lower Low, BOS, CHOCH dan Market Shift."
+    content="Premium Module 01 TradeVestor — Advanced Market Structure."
 >
 
-<meta name="theme-color" content="#050507">
+<meta
+    name="theme-color"
+    content="#050507"
+>
 
 <link
     rel="icon"
@@ -30,384 +33,1091 @@
 >
 
 
-<!-- =====================================================
-     STYLE KHUSUS HALAMAN
-===================================================== -->
-
 <style>
 
-.lesson-hero {
-    padding: 90px 0 70px;
+/* ============================================================
+   PREMIUM MODULE
+============================================================ */
+
+.module-page {
+
+    min-height: 100vh;
+
+    padding:
+        70px 0
+        100px;
+
 }
 
-.lesson-badge {
+
+/* ============================================================
+   WRAPPER
+============================================================ */
+
+.module-wrapper {
+
+    width: 100%;
+
+    max-width: 950px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ============================================================
+   TOP NAV
+============================================================ */
+
+.module-topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 40px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.back-link {
+
     display: inline-flex;
+
     align-items: center;
+
     gap: 8px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(120, 90, 255, .12);
-    border: 1px solid rgba(120, 90, 255, .25);
-    color: #a99cff;
-    font-size: .78rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-}
 
-.lesson-badge .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #8f7cff;
-    box-shadow: 0 0 12px rgba(143,124,255,.8);
-}
+    color:
+        var(--muted);
 
-.lesson-hero h1 {
-    max-width: 900px;
-    margin-top: 20px;
-}
-
-.lesson-intro {
-    max-width: 760px;
-    color: var(--muted);
-    font-size: 1.08rem;
-    line-height: 1.8;
-}
-
-
-/* =====================================================
-   LESSON NAV
-===================================================== */
-
-.lesson-layout {
-    display: grid;
-    grid-template-columns: 250px minmax(0, 1fr);
-    gap: 35px;
-    align-items: start;
-}
-
-.lesson-sidebar {
-    position: sticky;
-    top: 90px;
-}
-
-.lesson-sidebar .card {
-    padding: 22px;
-}
-
-.lesson-sidebar h4 {
-    margin-bottom: 15px;
-}
-
-.lesson-sidebar a {
-    display: block;
-    padding: 9px 0;
-    color: var(--muted);
-    font-size: .9rem;
     text-decoration: none;
-    transition: .2s ease;
-}
 
-.lesson-sidebar a:hover {
-    color: white;
-    transform: translateX(3px);
-}
+    font-size: 14px;
 
-
-/* =====================================================
-   LESSON CONTENT
-===================================================== */
-
-.lesson-content {
-    min-width: 0;
-}
-
-.lesson-block {
-    margin-bottom: 70px;
-    scroll-margin-top: 100px;
-}
-
-.lesson-number {
-    display: inline-block;
-    margin-bottom: 10px;
-    color: #9a8cff;
-    font-size: .78rem;
-    font-weight: 800;
-    letter-spacing: .12em;
-}
-
-.lesson-block h2 {
-    margin-bottom: 18px;
-}
-
-.lesson-block h3 {
-    margin-top: 28px;
-    margin-bottom: 10px;
-}
-
-.lesson-block p {
-    color: var(--muted);
-    line-height: 1.85;
-}
-
-.lesson-block ul,
-.lesson-block ol {
-    color: var(--muted);
-    line-height: 1.9;
-    padding-left: 22px;
-}
-
-.lesson-block li {
-    margin-bottom: 6px;
-}
-
-
-/* =====================================================
-   CONCEPT BOX
-===================================================== */
-
-.concept-box {
-    margin: 25px 0;
-    padding: 22px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.08);
-}
-
-.concept-box strong {
-    color: white;
-}
-
-
-/* =====================================================
-   MARKET DIAGRAM
-===================================================== */
-
-.market-diagram {
-    position: relative;
-    height: 320px;
-    margin: 30px 0;
-    border-radius: 20px;
-    overflow: hidden;
-    background:
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        rgba(255,255,255,.02);
-
-    background-size: 40px 40px;
-
-    border: 1px solid rgba(255,255,255,.08);
-}
-
-.market-line {
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    width: 90%;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
-    );
-
-    transform: rotate(-12deg);
-}
-
-.swing {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #a99cff;
-    box-shadow: 0 0 18px rgba(169,156,255,.8);
-}
-
-.swing-label {
-    position: absolute;
-    padding: 5px 8px;
-    border-radius: 7px;
-    background: rgba(0,0,0,.7);
-    border: 1px solid rgba(255,255,255,.1);
-    color: white;
-    font-size: .72rem;
     font-weight: 700;
-}
 
-.point-1 {
-    left: 10%;
-    bottom: 25%;
-}
+    transition:
+        .2s ease;
 
-.point-2 {
-    left: 28%;
-    bottom: 48%;
-}
-
-.point-3 {
-    left: 47%;
-    bottom: 35%;
-}
-
-.point-4 {
-    left: 65%;
-    bottom: 68%;
-}
-
-.point-5 {
-    left: 83%;
-    bottom: 54%;
 }
 
 
-/* =====================================================
-   STRUCTURE CARDS
-===================================================== */
+.back-link:hover {
 
-.structure-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 25px;
-}
+    color: white;
 
-.structure-card {
-    padding: 22px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.08);
-}
+    transform:
+        translateX(-3px);
 
-.structure-card .symbol {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 8px;
-}
-
-.structure-card h3 {
-    margin: 0 0 8px;
-}
-
-.structure-card p {
-    margin: 0;
-    font-size: .93rem;
 }
 
 
-/* =====================================================
-   CHECKLIST
-===================================================== */
+.module-label {
 
-.checklist {
-    display: grid;
-    gap: 12px;
-    margin-top: 25px;
-}
+    display: inline-flex;
 
-.check-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 15px;
-    border-radius: 14px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.07);
-}
-
-.check-item span {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: rgba(120,90,255,.15);
-    color: #a99cff;
-    font-size: .75rem;
+
+    gap: 8px;
+
+    padding:
+        8px 13px;
+
+    border-radius: 999px;
+
+    color:
+        #b9a8ff;
+
+    background:
+        rgba(118,87,255,.08);
+
+    border:
+        1px solid
+        rgba(118,87,255,.2);
+
+    font-size: 12px;
+
     font-weight: 800;
+
+    letter-spacing:
+        .06em;
+
 }
 
 
-/* =====================================================
-   QUIZ
-===================================================== */
+/* ============================================================
+   HERO
+============================================================ */
 
-.quiz {
-    margin-top: 25px;
-    display: grid;
-    gap: 18px;
-}
+.module-hero {
 
-.quiz-question {
-    padding: 22px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.08);
-}
+    position: relative;
 
-.quiz-question h3 {
-    margin-top: 0;
-}
+    overflow: hidden;
 
-.quiz-option {
-    display: block;
-    margin-top: 10px;
-    padding: 11px 13px;
-    border-radius: 10px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.06);
-    color: var(--muted);
-}
+    padding:
+        50px 42px;
 
+    border-radius: 28px;
 
-/* =====================================================
-   SUMMARY
-===================================================== */
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
-.summary-box {
-    padding: 30px;
-    border-radius: 22px;
     background:
         linear-gradient(
-            135deg,
-            rgba(120,90,255,.12),
-            rgba(0,210,255,.05)
+            145deg,
+            rgba(118,87,255,.10),
+            rgba(255,255,255,.025)
         );
 
-    border: 1px solid rgba(120,90,255,.2);
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.30);
+
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+.module-hero::before {
 
-@media (max-width: 850px) {
+    content: "";
 
-    .lesson-layout {
-        grid-template-columns: 1fr;
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    right: -160px;
+
+    top: -180px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(118,87,255,.16);
+
+    filter:
+        blur(60px);
+
+    pointer-events: none;
+
+}
+
+
+.module-hero > * {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.module-number {
+
+    color:
+        #a98bff;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+.module-hero h1 {
+
+    max-width: 850px;
+
+    margin-top: 18px;
+
+    font-size:
+        clamp(
+            38px,
+            7vw,
+            72px
+        );
+
+    line-height:
+        1.02;
+
+}
+
+
+.module-hero h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #7657ff,
+            #c0aaff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color:
+        transparent;
+
+}
+
+
+.module-hero-description {
+
+    max-width: 760px;
+
+    margin-top: 22px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.85;
+
+    font-size:
+        16px;
+
+}
+
+
+/* ============================================================
+   META
+============================================================ */
+
+.module-meta {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+}
+
+
+.meta-box {
+
+    padding:
+        15px;
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.meta-label {
+
+    display: block;
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+.meta-value {
+
+    display: block;
+
+    margin-top:
+        6px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+
+}
+
+
+/* ============================================================
+   PROGRESS
+============================================================ */
+
+.progress-wrapper {
+
+    margin-top:
+        30px;
+
+}
+
+
+.progress-info {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 10px;
+
+    margin-bottom:
+        9px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+}
+
+
+.progress-bar {
+
+    height:
+        7px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,255,255,.07);
+
+}
+
+
+.progress-fill {
+
+    width:
+        12%;
+
+    height:
+        100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7657ff,
+            #a98bff
+        );
+
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.module-content {
+
+    margin-top:
+        45px;
+
+}
+
+
+.lesson {
+
+    margin-bottom:
+        55px;
+
+}
+
+
+.lesson-number {
+
+    color:
+        #a98bff;
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .1em;
+
+}
+
+
+.lesson h2 {
+
+    margin-top:
+        9px;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            40px
+        );
+
+    line-height:
+        1.15;
+
+}
+
+
+.lesson h3 {
+
+    margin-top:
+        30px;
+
+    font-size:
+        22px;
+
+}
+
+
+.lesson h4 {
+
+    margin-top:
+        25px;
+
+    font-size:
+        17px;
+
+}
+
+
+.lesson p {
+
+    margin-top:
+        15px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.9;
+
+    font-size:
+        15px;
+
+}
+
+
+.lesson ul {
+
+    margin-top:
+        15px;
+
+    padding-left:
+        22px;
+
+}
+
+
+.lesson li {
+
+    margin-bottom:
+        10px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.8;
+
+}
+
+
+/* ============================================================
+   HIGHLIGHT BOX
+============================================================ */
+
+.highlight {
+
+    margin-top:
+        25px;
+
+    padding:
+        22px;
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(118,87,255,.07);
+
+    border:
+        1px solid
+        rgba(118,87,255,.17);
+
+}
+
+
+.highlight strong {
+
+    color:
+        white;
+
+}
+
+
+.highlight p {
+
+    margin-top:
+        8px;
+
+}
+
+
+/* ============================================================
+   WARNING BOX
+============================================================ */
+
+.warning {
+
+    margin-top:
+        25px;
+
+    padding:
+        22px;
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(245,158,11,.06);
+
+    border:
+        1px solid
+        rgba(245,158,11,.18);
+
+}
+
+
+.warning strong {
+
+    color:
+        #fbbf24;
+
+}
+
+
+/* ============================================================
+   CONCEPT GRID
+============================================================ */
+
+.concept-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        15px;
+
+    margin-top:
+        25px;
+
+}
+
+
+.concept-card {
+
+    padding:
+        22px;
+
+    border-radius:
+        17px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.concept-card .icon {
+
+    font-size:
+        25px;
+
+}
+
+
+.concept-card h4 {
+
+    margin-top:
+        12px;
+
+}
+
+
+.concept-card p {
+
+    font-size:
+        13px;
+
+}
+
+
+/* ============================================================
+   VISUAL PLACEHOLDER
+============================================================ */
+
+.visual-box {
+
+    margin-top:
+        30px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+.visual-placeholder {
+
+    min-height:
+        300px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+
+}
+
+
+.visual-placeholder .visual-icon {
+
+    font-size:
+        45px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.visual-placeholder strong {
+
+    font-size:
+        17px;
+
+}
+
+
+.visual-placeholder p {
+
+    max-width:
+        550px;
+
+    margin-top:
+        8px;
+
+    font-size:
+        13px;
+
+}
+
+
+/* ============================================================
+   IMAGE
+============================================================ */
+
+.lesson-image {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        auto;
+
+    border-radius:
+        18px;
+
+}
+
+
+/* ============================================================
+   VIDEO
+============================================================ */
+
+.video-wrapper {
+
+    margin-top:
+        30px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        18px;
+
+    background:
+        #000;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+.video-wrapper video {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        auto;
+
+}
+
+
+/* ============================================================
+   CODE / FORMULA
+============================================================ */
+
+.formula {
+
+    margin-top:
+        20px;
+
+    padding:
+        20px;
+
+    overflow-x:
+        auto;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(0,0,0,.35);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    font-family:
+        monospace;
+
+    color:
+        #c9bbff;
+
+}
+
+
+/* ============================================================
+   CHECKLIST
+============================================================ */
+
+.checklist {
+
+    margin-top:
+        22px;
+
+    display:
+        grid;
+
+    gap:
+        10px;
+
+}
+
+
+.check-item {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+}
+
+
+.check-icon {
+
+    color:
+        #86efac;
+
+    font-weight:
+        900;
+
+}
+
+
+/* ============================================================
+   SUMMARY
+============================================================ */
+
+.summary-card {
+
+    margin-top:
+        45px;
+
+    padding:
+        30px;
+
+    border-radius:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(118,87,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        rgba(118,87,255,.18);
+
+}
+
+
+.summary-card h2 {
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.summary-card ul {
+
+    padding-left:
+        22px;
+
+}
+
+
+.summary-card li {
+
+    margin-bottom:
+        10px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.7;
+
+}
+
+
+/* ============================================================
+   NEXT MODULE
+============================================================ */
+
+.next-module {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    margin-top:
+        45px;
+
+    padding:
+        25px;
+
+    border-radius:
+        20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+.next-module p {
+
+    margin-top:
+        6px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+}
+
+
+.next-button {
+
+    flex-shrink:
+        0;
+
+    padding:
+        12px 18px;
+
+    border-radius:
+        11px;
+
+    text-decoration:
+        none;
+
+    background:
+        #7657ff;
+
+    color:
+        white;
+
+    font-weight:
+        800;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media(max-width:800px) {
+
+    .module-page {
+
+        padding:
+            45px 0
+            70px;
+
     }
 
-    .lesson-sidebar {
-        position: relative;
-        top: auto;
+
+    .module-hero {
+
+        padding:
+            35px 25px;
+
     }
 
-    .structure-grid {
-        grid-template-columns: 1fr;
+
+    .module-meta {
+
+        grid-template-columns:
+            1fr;
+
     }
 
-    .market-diagram {
-        height: 260px;
+
+    .concept-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .next-module {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .next-button {
+
+        width:
+            100%;
+
+        text-align:
+            center;
+
+        box-sizing:
+            border-box;
+
     }
 
 }
@@ -420,2202 +1130,2490 @@
 <body>
 
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+<main class="module-page">
 
-<header>
-
-<div class="container nav">
-
-<a
-    class="brand"
-    href="index.html"
->
-
-<img
-    src="logo.jpg"
-    alt="Logo TradeVestor"
->
-
-<span>
-TRADE<b>VESTOR</b>
-</span>
-
-</a>
+<div class="container module-wrapper">
 
 
-<button
-    class="menu"
-    id="menuBtn"
-    aria-label="Buka menu"
->
-☰
-</button>
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+
+<div class="module-topbar">
+
+    <a
+        href="premium-member.html"
+        class="back-link"
+    >
+
+        ← Kembali ke Premium Member
+
+    </a>
 
 
-<nav>
+    <span class="module-label">
 
-<ul class="navlinks">
+        💎 PREMIUM MODULE 01
 
-<li>
-<a href="index.html">
-Beranda
-</a>
-</li>
-
-<li>
-<a href="candlestick.html">
-Candlestick
-</a>
-</li>
-
-<li>
-<a href="indikator.html">
-Indikator
-</a>
-</li>
-
-<li>
-<a href="strategi.html">
-Strategi
-</a>
-</li>
-
-<li>
-<a href="pembelajaran.html">
-Pembelajaran
-</a>
-</li>
-
-<li>
-<a
-    href="premium.html"
-    class="active"
->
-Premium
-</a>
-</li>
-
-<li>
-<a href="tentang.html">
-Tentang
-</a>
-</li>
-
-</ul>
-
-</nav>
+    </span>
 
 </div>
 
-</header>
 
 
-
-<!-- =====================================================
+<!-- ============================================================
      HERO
-===================================================== -->
+============================================================ -->
 
-<main>
-
-<section class="lesson-hero">
-
-<div class="container">
-
-<span class="lesson-badge">
-
-<span class="dot"></span>
-
-PREMIUM MODULE 01
-
-</span>
+<section class="module-hero">
 
 
-<h1>
+    <div class="module-number">
 
-Advanced
+        MODULE 01
 
-<span class="gradient">
-Market Structure
-</span>
-
-</h1>
+    </div>
 
 
-<p class="lesson-intro">
+    <h1>
 
-Market Structure adalah salah satu fondasi
-penting dalam membaca pergerakan harga.
+        Advanced
+        <span>
+            Market Structure
+        </span>
 
-Sebelum menggunakan indikator atau mencari
-entry, lu perlu memahami bagaimana harga
-membentuk swing, trend, breakout dan perubahan
-struktur.
-
-Di modul ini kita akan membangun pemahaman
-tersebut dari dasar sampai bisa digunakan
-sebagai framework analisis.
-
-</p>
+    </h1>
 
 
-<div class="actions">
+    <p class="module-hero-description">
 
-<a
-href="premium-member.html"
-class="btn btn-secondary"
->
-← Kembali ke Premium
-</a>
+        Memahami struktur market bukan sekadar
+        melihat harga naik atau turun.
+
+        Di modul ini lu akan belajar bagaimana
+        membaca hubungan antara swing,
+        Higher High, Higher Low, Lower High,
+        Lower Low, trend, Break of Structure,
+        Change of Character, liquidity,
+        sampai market context.
+
+    </p>
 
 
-<a
-href="#bab-1"
-class="btn btn-primary"
->
-Mulai Belajar →
-</a>
+    <div class="module-meta">
 
-</div>
 
-</div>
+        <div class="meta-box">
+
+            <span class="meta-label">
+                LEVEL
+            </span>
+
+            <span class="meta-value">
+                Intermediate
+            </span>
+
+        </div>
+
+
+        <div class="meta-box">
+
+            <span class="meta-label">
+                ESTIMASI BELAJAR
+            </span>
+
+            <span class="meta-value">
+                60–120 Menit
+            </span>
+
+        </div>
+
+
+        <div class="meta-box">
+
+            <span class="meta-label">
+                STATUS
+            </span>
+
+            <span class="meta-value">
+                Premium
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="progress-wrapper">
+
+        <div class="progress-info">
+
+            <span>
+                Progress Modul
+            </span>
+
+            <span>
+                12%
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- ============================================================
      CONTENT
-===================================================== -->
+============================================================ -->
 
-<section class="section">
+<div class="module-content">
 
-<div class="container">
 
-<div class="lesson-layout">
 
+<!-- ============================================================
+     LESSON 01
+============================================================ -->
 
-<!-- =================================================
-     SIDEBAR
-================================================= -->
+<section class="lesson">
 
-<aside class="lesson-sidebar">
 
-<div class="card">
+    <div class="lesson-number">
 
-<h4>
-DAFTAR MATERI
-</h4>
+        LESSON 01
 
+    </div>
 
-<a href="#bab-1">
-01. Market Structure
-</a>
 
-<a href="#bab-2">
-02. Swing High & Low
-</a>
+    <h2>
+        Apa Itu Market Structure?
+    </h2>
 
-<a href="#bab-3">
-03. Higher High
-</a>
 
-<a href="#bab-4">
-04. Higher Low
-</a>
+    <p>
 
-<a href="#bab-5">
-05. Lower High
-</a>
+        Market structure adalah cara kita membaca
+        bagaimana harga membentuk rangkaian
+        pergerakan dari waktu ke waktu.
 
-<a href="#bab-6">
-06. Lower Low
-</a>
+    </p>
 
-<a href="#bab-7">
-07. Uptrend
-</a>
 
-<a href="#bab-8">
-08. Downtrend
-</a>
+    <p>
 
-<a href="#bab-9">
-09. Sideways
-</a>
+        Harga tidak bergerak secara acak sepenuhnya.
+        Di dalam pergerakan harga terdapat pola
+        swing, dorongan, koreksi, breakout,
+        retracement dan perubahan arah.
 
-<a href="#bab-10">
-10. Break of Structure
-</a>
+    </p>
 
-<a href="#bab-11">
-11. CHOCH
-</a>
 
-<a href="#bab-12">
-12. Market Shift
-</a>
+    <p>
 
-<a href="#bab-13">
-13. Internal Structure
-</a>
+        Dengan memahami struktur tersebut,
+        trader dapat membangun konteks sebelum
+        mengambil keputusan.
 
-<a href="#bab-14">
-14. Liquidity
-</a>
+    </p>
 
-<a href="#bab-15">
-15. Confluence
-</a>
 
-<a href="#bab-16">
-16. Bullish Case
-</a>
+    <div class="highlight">
 
-<a href="#bab-17">
-17. Bearish Case
-</a>
+        <strong>
+            Inti konsep:
+        </strong>
 
-<a href="#bab-18">
-18. Kesalahan
-</a>
+        <p>
 
-<a href="#bab-19">
-19. Checklist
-</a>
+            Market structure menjawab satu
+            pertanyaan utama:
 
-<a href="#bab-20">
-20. Quiz
-</a>
+            <strong>
+                "Apa yang sedang dilakukan harga?"
+            </strong>
 
-</div>
+            Apakah harga sedang membentuk
+            struktur bullish, bearish, atau
+            berada dalam kondisi ranging?
 
-</aside>
+        </p>
 
+    </div>
 
 
-<!-- =================================================
-     LESSON CONTENT
-================================================= -->
+    <!-- VISUAL -->
 
-<article class="lesson-content">
+    <div class="visual-box">
 
+        <div class="visual-placeholder">
 
+            <div class="visual-icon">
+                📈
+            </div>
 
-<!-- =================================================
-     BAB 1
-================================================= -->
+            <strong>
+                AREA VISUAL MARKET STRUCTURE
+            </strong>
 
-<section
-class="lesson-block"
-id="bab-1"
->
+            <p>
 
-<span class="lesson-number">
-BAB 01
-</span>
+                Nanti tempat ini dapat diganti
+                dengan gambar chart yang menjelaskan
+                struktur bullish, bearish dan ranging.
 
-<h2>
-Apa Itu Market Structure?
-</h2>
+            </p>
 
+        </div>
 
-<p>
+    </div>
 
-Market Structure adalah cara untuk membaca
-susunan pergerakan harga berdasarkan titik-titik
-penting yang terbentuk di chart.
-
-Sederhananya, kita tidak hanya melihat apakah
-harga sedang naik atau turun.
-
-Kita mencoba memahami:
-
-</p>
-
-
-<ul>
-
-<li>Di mana harga membuat titik tinggi?</li>
-
-<li>Di mana harga membuat titik rendah?</li>
-
-<li>Apakah titik tersebut semakin tinggi?</li>
-
-<li>Apakah titik tersebut semakin rendah?</li>
-
-<li>Apakah struktur sebelumnya masih valid?</li>
-
-<li>Apakah terjadi perubahan struktur?</li>
-
-</ul>
-
-
-<div class="concept-box">
-
-<strong>
-Prinsip utama:
-</strong>
-
-<p>
-
-Harga meninggalkan jejak.
-
-Market Structure adalah salah satu cara
-untuk membaca jejak tersebut.
-
-</p>
-
-</div>
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 2
-================================================= -->
+<!-- ============================================================
+     LESSON 02
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-2"
->
-
-<span class="lesson-number">
-BAB 02
-</span>
-
-<h2>
-Swing High & Swing Low
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Sebelum memahami trend, lu harus bisa
-mengidentifikasi swing.
+        LESSON 02
 
-Swing adalah titik di mana harga mengalami
-pergerakan naik atau turun lalu melakukan
-perubahan arah.
-
-</p>
+    </div>
 
 
-<h3>
-Swing High
-</h3>
-
-<p>
-
-Swing High adalah titik relatif tinggi
-yang terbentuk sebelum harga bergerak turun.
-
-</p>
+    <h2>
+        Mengapa Market Structure Penting?
+    </h2>
 
 
-<h3>
-Swing Low
-</h3>
+    <p>
 
-<p>
+        Banyak trader langsung mencari indikator,
+        pola candlestick atau sinyal entry.
 
-Swing Low adalah titik relatif rendah
-yang terbentuk sebelum harga bergerak naik.
+        Masalahnya adalah mereka sering tidak
+        memahami konteks tempat sinyal tersebut
+        muncul.
 
-</p>
-
-
-<div class="market-diagram">
-
-<div class="swing point-1"></div>
-
-<div class="swing point-2"></div>
-
-<div class="swing point-3"></div>
-
-<div class="swing point-4"></div>
-
-<div class="swing point-5"></div>
+    </p>
 
 
-<div
-class="swing-label"
-style="left:8%;bottom:18%;"
->
-Swing Low
-</div>
+    <p>
+
+        Sebuah candlestick bullish tidak otomatis
+        berarti harga akan terus naik.
+
+        Sebuah breakout juga tidak otomatis
+        berarti trend baru telah dimulai.
+
+    </p>
 
 
-<div
-class="swing-label"
-style="left:25%;bottom:55%;"
->
-Swing High
-</div>
+    <p>
+
+        Market structure membantu kita memahami
+        konteks sebelum memperhatikan sinyal
+        yang lebih kecil.
+
+    </p>
 
 
-<div
-class="swing-label"
-style="left:44%;bottom:28%;"
->
-Swing Low
-</div>
+    <div class="concept-grid">
 
 
-<div
-class="swing-label"
-style="left:61%;bottom:75%;"
->
-Swing High
-</div>
+        <article class="concept-card">
 
-</div>
+            <div class="icon">
+                🧭
+            </div>
+
+            <h4>
+                Menentukan Arah
+            </h4>
+
+            <p>
+
+                Membantu mengetahui apakah
+                market sedang bullish,
+                bearish atau sideways.
+
+            </p>
+
+        </article>
 
 
-<div class="concept-box">
+        <article class="concept-card">
 
-<strong>
-Catatan:
-</strong>
+            <div class="icon">
+                🎯
+            </div>
 
-<p>
+            <h4>
+                Menentukan Konteks
+            </h4>
 
-Jangan terlalu cepat menganggap setiap
-gerakan kecil sebagai swing utama.
+            <p>
 
-Gunakan konteks timeframe dan struktur
-market untuk menentukan swing yang relevan.
+                Entry menjadi lebih masuk akal
+                ketika kita memahami lokasi
+                harga terhadap struktur.
 
-</p>
+            </p>
 
-</div>
+        </article>
+
+
+        <article class="concept-card">
+
+            <div class="icon">
+                🛡️
+            </div>
+
+            <h4>
+                Menghindari Entry Sembarangan
+            </h4>
+
+            <p>
+
+                Trader tidak hanya membeli
+                karena melihat candle hijau
+                atau menjual karena candle merah.
+
+            </p>
+
+        </article>
+
+
+        <article class="concept-card">
+
+            <div class="icon">
+                🧠
+            </div>
+
+            <h4>
+                Membentuk Framework
+            </h4>
+
+            <p>
+
+                Struktur dapat digunakan
+                sebagai dasar sistem trading
+                yang lebih objektif.
+
+            </p>
+
+        </article>
+
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 3
-================================================= -->
+<!-- ============================================================
+     LESSON 03
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-3"
->
-
-<span class="lesson-number">
-BAB 03
-</span>
-
-<h2>
-Higher High — HH
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Higher High atau HH terjadi ketika harga
-membentuk titik high baru yang lebih tinggi
-daripada high sebelumnya.
+        LESSON 03
 
-</p>
+    </div>
 
 
-<div class="structure-grid">
-
-<div class="structure-card">
-
-<div class="symbol">
-HH
-</div>
-
-<h3>
-Higher High
-</h3>
-
-<p>
-
-High baru lebih tinggi
-daripada high sebelumnya.
-
-</p>
-
-</div>
+    <h2>
+        Memahami Swing High & Swing Low
+    </h2>
 
 
-<div class="structure-card">
+    <p>
 
-<div class="symbol">
-↗
-</div>
+        Sebelum memahami HH, HL, LH dan LL,
+        kita harus memahami konsep swing.
 
-<h3>
-Makna
-</h3>
-
-<p>
-
-Menunjukkan harga berhasil
-mendorong ke area yang lebih tinggi.
-
-</p>
-
-</div>
-
-</div>
+    </p>
 
 
-<div class="concept-box">
+    <h3>
+        Swing High
+    </h3>
 
-<strong>
-Contoh sederhana:
-</strong>
 
-<p>
+    <p>
 
-High pertama = 100
+        Swing High adalah area ketika harga
+        mencapai titik relatif tinggi lalu
+        mengalami tekanan turun atau koreksi.
 
-<br>
+    </p>
 
-High berikutnya = 110
 
-<br>
+    <h3>
+        Swing Low
+    </h3>
 
-Karena 110 lebih tinggi daripada 100,
-maka 110 merupakan Higher High.
 
-</p>
+    <p>
 
-</div>
+        Swing Low adalah area ketika harga
+        mencapai titik relatif rendah lalu
+        mengalami tekanan naik atau rebound.
+
+    </p>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                🔺
+            </div>
+
+            <strong>
+                VISUAL SWING HIGH & SWING LOW
+            </strong>
+
+            <p>
+
+                Nantinya dapat diisi gambar chart
+                dengan contoh swing high dan
+                swing low yang jelas.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>
+            ⚠️ Jangan langsung menganggap
+            setiap titik tertinggi sebagai Swing High.
+        </strong>
+
+        <p>
+
+            Swing harus dilihat berdasarkan
+            konteks pergerakan harga dan struktur
+            di sekitarnya.
+
+        </p>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 4
-================================================= -->
+<!-- ============================================================
+     LESSON 04
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-4"
->
-
-<span class="lesson-number">
-BAB 04
-</span>
-
-<h2>
-Higher Low — HL
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Higher Low terjadi ketika harga melakukan
-koreksi tetapi berhenti pada titik yang
-lebih tinggi daripada low sebelumnya.
+        LESSON 04
 
-</p>
+    </div>
 
 
-<div class="structure-card">
-
-<div class="symbol">
-HL
-</div>
-
-<h3>
-Higher Low
-</h3>
-
-<p>
-
-Low baru lebih tinggi daripada
-low sebelumnya.
-
-Ini merupakan salah satu struktur
-penting dalam uptrend.
-
-</p>
-
-</div>
+    <h2>
+        Higher High & Higher Low
+    </h2>
 
 
-<div class="concept-box">
+    <p>
 
-<strong>
-Cara berpikir:
-</strong>
+        Salah satu struktur paling dasar dalam
+        market bullish adalah rangkaian
+        Higher High dan Higher Low.
 
-<p>
+    </p>
 
-Harga naik → melakukan koreksi →
-tetapi tidak jatuh melewati low sebelumnya.
 
-Artinya struktur bullish masih dapat
-dianggap bertahan.
+    <h3>
+        Higher High — HH
+    </h3>
 
-</p>
 
-</div>
+    <p>
+
+        Higher High terjadi ketika harga berhasil
+        membentuk titik high baru yang lebih tinggi
+        dibandingkan high sebelumnya.
+
+    </p>
+
+
+    <h3>
+        Higher Low — HL
+    </h3>
+
+
+    <p>
+
+        Higher Low terjadi ketika koreksi harga
+        berhenti pada titik low yang masih lebih
+        tinggi dibandingkan low sebelumnya.
+
+    </p>
+
+
+    <div class="highlight">
+
+        <strong>
+            Struktur bullish sederhana:
+        </strong>
+
+        <p>
+
+            HH → HL → HH → HL → HH
+
+        </p>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                📈
+            </div>
+
+            <strong>
+                VISUAL BULLISH STRUCTURE
+            </strong>
+
+            <p>
+
+                Gambar nantinya menunjukkan
+                hubungan HH dan HL tanpa
+                membuat chart terlalu rumit.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 5
-================================================= -->
+<!-- ============================================================
+     LESSON 05
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-5"
->
-
-<span class="lesson-number">
-BAB 05
-</span>
-
-<h2>
-Lower High — LH
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Lower High adalah kondisi ketika harga
-membuat high baru tetapi high tersebut
-lebih rendah daripada high sebelumnya.
+        LESSON 05
 
-</p>
+    </div>
 
 
-<div class="structure-card">
+    <h2>
+        Lower High & Lower Low
+    </h2>
 
-<div class="symbol">
-LH
-</div>
 
-<h3>
-Lower High
-</h3>
+    <p>
 
-<p>
+        Kebalikan dari struktur bullish,
+        market bearish biasanya menunjukkan
+        rangkaian Lower High dan Lower Low.
 
-High baru lebih rendah daripada
-high sebelumnya.
+    </p>
 
-Ini sering menjadi bagian dari
-struktur bearish.
 
-</p>
+    <h3>
+        Lower High — LH
+    </h3>
 
-</div>
+
+    <p>
+
+        Lower High terjadi ketika harga melakukan
+        rebound tetapi gagal mencapai high
+        sebelumnya.
+
+    </p>
+
+
+    <h3>
+        Lower Low — LL
+    </h3>
+
+
+    <p>
+
+        Lower Low terjadi ketika harga berhasil
+        menembus low sebelumnya dan membentuk
+        titik low yang lebih rendah.
+
+    </p>
+
+
+    <div class="highlight">
+
+        <strong>
+            Struktur bearish sederhana:
+        </strong>
+
+        <p>
+
+            LL → LH → LL → LH → LL
+
+        </p>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                📉
+            </div>
+
+            <strong>
+                VISUAL BEARISH STRUCTURE
+            </strong>
+
+            <p>
+
+                Nantinya dapat diganti dengan
+                gambar struktur LH dan LL.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 6
-================================================= -->
+<!-- ============================================================
+     LESSON 06
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-6"
->
-
-<span class="lesson-number">
-BAB 06
-</span>
-
-<h2>
-Lower Low — LL
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Lower Low terjadi ketika harga membuat
-low baru yang lebih rendah daripada
-low sebelumnya.
+        LESSON 06
 
-</p>
+    </div>
 
 
-<div class="structure-card">
+    <h2>
+        Bullish, Bearish & Ranging
+    </h2>
 
-<div class="symbol">
-LL
-</div>
 
-<h3>
-Lower Low
-</h3>
+    <p>
 
-<p>
+        Setelah memahami HH, HL, LH dan LL,
+        kita dapat mulai mengelompokkan kondisi
+        market.
 
-Low baru lebih rendah daripada
-low sebelumnya.
+    </p>
 
-Ini merupakan struktur yang umum
-terlihat pada downtrend.
 
-</p>
+    <div class="concept-grid">
 
-</div>
+
+        <article class="concept-card">
+
+            <div class="icon">
+                🟢
+            </div>
+
+            <h4>
+                Bullish
+            </h4>
+
+            <p>
+
+                Dominasi struktur HH dan HL.
+                Harga secara umum menunjukkan
+                kecenderungan naik.
+
+            </p>
+
+        </article>
+
+
+        <article class="concept-card">
+
+            <div class="icon">
+                🔴
+            </div>
+
+            <h4>
+                Bearish
+            </h4>
+
+            <p>
+
+                Dominasi struktur LH dan LL.
+                Harga secara umum menunjukkan
+                kecenderungan turun.
+
+            </p>
+
+        </article>
+
+
+        <article class="concept-card">
+
+            <div class="icon">
+                🟡
+            </div>
+
+            <h4>
+                Ranging
+            </h4>
+
+            <p>
+
+                Harga bergerak dalam area tertentu
+                tanpa struktur trend yang jelas.
+
+            </p>
+
+        </article>
+
+
+        <article class="concept-card">
+
+            <div class="icon">
+                ⚪
+            </div>
+
+            <h4>
+                Transition
+            </h4>
+
+            <p>
+
+                Market mulai kehilangan struktur
+                sebelumnya dan berpotensi mengalami
+                perubahan karakter.
+
+            </p>
+
+        </article>
+
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 7
-================================================= -->
+<!-- ============================================================
+     LESSON 07
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-7"
->
-
-<span class="lesson-number">
-BAB 07
-</span>
-
-<h2>
-Mengenali Uptrend
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Uptrend secara sederhana dapat digambarkan
-sebagai kondisi ketika market membentuk
-Higher High dan Higher Low secara berurutan.
+        LESSON 07
 
-</p>
+    </div>
 
 
-<div class="concept-box">
-
-<strong>
-Struktur bullish sederhana:
-</strong>
-
-<p>
-
-HH → HL → HH → HL → HH
-
-</p>
-
-</div>
+    <h2>
+        Break of Structure — BOS
+    </h2>
 
 
-<p>
+    <p>
 
-Namun jangan hanya menghafal urutan tersebut.
+        Break of Structure atau BOS adalah
+        istilah yang digunakan untuk menggambarkan
+        kondisi ketika harga menembus struktur
+        penting sebelumnya.
 
-Pertanyaan yang lebih penting adalah:
-
-</p>
+    </p>
 
 
-<ul>
+    <p>
 
-<li>Apakah HL terakhir masih bertahan?</li>
+        Dalam konteks trend, BOS sering digunakan
+        sebagai konfirmasi bahwa momentum trend
+        masih berlanjut.
 
-<li>Apakah harga masih mampu membuat HH?</li>
+    </p>
 
-<li>Apakah terjadi breakdown terhadap struktur?</li>
 
-</ul>
+    <h3>
+        Contoh Bullish BOS
+    </h3>
+
+
+    <p>
+
+        Misalnya market sedang membentuk:
+
+    </p>
+
+
+    <div class="formula">
+
+        HH → HL → HH → HL
+
+    </div>
+
+
+    <p>
+
+        Kemudian harga berhasil menembus
+        swing high sebelumnya.
+
+        Break tersebut dapat dianggap sebagai
+        bullish BOS jika memenuhi konteks
+        struktur yang digunakan trader.
+
+    </p>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                💥
+            </div>
+
+            <strong>
+                VISUAL BULLISH BOS
+            </strong>
+
+            <p>
+
+                Area ini disiapkan untuk gambar
+                chart yang menunjukkan harga
+                melakukan break terhadap struktur.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <h3>
+        Bearish BOS
+    </h3>
+
+
+    <p>
+
+        Dalam struktur bearish, BOS dapat terjadi
+        ketika harga menembus swing low penting
+        sebelumnya.
+
+    </p>
+
+
+    <div class="formula">
+
+        LL → LH → LL → LH
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 8
-================================================= -->
+<!-- ============================================================
+     LESSON 08
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-8"
->
-
-<span class="lesson-number">
-BAB 08
-</span>
-
-<h2>
-Mengenali Downtrend
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Downtrend secara sederhana terjadi ketika
-market membentuk Lower Low dan Lower High
-secara berurutan.
+        LESSON 08
 
-</p>
+    </div>
 
 
-<div class="concept-box">
-
-<strong>
-Struktur bearish sederhana:
-</strong>
-
-<p>
-
-LL → LH → LL → LH → LL
-
-</p>
-
-</div>
+    <h2>
+        Change of Character — CHOCH
+    </h2>
 
 
-<p>
+    <p>
 
-Sama seperti uptrend, jangan hanya melihat
-satu candle.
+        Change of Character atau CHOCH digunakan
+        untuk menggambarkan indikasi bahwa
+        karakter pergerakan market mulai berubah.
 
-Lihat struktur swing yang lebih besar.
+    </p>
 
-</p>
+
+    <p>
+
+        Contohnya, market sebelumnya memiliki
+        struktur bearish:
+
+    </p>
+
+
+    <div class="formula">
+
+        LL → LH → LL → LH
+
+    </div>
+
+
+    <p>
+
+        Kemudian harga mulai menunjukkan
+        kemampuan untuk menembus struktur
+        penting yang sebelumnya menjadi bagian
+        dari bearish structure.
+
+    </p>
+
+
+    <p>
+
+        Kondisi tersebut dapat menjadi indikasi
+        awal bahwa market tidak lagi memiliki
+        karakter yang sama seperti sebelumnya.
+
+    </p>
+
+
+    <div class="warning">
+
+        <strong>
+            ⚠️ CHOCH bukan jaminan reversal.
+        </strong>
+
+        <p>
+
+            Perubahan struktur harus tetap
+            dianalisis bersama konteks,
+            lokasi harga, liquidity, momentum
+            dan timeframe.
+
+        </p>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                🔄
+            </div>
+
+            <strong>
+                VISUAL CHOCH
+            </strong>
+
+            <p>
+
+                Nantinya dapat menggunakan gambar
+                yang memperlihatkan perubahan
+                struktur secara sederhana.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 9
-================================================= -->
+<!-- ============================================================
+     LESSON 09
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-9"
->
-
-<span class="lesson-number">
-BAB 09
-</span>
-
-<h2>
-Sideways Market
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Tidak semua market sedang trending.
+        LESSON 09
 
-Ada kondisi ketika harga bergerak
-bolak-balik dalam range tertentu.
-
-Ini sering disebut sideways atau ranging market.
-
-</p>
+    </div>
 
 
-<div class="concept-box">
-
-<strong>
-Ciri umum:
-</strong>
-
-<ul>
-
-<li>High relatif berada pada area yang sama.</li>
-
-<li>Low relatif berada pada area yang sama.</li>
-
-<li>Harga bergerak bolak-balik.</li>
-
-<li>Breakout sering mengalami false break.</li>
-
-</ul>
-
-</div>
+    <h2>
+        Internal Structure & External Structure
+    </h2>
 
 
-<p>
+    <p>
 
-Trader perlu berhati-hati karena strategi
-trend-following dapat bekerja kurang baik
-ketika market sedang sideways.
+        Salah satu konsep yang lebih advanced
+        adalah membedakan struktur internal
+        dan struktur eksternal.
 
-</p>
+    </p>
+
+
+    <h3>
+        External Structure
+    </h3>
+
+
+    <p>
+
+        External structure merupakan struktur
+        utama yang terlihat pada pergerakan
+        market yang lebih besar.
+
+    </p>
+
+
+    <h3>
+        Internal Structure
+    </h3>
+
+
+    <p>
+
+        Internal structure adalah pergerakan
+        yang terjadi di dalam struktur utama.
+
+    </p>
+
+
+    <p>
+
+        Karena itu, sebuah market dapat terlihat
+        bullish pada timeframe besar tetapi
+        bearish sementara pada timeframe kecil.
+
+    </p>
+
+
+    <div class="highlight">
+
+        <strong>
+            Prinsip penting:
+        </strong>
+
+        <p>
+
+            Struktur kecil tidak selalu
+            membatalkan struktur besar.
+
+            Trader harus mengetahui terlebih
+            dahulu struktur mana yang sedang
+            dianalisis.
+
+        </p>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                🧩
+            </div>
+
+            <strong>
+                VISUAL INTERNAL VS EXTERNAL STRUCTURE
+            </strong>
+
+            <p>
+
+                Nantinya gunakan satu gambar
+                chart yang menunjukkan struktur
+                besar dan struktur kecil secara
+                bersamaan.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 10
-================================================= -->
+<!-- ============================================================
+     LESSON 10
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-10"
->
-
-<span class="lesson-number">
-BAB 10
-</span>
-
-<h2>
-Break of Structure — BOS
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Break of Structure atau BOS adalah istilah
-yang digunakan trader untuk menggambarkan
-pecahnya struktur penting sebelumnya.
+        LESSON 10
 
-</p>
+    </div>
 
 
-<h3>
-Contoh bullish
-</h3>
-
-<p>
-
-Jika market membentuk sebuah swing high,
-kemudian harga berhasil menembus swing high
-tersebut dan mempertahankan pergerakan,
-trader dapat menganggapnya sebagai indikasi
-kelanjutan struktur bullish.
-
-</p>
+    <h2>
+        Liquidity & Market Structure
+    </h2>
 
 
-<h3>
-Contoh bearish
-</h3>
+    <p>
 
-<p>
+        Liquidity merupakan konsep penting
+        ketika kita mulai memahami bagaimana
+        harga bergerak menuju area tertentu.
 
-Jika harga menembus swing low penting,
-hal tersebut dapat menjadi indikasi bahwa
-struktur bearish sedang berkembang.
-
-</p>
+    </p>
 
 
-<div class="concept-box">
+    <p>
 
-<strong>
-Peringatan:
-</strong>
+        Dalam pendekatan price action,
+        trader sering memperhatikan area
+        di sekitar previous high, previous low,
+        equal highs, equal lows dan area lain
+        yang berpotensi menjadi perhatian
+        banyak pelaku market.
 
-<p>
+    </p>
 
-Tidak semua wick yang menembus level
-otomatis berarti BOS berkualitas.
 
-Perhatikan penutupan candle, timeframe,
-volume jika digunakan, dan konteks market.
+    <h3>
+        Mengapa liquidity penting?
+    </h3>
 
-</p>
 
-</div>
+    <p>
+
+        Karena struktur market tidak berdiri
+        sendiri.
+
+        Pergerakan menuju high atau low tertentu
+        dapat menjadi bagian dari proses
+        pengambilan liquidity sebelum harga
+        melanjutkan atau mengubah arah.
+
+    </p>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                💧
+            </div>
+
+            <strong>
+                VISUAL LIQUIDITY
+            </strong>
+
+            <p>
+
+                Area ini nantinya dapat diisi
+                gambar equal highs, equal lows,
+                previous high dan previous low.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 11
-================================================= -->
+<!-- ============================================================
+     LESSON 11
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-11"
->
-
-<span class="lesson-number">
-BAB 11
-</span>
-
-<h2>
-Change of Character — CHOCH
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-CHOCH sering digunakan untuk menggambarkan
-potensi perubahan karakter market.
+        LESSON 11
 
-Contohnya, market sebelumnya membentuk
-struktur bearish.
-
-Kemudian harga berhasil menembus struktur
-yang sebelumnya menahan kenaikan.
-
-Hal tersebut dapat menjadi tanda awal bahwa
-karakter market mulai berubah.
-
-</p>
+    </div>
 
 
-<div class="concept-box">
+    <h2>
+        Market Context
+    </h2>
 
-<strong>
-Ingat:
-</strong>
 
-<p>
+    <p>
 
-CHOCH bukan jaminan reversal.
+        Kesalahan umum trader adalah menganalisis
+        satu candle atau satu pola tanpa melihat
+        konteks yang lebih besar.
 
-Ia lebih tepat dipandang sebagai
-informasi bahwa struktur sebelumnya
-mungkin mulai kehilangan kekuatan.
+    </p>
 
-</p>
 
-</div>
+    <p>
+
+        Market context berarti memahami kondisi
+        keseluruhan market sebelum mengambil
+        keputusan.
+
+    </p>
+
+
+    <h3>
+        Beberapa pertanyaan penting
+    </h3>
+
+
+    <div class="checklist">
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Apakah market sedang bullish,
+                bearish atau ranging?
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Struktur utama berada pada
+                timeframe berapa?
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Di mana swing high dan swing low
+                yang paling relevan?
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Apakah terjadi BOS atau CHOCH?
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Di mana area liquidity?
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                ✓
+            </span>
+
+            <span>
+                Apakah entry sesuai dengan
+                konteks struktur?
+            </span>
+
+        </div>
+
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 12
-================================================= -->
+<!-- ============================================================
+     LESSON 12
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-12"
->
-
-<span class="lesson-number">
-BAB 12
-</span>
-
-<h2>
-Market Shift
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Market shift adalah perubahan kondisi
-struktur yang menyebabkan trader mulai
-mengubah bias analisisnya.
+        LESSON 12
 
-</p>
+    </div>
 
 
-<p>
-
-Contoh:
-
-Market sebelumnya bearish.
-
-Kemudian terbentuk:
-
-</p>
+    <h2>
+        Multi-Timeframe Structure
+    </h2>
 
 
-<div class="concept-box">
+    <p>
 
-<strong>
+        Market structure harus selalu dilihat
+        berdasarkan timeframe.
 
-LL → LH → LL → kemudian harga menembus LH
-
-</strong>
-
-<p>
-
-Trader mulai mempertimbangkan kemungkinan
-bahwa tekanan bearish sedang melemah.
-
-</p>
-
-</div>
+    </p>
 
 
-<p>
+    <p>
 
-Namun bias baru tetap membutuhkan konfirmasi.
+        Contohnya, pada timeframe Daily harga
+        masih bullish.
 
-Jangan mengubah bias hanya karena satu candle.
+        Tetapi pada timeframe 1H harga sedang
+        melakukan retracement bearish.
 
-</p>
+    </p>
+
+
+    <p>
+
+        Kondisi tersebut bukan berarti Daily
+        langsung berubah menjadi bearish.
+
+    </p>
+
+
+    <div class="highlight">
+
+        <strong>
+            Cara berpikir yang benar:
+        </strong>
+
+        <p>
+
+            Timeframe besar memberikan konteks.
+
+            Timeframe kecil membantu melihat
+            detail pergerakan.
+
+        </p>
+
+    </div>
+
+
+    <div class="visual-box">
+
+        <div class="visual-placeholder">
+
+            <div class="visual-icon">
+                🕐
+            </div>
+
+            <strong>
+                VISUAL MULTI-TIMEFRAME
+            </strong>
+
+            <p>
+
+                Nantinya dapat dibuat visual
+                Daily → 4H → 1H → 15M untuk
+                menjelaskan hubungan struktur.
+
+            </p>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 13
-================================================= -->
+<!-- ============================================================
+     LESSON 13
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-13"
->
-
-<span class="lesson-number">
-BAB 13
-</span>
-
-<h2>
-Internal & External Structure
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Market dapat memiliki struktur dalam
-struktur.
+        LESSON 13
 
-Timeframe besar bisa menunjukkan
-uptrend sementara timeframe kecil
-sedang mengalami koreksi.
-
-</p>
+    </div>
 
 
-<div class="structure-grid">
-
-<div class="structure-card">
-
-<div class="symbol">
-HTF
-</div>
-
-<h3>
-External Structure
-</h3>
-
-<p>
-
-Struktur besar yang memberikan
-konteks utama market.
-
-</p>
-
-</div>
+    <h2>
+        Contoh Analisis Market Structure
+    </h2>
 
 
-<div class="structure-card">
+    <p>
 
-<div class="symbol">
-LTF
-</div>
+        Sekarang kita gabungkan seluruh konsep
+        yang sudah dipelajari.
 
-<h3>
-Internal Structure
-</h3>
-
-<p>
-
-Pergerakan yang lebih kecil
-di dalam struktur besar.
-
-</p>
-
-</div>
-
-</div>
+    </p>
 
 
-<div class="concept-box">
+    <h3>
+        Langkah 1 — Tentukan timeframe
+    </h3>
 
-<strong>
-Contoh:
-</strong>
 
-<p>
+    <p>
 
-Daily = bullish.
+        Mulai dari timeframe yang lebih besar
+        untuk mengetahui struktur utama.
 
-4H = bullish.
+    </p>
 
-15M = bearish correction.
 
-</p>
+    <h3>
+        Langkah 2 — Identifikasi swing
+    </h3>
 
-<p>
 
-15M bearish tidak otomatis berarti
-Daily berubah menjadi bearish.
+    <p>
 
-</p>
+        Tandai swing high dan swing low
+        yang benar-benar relevan.
 
-</div>
+    </p>
+
+
+    <h3>
+        Langkah 3 — Identifikasi struktur
+    </h3>
+
+
+    <p>
+
+        Perhatikan apakah terdapat rangkaian
+        HH-HL atau LH-LL.
+
+    </p>
+
+
+    <h3>
+        Langkah 4 — Cari perubahan struktur
+    </h3>
+
+
+    <p>
+
+        Perhatikan BOS atau kemungkinan CHOCH.
+
+    </p>
+
+
+    <h3>
+        Langkah 5 — Periksa liquidity
+    </h3>
+
+
+    <p>
+
+        Lihat apakah terdapat area high atau
+        low yang berpotensi menjadi liquidity.
+
+    </p>
+
+
+    <h3>
+        Langkah 6 — Buat skenario
+    </h3>
+
+
+    <p>
+
+        Jangan langsung berpikir:
+
+        "Harga pasti naik."
+
+        atau
+
+        "Harga pasti turun."
+
+    </p>
+
+
+    <p>
+
+        Buat skenario berdasarkan kondisi market
+        dan tentukan invalidation-nya.
+
+    </p>
+
+
+    <!-- FUTURE VIDEO -->
+
+    <div class="video-wrapper">
+
+        <video
+            controls
+            preload="metadata"
+        >
+
+            <!--
+            NANTI MASUKKAN VIDEO DI SINI
+
+            Contoh:
+
+            <source
+                src="assets/videos/module-01-analysis.mp4"
+                type="video/mp4"
+            >
+
+            -->
+
+            Browser lu tidak mendukung
+            pemutaran video.
+
+        </video>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 14
-================================================= -->
+<!-- ============================================================
+     LESSON 14
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-14"
->
-
-<span class="lesson-number">
-BAB 14
-</span>
-
-<h2>
-Liquidity
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Liquidity dalam konteks trading sering
-dikaitkan dengan area tempat banyak order
-atau stop order berpotensi terkumpul.
+        LESSON 14
 
-</p>
+    </div>
 
 
-<p>
-
-Contohnya:
-
-</p>
+    <h2>
+        Kesalahan Umum Membaca Market Structure
+    </h2>
 
 
-<ul>
+    <h3>
+        1. Menganggap setiap break sebagai BOS
+    </h3>
 
-<li>Equal High</li>
+    <p>
 
-<li>Equal Low</li>
+        Tidak semua candle yang melewati high
+        atau low otomatis merupakan perubahan
+        struktur yang signifikan.
 
-<li>Previous High</li>
-
-<li>Previous Low</li>
-
-<li>Area breakout yang ramai diperhatikan</li>
-
-</ul>
+    </p>
 
 
-<div class="concept-box">
+    <h3>
+        2. Mengabaikan timeframe
+    </h3>
 
-<strong>
-Cara berpikir yang lebih baik:
-</strong>
+    <p>
 
-<p>
+        Struktur pada timeframe kecil dapat
+        terlihat berlawanan dengan timeframe
+        besar.
 
-Jangan hanya bertanya:
+    </p>
 
-"Di mana saya entry?"
 
-Tanyakan juga:
+    <h3>
+        3. Terlalu banyak menggambar struktur
+    </h3>
 
-"Di mana kemungkinan banyak trader
-menempatkan order mereka?"
+    <p>
 
-</p>
+        Chart yang penuh garis justru dapat
+        membuat analisis menjadi lebih sulit.
 
-</div>
+    </p>
+
+
+    <h3>
+        4. Memaksakan bias
+    </h3>
+
+    <p>
+
+        Trader terkadang sudah menentukan
+        harga akan naik lalu mencari alasan
+        untuk membenarkan pandangan tersebut.
+
+    </p>
+
+
+    <h3>
+        5. Menganggap CHOCH sebagai reversal pasti
+    </h3>
+
+    <p>
+
+        Perubahan karakter adalah informasi,
+        bukan jaminan bahwa reversal akan terjadi.
+
+    </p>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 15
-================================================= -->
+<!-- ============================================================
+     LESSON 15
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-15"
->
-
-<span class="lesson-number">
-BAB 15
-</span>
-
-<h2>
-Market Structure + Confluence
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Market Structure akan menjadi jauh lebih
-berguna ketika digabungkan dengan konteks
-lain.
+        LESSON 15
 
-</p>
+    </div>
 
 
-<div class="checklist">
-
-<div class="check-item">
-
-<span>01</span>
-
-<div>
-
-<strong>Structure</strong>
-
-<br>
-
-Apakah market bullish, bearish atau sideways?
-
-</div>
-
-</div>
+    <h2>
+        Framework Membaca Market Structure
+    </h2>
 
 
-<div class="check-item">
+    <p>
 
-<span>02</span>
+        Gunakan framework berikut setiap kali
+        lu membuka chart.
 
-<div>
-
-<strong>Key Level</strong>
-
-<br>
-
-Apakah harga berada di support atau resistance?
-
-</div>
-
-</div>
+    </p>
 
 
-<div class="check-item">
-
-<span>03</span>
-
-<div>
-
-<strong>Liquidity</strong>
-
-<br>
-
-Apakah terdapat area liquidity yang relevan?
-
-</div>
-
-</div>
+    <div class="checklist">
 
 
-<div class="check-item">
+        <div class="check-item">
 
-<span>04</span>
+            <span class="check-icon">
+                01
+            </span>
 
-<div>
+            <span>
+                Tentukan timeframe utama.
+            </span>
 
-<strong>Confirmation</strong>
-
-<br>
-
-Apakah terdapat konfirmasi tambahan?
-
-</div>
-
-</div>
+        </div>
 
 
-</div>
+        <div class="check-item">
+
+            <span class="check-icon">
+                02
+            </span>
+
+            <span>
+                Identifikasi struktur utama.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                03
+            </span>
+
+            <span>
+                Tandai swing high dan swing low.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                04
+            </span>
+
+            <span>
+                Tentukan HH, HL, LH dan LL.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                05
+            </span>
+
+            <span>
+                Identifikasi BOS dan CHOCH.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                06
+            </span>
+
+            <span>
+                Cari area liquidity.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                07
+            </span>
+
+            <span>
+                Periksa struktur timeframe lebih kecil.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                08
+            </span>
+
+            <span>
+                Buat skenario bullish dan bearish.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                09
+            </span>
+
+            <span>
+                Tentukan invalidation.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                10
+            </span>
+
+            <span>
+                Baru pertimbangkan entry.
+            </span>
+
+        </div>
+
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 16
-================================================= -->
+<!-- ============================================================
+     VIDEO SECTION
+============================================================ -->
 
-<section
-class="lesson-block"
-id="bab-16"
->
-
-<span class="lesson-number">
-BAB 16
-</span>
-
-<h2>
-Studi Kasus Bullish
-</h2>
+<section class="lesson">
 
 
-<p>
+    <div class="lesson-number">
 
-Bayangkan sebuah aset berada dalam
-uptrend.
+        VISUAL LESSON
 
-Strukturnya:
-
-</p>
+    </div>
 
 
-<div class="concept-box">
-
-<strong>
-
-HH → HL → HH → HL
-
-</strong>
-
-</div>
+    <h2>
+        Market Structure Dalam Praktik
+    </h2>
 
 
-<p>
+    <p>
 
-Harga kemudian melakukan koreksi
-menuju area HL sebelumnya.
+        Bagian ini nantinya menjadi tempat
+        video pembelajaran Premium.
 
-Trader tidak langsung melakukan entry.
+        Video dapat menjelaskan bagaimana
+        teori yang sudah dipelajari diterapkan
+        langsung pada chart.
 
-Ia menunggu:
-
-</p>
-
-
-<ul>
-
-<li>Harga mempertahankan struktur.</li>
-
-<li>Muncul reaksi bullish.</li>
-
-<li>Timeframe kecil memberikan konfirmasi.</li>
-
-<li>Risk/reward masih masuk akal.</li>
-
-</ul>
+    </p>
 
 
-<p>
+    <div class="video-wrapper">
 
-Dengan pendekatan tersebut, trader tidak
-hanya membeli karena "harga terlihat murah".
+        <video
+            controls
+            preload="metadata"
+            poster="assets/images/module-01-cover.jpg"
+        >
 
-Ia memiliki alasan struktural.
+            <!--
+            =====================================================
+            MASUKKAN VIDEO NANTI DI SINI
 
-</p>
+            Contoh:
+
+            <source
+                src="assets/videos/module-01-market-structure.mp4"
+                type="video/mp4"
+            >
+
+            =====================================================
+            -->
+
+            Browser lu tidak mendukung
+            pemutaran video.
+
+        </video>
+
+    </div>
+
 
 </section>
 
 
 
-<!-- =================================================
-     BAB 17
-================================================= -->
-
-<section
-class="lesson-block"
-id="bab-17"
->
-
-<span class="lesson-number">
-BAB 17
-</span>
-
-<h2>
-Studi Kasus Bearish
-</h2>
-
-
-<p>
-
-Sekarang bayangkan market membentuk:
-
-</p>
-
-
-<div class="concept-box">
-
-<strong>
-
-LL → LH → LL → LH
-
-</strong>
-
-</div>
-
-
-<p>
-
-Harga naik melakukan retracement
-menuju area LH.
-
-Trader kemudian mengamati apakah
-struktur bearish tetap bertahan.
-
-</p>
-
-
-<ul>
-
-<li>Apakah harga gagal membuat HH?</li>
-
-<li>Apakah muncul rejection?</li>
-
-<li>Apakah low sebelumnya kembali ditembus?</li>
-
-<li>Apakah risk/reward sesuai rencana?</li>
-
-</ul>
-
-
-<p>
-
-Tujuannya bukan menebak harga.
-
-Tujuannya membangun skenario berdasarkan
-informasi yang tersedia.
-
-</p>
-
-</section>
-
-
-
-<!-- =================================================
-     BAB 18
-================================================= -->
-
-<section
-class="lesson-block"
-id="bab-18"
->
-
-<span class="lesson-number">
-BAB 18
-</span>
-
-<h2>
-Kesalahan Trader Pemula
-</h2>
-
-
-<div class="structure-grid">
-
-<div class="structure-card">
-
-<h3>
-❌ Menganggap semua break adalah BOS
-</h3>
-
-<p>
-
-Break kecil belum tentu merupakan
-perubahan struktur utama.
-
-</p>
-
-</div>
-
-
-<div class="structure-card">
-
-<h3>
-❌ Mengabaikan timeframe
-</h3>
-
-<p>
-
-Struktur kecil bisa berbeda
-dengan struktur timeframe besar.
-
-</p>
-
-</div>
-
-
-<div class="structure-card">
-
-<h3>
-❌ Entry hanya karena pola
-</h3>
-
-<p>
-
-Market structure perlu konteks,
-bukan sekadar pola.
-
-</p>
-
-</div>
-
-
-<div class="structure-card">
-
-<h3>
-❌ Tidak memiliki invalidation
-</h3>
-
-<p>
-
-Setiap skenario harus memiliki
-titik di mana analisis dianggap salah.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =================================================
-     BAB 19
-================================================= -->
-
-<section
-class="lesson-block"
-id="bab-19"
->
-
-<span class="lesson-number">
-BAB 19
-</span>
-
-<h2>
-Market Structure Checklist
-</h2>
-
-
-<p>
-
-Sebelum mengambil keputusan,
-gunakan checklist sederhana berikut.
-
-</p>
-
-
-<div class="checklist">
-
-<div class="check-item">
-
-<span>01</span>
-
-<div>
-Identifikasi trend utama.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>02</span>
-
-<div>
-Tentukan swing high dan swing low penting.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>03</span>
-
-<div>
-Identifikasi HH, HL, LH dan LL.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>04</span>
-
-<div>
-Tentukan apakah market sedang trending atau ranging.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>05</span>
-
-<div>
-Cari level penting.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>06</span>
-
-<div>
-Perhatikan liquidity.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>07</span>
-
-<div>
-Tentukan skenario bullish dan bearish.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>08</span>
-
-<div>
-Tentukan invalidation sebelum entry.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>09</span>
-
-<div>
-Hitung risk/reward.
-</div>
-
-</div>
-
-
-<div class="check-item">
-
-<span>10</span>
-
-<div>
-Jika tidak ada setup yang jelas, jangan trade.
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =================================================
-     BAB 20
-================================================= -->
-
-<section
-class="lesson-block"
-id="bab-20"
->
-
-<span class="lesson-number">
-BAB 20
-</span>
-
-<h2>
-Quiz — Uji Pemahaman Lu
-</h2>
-
-
-<div class="quiz">
-
-
-<div class="quiz-question">
-
-<h3>
-1. Apa yang dimaksud Higher High?
-</h3>
-
-<div class="quiz-option">
-A. Low baru lebih rendah
-</div>
-
-<div class="quiz-option">
-B. High baru lebih tinggi daripada high sebelumnya
-</div>
-
-<div class="quiz-option">
-C. High baru lebih rendah
-</div>
-
-</div>
-
-
-
-<div class="quiz-question">
-
-<h3>
-2. Struktur umum uptrend adalah?
-</h3>
-
-<div class="quiz-option">
-A. LL → LH → LL
-</div>
-
-<div class="quiz-option">
-B. HH → HL → HH → HL
-</div>
-
-<div class="quiz-option">
-C. HH → LL → LH
-</div>
-
-</div>
-
-
-
-<div class="quiz-question">
-
-<h3>
-3. Apakah setiap breakout otomatis berarti reversal?
-</h3>
-
-<div class="quiz-option">
-A. Ya
-</div>
-
-<div class="quiz-option">
-B. Tidak
-</div>
-
-</div>
-
-
-
-<div class="quiz-question">
-
-<h3>
-4. Mengapa timeframe penting?
-</h3>
-
-<div class="quiz-option">
-A. Karena struktur kecil dan besar bisa berbeda
-</div>
-
-<div class="quiz-option">
-B. Karena semua timeframe selalu sama
-</div>
-
-<div class="quiz-option">
-C. Karena timeframe menentukan profit
-</div>
-
-</div>
-
-
-
-<div class="quiz-question">
-
-<h3>
-5. Apa yang harus ditentukan sebelum mengambil trade?
-</h3>
-
-<div class="quiz-option">
-A. Invalidation dan risiko
-</div>
-
-<div class="quiz-option">
-B. Hanya target profit
-</div>
-
-<div class="quiz-option">
-C. Hanya indikator
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =================================================
+<!-- ============================================================
      SUMMARY
-================================================= -->
+============================================================ -->
 
-<section class="lesson-block">
-
-<div class="summary-box">
+<section class="summary-card">
 
 
-<span class="kicker">
-MODULE SUMMARY
-</span>
+    <h2>
+        Ringkasan Module 01
+    </h2>
 
 
-<h2>
-Apa yang sudah lu pelajari?
-</h2>
+    <ul>
 
+        <li>
+            Market structure adalah cara
+            membaca rangkaian pergerakan harga.
+        </li>
 
-<p>
+        <li>
+            Swing High dan Swing Low merupakan
+            fondasi untuk membaca struktur.
+        </li>
 
-Setelah menyelesaikan modul ini,
-lu seharusnya sudah memahami bahwa
-market structure bukan sekadar
-menghafal HH, HL, LH dan LL.
+        <li>
+            HH dan HL umumnya membentuk struktur
+            bullish.
+        </li>
 
-Yang lebih penting adalah memahami
-hubungan antara titik-titik tersebut
-dan bagaimana struktur berubah.
+        <li>
+            LH dan LL umumnya membentuk struktur
+            bearish.
+        </li>
 
-</p>
+        <li>
+            BOS dapat digunakan untuk membaca
+            kelanjutan struktur.
+        </li>
 
+        <li>
+            CHOCH digunakan untuk mengamati
+            perubahan karakter market.
+        </li>
 
-<ul>
+        <li>
+            Struktur harus selalu dilihat
+            berdasarkan timeframe dan konteks.
+        </li>
 
-<li>Swing High & Swing Low</li>
+        <li>
+            Liquidity merupakan bagian penting
+            dalam memahami perilaku harga.
+        </li>
 
-<li>Higher High & Higher Low</li>
+        <li>
+            Analisis struktur sebaiknya digunakan
+            sebagai framework, bukan sebagai
+            jaminan prediksi.
+        </li>
 
-<li>Lower High & Lower Low</li>
+    </ul>
 
-<li>Uptrend & Downtrend</li>
-
-<li>Sideways Market</li>
-
-<li>Break of Structure</li>
-
-<li>CHOCH</li>
-
-<li>Market Shift</li>
-
-<li>Internal & External Structure</li>
-
-<li>Liquidity</li>
-
-<li>Confluence</li>
-
-<li>Risk & Invalidation</li>
-
-</ul>
-
-
-<div class="notice">
-
-<strong>
-Mindset utama:
-</strong>
-
-<br>
-
-Jangan bertanya:
-
-"Ke mana harga akan pergi?"
-
-<br><br>
-
-Mulai bertanya:
-
-"Apa yang sedang dilakukan harga,
-dan kondisi apa yang akan membuat
-analisis saya salah?"
-
-</div>
-
-
-</div>
 
 </section>
 
 
 
-<!-- =================================================
+<!-- ============================================================
+     FINAL CHECKLIST
+============================================================ -->
+
+<section class="lesson">
+
+
+    <div class="lesson-number">
+
+        FINAL CHECK
+
+    </div>
+
+
+    <h2>
+        Apakah Lu Sudah Memahami Modul Ini?
+    </h2>
+
+
+    <div class="checklist">
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami Swing High dan Swing Low.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya dapat membedakan HH, HL, LH dan LL.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami bullish dan bearish structure.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami konsep BOS.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami konsep CHOCH.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami external dan internal structure.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya memahami hubungan structure dan liquidity.
+            </span>
+
+        </div>
+
+
+        <div class="check-item">
+
+            <span class="check-icon">
+                □
+            </span>
+
+            <span>
+                Saya dapat membuat market context sebelum entry.
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ============================================================
      NEXT MODULE
-================================================= -->
+============================================================ -->
 
-<section class="lesson-block">
-
-<div class="card">
-
-<span class="kicker">
-NEXT MODULE
-</span>
+<div class="next-module">
 
 
-<h2>
-Multi-Timeframe Analysis
-</h2>
+    <div>
+
+        <strong>
+            Module 01 selesai?
+        </strong>
+
+        <p>
+            Lanjutkan ke Module 02:
+            Multi-Timeframe Analysis.
+        </p>
+
+    </div>
 
 
-<p>
+    <a
+        href="premium-member.html"
+        class="next-button"
+    >
 
-Setelah memahami struktur market,
-langkah berikutnya adalah belajar
-menghubungkan timeframe besar dan
-timeframe kecil.
+        Kembali ke Library →
 
-</p>
-
-
-<div class="actions">
-
-<a
-href="premium-mtf.html"
-class="btn btn-primary"
->
-Lanjut ke Module 02 →
-</a>
+    </a>
 
 
-<a
-href="premium-member.html"
-class="btn btn-secondary"
->
-← Dashboard Premium
-</a>
+</div>
+
 
 </div>
 
 </div>
-
-</section>
-
-
-</article>
-
-</div>
-
-</div>
-
-</section>
 
 </main>
 
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-<div class="container">
-
-<div class="footer">
-
-
-<div>
-
-<div class="brand">
-
-<img
-src="logo.jpg"
-alt="Logo TradeVestor"
->
-
-<span>
-TRADE<b>VESTOR</b>
-</span>
-
-</div>
-
-
-<p
-style="
-margin-top:12px;
-max-width:420px;
-"
->
-
-TradeVestor membantu lu
-membangun pemahaman trading
-secara bertahap dan terstruktur.
-
-</p>
-
-</div>
-
-
-<div>
-
-<h4>
-Premium
-</h4>
-
-<a href="premium-member.html">
-Dashboard
-</a>
-
-<a href="premium-market-structure.html">
-Market Structure
-</a>
-
-<a href="premium-mtf.html">
-Multi-Timeframe
-</a>
-
-<a href="premium-risk.html">
-Risk Management
-</a>
-
-</div>
-
-
-<div>
-
-<h4>
-Lainnya
-</h4>
-
-<a href="index.html">
-Beranda
-</a>
-
-<a href="pembelajaran.html">
-Pembelajaran
-</a>
-
-<a href="tentang.html">
-Tentang
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="copyright">
-
-© 2026 TradeVestor.
-Premium Educational Content.
-
-</div>
-
-</div>
-
-</footer>
-
-
-
-<!-- =====================================================
+<!-- ============================================================
      JAVASCRIPT
-===================================================== -->
+============================================================ -->
 
-<script src="js/script.js"></script>
+<script>
+
+/*
+============================================================
+   PREMIUM ACCESS GUARD
+============================================================
+
+   Halaman ini TIDAK boleh hanya mengandalkan
+   link dari premium-member.html.
+
+   User tetap diperiksa ke server.
+
+============================================================
+*/
+
+
+const API_URL = "";
+
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ============================================================
+   CHECK PREMIUM
+============================================================ */
+
+async function verifyPremium() {
+
+    try {
+
+        const response = await fetch(
+            API_URL + "/api/premium-check",
+            {
+                method: "GET",
+
+                credentials: "include",
+
+                cache: "no-store",
+
+                headers: {
+                    "Accept":
+                        "application/json"
+                }
+            }
+        );
+
+
+        let data = null;
+
+
+        try {
+
+            data =
+                await response.json();
+
+        }
+
+        catch (jsonError) {
+
+            console.error(
+                "Response bukan JSON:",
+                jsonError
+            );
+
+        }
+
+
+        /* ====================================================
+           BELUM LOGIN
+        ==================================================== */
+
+        if (
+            response.status === 401
+        ) {
+
+            window.location.replace(
+                "login.html?redirect=" +
+                encodeURIComponent(
+                    "premium-market-structure.html"
+                )
+            );
+
+            return;
+
+        }
+
+
+        /* ====================================================
+           SERVER ERROR
+        ==================================================== */
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                data?.message ||
+                "Gagal memeriksa akses Premium."
+            );
+
+        }
+
+
+        /* ====================================================
+           RESPONSE INVALID
+        ==================================================== */
+
+        if (
+            !data ||
+            data.success !== true
+        ) {
+
+            throw new Error(
+                data?.message ||
+                "Response server tidak valid."
+            );
+
+        }
+
+
+        /* ====================================================
+           BUKAN PREMIUM
+        ==================================================== */
+
+        if (
+            data.premium !== true
+        ) {
+
+            window.location.replace(
+                "premium.html"
+            );
+
+            return;
+
+        }
+
+
+        /*
+        ========================================================
+        PREMIUM VALID
+
+        Konten tetap berada di halaman.
+        ========================================================
+        */
+
+        console.log(
+            "TradeVestor Premium access verified."
+        );
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "PREMIUM GUARD ERROR:",
+            error
+        );
+
+
+        /*
+        Jangan langsung menganggap user
+        bukan premium hanya karena jaringan
+        sedang bermasalah.
+
+        Tampilkan pesan error.
+        */
+
+        document.body.innerHTML = `
+
+            <main
+                style="
+                min-height:100vh;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                padding:30px;
+                background:#050507;
+                color:white;
+                font-family:Arial,sans-serif;
+                "
+            >
+
+                <div
+                    style="
+                    max-width:500px;
+                    text-align:center;
+                    padding:35px;
+                    border-radius:20px;
+                    border:1px solid rgba(255,255,255,.08);
+                    background:rgba(255,255,255,.03);
+                    "
+                >
+
+                    <div
+                        style="
+                        font-size:40px;
+                        margin-bottom:15px;
+                        "
+                    >
+                        ⚠️
+                    </div>
+
+
+                    <h2>
+                        Tidak dapat memverifikasi akses
+                    </h2>
+
+
+                    <p
+                        style="
+                        margin-top:12px;
+                        color:#999;
+                        line-height:1.7;
+                        "
+                    >
+
+                        Server tidak dapat dihubungi
+                        atau terjadi masalah saat
+                        memeriksa status Premium.
+
+                    </p>
+
+
+                    <button
+                        onclick="location.reload()"
+                        style="
+                        margin-top:20px;
+                        padding:12px 20px;
+                        border:0;
+                        border-radius:10px;
+                        background:#7657ff;
+                        color:white;
+                        font-weight:700;
+                        cursor:pointer;
+                        "
+                    >
+
+                        Coba Lagi
+
+                    </button>
+
+
+                    <a
+                        href="premium-member.html"
+                        style="
+                        display:block;
+                        margin-top:15px;
+                        color:#a98bff;
+                        text-decoration:none;
+                        "
+                    >
+
+                        ← Kembali ke Premium Member
+
+                    </a>
+
+                </div>
+
+            </main>
+
+        `;
+
+    }
+
+}
+
+
+/* ============================================================
+   START
+============================================================ */
+
+verifyPremium();
+
+</script>
+
 
 </body>
 
