@@ -47,7 +47,9 @@
   <div class="container nav-container">
 
 
-    <!-- BRAND -->
+    <!-- =================================================
+         LOGO
+    ================================================== -->
 
     <a
       href="index.html"
@@ -66,19 +68,9 @@
     </a>
 
 
-    <!-- HAMBURGER -->
-
-    <button
-      class="menu-btn"
-      id="menuBtn"
-      aria-label="Buka menu"
-      type="button"
-    >
-      ☰
-    </button>
-
-
-    <!-- NAVIGATION -->
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
 
     <nav>
 
@@ -86,7 +78,6 @@
         class="nav-links"
         id="navLinks"
       >
-
 
         <li>
 
@@ -153,72 +144,57 @@
 
         </li>
 
-
-        <!-- =================================================
-             AUTH AREA
-        ================================================= -->
-
-        <li class="nav-auth">
-
-
-          <!-- BELUM LOGIN -->
-
-          <a
-            href="login.html"
-            data-auth-login
-            class="nav-auth-login"
-          >
-            Login / Register
-          </a>
-
-
-          <!-- SUDAH LOGIN -->
-
-          <span
-            data-auth-user
-            class="nav-auth-user"
-            style="display:none;"
-          >
-          </span>
-
-
-          <!-- LOGOUT -->
-
-          <a
-            href="#"
-            data-auth-logout
-            class="nav-auth-logout"
-            style="display:none;"
-          >
-            Logout
-          </a>
-
-
-        </li>
-
-
-        <!-- PREMIUM CTA -->
-
-        <li>
-
-          <a
-            href="premium.html"
-            class="nav-cta"
-          >
-            Premium →
-          </a>
-
-        </li>
-
-
       </ul>
 
     </nav>
 
+
+    <!-- =================================================
+         LOGIN / REGISTER / USER / LOGOUT
+
+         Bagian ini sengaja berada DI LUAR menu ☰.
+         
+         Belum login:
+         Login / Register
+
+         Sudah login:
+         Nama User | Logout
+    ================================================== -->
+
+    <div
+      class="nav-auth"
+      id="navAuth"
+    >
+
+      <a
+        href="login.html"
+        class="nav-login"
+      >
+        Login / Register
+      </a>
+
+    </div>
+
+
+    <!-- =================================================
+         HAMBURGER
+    ================================================== -->
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      type="button"
+      aria-label="Buka menu"
+    >
+
+      ☰
+
+    </button>
+
+
   </div>
 
 </header>
-
 
 
 <!-- =====================================================
