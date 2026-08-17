@@ -1,243 +1,349 @@
-/* =====================================================
-   TRADEVESTOR - MAIN JAVASCRIPT
-===================================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    console.log("TradeVestor JS aktif");
+// ============================================================
+// TRADEVESTOR MAIN SCRIPT
+// ============================================================
 
 
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
+// ============================================================
+// DOM READY
+// ============================================================
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    if (menuBtn && navLinks) {
+        initMobileMenu();
 
-        menuBtn.addEventListener("click", function () {
+        initNavbarAuth();
 
-            navLinks.classList.toggle("active");
+        initRevealAnimation();
 
-            menuBtn.classList.toggle("active");
+    }
+);
 
-            const isOpen = navLinks.classList.contains("active");
 
-            menuBtn.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
+// ============================================================
+// MOBILE MENU
+// ============================================================
+
+function initMobileMenu() {
+
+    const menuBtn =
+        document.getElementById(
+            "menuBtn"
+        );
+
+    const navLinks =
+        document.getElementById(
+            "navLinks"
+        );
+
+
+    if (!menuBtn || !navLinks) {
+
+        return;
+
+    }
+
+
+    menuBtn.addEventListener(
+        "click",
+        () => {
+
+            navLinks.classList.toggle(
+                "show"
             );
 
-        });
+        }
+    );
 
-    }
+
+    // --------------------------------------------------------
+    // Tutup menu ketika link diklik
+    // --------------------------------------------------------
+
+    const links =
+        navLinks.querySelectorAll(
+            "a"
+        );
 
 
-    /* =====================================================
-       TUTUP MENU SETELAH LINK DIKLIK
-    ===================================================== */
+    links.forEach(
+        link => {
 
-    if (navLinks) {
+            link.addEventListener(
+                "click",
+                () => {
 
-        const links = navLinks.querySelectorAll("a");
-
-        links.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                navLinks.classList.remove("active");
-
-                if (menuBtn) {
-                    menuBtn.classList.remove("active");
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
+                    navLinks.classList.remove(
+                        "show"
                     );
+
                 }
+            );
 
-            });
+        }
+    );
 
-        });
+}
+
+
+// ============================================================
+// NAVBAR AUTH
+// ============================================================
+
+async function initNavbarAuth() {
+
+    const navAuth =
+        document.getElementById(
+            "navAuth"
+        );
+
+
+    // --------------------------------------------------------
+    // Kalau halaman tidak memiliki navbar auth
+    // --------------------------------------------------------
+
+    if (!navAuth) {
+
+        return;
 
     }
 
 
-    /* =====================================================
-       NAVBAR SCROLL EFFECT
-    ===================================================== */
+    // --------------------------------------------------------
+    // Pastikan TradeVestorAuth tersedia
+    // --------------------------------------------------------
 
-    const navbar = document.querySelector(".navbar");
+    if (
+        typeof TradeVestorAuth ===
+        "undefined"
+    ) {
 
-    if (navbar) {
+        console.error(
+            "TradeVestorAuth tidak ditemukan. Pastikan auth.js dimuat sebelum script.js."
+        );
 
-        function checkNavbarScroll() {
+        renderLoggedOut(
+            navAuth
+        );
 
-            if (window.scrollY > 30) {
+        return;
 
-                navbar.classList.add("scrolled");
+    }
 
-            } else {
 
-                navbar.classList.remove("scrolled");
+    // --------------------------------------------------------
+    // Cek session user
+    // --------------------------------------------------------
 
-            }
+    try {
+
+        const result =
+            await TradeVestorAuth
+                .getCurrentUser();
+
+
+        // ====================================================
+        // BELUM LOGIN
+        // ====================================================
+
+        if (
+            !result.ok ||
+            !result.data ||
+            !result.data.success
+        ) {
+
+            renderLoggedOut(
+                navAuth
+            );
+
+            return;
 
         }
 
-        window.addEventListener(
-            "scroll",
-            checkNavbarScroll
+
+        // ====================================================
+        // SUDAH LOGIN
+        // ====================================================
+
+        const user =
+            result.data.user;
+
+
+        renderLoggedIn(
+            navAuth,
+            user
         );
 
-        checkNavbarScroll();
+
+    } catch (error) {
+
+        console.error(
+            "NAVBAR AUTH ERROR:",
+            error
+        );
+
+
+        renderLoggedOut(
+            navAuth
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// RENDER LOGGED OUT
+// ============================================================
+
+function renderLoggedOut(
+    navAuth
+) {
+
+    navAuth.innerHTML = `
+
+        <a
+            href="login.html"
+            class="nav-login"
+        >
+            Login / Register
+        </a>
+
+    `;
+
+}
+
+
+// ============================================================
+// RENDER LOGGED IN
+// ============================================================
+
+function renderLoggedIn(
+    navAuth,
+    user
+) {
+
+    const name =
+        escapeHTML(
+            user?.name ||
+            "User"
+        );
+
+
+    navAuth.innerHTML = `
+
+        <span
+            class="nav-user"
+            title="${name}"
+        >
+            ${name}
+        </span>
+
+        <button
+            type="button"
+            class="nav-logout"
+            id="navLogout"
+        >
+            Logout
+        </button>
+
+    `;
+
+
+    const logoutButton =
+        document.getElementById(
+            "navLogout"
+        );
+
+
+    if (!logoutButton) {
+
+        return;
 
     }
 
 
-    /* =====================================================
-       SMOOTH SCROLL
-    ===================================================== */
-
-    const anchorLinks =
-        document.querySelectorAll('a[href^="#"]');
-
-    anchorLinks.forEach(function (link) {
-
-        link.addEventListener("click", function (event) {
-
-            const targetId =
-                this.getAttribute("href");
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
-
-            const target =
-                document.querySelector(targetId);
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        });
-
-    });
-
-
-    /* =====================================================
-       ANIMATION / REVEAL
-    ===================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".reveal, .fade-in, .animate"
-        );
-
-    if (
-        revealElements.length > 0 &&
-        "IntersectionObserver" in window
-    ) {
-
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(function (entry) {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add(
-                                "show"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.15
-                }
-            );
-
-        revealElements.forEach(function (element) {
-
-            observer.observe(element);
-
-        });
-
-    } else {
-
-        revealElements.forEach(function (element) {
-
-            element.classList.add("show");
-
-        });
-
-    }
-
-
-    /* =====================================================
-       CURRENT YEAR
-    ===================================================== */
-
-    const yearElements =
-        document.querySelectorAll(".current-year");
-
-    yearElements.forEach(function (element) {
-
-        element.textContent =
-            new Date().getFullYear();
-
-    });
-
-
-    /* =====================================================
-       CLOSE MOBILE MENU WHEN CLICK OUTSIDE
-    ===================================================== */
-
-    document.addEventListener(
+    logoutButton.addEventListener(
         "click",
-        function (event) {
+        async () => {
 
-            if (!menuBtn || !navLinks) {
-                return;
-            }
+            // ------------------------------------------------
+            // Cegah klik berkali-kali
+            // ------------------------------------------------
 
-            const clickedInsideMenu =
-                navLinks.contains(event.target);
+            logoutButton.disabled =
+                true;
 
-            const clickedButton =
-                menuBtn.contains(event.target);
+            logoutButton.textContent =
+                "...";
 
-            if (
-                !clickedInsideMenu &&
-                !clickedButton
-            ) {
 
-                navLinks.classList.remove("active");
+            try {
 
-                menuBtn.classList.remove("active");
+                const result =
+                    await TradeVestorAuth
+                        .logoutUser();
 
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
+
+                // ============================================
+                // LOGOUT BERHASIL
+                // ============================================
+
+                if (
+                    result.ok &&
+                    result.data &&
+                    result.data.success
+                ) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return;
+
+                }
+
+
+                // ============================================
+                // LOGOUT GAGAL
+                // ============================================
+
+                console.error(
+                    "Logout gagal:",
+                    result.data
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+                logoutButton.textContent =
+                    "Logout";
+
+
+                alert(
+                    result.data?.message ||
+                    "Logout gagal."
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "LOGOUT ERROR:",
+                    error
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+                logoutButton.textContent =
+                    "Logout";
+
+
+                alert(
+                    "Tidak dapat terhubung ke server."
                 );
 
             }
@@ -245,46 +351,136 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
+}
 
-    /* =====================================================
-       BACK TO TOP
-    ===================================================== */
 
-    const backTop =
-        document.querySelector(".back-to-top");
+// ============================================================
+// ESCAPE HTML
+// ============================================================
+// Mencegah nama user memasukkan HTML/JavaScript
+// ke dalam navbar.
+// ============================================================
 
-    if (backTop) {
+function escapeHTML(
+    value
+) {
 
-        window.addEventListener(
-            "scroll",
-            function () {
+    return String(value)
 
-                if (window.scrollY > 500) {
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-                    backTop.classList.add("show");
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-                } else {
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-                    backTop.classList.remove("show");
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-                }
-
-            }
+        .replace(
+            /'/g,
+            "&#039;"
         );
 
-        backTop.addEventListener(
-            "click",
-            function () {
+}
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
 
-            }
+// ============================================================
+// REVEAL ANIMATION
+// ============================================================
+// Animasi sederhana ketika elemen masuk viewport.
+// Kalau CSS tidak memiliki .reveal,
+// fungsi ini tidak akan mengganggu halaman.
+// ============================================================
+
+function initRevealAnimation() {
+
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
         );
+
+
+    if (!elements.length) {
+
+        return;
 
     }
 
 
-});
+    // --------------------------------------------------------
+    // Browser tidak mendukung IntersectionObserver
+    // --------------------------------------------------------
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        elements.forEach(
+            element => {
+
+                element.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    elements.forEach(
+        element => {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+}
