@@ -1,24 +1,18 @@
+Script.js TradeVestor — Navbar & Auth Terbaru
+
 // ============================================================
 // TRADEVESTOR MAIN SCRIPT
 // ============================================================
 
+document.addEventListener("DOMContentLoaded", () => {
 
-// ============================================================
-// DOM READY
-// ============================================================
+    initMobileMenu();
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+    initNavbarAuth();
 
-        initMobileMenu();
+    initRevealAnimation();
 
-        initNavbarAuth();
-
-        initRevealAnimation();
-
-    }
-);
+});
 
 
 // ============================================================
@@ -27,62 +21,95 @@ document.addEventListener(
 
 function initMobileMenu() {
 
-    const menuBtn =
-        document.getElementById(
-            "menuBtn"
-        );
-
-    const navLinks =
-        document.getElementById(
-            "navLinks"
-        );
-
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
     if (!menuBtn || !navLinks) {
-
+        console.warn("Navbar menu tidak ditemukan.");
         return;
-
     }
 
 
-    menuBtn.addEventListener(
-        "click",
-        () => {
+    // ========================================================
+    // HAMBURGER CLICK
+    // ========================================================
 
-            navLinks.classList.toggle(
-                "show"
-            );
+    menuBtn.addEventListener("click", function (event) {
 
-        }
-    );
+        event.preventDefault();
+        event.stopPropagation();
 
+        navLinks.classList.toggle("show");
 
-    // --------------------------------------------------------
-    // Tutup menu ketika link diklik
-    // --------------------------------------------------------
+        const isOpen =
+            navLinks.classList.contains("show");
 
-    const links =
-        navLinks.querySelectorAll(
-            "a"
+        menuBtn.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
         );
 
+        // Ubah icon
+        menuBtn.textContent =
+            isOpen ? "✕" : "☰";
 
-    links.forEach(
-        link => {
+    });
 
-            link.addEventListener(
-                "click",
-                () => {
 
-                    navLinks.classList.remove(
-                        "show"
-                    );
+    // ========================================================
+    // LINK NAVIGATION
+    // ========================================================
 
-                }
+    const links =
+        navLinks.querySelectorAll("a");
+
+    links.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("show");
+
+            menuBtn.textContent = "☰";
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+    });
+
+
+    // ========================================================
+    // KLIK DI LUAR MENU
+    // ========================================================
+
+    document.addEventListener("click", function (event) {
+
+        const clickedInsideMenu =
+            navLinks.contains(event.target);
+
+        const clickedMenuButton =
+            menuBtn.contains(event.target);
+
+        if (
+            !clickedInsideMenu &&
+            !clickedMenuButton
+        ) {
+
+            navLinks.classList.remove("show");
+
+            menuBtn.textContent = "☰";
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
             );
 
         }
-    );
+
+    });
 
 }
 
@@ -94,52 +121,41 @@ function initMobileMenu() {
 async function initNavbarAuth() {
 
     const navAuth =
-        document.getElementById(
-            "navAuth"
-        );
-
-
-    // --------------------------------------------------------
-    // Kalau halaman tidak memiliki navbar auth
-    // --------------------------------------------------------
+        document.getElementById("navAuth");
 
     if (!navAuth) {
-
         return;
-
     }
 
 
-    // --------------------------------------------------------
-    // Pastikan TradeVestorAuth tersedia
-    // --------------------------------------------------------
+    // ========================================================
+    // CEK AUTH SYSTEM
+    // ========================================================
 
     if (
-        typeof TradeVestorAuth ===
+        typeof window.TradeVestorAuth ===
         "undefined"
     ) {
 
         console.error(
-            "TradeVestorAuth tidak ditemukan. Pastikan auth.js dimuat sebelum script.js."
+            "TradeVestorAuth tidak ditemukan."
         );
 
-        renderLoggedOut(
-            navAuth
-        );
+        renderLoggedOut(navAuth);
 
         return;
 
     }
 
 
-    // --------------------------------------------------------
-    // Cek session user
-    // --------------------------------------------------------
+    // ========================================================
+    // CEK SESSION
+    // ========================================================
 
     try {
 
         const result =
-            await TradeVestorAuth
+            await window.TradeVestorAuth
                 .getCurrentUser();
 
 
@@ -148,14 +164,13 @@ async function initNavbarAuth() {
         // ====================================================
 
         if (
+            !result ||
             !result.ok ||
             !result.data ||
             !result.data.success
         ) {
 
-            renderLoggedOut(
-                navAuth
-            );
+            renderLoggedOut(navAuth);
 
             return;
 
@@ -169,24 +184,21 @@ async function initNavbarAuth() {
         const user =
             result.data.user;
 
-
         renderLoggedIn(
             navAuth,
             user
         );
 
+    }
 
-    } catch (error) {
+    catch (error) {
 
         console.error(
             "NAVBAR AUTH ERROR:",
             error
         );
 
-
-        renderLoggedOut(
-            navAuth
-        );
+        renderLoggedOut(navAuth);
 
     }
 
@@ -194,12 +206,10 @@ async function initNavbarAuth() {
 
 
 // ============================================================
-// RENDER LOGGED OUT
+// LOGGED OUT
 // ============================================================
 
-function renderLoggedOut(
-    navAuth
-) {
+function renderLoggedOut(navAuth) {
 
     navAuth.innerHTML = `
 
@@ -216,7 +226,7 @@ function renderLoggedOut(
 
 
 // ============================================================
-// RENDER LOGGED IN
+// LOGGED IN
 // ============================================================
 
 function renderLoggedIn(
@@ -226,8 +236,7 @@ function renderLoggedIn(
 
     const name =
         escapeHTML(
-            user?.name ||
-            "User"
+            user?.name || "User"
         );
 
 
@@ -251,6 +260,10 @@ function renderLoggedIn(
     `;
 
 
+    // ========================================================
+    // LOGOUT BUTTON
+    // ========================================================
+
     const logoutButton =
         document.getElementById(
             "navLogout"
@@ -258,39 +271,40 @@ function renderLoggedIn(
 
 
     if (!logoutButton) {
-
         return;
-
     }
 
 
     logoutButton.addEventListener(
         "click",
-        async () => {
+        async function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
 
             // ------------------------------------------------
-            // Cegah klik berkali-kali
+            // Cegah double click
             // ------------------------------------------------
 
-            logoutButton.disabled =
-                true;
+            logoutButton.disabled = true;
 
-            logoutButton.textContent =
-                "...";
+            logoutButton.textContent = "...";
 
 
             try {
 
                 const result =
-                    await TradeVestorAuth
+                    await window.TradeVestorAuth
                         .logoutUser();
 
 
                 // ============================================
-                // LOGOUT BERHASIL
+                // BERHASIL
                 // ============================================
 
                 if (
+                    result &&
                     result.ok &&
                     result.data &&
                     result.data.success
@@ -305,29 +319,29 @@ function renderLoggedIn(
 
 
                 // ============================================
-                // LOGOUT GAGAL
+                // GAGAL
                 // ============================================
 
                 console.error(
                     "Logout gagal:",
-                    result.data
+                    result
                 );
 
 
-                logoutButton.disabled =
-                    false;
+                logoutButton.disabled = false;
 
                 logoutButton.textContent =
                     "Logout";
 
 
                 alert(
-                    result.data?.message ||
+                    result?.data?.message ||
                     "Logout gagal."
                 );
 
+            }
 
-            } catch (error) {
+            catch (error) {
 
                 console.error(
                     "LOGOUT ERROR:",
@@ -335,8 +349,7 @@ function renderLoggedIn(
                 );
 
 
-                logoutButton.disabled =
-                    false;
+                logoutButton.disabled = false;
 
                 logoutButton.textContent =
                     "Logout";
@@ -357,13 +370,8 @@ function renderLoggedIn(
 // ============================================================
 // ESCAPE HTML
 // ============================================================
-// Mencegah nama user memasukkan HTML/JavaScript
-// ke dalam navbar.
-// ============================================================
 
-function escapeHTML(
-    value
-) {
+function escapeHTML(value) {
 
     return String(value)
 
@@ -398,10 +406,6 @@ function escapeHTML(
 // ============================================================
 // REVEAL ANIMATION
 // ============================================================
-// Animasi sederhana ketika elemen masuk viewport.
-// Kalau CSS tidak memiliki .reveal,
-// fungsi ini tidak akan mengganggu halaman.
-// ============================================================
 
 function initRevealAnimation() {
 
@@ -412,59 +416,56 @@ function initRevealAnimation() {
 
 
     if (!elements.length) {
-
         return;
-
     }
 
 
-    // --------------------------------------------------------
-    // Browser tidak mendukung IntersectionObserver
-    // --------------------------------------------------------
+    // ========================================================
+    // FALLBACK
+    // ========================================================
 
     if (
         !("IntersectionObserver" in window)
     ) {
 
-        elements.forEach(
-            element => {
+        elements.forEach(element => {
 
-                element.classList.add(
-                    "visible"
-                );
+            element.classList.add(
+                "visible"
+            );
 
-            }
-        );
+        });
 
         return;
 
     }
 
 
+    // ========================================================
+    // OBSERVER
+    // ========================================================
+
     const observer =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(
-                    entry => {
+                entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
+                        observer.unobserve(
+                            entry.target
+                        );
 
                     }
-                );
+
+                });
 
             },
             {
@@ -473,14 +474,10 @@ function initRevealAnimation() {
         );
 
 
-    elements.forEach(
-        element => {
+    elements.forEach(element => {
 
-            observer.observe(
-                element
-            );
+        observer.observe(element);
 
-        }
-    );
+    });
 
 }
