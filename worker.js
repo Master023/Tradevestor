@@ -195,22 +195,87 @@ export default {
           result.meta.last_row_id;
 
 
-        return json({
+        // Setelah register langsung dibuatkan session.
+        // Jadi user tidak perlu login ulang.
 
-          success: true,
+        const sessionToken =
+          generateToken();
 
-          message:
-            "Akun berhasil dibuat.",
+        const tokenHash =
+          await hashString(sessionToken);
 
-          user: {
+        const expiresAt =
+          new Date(
+            Date.now() +
+            7 * 24 * 60 * 60 * 1000
+          ).toISOString();
+
+
+        await env.DB
+          .prepare(
+            `
+            INSERT INTO sessions
+            (
+              token_hash,
+              user_id,
+              expires_at
+            )
+            VALUES
+            (?, ?, ?)
+            `
+          )
+          .bind(
+            tokenHash,
             id,
-            name,
-            email,
-            plan: "free",
-            premium_expires_at: null
+            expiresAt
+          )
+          .run();
+
+
+        const headers =
+          new Headers(
+            corsHeaders()
+          );
+
+
+        headers.set(
+          "Set-Cookie",
+          [
+            `tv_session=${sessionToken}`,
+            "Path=/",
+            "HttpOnly",
+            "Secure",
+            "SameSite=Lax",
+            "Max-Age=604800"
+          ].join("; ")
+        );
+
+
+        return new Response(
+
+          JSON.stringify({
+
+            success: true,
+
+            message:
+              "Akun berhasil dibuat dan login otomatis.",
+
+            user: {
+              id,
+              name,
+              email,
+              plan: "free",
+              premium_expires_at: null
+            }
+
+          }),
+
+          {
+            status: 200,
+            headers
           }
 
-        });
+        );
 
       } catch (error) {
 
@@ -559,10 +624,6 @@ export default {
 
       try {
 
-        // -------------------------------------------------
-        // Pastikan user sudah login
-        // -------------------------------------------------
-
         const auth =
           await authenticateUser(
             request,
@@ -588,10 +649,6 @@ export default {
           auth.user;
 
 
-        // -------------------------------------------------
-        // Ambil kode
-        // -------------------------------------------------
-
         const body =
           await request.json();
 
@@ -615,10 +672,6 @@ export default {
 
         }
 
-
-        // -------------------------------------------------
-        // Cari kode
-        // -------------------------------------------------
 
         const premiumCode =
           await env.DB
@@ -654,10 +707,6 @@ export default {
         }
 
 
-        // -------------------------------------------------
-        // KODE SUDAH DIPAKAI
-        // -------------------------------------------------
-
         if (
           Number(premiumCode.used) === 1
         ) {
@@ -673,10 +722,6 @@ export default {
 
         }
 
-
-        // -------------------------------------------------
-        // CEK PREMIUM LAMA
-        // -------------------------------------------------
 
         const now =
           new Date();
@@ -711,10 +756,6 @@ export default {
         }
 
 
-        // -------------------------------------------------
-        // HITUNG EXPIRY
-        // -------------------------------------------------
-
         const durationDays =
           Number(
             premiumCode.duration_days || 30
@@ -732,10 +773,42 @@ export default {
           );
 
 
-        // -------------------------------------------------
-        // UPDATE USER + KODE
-        // SATU TRANSAKSI
-        // -------------------------------------------------
+        const markCode =
+          await env.DB
+            .prepare(
+              `
+              UPDATE premium_codes
+              SET
+                used = 1,
+                used_by = ?,
+                used_at = CURRENT_TIMESTAMP
+              WHERE id = ?
+                AND used = 0
+              `
+            )
+            .bind(
+              user.id,
+              premiumCode.id
+            )
+            .run();
+
+
+        if (
+          !markCode.success ||
+          Number(markCode.meta?.changes || 0) !== 1
+        ) {
+
+          return json({
+
+            success: false,
+
+            message:
+              "Kode sudah digunakan atau proses aktivasi gagal."
+
+          }, 409);
+
+        }
+
 
         const updateUser =
           await env.DB
@@ -771,67 +844,6 @@ export default {
 
         }
 
-
-        const markCode =
-          await env.DB
-            .prepare(
-              `
-              UPDATE premium_codes
-              SET
-                used = 1,
-                used_by = ?,
-                used_at = CURRENT_TIMESTAMP
-              WHERE id = ?
-                AND used = 0
-              `
-            )
-            .bind(
-              user.id,
-              premiumCode.id
-            )
-            .run();
-
-
-        // -------------------------------------------------
-        // Proteksi jika kode ternyata sudah dipakai
-        // -------------------------------------------------
-
-        if (
-          !markCode.success ||
-          Number(markCode.meta?.changes || 0) !== 1
-        ) {
-
-          // rollback manual user
-          await env.DB
-            .prepare(
-              `
-              UPDATE users
-              SET
-                plan = 'free',
-                premium_expires_at = NULL,
-                updated_at = CURRENT_TIMESTAMP
-              WHERE id = ?
-              `
-            )
-            .bind(user.id)
-            .run();
-
-
-          return json({
-
-            success: false,
-
-            message:
-              "Kode sudah digunakan atau proses aktivasi gagal."
-
-          }, 409);
-
-        }
-
-
-        // -------------------------------------------------
-        // SUKSES
-        // -------------------------------------------------
 
         return json({
 
@@ -991,7 +1003,40 @@ export default {
 
 
     // =====================================================
-    // PROTECT PREMIUM HTML
+    // LOGIN REQUIRED PAGES
+    // =====================================================
+
+    if (
+      request.method === "GET" &&
+      isLoginRequiredPage(url.pathname)
+    ) {
+
+      const auth =
+        await authenticateUser(
+          request,
+          env
+        );
+
+
+      if (!auth.success) {
+
+        return Response.redirect(
+          `${url.origin}/login.html?redirect=${encodeURIComponent(
+            url.pathname
+          )}`,
+          302
+        );
+
+      }
+
+      // User sudah login.
+      // Materi gratis langsung boleh dibuka.
+
+    }
+
+
+    // =====================================================
+    // PREMIUM PAGES
     // =====================================================
 
     if (
@@ -1006,16 +1051,20 @@ export default {
         );
 
 
+      // Belum login
       if (!auth.success) {
 
         return Response.redirect(
-          `${url.origin}/login.html?redirect=${encodeURIComponent(url.pathname)}`,
+          `${url.origin}/login.html?redirect=${encodeURIComponent(
+            url.pathname
+          )}`,
           302
         );
 
       }
 
 
+      // Sudah login tapi belum Premium
       if (
         !isPremiumActive(
           auth.user
@@ -1028,6 +1077,8 @@ export default {
         );
 
       }
+
+      // Premium aktif → lanjut buka halaman
 
     }
 
@@ -1092,6 +1143,38 @@ function isPremiumPage(pathname) {
 
 
   return protectedPages.includes(
+    pathname.toLowerCase()
+  );
+
+}
+
+
+// =========================================================
+// LOGIN REQUIRED / FREE MATERIAL
+// =========================================================
+
+function isLoginRequiredPage(pathname) {
+
+  const loginRequiredPages = [
+
+    "/candlestick.html",
+
+    "/fibonacci.html",
+
+    "/ema.html",
+
+    "/stochastic.html",
+
+    "/technical-analysis.html",
+
+    "/trading-plan.html",
+
+    "/risk-management.html"
+
+  ];
+
+
+  return loginRequiredPages.includes(
     pathname.toLowerCase()
   );
 
