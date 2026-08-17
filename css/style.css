@@ -627,13 +627,27 @@ footer {
 }
 
 /* ============================================================
-   TRADEVESTOR AUTH NAVBAR
-   Login / Register berada di luar menu hamburger
+   TRADEVESTOR NAVBAR AUTH + MENU FIX
 ============================================================ */
 
 
 /* ============================================================
-   AUTH CONTAINER
+   NAV CONTAINER
+============================================================ */
+
+.nav-container {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+/* ============================================================
+   AUTH AREA
 ============================================================ */
 
 .nav-auth {
@@ -642,13 +656,15 @@ footer {
 
     align-items: center;
 
-    justify-content: center;
-
     gap: 8px;
 
     margin-left: auto;
 
     flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 1001;
 
     white-space: nowrap;
 
@@ -685,7 +701,13 @@ footer {
 
     font-weight: 600;
 
-    line-height: 1;
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 1002;
+
+    pointer-events: auto;
 
     transition:
         background .2s ease,
@@ -707,12 +729,132 @@ footer {
 
 
 /* ============================================================
+   USER NAME
+============================================================ */
+
+.nav-user {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    min-height: 38px;
+
+    padding: 0 11px;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    position: relative;
+
+    z-index: 1002;
+
+}
+
+
+.nav-user::before {
+
+    content: "●";
+
+    color: #65ff9b;
+
+    font-size: 8px;
+
+}
+
+
+/* ============================================================
+   LOGOUT BUTTON
+============================================================ */
+
+.nav-logout {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 13px;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    background: rgba(255,70,70,.10);
+
+    border: 1px solid rgba(255,70,70,.18);
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 1003;
+
+    pointer-events: auto;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.nav-logout:hover {
+
+    background: rgba(255,70,70,.20);
+
+    border-color: rgba(255,70,70,.35);
+
+    transform: translateY(-1px);
+
+}
+
+
+.nav-logout:disabled {
+
+    opacity: .6;
+
+    cursor: wait;
+
+}
+
+
+/* ============================================================
    HAMBURGER
 ============================================================ */
 
 .menu-btn {
 
+    position: relative;
+
+    z-index: 1100;
+
     flex-shrink: 0;
+
+    cursor: pointer;
+
+    pointer-events: auto;
 
 }
 
@@ -727,12 +869,14 @@ footer {
 
         margin-left: auto;
 
+        margin-right: 8px;
+
     }
 
 
     .menu-btn {
 
-        margin-left: 10px;
+        margin-left: 0;
 
     }
 
@@ -740,12 +884,14 @@ footer {
 
 
 /* ============================================================
-   TABLET / MOBILE
+   MOBILE / TABLET
 ============================================================ */
 
 @media (max-width: 900px) {
 
     .nav-container {
+
+        width: 100%;
 
         display: flex;
 
@@ -758,7 +904,7 @@ footer {
 
         margin-left: auto;
 
-        margin-right: 4px;
+        margin-right: 6px;
 
     }
 
@@ -768,6 +914,34 @@ footer {
         min-height: 36px;
 
         padding: 0 11px;
+
+        font-size: .78rem;
+
+    }
+
+
+    .nav-user {
+
+        min-height: 36px;
+
+        padding: 0 9px;
+
+        font-size: .78rem;
+
+        max-width: 110px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+    }
+
+
+    .nav-logout {
+
+        min-height: 36px;
+
+        padding: 0 10px;
 
         font-size: .78rem;
 
@@ -789,15 +963,57 @@ footer {
 
 @media (max-width: 480px) {
 
+    .nav-auth {
+
+        gap: 5px;
+
+        margin-right: 5px;
+
+    }
+
+
     .nav-login {
 
         min-height: 34px;
 
-        padding: 0 9px;
+        padding: 0 8px;
 
-        border-radius: 9px;
+        font-size: .70rem;
 
-        font-size: .72rem;
+    }
+
+
+    .nav-user {
+
+        min-height: 34px;
+
+        max-width: 80px;
+
+        padding: 0 7px;
+
+        font-size: .70rem;
+
+    }
+
+
+    .nav-logout {
+
+        min-height: 34px;
+
+        width: 34px;
+
+        padding: 0;
+
+        font-size: 0;
+
+    }
+
+
+    .nav-logout::before {
+
+        content: "↪";
+
+        font-size: 16px;
 
     }
 
