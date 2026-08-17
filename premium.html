@@ -14,7 +14,7 @@
 
     <meta
         name="description"
-        content="Aktifkan akses Premium TradeVestor menggunakan kode Premium."
+        content="Aktivasi Premium TradeVestor menggunakan kode Premium."
     >
 
     <meta
@@ -35,57 +35,150 @@
     <style>
 
         /* =====================================================
-           PAGE
+           PREMIUM PAGE
         ===================================================== */
 
         .premium-page {
 
-            min-height: calc(100vh - 80px);
+            min-height: 100vh;
 
-            display: flex;
-
-            align-items: center;
-
-            padding: 80px 0;
+            padding:
+                100px 0
+                70px;
 
         }
 
 
-        /* =====================================================
-           PREMIUM WRAPPER
-        ===================================================== */
-
         .premium-wrapper {
-
-            width: 100%;
 
             max-width: 1050px;
 
             margin: 0 auto;
 
-            display: grid;
+        }
 
-            grid-template-columns:
-                1.1fr .9fr;
 
-            gap: 25px;
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .premium-hero {
+
+            text-align: center;
+
+            max-width: 760px;
+
+            margin:
+                0 auto 55px;
+
+        }
+
+
+        .premium-kicker {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                8px 14px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid
+                rgba(118,87,255,.25);
+
+            background:
+                rgba(118,87,255,.08);
+
+            color:
+                #a98bff;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing:
+                .08em;
+
+        }
+
+
+        .premium-hero h1 {
+
+            margin-top: 22px;
+
+            font-size:
+                clamp(38px,7vw,72px);
+
+            line-height: 1.02;
+
+        }
+
+
+        .premium-hero h1 span {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7657ff,
+                    #b69cff
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .premium-hero p {
+
+            max-width: 650px;
+
+            margin:
+                20px auto 0;
+
+            color:
+                var(--muted);
+
+            line-height: 1.8;
 
         }
 
 
         /* =====================================================
-           HERO CARD
+           MAIN GRID
         ===================================================== */
 
-        .premium-hero {
+        .premium-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+            align-items: stretch;
+
+        }
+
+
+        .premium-card {
 
             position: relative;
 
             overflow: hidden;
 
-            padding: 45px;
+            padding: 32px;
 
-            border-radius: 25px;
+            border-radius: 24px;
 
             border:
                 1px solid
@@ -94,44 +187,44 @@
             background:
                 linear-gradient(
                     145deg,
-                    rgba(118,87,255,.12),
-                    rgba(255,255,255,.025)
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.02)
                 );
 
             box-shadow:
                 0 25px 80px
-                rgba(0,0,0,.3);
+                rgba(0,0,0,.25);
 
         }
 
 
-        .premium-hero::before {
+        .premium-card::before {
 
             content: "";
 
             position: absolute;
 
-            width: 300px;
+            width: 260px;
 
-            height: 300px;
+            height: 260px;
 
-            right: -120px;
+            right: -130px;
 
-            top: -140px;
+            top: -130px;
 
             border-radius: 50%;
 
             background:
-                rgba(118,87,255,.18);
+                rgba(118,87,255,.13);
 
-            filter: blur(45px);
+            filter: blur(35px);
 
             pointer-events: none;
 
         }
 
 
-        .premium-hero-content {
+        .premium-card > * {
 
             position: relative;
 
@@ -141,143 +234,80 @@
 
 
         /* =====================================================
-           BADGE
+           BENEFITS
         ===================================================== */
 
-        .premium-badge {
+        .benefit-title {
 
-            display: inline-flex;
+            font-size: 24px;
 
-            align-items: center;
+            margin-bottom: 25px;
 
-            gap: 8px;
+        }
 
-            padding: 8px 13px;
 
-            border-radius: 999px;
+        .benefit-list {
+
+            display: grid;
+
+            gap: 17px;
+
+        }
+
+
+        .benefit-item {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+        }
+
+
+        .benefit-icon {
+
+            flex:
+                0 0 38px;
+
+            width: 38px;
+
+            height: 38px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 11px;
+
+            background:
+                rgba(118,87,255,.12);
 
             border:
                 1px solid
-                rgba(118,87,255,.3);
-
-            background:
-                rgba(118,87,255,.1);
-
-            color: #b9a8ff;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing: .04em;
+                rgba(118,87,255,.18);
 
         }
 
 
-        .premium-icon {
+        .benefit-item strong {
 
-            width: 8px;
-
-            height: 8px;
-
-            border-radius: 50%;
-
-            background: #a98bff;
-
-            box-shadow:
-                0 0 12px
-                rgba(169,139,255,.8);
-
-        }
-
-
-        /* =====================================================
-           TITLE
-        ===================================================== */
-
-        .premium-title {
-
-            margin-top: 25px;
-
-            font-size:
-                clamp(
-                    38px,
-                    5vw,
-                    62px
-                );
-
-            line-height: 1.02;
-
-        }
-
-
-        .premium-description {
-
-            max-width: 650px;
-
-            margin-top: 20px;
-
-            color: var(--muted);
-
-            line-height: 1.8;
+            display: block;
 
             font-size: 15px;
 
         }
 
 
-        /* =====================================================
-           FEATURES
-        ===================================================== */
+        .benefit-item p {
 
-        .premium-features {
+            margin-top: 4px;
 
-            display: grid;
+            color:
+                var(--muted);
 
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap: 14px;
-
-            margin-top: 30px;
-
-        }
-
-
-        .premium-feature {
-
-            padding: 18px;
-
-            border-radius: 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.07);
-
-            background:
-                rgba(255,255,255,.025);
-
-        }
-
-
-        .premium-feature strong {
-
-            display: block;
-
-            font-size: 14px;
-
-        }
-
-
-        .premium-feature span {
-
-            display: block;
-
-            margin-top: 6px;
-
-            color: var(--muted);
-
-            font-size: 12px;
+            font-size: 13px;
 
             line-height: 1.6;
 
@@ -285,95 +315,55 @@
 
 
         /* =====================================================
-           REDEEM CARD
+           ACTIVATION CARD
         ===================================================== */
 
-        .redeem-card {
+        .activation-card {
 
-            padding: 35px;
+            display: flex;
 
-            border-radius: 25px;
+            flex-direction: column;
 
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            background:
-                rgba(255,255,255,.025);
-
-            box-shadow:
-                0 25px 70px
-                rgba(0,0,0,.25);
+            justify-content: center;
 
         }
 
 
-        .redeem-icon {
+        .activation-label {
 
-            width: 55px;
+            display: block;
 
-            height: 55px;
+            margin-bottom: 10px;
 
-            display: grid;
+            font-size: 13px;
 
-            place-items: center;
+            color:
+                var(--muted);
 
-            border-radius: 16px;
-
-            background:
-                rgba(118,87,255,.12);
-
-            border:
-                1px solid
-                rgba(118,87,255,.2);
-
-            font-size: 25px;
+            font-weight: 700;
 
         }
 
 
-        .redeem-title {
+        .activation-title {
 
-            margin-top: 22px;
+            font-size: 27px;
 
-            font-size: 28px;
+            margin-bottom: 10px;
 
         }
 
 
-        .redeem-description {
+        .activation-description {
 
-            margin-top: 10px;
-
-            color: var(--muted);
+            color:
+                var(--muted);
 
             line-height: 1.7;
 
             font-size: 14px;
 
-        }
-
-
-        /* =====================================================
-           FORM
-        ===================================================== */
-
-        .redeem-form {
-
-            margin-top: 25px;
-
-        }
-
-
-        .redeem-label {
-
-            display: block;
-
-            margin-bottom: 9px;
-
-            font-size: 13px;
-
-            font-weight: 700;
+            margin-bottom: 25px;
 
         }
 
@@ -384,24 +374,32 @@
 
             box-sizing: border-box;
 
-            padding: 15px 16px;
+            padding:
+                15px 16px;
 
-            border-radius: 12px;
+            border-radius: 13px;
 
             border:
                 1px solid
-                rgba(255,255,255,.1);
+                rgba(255,255,255,.12);
 
             background:
-                rgba(0,0,0,.25);
+                rgba(255,255,255,.045);
 
-            color: inherit;
+            color:
+                white;
 
             outline: none;
 
             font-size: 16px;
 
-            letter-spacing: .08em;
+            font-weight: 700;
+
+            letter-spacing:
+                .08em;
+
+            text-transform:
+                uppercase;
 
             transition:
                 border-color .2s ease,
@@ -410,22 +408,10 @@
         }
 
 
-        .code-input:focus {
-
-            border-color:
-                rgba(118,87,255,.7);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(118,87,255,.1);
-
-        }
-
-
         .code-input::placeholder {
 
             color:
-                rgba(255,255,255,.3);
+                rgba(255,255,255,.35);
 
             letter-spacing:
                 normal;
@@ -433,28 +419,41 @@
         }
 
 
-        .redeem-button {
+        .code-input:focus {
+
+            border-color:
+                #7657ff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(118,87,255,.12);
+
+        }
+
+
+        .activate-button {
 
             width: 100%;
 
             margin-top: 14px;
 
-            padding: 15px;
+            padding:
+                14px 18px;
 
             border: 0;
 
-            border-radius: 12px;
+            border-radius: 13px;
 
             background:
                 linear-gradient(
                     135deg,
                     #7657ff,
-                    #8e70ff
+                    #6243e8
                 );
 
             color: white;
 
-            font: inherit;
+            font-size: 15px;
 
             font-weight: 800;
 
@@ -467,7 +466,7 @@
         }
 
 
-        .redeem-button:hover {
+        .activate-button:hover {
 
             transform:
                 translateY(-2px);
@@ -475,9 +474,9 @@
         }
 
 
-        .redeem-button:disabled {
+        .activate-button:disabled {
 
-            opacity: .55;
+            opacity: .6;
 
             cursor: wait;
 
@@ -490,13 +489,14 @@
            MESSAGE
         ===================================================== */
 
-        .redeem-message {
+        .message {
 
             display: none;
 
             margin-top: 15px;
 
-            padding: 14px 15px;
+            padding:
+                13px 15px;
 
             border-radius: 12px;
 
@@ -507,211 +507,157 @@
         }
 
 
-        .redeem-message.show {
+        .message.show {
 
             display: block;
 
         }
 
 
-        .redeem-message.error {
+        .message.error {
 
             border:
                 1px solid
                 rgba(255,80,80,.2);
 
             background:
-                rgba(255,80,80,.07);
+                rgba(255,80,80,.08);
 
             color:
-                #ff9a9a;
+                #ff9999;
 
         }
 
 
-        .redeem-message.success {
+        .message.success {
 
             border:
                 1px solid
                 rgba(84,227,142,.2);
 
             background:
-                rgba(84,227,142,.07);
+                rgba(84,227,142,.08);
 
             color:
-                #8df0b3;
+                #8ff0b5;
+
+        }
+
+
+        .message.info {
+
+            border:
+                1px solid
+                rgba(118,87,255,.2);
+
+            background:
+                rgba(118,87,255,.08);
+
+            color:
+                #b9a8ff;
 
         }
 
 
         /* =====================================================
-           SUCCESS PANEL
+           USER STATUS
         ===================================================== */
 
-        .success-panel {
+        .user-status {
 
-            display: none;
+            margin-top: 20px;
+
+            padding:
+                15px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .user-status strong {
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           FAQ / NOTICE
+        ===================================================== */
+
+        .notice {
 
             margin-top: 25px;
 
             padding: 20px;
 
-            border-radius: 15px;
+            border-radius: 17px;
 
             border:
                 1px solid
-                rgba(84,227,142,.18);
+                rgba(255,255,255,.08);
 
             background:
-                rgba(84,227,142,.05);
+                rgba(255,255,255,.025);
 
-        }
-
-
-        .success-panel.show {
-
-            display: block;
-
-        }
-
-
-        .success-panel strong {
-
-            display: block;
-
-            color: #8df0b3;
-
-        }
-
-
-        .success-panel span {
-
-            display: block;
-
-            margin-top: 7px;
-
-            color: var(--muted);
+            color:
+                var(--muted);
 
             font-size: 13px;
 
-            line-height: 1.6;
+            line-height: 1.7;
 
         }
 
 
-        .dashboard-button {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 100%;
-
-            margin-top: 15px;
-
-            padding: 13px;
-
-            border-radius: 11px;
-
-            background:
-                #7657ff;
+        .notice strong {
 
             color: white;
 
-            text-decoration: none;
-
-            font-weight: 800;
-
         }
 
 
         /* =====================================================
-           INFO
+           FOOTER CTA
         ===================================================== */
 
-        .redeem-info {
+        .already-premium {
 
-            margin-top: 20px;
-
-            padding-top: 20px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,.07);
-
-        }
-
-
-        .redeem-info p {
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =====================================================
-           ALREADY PREMIUM
-        ===================================================== */
-
-        .premium-active {
-
-            display: none;
+            margin-top: 35px;
 
             text-align: center;
 
-            padding: 20px 0;
+            color:
+                var(--muted);
+
+            font-size: 14px;
 
         }
 
 
-        .premium-active-icon {
+        .already-premium a {
 
-            width: 70px;
+            color:
+                #a98bff;
 
-            height: 70px;
+            font-weight: 700;
 
-            display: grid;
-
-            place-items: center;
-
-            margin: 0 auto;
-
-            border-radius: 50%;
-
-            background:
-                rgba(84,227,142,.1);
-
-            border:
-                1px solid
-                rgba(84,227,142,.2);
-
-            font-size: 30px;
-
-        }
-
-
-        .premium-active h2 {
-
-            margin-top: 20px;
-
-            font-size: 28px;
-
-        }
-
-
-        .premium-active p {
-
-            margin-top: 10px;
-
-            color: var(--muted);
-
-            line-height: 1.7;
+            text-decoration: none;
 
         }
 
@@ -722,7 +668,11 @@
 
         .page-loading {
 
-            min-height: 70vh;
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
 
             display: flex;
 
@@ -730,18 +680,34 @@
 
             justify-content: center;
 
+            background:
+                #050507;
+
+        }
+
+
+        .page-loading.hidden {
+
+            display: none;
+
+        }
+
+
+        .loading-inner {
+
             text-align: center;
 
         }
 
 
-        .loading-spinner {
+        .spinner {
 
-            width: 42px;
+            width: 40px;
 
-            height: 42px;
+            height: 40px;
 
-            margin: 0 auto 20px;
+            margin:
+                0 auto 18px;
 
             border-radius: 50%;
 
@@ -753,12 +719,13 @@
                 #7657ff;
 
             animation:
-                spin .8s linear infinite;
+                premiumSpin .8s
+                linear infinite;
 
         }
 
 
-        @keyframes spin {
+        @keyframes premiumSpin {
 
             to {
 
@@ -774,12 +741,27 @@
            MOBILE
         ===================================================== */
 
-        @media(max-width:850px) {
+        @media(max-width:800px) {
 
-            .premium-wrapper {
+            .premium-page {
+
+                padding:
+                    70px 0 50px;
+
+            }
+
+
+            .premium-grid {
 
                 grid-template-columns:
                     1fr;
+
+            }
+
+
+            .premium-card {
+
+                padding: 25px;
 
             }
 
@@ -788,34 +770,17 @@
 
         @media(max-width:600px) {
 
-            .premium-page {
+            .premium-hero h1 {
 
-                padding: 45px 0;
+                font-size: 40px;
 
             }
+
 
             .premium-hero {
 
-                padding: 28px;
-
-            }
-
-            .redeem-card {
-
-                padding: 25px;
-
-            }
-
-            .premium-features {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-            .premium-title {
-
-                font-size: 40px;
+                margin-bottom:
+                    35px;
 
             }
 
@@ -827,6 +792,38 @@
 
 
 <body>
+
+
+<!-- =====================================================
+     PAGE LOADING
+===================================================== -->
+
+<div
+    class="page-loading"
+    id="pageLoading"
+>
+
+    <div class="loading-inner">
+
+        <div class="spinner"></div>
+
+        <strong>
+            Memeriksa akun...
+        </strong>
+
+        <p
+            style="
+            margin-top:8px;
+            color:var(--muted);
+            font-size:13px;
+            "
+        >
+            Tunggu sebentar.
+        </p>
+
+    </div>
+
+</div>
 
 
 <!-- =====================================================
@@ -907,18 +904,6 @@
                     </a>
                 </li>
 
-                <li>
-
-                    <button
-                        type="button"
-                        id="logoutButton"
-                        class="module-btn logout-btn"
-                    >
-                        Logout
-                    </button>
-
-                </li>
-
             </ul>
 
         </nav>
@@ -941,274 +926,89 @@
 
 
 <!-- =====================================================
-     LOADING
+     MAIN
 ===================================================== -->
 
-<div
-    id="pageLoading"
-    class="page-loading"
->
+<main>
 
-    <div>
+<section class="premium-page">
 
-        <div class="loading-spinner"></div>
+<div class="container premium-wrapper">
 
-        <h2>
-            Memeriksa akun...
-        </h2>
 
-        <p
-            style="
-            margin-top:10px;
-            color:var(--muted);
-            "
-        >
-            Tunggu sebentar.
+    <!-- =================================================
+         HERO
+    ================================================= -->
+
+    <div class="premium-hero">
+
+        <span class="premium-kicker">
+
+            💎 TRADEVESTOR PREMIUM
+
+        </span>
+
+
+        <h1>
+
+            Unlock cara berpikir
+            <span>
+                trader profesional.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Gunakan kode Premium yang lu miliki
+            untuk membuka seluruh akses pembelajaran
+            Premium TradeVestor.
+
         </p>
 
     </div>
 
-</div>
+
+    <!-- =================================================
+         GRID
+    ================================================= -->
+
+    <div class="premium-grid">
 
 
-<!-- =====================================================
-     MAIN PREMIUM PAGE
-===================================================== -->
+        <!-- =============================================
+             BENEFITS
+        ============================================== -->
 
-<main
-    id="premiumPage"
-    class="premium-page"
-    style="display:none;"
->
+        <div class="premium-card">
 
-    <div class="container">
+            <h2 class="benefit-title">
 
+                Apa yang lu dapat?
 
-        <div class="premium-wrapper">
+            </h2>
 
 
-            <!-- =================================================
-                 LEFT HERO
-            ================================================= -->
-
-            <section class="premium-hero">
-
-                <div class="premium-hero-content">
+            <div class="benefit-list">
 
 
-                    <span class="premium-badge">
+                <div class="benefit-item">
 
-                        <span
-                            class="premium-icon"
-                        ></span>
-
-                        TRADEVESTOR PREMIUM
-
-                    </span>
-
-
-                    <h1 class="premium-title">
-
-                        Naik level
-                        bersama
-
-                        <span class="gradient">
-                            TradeVestor.
-                        </span>
-
-                    </h1>
-
-
-                    <p class="premium-description">
-
-                        Akses materi Premium yang
-                        dirancang untuk membantu lu
-                        memahami market lebih dalam,
-                        bukan sekadar mencari sinyal
-                        Buy atau Sell.
-
-                    </p>
-
-
-                    <div class="premium-features">
-
-
-                        <div class="premium-feature">
-
-                            <strong>
-                                📊 Market Structure
-                            </strong>
-
-                            <span>
-                                Pelajari bagaimana struktur
-                                harga terbentuk.
-                            </span>
-
-                        </div>
-
-
-                        <div class="premium-feature">
-
-                            <strong>
-                                🧠 Trading Framework
-                            </strong>
-
-                            <span>
-                                Bangun proses analisis
-                                yang sistematis.
-                            </span>
-
-                        </div>
-
-
-                        <div class="premium-feature">
-
-                            <strong>
-                                🛡 Risk Management
-                            </strong>
-
-                            <span>
-                                Pahami risiko sebelum
-                                mengambil posisi.
-                            </span>
-
-                        </div>
-
-
-                        <div class="premium-feature">
-
-                            <strong>
-                                📚 Premium Library
-                            </strong>
-
-                            <span>
-                                Akses modul pembelajaran
-                                Premium secara bertahap.
-                            </span>
-
-                        </div>
-
-
+                    <div class="benefit-icon">
+                        📊
                     </div>
 
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 RIGHT REDEEM
-            ================================================= -->
-
-            <section class="redeem-card">
-
-
-                <!-- FORM STATE -->
-
-                <div
-                    id="redeemState"
-                >
-
-                    <div class="redeem-icon">
-                        💎
-                    </div>
-
-
-                    <h2 class="redeem-title">
-                        Aktifkan Premium
-                    </h2>
-
-
-                    <p class="redeem-description">
-
-                        Masukkan kode Premium yang
-                        lu dapatkan untuk mengaktifkan
-                        akses ke member area.
-
-                    </p>
-
-
-                    <form
-                        id="redeemForm"
-                        class="redeem-form"
-                    >
-
-
-                        <label
-                            for="premiumCode"
-                            class="redeem-label"
-                        >
-                            Kode Premium
-                        </label>
-
-
-                        <input
-                            type="text"
-                            id="premiumCode"
-                            class="code-input"
-                            name="code"
-                            placeholder="Contoh: TV-PREMIUM-XXXX"
-                            autocomplete="off"
-                            autocapitalize="characters"
-                            spellcheck="false"
-                            maxlength="100"
-                            required
-                        >
-
-
-                        <button
-                            type="submit"
-                            id="redeemButton"
-                            class="redeem-button"
-                        >
-                            Aktifkan Premium
-                        </button>
-
-
-                        <div
-                            id="redeemMessage"
-                            class="redeem-message"
-                        ></div>
-
-
-                    </form>
-
-
-                    <div
-                        class="success-panel"
-                        id="successPanel"
-                    >
+                    <div>
 
                         <strong>
-                            ✅ Premium berhasil diaktifkan!
+                            Advanced Market Structure
                         </strong>
 
-                        <span id="successText">
-                            Akses Premium lu sudah aktif.
-                        </span>
-
-
-                        <a
-                            href="premium-member.html"
-                            class="dashboard-button"
-                        >
-                            Masuk ke Dashboard Premium →
-                        </a>
-
-                    </div>
-
-
-                    <div class="redeem-info">
-
                         <p>
-
-                            🔐 Kode Premium hanya dapat
-                            digunakan satu kali.
-
-                            Jangan membagikan kode lu
-                            kepada orang lain.
-
+                            Pelajari HH, HL, LH, LL,
+                            BOS, CHOCH, liquidity
+                            dan market context.
                         </p>
 
                     </div>
@@ -1216,46 +1016,245 @@
                 </div>
 
 
-                <!-- ALREADY PREMIUM STATE -->
+                <div class="benefit-item">
 
-                <div
-                    id="alreadyPremium"
-                    class="premium-active"
-                >
-
-                    <div class="premium-active-icon">
-                        ✓
+                    <div class="benefit-icon">
+                        🧭
                     </div>
 
+                    <div>
 
-                    <h2>
-                        Premium lu aktif
-                    </h2>
+                        <strong>
+                            Multi-Timeframe Analysis
+                        </strong>
 
+                        <p>
+                            Memahami hubungan timeframe
+                            besar sampai timeframe kecil.
+                        </p>
 
-                    <p>
-                        Akun lu sudah memiliki akses
-                        Premium TradeVestor.
-                    </p>
-
-
-                    <a
-                        href="premium-member.html"
-                        class="dashboard-button"
-                    >
-                        Buka Dashboard Premium →
-                    </a>
+                    </div>
 
                 </div>
 
 
-            </section>
+                <div class="benefit-item">
 
+                    <div class="benefit-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Advanced Risk Management
+                        </strong>
+
+                        <p>
+                            Position sizing, R:R,
+                            drawdown dan expectancy.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Trading Psychology
+                        </strong>
+
+                        <p>
+                            Memahami emosi, bias,
+                            disiplin dan proses pengambilan
+                            keputusan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Trading Journal
+                        </strong>
+
+                        <p>
+                            Mengevaluasi keputusan trading
+                            dan menemukan kesalahan secara
+                            objektif.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="notice">
+
+                <strong>
+                    Skill > Sinyal.
+                </strong>
+
+                <br>
+
+                Premium TradeVestor dibuat untuk membantu
+                lu memahami market dan membangun sistem
+                pengambilan keputusan sendiri — bukan
+                bergantung pada sinyal Buy atau Sell.
+
+            </div>
 
         </div>
 
 
+        <!-- =============================================
+             ACTIVATION
+        ============================================== -->
+
+        <div class="premium-card activation-card">
+
+            <span class="activation-label">
+                AKTIVASI MEMBERSHIP
+            </span>
+
+
+            <h2 class="activation-title">
+
+                Masukkan kode Premium
+
+            </h2>
+
+
+            <p class="activation-description">
+
+                Masukkan kode yang lu terima untuk
+                mengaktifkan akses Premium pada akun
+                TradeVestor lu.
+
+            </p>
+
+
+            <form
+                id="premiumForm"
+                autocomplete="off"
+            >
+
+                <label
+                    for="premiumCode"
+                    class="activation-label"
+                >
+                    KODE PREMIUM
+                </label>
+
+
+                <input
+                    type="text"
+                    id="premiumCode"
+                    class="code-input"
+                    placeholder="Contoh: TV-PREM-XXXX"
+                    maxlength="100"
+                    autocomplete="off"
+                    spellcheck="false"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    id="activateButton"
+                    class="activate-button"
+                >
+                    🔓 Aktifkan Premium
+                </button>
+
+
+            </form>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <!-- USER STATUS -->
+
+            <div
+                class="user-status"
+                id="userStatus"
+            >
+
+                Memeriksa status akun...
+
+            </div>
+
+
+            <div class="notice">
+
+                <strong>
+                    ⚠️ Penting
+                </strong>
+
+                <br>
+
+                Setiap kode Premium hanya dapat
+                digunakan satu kali.
+
+                Setelah berhasil digunakan,
+                kode akan terikat dengan akun
+                yang melakukan aktivasi.
+
+            </div>
+
+        </div>
+
     </div>
+
+
+    <!-- =================================================
+         ALREADY PREMIUM
+    ================================================= -->
+
+    <div
+        class="already-premium"
+        id="alreadyPremium"
+        style="display:none"
+    >
+
+        Akun lu sudah memiliki akses Premium.
+
+        <a href="premium-member.html">
+            Buka Dashboard Premium →
+        </a>
+
+    </div>
+
+
+</div>
+
+</section>
 
 </main>
 
@@ -1266,94 +1265,90 @@
 
 <footer>
 
-    <div class="container">
+<div class="container">
 
-        <div class="footer">
-
-
-            <div>
-
-                <div class="brand">
-
-                    <img
-                        src="logo.jpg"
-                        alt="TradeVestor"
-                    >
-
-                    <span>
-                        TRADE<b>VESTOR</b>
-                    </span>
-
-                </div>
+    <div class="footer">
 
 
-                <p style="margin-top:12px">
+        <div>
 
-                    TradeVestor membantu lu memahami
-                    trading melalui materi edukasi
-                    dan framework yang terstruktur.
+            <div class="brand">
 
-                </p>
+                <img
+                    src="logo.jpg"
+                    alt="TradeVestor"
+                >
+
+                <span>
+                    TRADE<b>VESTOR</b>
+                </span>
 
             </div>
 
 
-            <div>
+            <p style="margin-top:12px">
 
-                <h4>
-                    Premium
-                </h4>
+                TradeVestor membantu lu memahami
+                trading secara bertahap melalui
+                materi edukasi dan framework
+                yang terstruktur.
 
-                <a href="premium.html">
-                    Premium
-                </a>
-
-                <a href="premium-member.html">
-                    Dashboard
-                </a>
-
-                <a href="premium-market-structure.html">
-                    Market Structure
-                </a>
-
-            </div>
-
-
-            <div>
-
-                <h4>
-                    Lainnya
-                </h4>
-
-                <a href="index.html">
-                    Beranda
-                </a>
-
-                <a href="pembelajaran.html">
-                    Pembelajaran
-                </a>
-
-                <a href="tentang.html">
-                    Tentang
-                </a>
-
-            </div>
-
+            </p>
 
         </div>
 
 
-        <div class="copyright">
+        <div>
 
-            © 2026 TradeVestor.
+            <h4>
+                Premium
+            </h4>
 
-            Educational content only —
-            bukan ajakan membeli atau menjual aset.
+            <a href="premium.html">
+                Aktivasi Premium
+            </a>
+
+            <a href="premium-member.html">
+                Dashboard Premium
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Lainnya
+            </h4>
+
+            <a href="index.html">
+                Beranda
+            </a>
+
+            <a href="pembelajaran.html">
+                Pembelajaran
+            </a>
+
+            <a href="tentang.html">
+                Tentang
+            </a>
 
         </div>
 
 
     </div>
+
+
+    <div class="copyright">
+
+        © 2026 TradeVestor.
+
+        Educational content only —
+        bukan ajakan membeli atau menjual aset.
+
+    </div>
+
+</div>
 
 </footer>
 
@@ -1383,66 +1378,57 @@ document.addEventListener(
                 "pageLoading"
             );
 
-        const premiumPage =
+
+        const form =
             document.getElementById(
-                "premiumPage"
+                "premiumForm"
             );
 
-        const redeemState =
+
+        const codeInput =
             document.getElementById(
-                "redeemState"
+                "premiumCode"
             );
+
+
+        const activateButton =
+            document.getElementById(
+                "activateButton"
+            );
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        const userStatus =
+            document.getElementById(
+                "userStatus"
+            );
+
 
         const alreadyPremium =
             document.getElementById(
                 "alreadyPremium"
             );
 
-        const redeemForm =
-            document.getElementById(
-                "redeemForm"
-            );
-
-        const premiumCode =
-            document.getElementById(
-                "premiumCode"
-            );
-
-        const redeemButton =
-            document.getElementById(
-                "redeemButton"
-            );
-
-        const redeemMessage =
-            document.getElementById(
-                "redeemMessage"
-            );
-
-        const successPanel =
-            document.getElementById(
-                "successPanel"
-            );
-
-        const successText =
-            document.getElementById(
-                "successText"
-            );
-
 
         /* =================================================
-           HELPER MESSAGE
+           MESSAGE FUNCTION
         ================================================= */
 
         function showMessage(
-            message,
-            type = "error"
+            text,
+            type = "info"
         ) {
 
-            redeemMessage.textContent =
-                message;
+            message.textContent =
+                text;
 
-            redeemMessage.className =
-                "redeem-message show " +
+            message.className =
+                "message show " +
                 type;
 
         }
@@ -1450,11 +1436,11 @@ document.addEventListener(
 
         function hideMessage() {
 
-            redeemMessage.textContent =
+            message.textContent =
                 "";
 
-            redeemMessage.className =
-                "redeem-message";
+            message.className =
+                "message";
 
         }
 
@@ -1467,6 +1453,7 @@ document.addEventListener(
             document.getElementById(
                 "menuBtn"
             );
+
 
         const navLinks =
             document.getElementById(
@@ -1488,6 +1475,7 @@ document.addEventListener(
                             "show"
                         );
 
+
                     menuBtn.setAttribute(
                         "aria-expanded",
                         String(isOpen)
@@ -1496,36 +1484,11 @@ document.addEventListener(
                 }
             );
 
-
-            navLinks
-                .querySelectorAll("a")
-                .forEach(
-                    function (link) {
-
-                        link.addEventListener(
-                            "click",
-                            function () {
-
-                                navLinks.classList.remove(
-                                    "show"
-                                );
-
-                                menuBtn.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
         }
 
 
         /* =================================================
-           CHECK LOGIN + PREMIUM
+           CHECK LOGIN / PREMIUM STATUS
         ================================================= */
 
         try {
@@ -1556,11 +1519,11 @@ document.addEventListener(
                 data =
                     await response.json();
 
-            } catch (jsonError) {
+            } catch (error) {
 
                 console.error(
-                    "PREMIUM CHECK JSON ERROR:",
-                    jsonError
+                    "JSON ERROR:",
+                    error
                 );
 
             }
@@ -1568,7 +1531,7 @@ document.addEventListener(
 
             /* =============================================
                BELUM LOGIN
-            ============================================= */
+            ============================================== */
 
             if (
                 response.status === 401
@@ -1587,52 +1550,24 @@ document.addEventListener(
 
             /* =============================================
                SERVER ERROR
-            ============================================= */
+            ============================================== */
 
             if (
                 !response.ok
             ) {
 
-                console.error(
-                    "PREMIUM CHECK ERROR:",
-                    data
+                userStatus.textContent =
+                    "Tidak dapat memeriksa status akun.";
+
+                showMessage(
+                    data?.message ||
+                    "Gagal memeriksa akun.",
+                    "error"
                 );
 
-
-                pageLoading.innerHTML = `
-
-                    <div>
-
-                        <h2>
-                            Gagal memeriksa akun
-                        </h2>
-
-                        <p
-                            style="
-                            margin-top:10px;
-                            color:var(--muted);
-                            "
-                        >
-                            ${
-                                data?.message ||
-                                "Terjadi kesalahan pada server."
-                            }
-                        </p>
-
-                        <button
-                            onclick="location.reload()"
-                            class="redeem-button"
-                            style="
-                            max-width:250px;
-                            margin-top:20px;
-                            "
-                        >
-                            Coba Lagi
-                        </button>
-
-                    </div>
-
-                `;
+                pageLoading.classList.add(
+                    "hidden"
+                );
 
                 return;
 
@@ -1640,100 +1575,150 @@ document.addEventListener(
 
 
             /* =============================================
-               USER SUDAH PREMIUM
-            ============================================= */
+               PREMIUM SUDAH AKTIF
+            ============================================== */
 
             if (
                 data &&
                 data.premium === true
             ) {
 
-                redeemState.style.display =
-                    "none";
+                const user =
+                    data.user || {};
+
+
+                const name =
+                    user.name ||
+                    "Member";
+
+
+                let expiry =
+                    "Aktif";
+
+
+                if (
+                    user.premium_expires_at
+                ) {
+
+                    const date =
+                        new Date(
+                            user.premium_expires_at
+                        );
+
+
+                    if (
+                        !Number.isNaN(
+                            date.getTime()
+                        )
+                    ) {
+
+                        expiry =
+                            date.toLocaleDateString(
+                                "id-ID",
+                                {
+                                    day: "2-digit",
+                                    month: "long",
+                                    year: "numeric"
+                                }
+                            );
+
+                    }
+
+                }
+
+
+                userStatus.innerHTML =
+                    `
+                    <strong>${escapeHTML(name)}</strong>
+                    <br>
+                    Status: <strong>Premium Aktif</strong>
+                    <br>
+                    Berakhir: <strong>${escapeHTML(expiry)}</strong>
+                    `;
+
 
                 alreadyPremium.style.display =
                     "block";
+
+
+                showMessage(
+                    "Akun lu sudah memiliki akses Premium.",
+                    "success"
+                );
+
+
+                activateButton.disabled =
+                    true;
+
+
+                codeInput.disabled =
+                    true;
+
+
+                pageLoading.classList.add(
+                    "hidden"
+                );
+
+
+                return;
 
             }
 
 
             /* =============================================
-               USER BELUM PREMIUM
-            ============================================= */
+               LOGIN TAPI BELUM PREMIUM
+            ============================================== */
 
-            else {
-
-                redeemState.style.display =
-                    "block";
-
-                alreadyPremium.style.display =
-                    "none";
-
-            }
+            const user =
+                data?.user || {};
 
 
-            /* =============================================
-               SHOW PAGE
-            ============================================= */
+            const name =
+                user.name ||
+                "Member";
 
-            pageLoading.style.display =
-                "none";
 
-            premiumPage.style.display =
-                "flex";
+            userStatus.innerHTML =
+                `
+                Login sebagai:
+                <strong>${escapeHTML(name)}</strong>
+                <br>
+                Status:
+                <strong>Belum Premium</strong>
+                `;
+
+
+            pageLoading.classList.add(
+                "hidden"
+            );
 
 
         } catch (error) {
 
             console.error(
-                "PREMIUM PAGE ERROR:",
+                "PREMIUM CHECK ERROR:",
                 error
             );
 
 
-            pageLoading.innerHTML = `
+            pageLoading.classList.add(
+                "hidden"
+            );
 
-                <div>
 
-                    <h2>
-                        Tidak dapat terhubung
-                    </h2>
-
-                    <p
-                        style="
-                        margin-top:10px;
-                        color:var(--muted);
-                        "
-                    >
-                        Pastikan koneksi internet
-                        dan server sedang aktif.
-                    </p>
-
-                    <button
-                        onclick="location.reload()"
-                        class="redeem-button"
-                        style="
-                        max-width:250px;
-                        margin-top:20px;
-                        "
-                    >
-                        Coba Lagi
-                    </button>
-
-                </div>
-
-            `;
-
-            return;
+            showMessage(
+                "Tidak dapat terhubung ke server.",
+                "error"
+            );
 
         }
 
 
         /* =================================================
-           REDEEM PREMIUM CODE
+           REDEEM PREMIUM
         ================================================= */
 
-        redeemForm.addEventListener(
+        form.addEventListener(
             "submit",
             async function (event) {
 
@@ -1743,47 +1728,38 @@ document.addEventListener(
                 hideMessage();
 
 
-                successPanel.classList.remove(
-                    "show"
-                );
-
-
                 const code =
-                    premiumCode.value
+                    codeInput.value
                         .trim()
                         .toUpperCase();
 
 
                 /* =========================================
-                   VALIDASI CLIENT
-                ========================================= */
+                   VALIDASI
+                ========================================== */
 
-                if (
-                    !code
-                ) {
+                if (!code) {
 
                     showMessage(
                         "Masukkan kode Premium terlebih dahulu.",
                         "error"
                     );
 
-                    premiumCode.focus();
+                    codeInput.focus();
 
                     return;
 
                 }
 
 
-                if (
-                    code.length < 4
-                ) {
+                if (code.length < 4) {
 
                     showMessage(
                         "Kode Premium terlalu pendek.",
                         "error"
                     );
 
-                    premiumCode.focus();
+                    codeInput.focus();
 
                     return;
 
@@ -1791,29 +1767,22 @@ document.addEventListener(
 
 
                 /* =========================================
-                   LOADING STATE
-                ========================================= */
+                   LOCK BUTTON
+                ========================================== */
 
-                redeemButton.disabled =
+                activateButton.disabled =
                     true;
 
-                redeemButton.textContent =
+
+                activateButton.textContent =
                     "Memverifikasi kode...";
-
-                premiumCode.disabled =
-                    true;
 
 
                 try {
 
-
-                    /* =====================================
-                       REQUEST API
-                    ===================================== */
-
                     const response =
                         await fetch(
-                            "/api/activate-premium",
+                            "/api/redeem-premium",
                             {
                                 method: "POST",
 
@@ -1848,13 +1817,11 @@ document.addEventListener(
                         data =
                             await response.json();
 
-                    } catch (
-                        jsonError
-                    ) {
+                    } catch (error) {
 
                         console.error(
-                            "ACTIVATE JSON ERROR:",
-                            jsonError
+                            "REDEEM JSON ERROR:",
+                            error
                         );
 
                     }
@@ -1862,30 +1829,73 @@ document.addEventListener(
 
                     /* =====================================
                        BELUM LOGIN
-                    ===================================== */
+                    ====================================== */
 
                     if (
                         response.status === 401
                     ) {
 
+                        window.location.href =
+                            "login.html?redirect=" +
+                            encodeURIComponent(
+                                "premium.html"
+                            );
+
+                        return;
+
+                    }
+
+
+                    /* =====================================
+                       KODE BERHASIL
+                    ====================================== */
+
+                    if (
+                        response.ok &&
+                        data?.success === true
+                    ) {
+
                         showMessage(
-                            "Session login lu sudah berakhir. Silakan login kembali.",
-                            "error"
+                            data.message ||
+                            "Premium berhasil diaktifkan!",
+                            "success"
                         );
 
+
+                        activateButton.textContent =
+                            "✓ Premium Aktif";
+
+
+                        userStatus.innerHTML =
+                            `
+                            <strong>
+                                Premium berhasil diaktifkan.
+                            </strong>
+                            <br>
+                            Masa Premium:
+                            <strong>
+                                ${escapeHTML(
+                                    data.expires_at ||
+                                    "Aktif"
+                                )}
+                            </strong>
+                            `;
+
+
+                        /*
+                         * Redirect setelah 1.5 detik
+                         */
 
                         setTimeout(
                             function () {
 
                                 window.location.href =
-                                    "login.html?redirect=" +
-                                    encodeURIComponent(
-                                        "premium.html"
-                                    );
+                                    "premium-member.html";
 
                             },
-                            1200
+                            1500
                         );
+
 
                         return;
 
@@ -1893,107 +1903,31 @@ document.addEventListener(
 
 
                     /* =====================================
-                       RATE LIMIT
-                    ===================================== */
-
-                    if (
-                        response.status === 429
-                    ) {
-
-                        showMessage(
-                            data?.message ||
-                            "Terlalu banyak percobaan. Coba lagi beberapa saat.",
-                            "error"
-                        );
-
-                        return;
-
-                    }
-
-
-                    /* =====================================
-                       INVALID / SERVER ERROR
-                    ===================================== */
-
-                    if (
-                        !response.ok ||
-                        !data ||
-                        data.success !== true
-                    ) {
-
-                        showMessage(
-                            data?.message ||
-                            "Kode Premium tidak valid atau sudah digunakan.",
-                            "error"
-                        );
-
-                        return;
-
-                    }
-
-
-                    /* =====================================
-                       SUCCESS
-                    ===================================== */
-
-                    const duration =
-                        data.duration_days ||
-                        data.duration ||
-                        null;
-
-
-                    let successMessage =
-                        "Akses Premium lu sekarang sudah aktif.";
-
-
-                    if (
-                        duration
-                    ) {
-
-                        successMessage =
-                            `Akses Premium lu berhasil diaktifkan selama ${duration} hari.`;
-
-                    }
-
-
-                    successText.textContent =
-                        successMessage;
-
-
-                    successPanel.classList.add(
-                        "show"
-                    );
-
+                       ERROR DARI SERVER
+                    ====================================== */
 
                     showMessage(
-                        "Kode berhasil diverifikasi. Premium aktif.",
-                        "success"
+                        data?.message ||
+                        "Kode Premium tidak valid.",
+                        "error"
                     );
 
 
-                    premiumCode.value =
-                        "";
+                    activateButton.disabled =
+                        false;
 
 
-                    /* =====================================
-                       REDIRECT OTOMATIS
-                    ===================================== */
+                    activateButton.textContent =
+                        "🔓 Aktifkan Premium";
 
-                    setTimeout(
-                        function () {
 
-                            window.location.href =
-                                "premium-member.html";
-
-                        },
-                        1800
-                    );
+                    codeInput.focus();
 
 
                 } catch (error) {
 
                     console.error(
-                        "ACTIVATE PREMIUM ERROR:",
+                        "REDEEM ERROR:",
                         error
                     );
 
@@ -2004,29 +1938,12 @@ document.addEventListener(
                     );
 
 
-                } finally {
+                    activateButton.disabled =
+                        false;
 
-                    /*
-                     * Jangan mengaktifkan kembali
-                     * input kalau redirect sukses.
-                     */
 
-                    if (
-                        !successPanel.classList.contains(
-                            "show"
-                        )
-                    ) {
-
-                        redeemButton.disabled =
-                            false;
-
-                        redeemButton.textContent =
-                            "Aktifkan Premium";
-
-                        premiumCode.disabled =
-                            false;
-
-                    }
+                    activateButton.textContent =
+                        "🔓 Aktifkan Premium";
 
                 }
 
@@ -2035,94 +1952,52 @@ document.addEventListener(
 
 
         /* =================================================
-           AUTO FORMAT CODE
+           AUTO UPPERCASE
         ================================================= */
 
-        premiumCode.addEventListener(
+        codeInput.addEventListener(
             "input",
             function () {
 
                 this.value =
-                    this.value
-                        .toUpperCase()
-                        .replace(
-                            /\s+/g,
-                            ""
-                        );
+                    this.value.toUpperCase();
 
             }
         );
 
 
         /* =================================================
-           LOGOUT
+           ESCAPE HTML
         ================================================= */
 
-        const logoutButton =
-            document.getElementById(
-                "logoutButton"
-            );
-
-
-        if (
-            logoutButton
+        function escapeHTML(
+            value
         ) {
 
-            logoutButton.addEventListener(
-                "click",
-                async function () {
-
-
-                    if (
-                        logoutButton.disabled
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    logoutButton.disabled =
-                        true;
-
-                    logoutButton.textContent =
-                        "Logout...";
-
-
-                    try {
-
-                        await fetch(
-                            "/api/logout",
-                            {
-                                method: "POST",
-
-                                credentials:
-                                    "include",
-
-                                headers: {
-                                    "Accept":
-                                        "application/json"
-                                }
-                            }
-                        );
-
-                    } catch (error) {
-
-                        console.error(
-                            "LOGOUT ERROR:",
-                            error
-                        );
-
-                    }
-
-
-                    window.location.href =
-                        "login.html";
-
-                }
-            );
+            return String(value)
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
 
         }
+
 
     }
 
