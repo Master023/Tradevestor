@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Module 02 — Multi-Timeframe Analysis | TradeVestor</title>
+
+<meta
+    name="description"
+    content="TradeVestor Premium Module 02 — Multi-Timeframe Analysis."
+>
+
+<meta
+    name="theme-color"
+    content="#050507"
+>
+
+<link
+    rel="icon"
+    href="logo.jpg"
+>
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+
+<style>
+
+/* ============================================================
+   PREMIUM MODULE
+============================================================ */
+
+.module-page {
+
+    min-height: 100vh;
+
+    padding:
+        80px 0
+        100px;
+
+}
+
+
+.module-wrapper {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.module-hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 45px;
+
+    border-radius: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(118,87,255,.12),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.25);
+
+}
+
+
+.module-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    right: -120px;
+
+    top: -150px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(118,87,255,.14);
+
+    filter:
+        blur(50px);
+
+    pointer-events: none;
+
+}
+
+
+.module-hero > * {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.module-kicker {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        8px 14px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(118,87,255,.25);
+
+    background:
+        rgba(118,87,255,.08);
+
+    color:
+        #b69cff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .08em;
+
+}
+
+
+.module-hero h1 {
+
+    margin-top: 22px;
+
+    font-size:
+        clamp(35px,6vw,65px);
+
+    line-height:
+        1.05;
+
+}
+
+
+.module-hero h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #7657ff,
+            #b69cff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+}
+
+
+.module-hero p {
+
+    max-width: 780px;
+
+    margin-top: 20px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.8;
+
+}
+
+
+/* ============================================================
+   META
+============================================================ */
+
+.module-meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+
+.meta-item {
+
+    padding:
+        8px 12px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.module-content {
+
+    margin-top: 35px;
+
+}
+
+
+.content-card {
+
+    margin-top: 25px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.025);
+
+}
+
+
+.content-card h2 {
+
+    font-size:
+        clamp(25px,4vw,36px);
+
+    line-height:
+        1.2;
+
+}
+
+
+.content-card h3 {
+
+    margin-top: 30px;
+
+    font-size: 21px;
+
+}
+
+
+.content-card p {
+
+    margin-top: 15px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.85;
+
+}
+
+
+.content-card ul {
+
+    margin-top: 15px;
+
+    padding-left: 22px;
+
+}
+
+
+.content-card li {
+
+    margin-bottom: 10px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.75;
+
+}
+
+
+.content-card strong {
+
+    color:
+        white;
+
+}
+
+
+/* ============================================================
+   HIGHLIGHT
+============================================================ */
+
+.highlight {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(118,87,255,.08);
+
+    border:
+        1px solid
+        rgba(118,87,255,.18);
+
+}
+
+
+.highlight strong {
+
+    color:
+        #b69cff;
+
+}
+
+
+/* ============================================================
+   WARNING
+============================================================ */
+
+.warning {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(239,68,68,.06);
+
+    border:
+        1px solid
+        rgba(239,68,68,.18);
+
+}
+
+
+.warning strong {
+
+    color:
+        #fca5a5;
+
+}
+
+
+/* ============================================================
+   VISUAL PLACEHOLDER
+============================================================ */
+
+.visual {
+
+    margin-top: 25px;
+
+    padding: 30px;
+
+    min-height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 17px;
+
+    border:
+        1px dashed
+        rgba(255,255,255,.14);
+
+    background:
+        rgba(255,255,255,.02);
+
+    color:
+        var(--muted);
+
+}
+
+
+.visual strong {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        white;
+
+}
+
+
+/* ============================================================
+   TABLE
+============================================================ */
+
+.table-wrapper {
+
+    margin-top: 25px;
+
+    overflow-x: auto;
+
+}
+
+
+.comparison-table {
+
+    width: 100%;
+
+    border-collapse:
+        collapse;
+
+    min-width: 650px;
+
+}
+
+
+.comparison-table th,
+.comparison-table td {
+
+    padding:
+        14px;
+
+    text-align:
+        left;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.comparison-table th {
+
+    color:
+        white;
+
+    background:
+        rgba(255,255,255,.04);
+
+}
+
+
+.comparison-table td {
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.6;
+
+}
+
+
+/* ============================================================
+   CHECKLIST
+============================================================ */
+
+.checklist {
+
+    margin-top: 20px;
+
+}
+
+
+.check-item {
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
+}
+
+
+.check-icon {
+
+    flex:
+        0 0 25px;
+
+    width: 25px;
+
+    height: 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(118,87,255,.12);
+
+    color:
+        #b69cff;
+
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.module-navigation {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content:
+        center;
+
+    padding:
+        13px 18px;
+
+    border-radius:
+        11px;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        700;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+.nav-primary {
+
+    background:
+        #7657ff;
+
+    color:
+        white;
+
+}
+
+
+.nav-secondary {
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        white;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:700px) {
+
+    .module-page {
+
+        padding:
+            50px 0
+            70px;
+
+    }
+
+
+    .module-hero {
+
+        padding: 27px;
+
+    }
+
+
+    .content-card {
+
+        padding: 23px;
+
+    }
+
+
+    .module-navigation {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .nav-button {
+
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="module-page">
+
+<div class="container module-wrapper">
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+
+<section class="module-hero">
+
+
+    <span class="module-kicker">
+
+        💎 PREMIUM MODULE 02
+
+    </span>
+
+
+    <h1>
+
+        Multi-Timeframe
+        <span>
+            Analysis
+        </span>
+
+    </h1>
+
+
+    <p>
+
+        Belajar membaca market dari
+        timeframe besar menuju timeframe
+        kecil untuk memahami konteks,
+        struktur, momentum, area penting
+        dan peluang entry dengan lebih
+        terstruktur.
+
+    </p>
+
+
+    <div class="module-meta">
+
+        <span class="meta-item">
+            📚 Advanced
+        </span>
+
+        <span class="meta-item">
+            🧠 Market Analysis
+        </span>
+
+        <span class="meta-item">
+            ⏱ Multi-Timeframe
+        </span>
+
+        <span class="meta-item">
+            💎 Premium
+        </span>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ============================================================
+     CONTENT
+============================================================ -->
+
+<section class="module-content">
+
+
+<!-- ============================================================
+     BAB 1
+============================================================ -->
+
+<article
+    id="bab-1"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 1 —
+Apa Itu Multi-Timeframe Analysis?
+
+</h2>
+
+
+<p>
+
+Multi-Timeframe Analysis atau MTF Analysis
+adalah metode membaca pergerakan harga
+dengan menggunakan lebih dari satu
+timeframe.
+
+Tujuannya bukan untuk mencari sebanyak
+mungkin sinyal.
+
+Tujuan utamanya adalah memahami
+<strong>konteks market</strong>.
+
+</p>
+
+
+<p>
+
+Satu timeframe sering kali hanya
+menunjukkan sebagian kecil dari cerita.
+
+Misalnya pada timeframe 5 menit,
+harga terlihat sedang naik.
+
+Tetapi ketika lu melihat timeframe
+4 jam, ternyata harga sedang berada
+di dalam downtrend besar.
+
+Artinya:
+
+<strong>
+
+"Naik di timeframe kecil belum tentu
+berarti bullish secara keseluruhan."
+
+</strong>
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+Prinsip dasar:
+</strong>
+
+<p>
+
+Timeframe besar membantu memahami
+konteks.
+
+Timeframe menengah membantu membaca
+struktur.
+
+Timeframe kecil membantu mencari
+timing.
+
+</p>
+
+</div>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 01 — Multi-Timeframe Hierarchy
+</strong>
+
+Tambahkan gambar yang menunjukkan
+hubungan HTF → MTF → LTF.
+
+Contoh:
+
+4H → 1H → 15M
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 2
+============================================================ -->
+
+<article
+    id="bab-2"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 2 —
+Kenapa Satu Timeframe Tidak Cukup?
+
+</h2>
+
+
+<p>
+
+Kesalahan umum trader pemula adalah
+menggunakan satu timeframe untuk
+semua keputusan.
+
+Misalnya:
+
+Timeframe 5 menit digunakan untuk
+menentukan trend, mencari support,
+menentukan entry dan menentukan
+target.
+
+Masalahnya adalah timeframe kecil
+mengandung lebih banyak noise.
+
+</p>
+
+
+<h3>
+
+2.1 Noise Market
+
+</h3>
+
+
+<p>
+
+Noise adalah pergerakan harga kecil
+yang dapat terlihat seperti perubahan
+trend padahal sebenarnya hanya
+fluktuasi sementara.
+
+Semakin kecil timeframe,
+semakin banyak noise yang biasanya
+terlihat.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 02 — Noise vs Struktur
+</strong>
+
+Tambahkan chart yang membandingkan
+pergerakan 5M dengan struktur 4H.
+
+</div>
+
+</div>
+
+
+<h3>
+
+2.2 Perspektif
+
+</h3>
+
+
+<p>
+
+Bayangkan lu sedang melihat sebuah
+gunung.
+
+Kalau lu berdiri sangat dekat,
+lu hanya melihat batu, pohon dan
+jalan kecil.
+
+Tetapi kalau lu melihat dari jauh,
+lu bisa melihat bentuk gunung secara
+keseluruhan.
+
+Market juga sama.
+
+Timeframe kecil menunjukkan detail.
+
+Timeframe besar menunjukkan konteks.
+
+</p>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 3
+============================================================ -->
+
+<article
+    id="bab-3"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 3 —
+Hierarki Timeframe
+
+</h2>
+
+
+<p>
+
+Dalam MTF Analysis kita dapat
+mengelompokkan timeframe menjadi
+beberapa tingkat.
+
+</p>
+
+
+<div class="table-wrapper">
+
+<table class="comparison-table">
+
+<thead>
+
+<tr>
+
+<th>
+Kategori
+</th>
+
+<th>
+Contoh
+</th>
+
+<th>
+Fungsi
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+Higher Timeframe
+</td>
+
+<td>
+1D, 4H
+</td>
+
+<td>
+Melihat konteks dan struktur besar.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Middle Timeframe
+</td>
+
+<td>
+1H, 30M
+</td>
+
+<td>
+Membaca struktur menengah.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Lower Timeframe
+</td>
+
+<td>
+15M, 5M, 1M
+</td>
+
+<td>
+Mencari timing entry.
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="highlight">
+
+<strong>
+
+Tidak ada kombinasi timeframe
+yang secara universal paling benar.
+
+</strong>
+
+<p>
+
+Timeframe harus disesuaikan dengan
+gaya trading, strategi dan holding
+period lu.
+
+</p>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 4
+============================================================ -->
+
+<article
+    id="bab-4"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 4 —
+Higher Timeframe Analysis
+
+</h2>
+
+
+<p>
+
+Higher Timeframe atau HTF adalah
+timeframe yang digunakan untuk
+memahami gambaran besar market.
+
+Di tahap ini jangan terburu-buru
+mencari entry.
+
+Fokus utama adalah:
+
+</p>
+
+
+<ul>
+
+<li>
+Trend utama.
+</li>
+
+<li>
+Market structure.
+</li>
+
+<li>
+Swing high dan swing low.
+</li>
+
+<li>
+Support dan resistance besar.
+</li>
+
+<li>
+Area supply dan demand.
+</li>
+
+<li>
+Liquidity.
+</li>
+
+<li>
+Kondisi bullish, bearish atau ranging.
+</li>
+
+</ul>
+
+
+<h3>
+
+Pertanyaan HTF
+
+</h3>
+
+
+<div class="checklist">
+
+
+<div class="check-item">
+
+<div class="check-icon">
+1
+</div>
+
+<div>
+Apa struktur market saat ini?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+2
+</div>
+
+<div>
+Apakah market sedang trending?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+3
+</div>
+
+<div>
+Apakah market sedang ranging?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+4
+</div>
+
+<div>
+Di mana swing high dan swing low penting?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+5
+</div>
+
+<div>
+Di mana harga berada relatif terhadap
+struktur besar?
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 03 — HTF Mapping
+</strong>
+
+Tambahkan screenshot chart timeframe
+4H yang diberi tanda:
+
+HH → HL → HH → HL
+
+atau
+
+LH → LL → LH → LL.
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 5
+============================================================ -->
+
+<article
+    id="bab-5"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 5 —
+Middle Timeframe
+
+</h2>
+
+
+<p>
+
+Setelah memahami HTF,
+kita turun ke timeframe menengah.
+
+Contohnya:
+
+4H → 1H
+
+atau
+
+1D → 4H.
+
+</p>
+
+
+<p>
+
+Fungsi timeframe menengah adalah
+menjembatani konteks besar dengan
+struktur yang lebih detail.
+
+Di sini kita mulai mencari:
+
+</p>
+
+
+<ul>
+
+<li>
+Struktur internal.
+</li>
+
+<li>
+Pullback.
+</li>
+
+<li>
+Breakout.
+</li>
+
+<li>
+Retest.
+</li>
+
+<li>
+Area reaksi harga.
+</li>
+
+<li>
+Perubahan momentum.
+</li>
+
+</ul>
+
+
+<p>
+
+Misalnya HTF menunjukkan bullish.
+
+Kemudian timeframe 1H menunjukkan
+harga sedang melakukan pullback.
+
+Artinya kita belum tentu langsung
+sell.
+
+Pullback tersebut bisa menjadi
+bagian dari struktur bullish yang
+lebih besar.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 04 — HTF + MTF
+</strong>
+
+Tampilkan chart 4H dan 1H dari
+asset yang sama untuk menunjukkan
+bagaimana struktur besar diterjemahkan
+ke timeframe menengah.
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 6
+============================================================ -->
+
+<article
+    id="bab-6"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 6 —
+Lower Timeframe
+
+</h2>
+
+
+<p>
+
+Lower Timeframe digunakan untuk
+mencari timing.
+
+Contohnya:
+
+4H → 1H → 15M.
+
+Jika HTF bullish dan MTF menunjukkan
+pullback menuju area penting,
+kita dapat turun ke 15M untuk mencari
+konfirmasi entry.
+
+</p>
+
+
+<p>
+
+Namun ada satu prinsip penting:
+
+<strong>
+
+Lower timeframe tidak boleh
+menghapus konteks higher timeframe
+tanpa alasan struktural yang kuat.
+
+</strong>
+
+</p>
+
+
+<h3>
+
+Contoh
+
+</h3>
+
+
+<p>
+
+Misalnya:
+
+4H = bullish.
+
+1H = pullback.
+
+15M = muncul bullish CHOCH
+di area support.
+
+Kondisi tersebut lebih menarik
+dibanding hanya melihat candle
+bullish secara acak.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 05 — Entry Refinement
+</strong>
+
+Tampilkan:
+
+4H bullish
+
+↓
+
+1H pullback
+
+↓
+
+15M bullish CHOCH
+
+↓
+
+Entry
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 7
+============================================================ -->
+
+<article
+    id="bab-7"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 7 —
+Top Down Analysis
+
+</h2>
+
+
+<p>
+
+Top Down Analysis berarti kita
+menganalisis market dari perspektif
+besar kemudian turun menuju detail.
+
+Urutannya:
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+
+HTF → MTF → LTF
+
+</strong>
+
+<p>
+
+Context → Structure → Timing
+
+</p>
+
+</div>
+
+
+<h3>
+
+Langkah 1 — Context
+
+</h3>
+
+
+<p>
+
+Mulai dari timeframe besar.
+
+Tentukan:
+
+Apakah bullish?
+
+Bearish?
+
+Atau ranging?
+
+</p>
+
+
+<h3>
+
+Langkah 2 — Structure
+
+</h3>
+
+
+<p>
+
+Turun ke timeframe menengah.
+
+Cari tahu bagaimana harga bergerak
+di dalam konteks tersebut.
+
+</p>
+
+
+<h3>
+
+Langkah 3 — Timing
+
+</h3>
+
+
+<p>
+
+Turun ke timeframe kecil.
+
+Cari trigger yang sesuai dengan
+rencana.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 06 — Top Down Process
+</strong>
+
+Buat ilustrasi visual:
+
+CONTEXT
+
+↓
+
+STRUCTURE
+
+↓
+
+SETUP
+
+↓
+
+TRIGGER
+
+↓
+
+ENTRY
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 8
+============================================================ -->
+
+<article
+    id="bab-8"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 8 —
+Bullish Multi-Timeframe Scenario
+
+</h2>
+
+
+<p>
+
+Sekarang kita bedah contoh bullish
+secara lengkap.
+
+</p>
+
+
+<h3>
+
+HTF
+
+</h3>
+
+
+<p>
+
+Pada timeframe 4H terlihat:
+
+Higher High
+
+dan
+
+Higher Low.
+
+Artinya struktur utama masih
+bullish.
+
+</p>
+
+
+<h3>
+
+MTF
+
+</h3>
+
+
+<p>
+
+Pada timeframe 1H harga melakukan
+pullback.
+
+Harga turun menuju area yang
+sebelumnya menjadi support.
+
+</p>
+
+
+<h3>
+
+LTF
+
+</h3>
+
+
+<p>
+
+Pada timeframe 15M harga menunjukkan
+reaksi bullish.
+
+Kemudian muncul perubahan struktur
+internal.
+
+</p>
+
+
+<h3>
+
+Kesimpulan
+
+</h3>
+
+
+<p>
+
+Trader tidak membeli hanya karena
+harga naik.
+
+Trader menunggu:
+
+HTF bullish
+
++
+
+MTF pullback
+
++
+
+LTF confirmation.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 07 — Bullish MTF Case Study
+</strong>
+
+Masukkan chart asli yang menunjukkan
+seluruh proses dari 4H → 1H → 15M.
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 9
+============================================================ -->
+
+<article
+    id="bab-9"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 9 —
+Bearish Multi-Timeframe Scenario
+
+</h2>
+
+
+<p>
+
+Sekarang kita balik skenarionya.
+
+HTF menunjukkan:
+
+Lower High
+
+dan
+
+Lower Low.
+
+Artinya struktur utama bearish.
+
+</p>
+
+
+<p>
+
+Kemudian timeframe menengah
+menunjukkan pullback naik.
+
+Banyak trader pemula mungkin melihat
+harga naik lalu langsung berpikir:
+
+"Market bullish."
+
+Padahal harga tersebut bisa saja
+hanya melakukan retracement.
+
+</p>
+
+
+<p>
+
+Jika pada timeframe kecil muncul
+bearish confirmation setelah harga
+memasuki area penting, maka setup
+short menjadi lebih masuk akal.
+
+</p>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 08 — Bearish MTF Case Study
+</strong>
+
+Tampilkan:
+
+4H bearish
+
+↓
+
+1H retracement
+
+↓
+
+15M bearish confirmation
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 10
+============================================================ -->
+
+<article
+    id="bab-10"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 10 —
+Ranging Market
+
+</h2>
+
+
+<p>
+
+Tidak semua market sedang trending.
+
+Kadang harga bergerak sideways.
+
+Dalam kondisi seperti ini,
+strategi MTF harus disesuaikan.
+
+</p>
+
+
+<p>
+
+Misalnya timeframe 4H menunjukkan
+range antara resistance dan support.
+
+Maka harga dapat bergerak:
+
+Resistance
+
+↓
+
+Mid-range
+
+↓
+
+Support
+
+↓
+
+Mid-range
+
+↓
+
+Resistance.
+
+</p>
+
+
+<div class="warning">
+
+<strong>
+Hindari memaksakan trend.
+</strong>
+
+<p>
+
+Jika market sedang ranging,
+jangan memaksakan interpretasi
+bahwa setiap kenaikan adalah
+awal bullish trend dan setiap
+penurunan adalah awal bearish trend.
+
+</p>
+
+</div>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 09 — Range Market
+</strong>
+
+Tambahkan chart dengan area:
+
+Resistance
+
+Range
+
+Support
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 11
+============================================================ -->
+
+<article
+    id="bab-11"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 11 —
+Timeframe Conflict
+
+</h2>
+
+
+<p>
+
+Salah satu hal yang harus lu pahami
+adalah konflik antar-timeframe.
+
+Contohnya:
+
+4H bullish.
+
+1H bearish.
+
+15M bullish.
+
+Apakah market bullish atau bearish?
+
+Jawabannya:
+
+<strong>
+
+Tergantung posisi harga dan konteks
+struktur.
+
+</strong>
+
+</p>
+
+
+<p>
+
+Timeframe yang berbeda tidak harus
+selalu menunjukkan arah yang sama.
+
+Justru perbedaan tersebut bisa
+terjadi karena timeframe kecil sedang
+melakukan retracement terhadap
+timeframe besar.
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+
+Bullish HTF + bearish LTF
+
+</strong>
+
+<p>
+
+Tidak otomatis berarti HTF salah.
+
+LTF bisa saja sedang melakukan
+pullback.
+
+</p>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 12
+============================================================ -->
+
+<article
+    id="bab-12"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 12 —
+Cara Menggunakan MTF untuk Entry
+
+</h2>
+
+
+<p>
+
+MTF Analysis bukan sistem entry
+secara otomatis.
+
+MTF hanya membantu kita mempersempit
+area keputusan.
+
+Contoh framework:
+
+</p>
+
+
+<ul>
+
+<li>
+HTF menentukan bias.
+</li>
+
+<li>
+MTF menentukan area setup.
+</li>
+
+<li>
+LTF menentukan trigger.
+</li>
+
+</ul>
+
+
+<h3>
+
+Contoh Long
+
+</h3>
+
+
+<p>
+
+HTF:
+
+Bullish.
+
+</p>
+
+
+<p>
+
+MTF:
+
+Harga pullback menuju support.
+
+</p>
+
+
+<p>
+
+LTF:
+
+Muncul bullish structure shift.
+
+</p>
+
+
+<p>
+
+Kemudian trader dapat menentukan:
+
+Entry
+
+Stop Loss
+
+Target
+
+Risk per trade.
+
+</p>
+
+
+<div class="warning">
+
+<strong>
+
+MTF bukan alasan untuk entry
+secara sembarangan.
+
+</strong>
+
+<p>
+
+Tetap dibutuhkan invalidation,
+risk management dan pengujian
+strategi.
+
+</p>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 13
+============================================================ -->
+
+<article
+    id="bab-13"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 13 —
+Kesalahan Umum Multi-Timeframe
+
+</h2>
+
+
+<h3>
+1. Terlalu Banyak Timeframe
+</h3>
+
+
+<p>
+
+Trader membuka 1M, 3M, 5M, 15M,
+30M, 1H, 4H, 1D dan seterusnya.
+
+Akibatnya terlalu banyak informasi.
+
+</p>
+
+
+<h3>
+2. Terlalu Sering Ganti Bias
+</h3>
+
+
+<p>
+
+Melihat candle bearish di 5M lalu
+langsung mengubah pandangan dari
+bullish menjadi bearish.
+
+</p>
+
+
+<h3>
+3. Mengabaikan HTF
+</h3>
+
+
+<p>
+
+Trader langsung mencari entry
+di timeframe kecil tanpa memahami
+konteks besar.
+
+</p>
+
+
+<h3>
+4. Menganggap Semua Timeframe Harus
+Sama
+</h3>
+
+
+<p>
+
+Padahal timeframe memiliki fungsi
+berbeda.
+
+</p>
+
+
+<h3>
+5. Entry Karena Candle
+</h3>
+
+
+<p>
+
+Candle bullish atau bearish bukan
+sendirinya merupakan alasan yang
+cukup untuk melakukan transaksi.
+
+</p>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 14
+============================================================ -->
+
+<article
+    id="bab-14"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 14 —
+Framework MTF TradeVestor
+
+</h2>
+
+
+<p>
+
+Gunakan framework berikut ketika
+melakukan analisis.
+
+</p>
+
+
+<div class="checklist">
+
+
+<div class="check-item">
+
+<div class="check-icon">
+1
+</div>
+
+<div>
+
+<strong>
+Context
+</strong>
+
+<br>
+
+Tentukan kondisi market pada HTF.
+
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+2
+</div>
+
+<div>
+
+<strong>
+Structure
+</strong>
+
+<br>
+
+Identifikasi HH, HL, LH dan LL.
+
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+3
+</div>
+
+<div>
+
+<strong>
+Location
+</strong>
+
+<br>
+
+Tentukan posisi harga terhadap
+area penting.
+
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+4
+</div>
+
+<div>
+
+<strong>
+Setup
+</strong>
+
+<br>
+
+Tunggu pola yang sesuai dengan
+bias.
+
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+5
+</div>
+
+<div>
+
+<strong>
+Trigger
+</strong>
+
+<br>
+
+Gunakan LTF untuk mencari
+konfirmasi.
+
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+6
+</div>
+
+<div>
+
+<strong>
+Risk
+</strong>
+
+<br>
+
+Tentukan invalidation dan risiko
+sebelum entry.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 15
+============================================================ -->
+
+<article
+    id="bab-15"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 15 —
+Contoh Analisis Lengkap
+
+</h2>
+
+
+<p>
+
+Misalnya kita ingin mencari peluang
+long.
+
+Kita mulai dari timeframe 4H.
+
+</p>
+
+
+<p>
+
+4H menunjukkan:
+
+Higher High
+
+dan
+
+Higher Low.
+
+Bias:
+
+<strong>
+Bullish.
+</strong>
+
+</p>
+
+
+<p>
+
+Kemudian kita turun ke 1H.
+
+Harga sedang turun menuju area
+support.
+
+Belum ada alasan untuk entry.
+
+</p>
+
+
+<p>
+
+Kita turun ke 15M.
+
+Harga masuk ke area tersebut dan
+mulai membentuk struktur bullish.
+
+Baru kemudian kita mencari trigger.
+
+</p>
+
+
+<p>
+
+Framework:
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+
+4H
+
+Bullish Context
+
+<br><br>
+
+↓
+
+<br><br>
+
+1H
+
+Pullback
+
+<br><br>
+
+↓
+
+<br><br>
+
+15M
+
+Bullish Confirmation
+
+<br><br>
+
+↓
+
+<br><br>
+
+Entry
+
+</strong>
+
+</div>
+
+
+<div class="visual">
+
+<div>
+
+<strong>
+VISUAL 10 — Full Case Study
+</strong>
+
+Gunakan screenshot chart asli
+dan pecah menjadi tiga bagian:
+
+4H
+
+1H
+
+15M
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 16
+============================================================ -->
+
+<article
+    id="bab-16"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 16 —
+Checklist Sebelum Entry
+
+</h2>
+
+
+<div class="checklist">
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apakah HTF sudah dianalisis?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apa bias market saat ini?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apakah market trending atau ranging?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Di mana area penting?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apakah MTF memberikan setup?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apakah LTF memberikan trigger?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Di mana invalidation?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Berapa risiko per trade?
+</div>
+
+</div>
+
+
+<div class="check-item">
+
+<div class="check-icon">
+✓
+</div>
+
+<div>
+Apakah setup memenuhi trading plan?
+</div>
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 17
+============================================================ -->
+
+<article
+    id="bab-17"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 17 —
+MTF dan Trading Psychology
+
+</h2>
+
+
+<p>
+
+MTF Analysis juga berkaitan erat
+dengan psikologi.
+
+Salah satu masalah terbesar trader
+adalah ingin mendapatkan kepastian.
+
+Padahal market tidak memberikan
+kepastian.
+
+Market hanya memberikan
+probabilitas.
+
+</p>
+
+
+<p>
+
+Dengan MTF, kita tidak mencoba
+memprediksi masa depan secara pasti.
+
+Kita mencoba menjawab:
+
+"Jika kondisi A terjadi,
+apa yang akan saya lakukan?"
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+
+Trader profesional tidak harus
+selalu benar.
+
+</strong>
+
+<p>
+
+Yang penting adalah memiliki
+proses yang jelas ketika benar
+maupun ketika salah.
+
+</p>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     BAB 18
+============================================================ -->
+
+<article
+    id="bab-18"
+    class="content-card"
+>
+
+
+<h2>
+
+BAB 18 —
+Kesimpulan
+
+</h2>
+
+
+<p>
+
+Multi-Timeframe Analysis adalah
+framework untuk memahami market
+dari perspektif yang berbeda.
+
+Konsep paling penting yang harus
+lu ingat adalah:
+
+</p>
+
+
+<div class="highlight">
+
+<strong>
+
+HTF = Context
+
+<br><br>
+
+MTF = Structure
+
+<br><br>
+
+LTF = Timing
+
+</strong>
+
+</div>
+
+
+<p>
+
+Namun jangan menganggap framework
+tersebut sebagai hukum mutlak.
+
+Setiap strategi dapat memiliki
+kombinasi timeframe berbeda.
+
+Yang penting adalah:
+
+</p>
+
+
+<ul>
+
+<li>
+Konsisten.
+</li>
+
+<li>
+Bisa diuji.
+</li>
+
+<li>
+Memiliki aturan yang jelas.
+</li>
+
+<li>
+Memiliki risk management.
+</li>
+
+<li>
+Tidak mengambil keputusan hanya
+berdasarkan satu candle.
+</li>
+
+</ul>
+
+
+<div class="warning">
+
+<strong>
+Penting:
+</strong>
+
+<p>
+
+Materi ini adalah edukasi.
+
+Multi-Timeframe Analysis tidak
+menjamin profit dan tidak dapat
+menghilangkan risiko trading.
+
+Semua framework harus diuji melalui
+backtesting dan forward testing
+sebelum digunakan dengan modal nyata.
+
+</p>
+
+</div>
+
+
+</article>
+
+
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+
+<div class="module-navigation">
+
+
+<a
+    href="premium-market-structure.html"
+    class="nav-button nav-secondary"
+>
+
+← Module 01
+
+</a>
+
+
+<a
+    href="premium-member.html"
+    class="nav-button nav-secondary"
+>
+
+Dashboard Premium
+
+</a>
+
+
+<a
+    href="premium-risk-management.html"
+    class="nav-button nav-primary"
+>
+
+Module 03 →
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+</div>
+
+</main>
+
+
+</body>
+
+</html>
